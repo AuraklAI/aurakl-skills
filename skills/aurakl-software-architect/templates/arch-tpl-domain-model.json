@@ -1,0 +1,59 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Template",
+  "metadata": {
+    "id": "arch-tpl-domain-model",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:a813000400004000800000000000003300000000000000000000000000000001",
+    "created_at": 1764000000000,
+    "created_by": "aurakl",
+    "change_reason": "Domain modeling and core trait abstractions template: 100% PRD entity coverage, aggregate root boundaries, and pure trait signatures",
+    "labels": {
+      "owner": "architecture",
+      "serves_step": "model_domain_and_abstractions",
+      "serves_output_slot": "domain_model_spec"
+    }
+  },
+  "spec": {
+    "name": "Domain Modeling & Core Abstractions Specification Template",
+    "artifact_kind": "text_document",
+    "sections": [
+      {
+        "id": "domain_overview",
+        "title": "Domain Modeling Overview",
+        "required": true,
+        "content_hint": "System name, domain boundaries, and comprehensive business entity overview",
+        "min_items": null
+      },
+      {
+        "id": "aggregates_and_entities",
+        "title": "Aggregate Roots & Complete Entity Model",
+        "required": true,
+        "content_hint": "100% PRD-covering entity inventory, attributes, identifiers, and business rules",
+        "min_items": 1
+      },
+      {
+        "id": "value_objects_and_events",
+        "title": "Value Objects & Domain Events",
+        "required": true,
+        "content_hint": "Immutable value objects and key state-change domain event definitions",
+        "min_items": 1
+      },
+      {
+        "id": "core_traits_and_interfaces",
+        "title": "Core Component Traits & Interface Abstractions",
+        "required": true,
+        "content_hint": "Cross-module core Trait/Interface method signatures, purity, and error models",
+        "min_items": 1
+      },
+      {
+        "id": "requirement_traceability",
+        "title": "PRD Requirement Traceability Matrix",
+        "required": true,
+        "content_hint": "Entity and Trait mapping against PRD Must-Have requirements (100% coverage)",
+        "min_items": 1
+      }
+    ]
+  }
+}

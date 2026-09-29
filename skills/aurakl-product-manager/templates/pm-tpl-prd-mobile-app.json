@@ -1,0 +1,133 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Template",
+  "metadata": {
+    "id": "pm-tpl-prd-mobile-app",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:d0adb4d4a458299a3af69e4546fecbca47ace419ccdc82371cde382914614468",
+    "created_at": 1764000000000,
+    "created_by": "jaxon",
+    "change_reason": "Mobile app PRD template: screens, navigation, onboarding, permissions, offline, and app store compliance",
+    "labels": {
+      "owner": "product",
+      "migrated_from": "aurakl-core/resources/experts/product-manager/templates/prd-template-mobile-app.md",
+      "product_type": "mobile",
+      "serves_step": "assemble_comprehensive_prd",
+      "serves_output_slot": "prd"
+    }
+  },
+  "spec": {
+    "name": "Mobile Application PRD Template",
+    "artifact_kind": "text_document",
+    "sections": [
+      {
+        "id": "app_positioning",
+        "title": "App Positioning & Scope",
+        "required": true,
+        "content_hint": "Mobile app core purpose and boundary delineation",
+        "min_items": null
+      },
+      {
+        "id": "screen_inventory",
+        "title": "Screen Inventory",
+        "required": true,
+        "content_hint": "Catalog of screens with entry points and responsibilities",
+        "min_items": 1
+      },
+      {
+        "id": "navigation",
+        "title": "Navigation Structure",
+        "required": true,
+        "content_hint": "Tabs, navigation stack, and modal presentation hierarchy",
+        "min_items": null
+      },
+      {
+        "id": "onboarding",
+        "title": "Onboarding & Pairing Flow",
+        "required": true,
+        "content_hint": "Step-by-step first-run experience and interruption resumption",
+        "min_items": null
+      },
+      {
+        "id": "core_flows",
+        "title": "Core User Flows",
+        "required": true,
+        "content_hint": "End-to-end user journeys for primary features",
+        "min_items": 1
+      },
+      {
+        "id": "push_notifications",
+        "title": "Push Notification Strategy",
+        "required": true,
+        "content_hint": "Triggers, frequency caps, and granular opt-out options",
+        "min_items": null
+      },
+      {
+        "id": "permissions",
+        "title": "Permission Request Protocol",
+        "required": true,
+        "content_hint": "Required runtime permissions, timing of requests, and graceful fallback",
+        "min_items": null
+      },
+      {
+        "id": "offline_experience",
+        "title": "Offline Experience",
+        "required": true,
+        "content_hint": "Offline feature availability, local synchronization queue, and conflict resolution",
+        "min_items": null
+      },
+      {
+        "id": "platform_differences",
+        "title": "iOS / Android Differences",
+        "required": true,
+        "content_hint": "Platform-specific behaviors and justifications",
+        "min_items": null
+      },
+      {
+        "id": "non_functional_requirements",
+        "title": "Non-Functional Requirements",
+        "required": true,
+        "content_hint": "Cold start time, frame rate, package size, battery impact",
+        "min_items": null
+      },
+      {
+        "id": "store_requirements",
+        "title": "App Store Compliance",
+        "required": true,
+        "content_hint": "Privacy nutrition labels, permission descriptions, minimum OS versions",
+        "min_items": null
+      },
+      {
+        "id": "dependencies_constraints",
+        "title": "Dependencies & Constraints",
+        "required": true,
+        "content_hint": "Backend mobile APIs and third-party SDKs",
+        "min_items": null
+      },
+      {
+        "id": "risks_assumptions",
+        "title": "Risks & Assumptions",
+        "required": true,
+        "content_hint": "Device fragmentation and OS deprecation risks",
+        "min_items": null
+      },
+      {
+        "id": "version_history",
+        "title": "Version History",
+        "required": true,
+        "content_hint": "Document change log",
+        "min_items": null
+      }
+    ],
+    "item_anchor": {
+      "id_pattern": {
+        "explicit": {
+          "prefix": "REQ-"
+        }
+      },
+      "scope": "section"
+    },
+    "anchor_stability": "per_attempt"
+  }
+}

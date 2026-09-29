@@ -1,0 +1,41 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Standard",
+  "metadata": {
+    "id": "pm-std-requirement-quality",
+    "version": "2.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:92e58a680345586a21a8da5078e7ed17097990e2fac27776bf0ca6a97b2b0b82",
+    "created_at": 1764000000000,
+    "created_by": "lumen",
+    "change_reason": "Requirement analysis and demand falsification standard, covering 5W1H, workaround verification, painkiller rating, and non-goals",
+    "labels": {
+      "owner": "product",
+      "governs_step": "analyze_requirements"
+    }
+  },
+  "spec": {
+    "name": "Requirement Analysis & Demand Falsification Quality Standard",
+    "scope": "step",
+    "rules": [
+      {
+        "id": "req.five_w_one_h_complete",
+        "statement": "All 6 dimensions of 5W1H (Why, Who, What, When, Where, How) must be clearly answered without empty slots or placeholders",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "five_w_one_h_fully_addressed"
+      },
+      {
+        "id": "req.demand_falsification_checked",
+        "statement": "Must perform demand falsification assessment including current user workarounds and painkiller classification",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "demand_validation_is_complete"
+      },
+      {
+        "id": "req.non_goals_explicit",
+        "statement": "Must explicitly declare at least 2 Non-Goals defining scope and capability boundaries",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "non_goals_are_explicit"
+      }
+    ]
+  }
+}

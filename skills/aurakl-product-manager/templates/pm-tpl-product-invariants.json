@@ -1,0 +1,61 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Template",
+  "metadata": {
+    "id": "pm-tpl-product-invariants",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:2b2f8a00132eb35e5f76819dc5466531522c30e86e22b80b8d6080f6d16316cd",
+    "created_at": 1764000000000,
+    "created_by": "lumen",
+    "change_reason": "Product invariants specification template covering state, data integrity, access security, and UX safety",
+    "labels": {
+      "owner": "product",
+      "serves_step": "assemble_product_invariants",
+      "serves_output_slot": "product_invariant_set"
+    }
+  },
+  "spec": {
+    "name": "Product Invariants Specification Template",
+    "artifact_kind": "text_document",
+    "sections": [
+      {
+        "id": "state_invariants",
+        "title": "State Machine Invariants",
+        "required": true,
+        "content_hint": "Transition unidirectionality, deadlock freedom, and atomic flow",
+        "min_items": 1
+      },
+      {
+        "id": "data_integrity_invariants",
+        "title": "Data Integrity & Conservation Invariants",
+        "required": true,
+        "content_hint": "Sum-total conservation and strict ACID consistency",
+        "min_items": 1
+      },
+      {
+        "id": "security_and_privacy_invariants",
+        "title": "Access Control & Tenant Isolation Invariants",
+        "required": true,
+        "content_hint": "Multi-tenant isolation and zero unauthorized privilege escalation",
+        "min_items": 1
+      },
+      {
+        "id": "ux_and_safety_invariants",
+        "title": "UX & Interaction Safety Invariants",
+        "required": true,
+        "content_hint": "Two-step confirmation for destructive actions and undoability",
+        "min_items": 1
+      }
+    ],
+    "item_anchor": {
+      "id_pattern": {
+        "explicit": {
+          "prefix": "INV-"
+        }
+      },
+      "scope": "section"
+    },
+    "anchor_stability": "per_attempt"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "$id": "schema://software-architecture/tech-constraints/v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TechnicalConstraintsAnalysis",
+  "type": "object",
+  "required": [
+    "system_name",
+    "business_context_summary",
+    "derived_nfr_requirements",
+    "target_platform_constraints",
+    "existing_repository_context",
+    "must_have_requirement_ids"
+  ],
+  "properties": {
+    "system_name": {
+      "type": "string"
+    },
+    "business_context_summary": {
+      "type": "string"
+    },
+    "derived_nfr_requirements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["category", "metric_target", "derivation_source"],
+        "properties": {
+          "category": {
+            "type": "string",
+            "enum": ["throughput_qps", "latency_sla", "data_volume_scale", "concurrency_scale", "high_availability", "security_compliance"]
+          },
+          "metric_target": {
+            "type": "string"
+          },
+          "derivation_source": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "target_platform_constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "existing_repository_context": {
+      "type": "object",
+      "required": ["is_greenfield", "existing_languages_or_frameworks", "compatibility_requirements"],
+      "properties": {
+        "is_greenfield": { "type": "boolean" },
+        "existing_languages_or_frameworks": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "compatibility_requirements": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "must_have_requirement_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^REQ-[0-9]{3,}$"
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema://product/acceptance-criteria/v1",
+  "title": "Acceptance Criteria",
+  "description": "Artifact of acceptance criteria specification. Enforces structured IDs, happy/boundary/error scenarios, and defect severity gates.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "criteria",
+    "defect_policy",
+    "summary"
+  ],
+  "properties": {
+    "criteria": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 500,
+      "description": "Every requirement must contain happy, boundary, and error scenario classes.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "implements",
+          "scenario_type",
+          "given",
+          "when",
+          "then",
+          "maps_to_test"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^AC-REQ-[A-Z]{1,8}-[0-9]{3}-(HP|BC|EC)-[0-9]{3}$",
+            "description": "AC-<REQ_ID>-<HP|BC|EC>-001. Human-readable IDs indicate pass/fail status clearly."
+          },
+          "implements": {
+            "type": "string",
+            "pattern": "^REQ-[A-Z]{1,8}-[0-9]{3}$"
+          },
+          "scenario_type": {
+            "enum": [
+              "happy",
+              "boundary",
+              "error"
+            ],
+            "description": "HP / BC / EC corresponds to the scenario type suffix in ID"
+          },
+          "given": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Precondition State"
+          },
+          "when": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Trigger Action"
+          },
+          "then": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Observable behavior assertable by test automation. Avoid vague terms like 'handled properly' or 'appropriate feedback'. Do not bind to code-level method or table names."
+          },
+          "maps_to_test": {
+            "type": "string",
+            "minLength": 1,
+            "not": {
+              "pattern": "^\\s*(TBD|TODO|FIXME)\\s*$"
+            },
+            "description": "Specific test artifact location (file path or test ID) enabling two-way traceability. Placeholders like TBD or TODO are strictly prohibited."
+          },
+          "boundary_values": {
+            "type": "array",
+            "description": "Boundary classes should cover: min, min-1, max, max+1, and null/empty.",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "defect_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "levels",
+        "release_gate"
+      ],
+      "properties": {
+        "levels": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "description": "Exactly four defect severity levels (critical, major, minor, trivial).",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "severity",
+              "definition",
+              "response_time"
+            ],
+            "properties": {
+              "severity": {
+                "enum": [
+                  "critical",
+                  "major",
+                  "minor",
+                  "trivial"
+                ]
+              },
+              "definition": {
+                "type": "string",
+                "minLength": 1
+              },
+              "response_time": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Explicit SLA duration (e.g. 'within 4 hours'), avoiding vague terms like 'as soon as possible'."
+              }
+            }
+          }
+        },
+        "release_gate": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Release gate criteria: zero open critical and major defects."
+        }
+      }
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

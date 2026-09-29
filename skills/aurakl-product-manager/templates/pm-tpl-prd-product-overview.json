@@ -1,0 +1,98 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Template",
+  "metadata": {
+    "id": "pm-tpl-prd-product-overview",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:18083ae59b279cdbcefbac883435501ec8f75d47c65bf0e8098619f0173aa145",
+    "created_at": 1764000000000,
+    "created_by": "jaxon",
+    "change_reason": "Panoramic product overview narrative covering multi-client topology and cross-platform journey",
+    "labels": {
+      "owner": "product",
+      "migrated_from": "aurakl-core/resources/experts/product-manager/templates/prd-template-product-overview.md",
+      "product_type": "product_overview",
+      "serves_step": "assemble_comprehensive_prd",
+      "serves_output_slot": "prd"
+    }
+  },
+  "spec": {
+    "name": "Product Overview Template",
+    "artifact_kind": "text_document",
+    "sections": [
+      {
+        "id": "positioning",
+        "title": "Product Positioning",
+        "required": true,
+        "content_hint": "One-sentence positioning: what it is, who it is for, what it solves",
+        "min_items": null
+      },
+      {
+        "id": "target_users",
+        "title": "Target Personas",
+        "required": true,
+        "content_hint": "Detailed user personas with distinct needs",
+        "min_items": 1
+      },
+      {
+        "id": "core_scenarios",
+        "title": "Core Scenarios",
+        "required": true,
+        "content_hint": "High-impact end-to-end usage scenarios",
+        "min_items": 1
+      },
+      {
+        "id": "capability_matrix",
+        "title": "Multi-Client Capability Matrix",
+        "required": true,
+        "content_hint": "Feature distribution across platforms with single source of truth",
+        "min_items": null
+      },
+      {
+        "id": "key_decisions",
+        "title": "Key Architecture Decisions",
+        "required": true,
+        "content_hint": "Architectural decisions, trade-offs, and rejected alternatives",
+        "min_items": null
+      },
+      {
+        "id": "cross_platform_journey",
+        "title": "Cross-Platform Journey",
+        "required": true,
+        "content_hint": "User transition across web, desktop, and mobile touchpoints",
+        "min_items": null
+      },
+      {
+        "id": "roadmap",
+        "title": "Release Roadmap",
+        "required": true,
+        "content_hint": "Phased delivery milestones and timeline",
+        "min_items": null
+      },
+      {
+        "id": "document_index",
+        "title": "Document Index",
+        "required": true,
+        "content_hint": "Cross-references to detailed module PRDs",
+        "min_items": null
+      },
+      {
+        "id": "risks_assumptions",
+        "title": "Risks & Assumptions",
+        "required": true,
+        "content_hint": "Cross-product risks and key operational assumptions",
+        "min_items": null
+      },
+      {
+        "id": "version_history",
+        "title": "Version History",
+        "required": true,
+        "content_hint": "Document revision log",
+        "min_items": null
+      }
+    ],
+    "item_anchor": null,
+    "anchor_stability": "per_attempt"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Standard",
+  "metadata": {
+    "id": "arch-std-architecture-quality",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:a813000400004000800000000000002200000000000000000000000000000001",
+    "created_at": 1764000000000,
+    "created_by": "aurakl",
+    "change_reason": "System topology and layering architecture quality standard: Monolith-first, <=3 layers, acyclic dependencies, and C4 Container diagram completeness",
+    "labels": {
+      "owner": "architecture",
+      "governs_step": "assemble_system_architecture"
+    }
+  },
+  "spec": {
+    "name": "System Topology & Layering Architecture Quality Standard",
+    "scope": "step",
+    "rules": [
+      {
+        "id": "arch.monolith_first_or_justified",
+        "statement": "Architecture must adhere to Monolith-First; choosing microservices requires team size > 50 or proven heterogeneous bottleneck justification",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "report_conforms_to_schema"
+      },
+      {
+        "id": "arch.max_three_layers",
+        "statement": "System layering structure must not exceed 3 layers, with clear unidirectional module dependencies and zero circular dependencies",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "report_conforms_to_schema"
+      },
+      {
+        "id": "arch.c4_diagram_present",
+        "statement": "Must provide a clear C4 Container diagram defining deployment nodes, runtime processes, and module responsibility boundaries",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "report_conforms_to_schema"
+      }
+    ]
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Template",
+  "metadata": {
+    "id": "arch-tpl-review-report",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:a813000400004000800000000000004000000000000000000000000000000001",
+    "created_at": 1764000000000,
+    "created_by": "aurakl",
+    "change_reason": "Architecture readiness review report template: One-vote veto gatekeeper, 100% PRD coverage audit, and readiness determination",
+    "labels": {
+      "owner": "architecture",
+      "serves_step": "review_architecture_readiness",
+      "serves_output_slot": "architecture_readiness_review_report"
+    }
+  },
+  "spec": {
+    "name": "Architecture Readiness Review Report Template",
+    "artifact_kind": "text_document",
+    "sections": [
+      {
+        "id": "executive_summary",
+        "title": "Executive Summary & Readiness Ruling",
+        "required": true,
+        "content_hint": "Product name, overall readiness score, and verdict (READY_FOR_DEV / NEEDS_REFINEMENT / BLOCKED)",
+        "min_items": null
+      },
+      {
+        "id": "requirement_coverage_audit",
+        "title": "Full Requirement Coverage Matrix Audit",
+        "required": true,
+        "content_hint": "100% PRD Must-Have requirement coverage audit and explicit trace mappings",
+        "min_items": 1
+      },
+      {
+        "id": "compatibility_audit",
+        "title": "Backward Compatibility & Architecture Audit",
+        "required": true,
+        "content_hint": "Breaking change inspection, layering compliance, and PRD constraint adherence",
+        "min_items": 1
+      },
+      {
+        "id": "blocking_findings",
+        "title": "Blocking Findings Inventory (One-Vote Veto)",
+        "required": true,
+        "content_hint": "Blocking issues forbidding engineering kickoff and required remediation items",
+        "min_items": null
+      },
+      {
+        "id": "advisory_findings",
+        "title": "Advisory Recommendations Inventory",
+        "required": true,
+        "content_hint": "Non-blocking architectural evolution advice and optimizations",
+        "min_items": null
+      },
+      {
+        "id": "decision_rationale",
+        "title": "Readiness Decision Rationale",
+        "required": true,
+        "content_hint": "Detailed rationale, residual risk assessment, and development handover entry conditions",
+        "min_items": null
+      }
+    ]
+  }
+}

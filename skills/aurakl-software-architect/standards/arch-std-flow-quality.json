@@ -1,0 +1,41 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Standard",
+  "metadata": {
+    "id": "arch-std-flow-quality",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:a813000400004000800000000000002500000000000000000000000000000001",
+    "created_at": 1764000000000,
+    "created_by": "aurakl",
+    "change_reason": "Business sequence and state machine architecture quality standard: Standard Mermaid sequence diagrams, deadlock-free state machines, and concurrency controls",
+    "labels": {
+      "owner": "architecture",
+      "governs_step": "model_business_flows_and_states"
+    }
+  },
+  "spec": {
+    "name": "Business Sequence & State Machine Quality Standard",
+    "scope": "step",
+    "rules": [
+      {
+        "id": "flow.sequence_diagrams_clear",
+        "statement": "All core business flows must provide standard Mermaid sequence diagrams specifying actor roles and step-by-step descriptions across happy, edge, and error paths",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "report_conforms_to_schema"
+      },
+      {
+        "id": "flow.state_machines_deadlock_free",
+        "statement": "Entity state machines must define explicit initial states and terminal state sets, with rigorous transition guards preventing deadlocks",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "report_conforms_to_schema"
+      },
+      {
+        "id": "flow.concurrency_and_transactions_defined",
+        "statement": "Must explicitly define concurrency locking mechanisms, local/distributed transaction boundaries, and rollback/compensation strategies",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "report_conforms_to_schema"
+      }
+    ]
+  }
+}

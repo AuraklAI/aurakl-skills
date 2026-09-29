@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema://product-management/market-intel-brief/v1",
+  "title": "MarketIntelligenceBrief",
+  "description": "Optional market intelligence supplied as a structured SOP input.",
+  "type": "object",
+  "additionalProperties": true
+}

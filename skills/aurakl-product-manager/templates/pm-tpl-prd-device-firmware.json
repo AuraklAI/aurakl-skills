@@ -1,0 +1,119 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Template",
+  "metadata": {
+    "id": "pm-tpl-prd-device-firmware",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:8df880c7e4c038ef60101c82233f1cc1b8138fe491dd5f589985625774df35e7",
+    "created_at": 1764000000000,
+    "created_by": "jaxon",
+    "change_reason": "Embedded device and firmware PRD template: hardware constraints, power modes, OTA, and peripheral protocols",
+    "labels": {
+      "owner": "product",
+      "migrated_from": "aurakl-core/resources/experts/product-manager/templates/prd-template-device-firmware.md",
+      "product_type": "device_firmware",
+      "serves_step": "assemble_comprehensive_prd",
+      "serves_output_slot": "prd"
+    }
+  },
+  "spec": {
+    "name": "Device & Firmware PRD Template",
+    "artifact_kind": "text_document",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "required": true,
+        "content_hint": "Hardware form factor and firmware functional responsibilities",
+        "min_items": null
+      },
+      {
+        "id": "device_state_machine",
+        "title": "Device State Machine",
+        "required": true,
+        "content_hint": "All operational states, transition triggers, and error recovery paths",
+        "min_items": 1
+      },
+      {
+        "id": "local_ai",
+        "title": "Local AI Capabilities",
+        "required": false,
+        "content_hint": "Local on-device inference specifications (omit if not applicable)",
+        "min_items": null
+      },
+      {
+        "id": "multimodal_feedback",
+        "title": "Multimodal Feedback Specifications",
+        "required": true,
+        "content_hint": "LED, audio, and haptic feedback specifications (colors, frequencies, durations)",
+        "min_items": null
+      },
+      {
+        "id": "power_budget",
+        "title": "Power Consumption Budget",
+        "required": true,
+        "content_hint": "Current draw caps per power state and battery endurance targets",
+        "min_items": null
+      },
+      {
+        "id": "cloud_protocol",
+        "title": "Cloud Communication Protocol",
+        "required": true,
+        "content_hint": "Transport protocol, telemetry cadence, disconnection queue, and retry backoff",
+        "min_items": null
+      },
+      {
+        "id": "local_storage",
+        "title": "Local Storage Specifications",
+        "required": true,
+        "content_hint": "Storage capacity, brownout power-loss protection, and flash endurance write cycles",
+        "min_items": null
+      },
+      {
+        "id": "ota_upgrade",
+        "title": "OTA Upgrade Requirements",
+        "required": true,
+        "content_hint": "Maximum firmware package size, power-loss resilience, and A/B partition rollback",
+        "min_items": null
+      },
+      {
+        "id": "non_functional_requirements",
+        "title": "Non-Functional Requirements",
+        "required": true,
+        "content_hint": "Boot time, thermal dissipation, EMC compliance with exact values",
+        "min_items": null
+      },
+      {
+        "id": "dependencies_constraints",
+        "title": "Dependencies & Constraints",
+        "required": true,
+        "content_hint": "Hardware bill of materials (BOM) and component vendor locks",
+        "min_items": null
+      },
+      {
+        "id": "risks_assumptions",
+        "title": "Risks & Assumptions",
+        "required": true,
+        "content_hint": "Supply chain constraints and silicon errata mitigations",
+        "min_items": null
+      },
+      {
+        "id": "version_history",
+        "title": "Version History",
+        "required": true,
+        "content_hint": "Document change log",
+        "min_items": null
+      }
+    ],
+    "item_anchor": {
+      "id_pattern": {
+        "explicit": {
+          "prefix": "REQ-"
+        }
+      },
+      "scope": "section"
+    },
+    "anchor_stability": "per_attempt"
+  }
+}

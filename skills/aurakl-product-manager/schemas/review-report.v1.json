@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema://product/review-report/v1",
+  "title": "Review Report",
+  "description": "Step 07 review artifact: weighted scoring normalized across 6 quality dimensions.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "verdict",
+    "weighted_score",
+    "dimension_scores",
+    "findings",
+    "summary"
+  ],
+  "properties": {
+    "verdict": {
+      "enum": [
+        "REVISE",
+        "CONDITIONAL",
+        "PROCEED"
+      ],
+      "description": "Verdict rules: any critical -> REVISE; no critical and major <= 3 -> CONDITIONAL; no critical, no major, weighted >= 4.0 and each dimension >= 3 -> PROCEED."
+    },
+    "weighted_score": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 5,
+      "multipleOf": 0.1,
+      "description": "Weighted score = sum(score * weight). Weights: completeness 0.25, consistency 0.20, testability 0.20, user_value 0.15, feasibility 0.10, compliance 0.10."
+    },
+    "dimension_scores": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "description": "Exactly 6 dimensions, one score per dimension without omission",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "dimension",
+          "score",
+          "rationale"
+        ],
+        "properties": {
+          "dimension": {
+            "enum": [
+              "completeness",
+              "consistency",
+              "testability",
+              "feasibility",
+              "user_value",
+              "compliance"
+            ]
+          },
+          "score": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5,
+            "description": "Rating scale: 5 impeccable, 4 minor issues, 3 major issues, 2 systemic defects, 1 unattempted"
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Must correlate with findings: giving 4 while reporting major issues in the same dimension is contradictory"
+          }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "description": "Unresolved findings must remain recorded",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "dimension",
+          "severity",
+          "location",
+          "rule_id",
+          "suggestion"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^FND-[0-9]{3}$"
+          },
+          "dimension": {
+            "enum": [
+              "completeness",
+              "consistency",
+              "testability",
+              "feasibility",
+              "user_value",
+              "compliance"
+            ]
+          },
+          "severity": {
+            "enum": [
+              "critical",
+              "major",
+              "minor",
+              "suggestion"
+            ],
+            "description": "Severity: critical blocks release; major must fix; minor is UX polish; suggestion is optional"
+          },
+          "location": {
+            "type": "string",
+            "minLength": 1,
+            "not": {
+              "pattern": "(entire document|whole document|overall|all)"
+            },
+            "description": "Specific item ID (REQ-xxx, USR-xxx, AC-xxx) or section name, avoiding vague references like 'entire document'"
+          },
+          "rule_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Violated standard rule ID (e.g. prd.single_responsibility), avoiding subjective impressions"
+          },
+          "suggestion": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Exact required modification: what to change and what to change it into"
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

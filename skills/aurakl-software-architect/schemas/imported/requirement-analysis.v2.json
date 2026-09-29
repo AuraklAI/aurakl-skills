@@ -1,0 +1,398 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema://product-management/requirement-analysis/v2",
+  "title": "RequirementAnalysisV2",
+  "description": "Step 01 artifact: 5W1H decomposition, demand falsification, and boundary invariants.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "product_name",
+    "product_type",
+    "five_w_one_h",
+    "demand_validation",
+    "stakeholders",
+    "goals",
+    "non_goals",
+    "explicit_requirements",
+    "implicit_requirements",
+    "open_questions",
+    "summary"
+  ],
+  "properties": {
+    "product_name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Product or module name: must remain unique and consistent across all artifacts."
+    },
+    "product_type": {
+      "type": "string",
+      "enum": [
+        "mobile",
+        "desktop",
+        "cloud_platform",
+        "device_firmware",
+        "multi_platform",
+        "generic"
+      ],
+      "description": "Product form factor classification determining PRD template selection"
+    },
+    "five_w_one_h": {
+      "type": "object",
+      "description": "5W1H structured requirement elicitation model",
+      "additionalProperties": false,
+      "required": [
+        "why",
+        "who",
+        "what",
+        "when",
+        "where",
+        "how"
+      ],
+      "properties": {
+        "why": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Why: underlying business driver, root pain point, and cost of inaction"
+        },
+        "who": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Who: target personas, indirect users, and stakeholder roles"
+        },
+        "what": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What: core value proposition and feature set"
+        },
+        "when": {
+          "type": "string",
+          "minLength": 1,
+          "description": "When: usage frequency, trigger conditions, and delivery timeline"
+        },
+        "where": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Where: client platforms, runtime environment, and operational context"
+        },
+        "how": {
+          "type": "string",
+          "minLength": 1,
+          "description": "How: operational workflow and success metrics (OKRs/North Star)"
+        }
+      }
+    },
+    "demand_validation": {
+      "type": "object",
+      "description": "Demand falsification and validation framework",
+      "additionalProperties": false,
+      "required": [
+        "problem_nature",
+        "current_workarounds",
+        "willingness_to_pay_or_suffer",
+        "falsification_hypotheses",
+        "validation_experiment"
+      ],
+      "properties": {
+        "problem_nature": {
+          "type": "string",
+          "enum": [
+            "painkiller",
+            "vitamin",
+            "candy"
+          ],
+          "description": "Problem nature: painkiller (must-have), vitamin (nice-to-have), candy (marginal)"
+        },
+        "current_workarounds": {
+          "type": "array",
+          "minItems": 1,
+          "description": "Current workarounds (absence indicates potential false demand)",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "willingness_to_pay_or_suffer": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Willingness to pay or suffer (budget, operational friction tolerance)"
+        },
+        "falsification_hypotheses": {
+          "type": "array",
+          "minItems": 1,
+          "description": "Falsification hypotheses (premises that if false, invalidate demand)",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "validation_experiment": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Validation experiments (smoke test, telemetry observation, behavioral interviews)"
+        }
+      }
+    },
+    "stakeholders": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 20,
+      "description": "Stakeholder analysis",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "role",
+          "category",
+          "concern"
+        ],
+        "properties": {
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "user",
+              "buyer",
+              "decider",
+              "influencer",
+              "operator"
+            ]
+          },
+          "concern": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "goals": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 20,
+      "description": "Core business objectives that must be achieved",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "statement",
+          "success_metric"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^GOAL-[0-9]{3}$"
+          },
+          "statement": {
+            "type": "string",
+            "minLength": 1
+          },
+          "success_metric": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "non_goals": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 20,
+      "description": "Explicit Non-Goals preventing scope creep",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "statement",
+          "reason"
+        ],
+        "properties": {
+          "statement": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "explicit_requirements": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Explicit functional requirements list",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "statement",
+          "priority",
+          "source_quote"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^REQA-[0-9]{3}$"
+          },
+          "statement": {
+            "type": "string",
+            "minLength": 1
+          },
+          "priority": {
+            "type": "string",
+            "enum": [
+              "P0",
+              "P1",
+              "P2"
+            ]
+          },
+          "source_quote": {
+            "type": "string",
+            "minLength": 1
+          },
+          "related_goal_id": {
+            "type": "string",
+            "pattern": "^GOAL-[0-9]{3}$",
+            "description": "Supported business goal ID establishing causal lineage"
+          }
+        }
+      }
+    },
+    "implicit_requirements": {
+      "type": "array",
+      "minItems": 3,
+      "description": "Implicit non-functional requirements (>= 3 items across distinct dimensions)",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "statement",
+          "dimension",
+          "technique",
+          "priority",
+          "decision"
+        ],
+        "properties": {
+          "statement": {
+            "type": "string",
+            "minLength": 1
+          },
+          "dimension": {
+            "type": "string",
+            "enum": [
+              "performance",
+              "security",
+              "compliance",
+              "operations",
+              "data",
+              "usability"
+            ]
+          },
+          "technique": {
+            "type": "string",
+            "enum": [
+              "analogy",
+              "five_whys",
+              "scenario",
+              "boundary",
+              "alternative"
+            ]
+          },
+          "priority": {
+            "type": "string",
+            "enum": [
+              "P0",
+              "P1",
+              "P2",
+              "P3"
+            ]
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "include",
+              "defer",
+              "reject"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "description": "Hard constraints across business, technology, compliance, or timeline",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "statement",
+          "category"
+        ],
+        "properties": {
+          "statement": {
+            "type": "string",
+            "minLength": 1
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "business",
+              "technical",
+              "compliance",
+              "timeline",
+              "budget"
+            ]
+          }
+        }
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "description": "Foundational assumptions required for this solution",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "open_questions": {
+      "type": "array",
+      "maxItems": 10,
+      "description": "Open questions inventory",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "question",
+          "blocks",
+          "owner"
+        ],
+        "properties": {
+          "question": {
+            "type": "string",
+            "minLength": 1
+          },
+          "blocks": {
+            "type": "string",
+            "minLength": 1
+          },
+          "owner": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Requirement analysis summary"
+    }
+  }
+}

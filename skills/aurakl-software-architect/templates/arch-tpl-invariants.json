@@ -1,0 +1,59 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Template",
+  "metadata": {
+    "id": "arch-tpl-invariants",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:a813000400004000800000000000003700000000000000000000000000000001",
+    "created_at": 1764000000000,
+    "created_by": "aurakl",
+    "change_reason": "Nine-dimension panoramic architecture invariants specification template: 100% physical defense across nine core dimensions",
+    "labels": {
+      "owner": "architecture",
+      "serves_step": "specify_architecture_invariants",
+      "serves_output_slot": "architecture_invariants_spec"
+    }
+  },
+  "spec": {
+    "name": "Nine-Dimension Panoramic Architecture Invariants Specification Template",
+    "artifact_kind": "text_document",
+    "sections": [
+      {
+        "id": "invariants_overview",
+        "title": "Architecture Invariants Overview",
+        "required": true,
+        "content_hint": "System name, core philosophy, and 9-dimension invariant taxonomy summary",
+        "min_items": null
+      },
+      {
+        "id": "invariants_catalog",
+        "title": "Nine-Dimension Invariants Catalog",
+        "required": true,
+        "content_hint": "Covers compatibility, layering, storage, concurrency, security, performance, code standards, resilience, and observability",
+        "min_items": 9
+      },
+      {
+        "id": "defense_mechanisms",
+        "title": "Physical Defense Mechanisms & Implementations",
+        "required": true,
+        "content_hint": "Database constraints, compiler flags, linter rules, gateway filters, concurrency locks, circuit breakers, or telemetry interceptors",
+        "min_items": 1
+      },
+      {
+        "id": "remediation_strategies",
+        "title": "Violation Interception & Remediation Strategies",
+        "required": true,
+        "content_hint": "Exception interception, alert isolation, circuit-breaking degradation, and transactional rollback remedies",
+        "min_items": 1
+      },
+      {
+        "id": "defense_coverage",
+        "title": "Defense Coverage & PRD Traceability",
+        "required": true,
+        "content_hint": "Defense coverage statistics and mapping against PRD requirements and invariants",
+        "min_items": 1
+      }
+    ]
+  }
+}

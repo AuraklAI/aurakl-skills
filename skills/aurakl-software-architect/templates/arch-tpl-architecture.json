@@ -1,0 +1,73 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Template",
+  "metadata": {
+    "id": "arch-tpl-architecture",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:a813000400004000800000000000003200000000000000000000000000000001",
+    "created_at": 1764000000000,
+    "created_by": "aurakl",
+    "change_reason": "System topology and layering architecture design template: Monolith-first justification, <=3 layers, modular dependencies, and C4 diagram",
+    "labels": {
+      "owner": "architecture",
+      "serves_step": "assemble_system_architecture",
+      "serves_output_slot": "system_architecture_spec"
+    }
+  },
+  "spec": {
+    "name": "System Topology & Layering Architecture Specification Template",
+    "artifact_kind": "text_document",
+    "sections": [
+      {
+        "id": "architecture_overview",
+        "title": "Architecture Overview & Pattern Selection",
+        "required": true,
+        "content_hint": "Monolith-first rationale, system boundaries, and overall topology",
+        "min_items": null
+      },
+      {
+        "id": "overall_architecture_panorama",
+        "title": "Overall Architecture Panorama & Enterprise Topology",
+        "required": true,
+        "content_hint": "End-to-end panoramic Mermaid diagram illustrating actors, protocol gateways, core domain engines, distributed coordinators, streaming CDC pipelines, heterogeneous data connectors, and storage tiers",
+        "min_items": 1
+      },
+      {
+        "id": "four_plus_one_views",
+        "title": "4+1 Architectural View Model Specification",
+        "required": true,
+        "content_hint": "Complete 4+1 architectural view model covering Logical View, Development View, Process View, Physical View, and +1 Scenarios View",
+        "min_items": 5
+      },
+      {
+        "id": "layering_spec",
+        "title": "Layering Architecture Specification",
+        "required": true,
+        "content_hint": "Layer responsibility boundaries (strictly <=3 layers) and unidirectional dependency rules",
+        "min_items": 1
+      },
+      {
+        "id": "modules_and_dependencies",
+        "title": "Module Decomposition & Interaction Rules",
+        "required": true,
+        "content_hint": "Functional modules, cross-module communication boundaries, and zero circular dependency rules",
+        "min_items": 1
+      },
+      {
+        "id": "c4_container_diagram",
+        "title": "C4 Container Diagram & System Topology",
+        "required": true,
+        "content_hint": "Mermaid C4 container diagram illustrating deployment nodes, processes, and network boundaries",
+        "min_items": 1
+      },
+      {
+        "id": "cross_cutting_concerns",
+        "title": "Cross-Cutting Architectural Concerns",
+        "required": true,
+        "content_hint": "Logging, security context, configuration management, and health probes",
+        "min_items": null
+      }
+    ]
+  }
+}

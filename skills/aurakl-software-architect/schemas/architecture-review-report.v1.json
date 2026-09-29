@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema://software-architecture/architecture-review-report/v1",
+  "title": "ArchitectureReadinessReviewReport",
+  "type": "object",
+  "required": [
+    "product_name",
+    "readiness_status",
+    "overall_architecture_score",
+    "requirement_coverage_audit",
+    "compatibility_and_compliance_audit",
+    "blocking_findings",
+    "advisory_findings",
+    "decision_rationale",
+    "summary"
+  ],
+  "properties": {
+    "product_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "readiness_status": {
+      "type": "string",
+      "enum": [
+        "READY_FOR_DEV",
+        "NEEDS_REFINEMENT",
+        "BLOCKED"
+      ]
+    },
+    "overall_architecture_score": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 100.0
+    },
+    "requirement_coverage_audit": {
+      "type": "object",
+      "required": [
+        "total_must_have_requirements",
+        "covered_must_have_requirements",
+        "must_have_coverage_pct"
+      ],
+      "properties": {
+        "total_must_have_requirements": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "covered_must_have_requirements": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "must_have_coverage_pct": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 100.0
+        }
+      },
+      "additionalProperties": false
+    },
+    "compatibility_and_compliance_audit": {
+      "type": "object",
+      "required": [
+        "backward_compatibility_verified",
+        "has_breaking_changes",
+        "layer_count_compliant",
+        "prd_tech_stack_compliant"
+      ],
+      "properties": {
+        "backward_compatibility_verified": {
+          "type": "boolean"
+        },
+        "has_breaking_changes": {
+          "type": "boolean"
+        },
+        "layer_count_compliant": {
+          "type": "boolean"
+        },
+        "prd_tech_stack_compliant": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "blocking_findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "category",
+          "description",
+          "violating_artifact",
+          "required_fix"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^BLK-[0-9]{3,}$"
+          },
+          "category": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "violating_artifact": {
+            "type": "string"
+          },
+          "required_fix": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "advisory_findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "category",
+          "description",
+          "recommendation"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^ADV-[0-9]{3,}$"
+          },
+          "category": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "recommendation": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "decision_rationale": {
+      "type": "string",
+      "minLength": 10
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 10
+    }
+  },
+  "additionalProperties": false
+}

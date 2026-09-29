@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema://product-management/market-overview/v1",
+  "title": "MarketOverviewV1",
+  "description": "Step 01 artifact: macro market overview, sizing, and timing window.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "product_name",
+    "target_industry",
+    "market_timing",
+    "market_size_estimation",
+    "key_industry_trends",
+    "summary"
+  ],
+  "properties": {
+    "product_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_industry": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Target market vertical and sector segmentation"
+    },
+    "market_timing": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Market timing and window of opportunity (why now is the ideal time to enter)"
+    },
+    "market_size_estimation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tam",
+        "sam",
+        "som"
+      ],
+      "properties": {
+        "tam": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Total Addressable Market (TAM)"
+        },
+        "sam": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Serviceable Addressable Market (SAM)"
+        },
+        "som": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Serviceable Obtainable Market (SOM)"
+        }
+      }
+    },
+    "key_industry_trends": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Standard",
+  "metadata": {
+    "id": "arch-std-tech-stack-quality",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:a813000400004000800000000000002100000000000000000000000000000001",
+    "created_at": 1764000000000,
+    "created_by": "aurakl",
+    "change_reason": "Tech Stack Decision and ADR quality standard: Locked PRD constraints, alternative evaluations, and zero placeholders",
+    "labels": {
+      "owner": "architecture",
+      "governs_step": "select_tech_stack"
+    }
+  },
+  "spec": {
+    "name": "Technology Stack Decision & ADR Quality Standard",
+    "scope": "step",
+    "rules": [
+      {
+        "id": "tech.prd_constraints_locked",
+        "statement": "All tech_stack items explicitly declared in the PRD frontmatter must be incorporated into locked_stack_items; overturning or unauthorized substitution is strictly prohibited",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "report_conforms_to_schema"
+      },
+      {
+        "id": "tech.alternatives_evaluated",
+        "statement": "Every undecided technology selection must evaluate at least two alternative options with quantitative scoring and decision rationale",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "report_conforms_to_schema"
+      },
+      {
+        "id": "tech.no_placeholders",
+        "statement": "Deliverables must not contain any pending placeholders such as TBD, To Be Determined, Pending Confirmation, or None",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "report_conforms_to_schema"
+      }
+    ]
+  }
+}

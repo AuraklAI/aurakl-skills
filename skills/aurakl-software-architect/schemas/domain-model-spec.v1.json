@@ -1,0 +1,35 @@
+{
+  "$id": "schema://software-architecture/domain-model-spec/v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DomainModelSpecification",
+  "type": "object",
+  "required": [
+    "system_name",
+    "domain_entity_models",
+    "domain_abstractions",
+    "must_have_requirement_coverage_pct",
+    "implements"
+  ],
+  "properties": {
+    "system_name": {
+      "type": "string"
+    },
+    "domain_entity_models": {
+      "type": "object"
+    },
+    "domain_abstractions": {
+      "type": "object"
+    },
+    "must_have_requirement_coverage_pct": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "implements": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}

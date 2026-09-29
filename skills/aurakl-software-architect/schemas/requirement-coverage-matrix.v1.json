@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema://software-architecture/requirement-coverage-matrix/v1",
+  "title": "RequirementCoverageMatrix",
+  "type": "object",
+  "required": [
+    "total_must_have_requirements",
+    "covered_must_have_requirements",
+    "must_have_coverage_pct",
+    "uncovered_requirements",
+    "coverage_mappings"
+  ],
+  "properties": {
+    "total_must_have_requirements": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "covered_must_have_requirements": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "must_have_coverage_pct": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 100.0
+    },
+    "uncovered_requirements": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "coverage_mappings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "req_id",
+          "implemented_by_modules",
+          "implemented_by_tables",
+          "implemented_by_apis"
+        ],
+        "properties": {
+          "req_id": {
+            "type": "string",
+            "pattern": "^REQ-[A-Z0-9_-]+$"
+          },
+          "implemented_by_modules": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "implemented_by_tables": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "implemented_by_apis": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

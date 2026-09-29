@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema://product-management/state-invariants/v1",
+  "title": "StateInvariantsV1",
+  "description": "Step 05 invariant artifact: state machine irreversibility rules and mutually exclusive constraints.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "product_name",
+    "state_invariants",
+    "summary"
+  ],
+  "properties": {
+    "product_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "state_invariants": {
+      "type": "array",
+      "minItems": 1,
+      "description": "State machine unidirectionality and legal transition invariants",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "invariant_id",
+          "target_entity",
+          "formal_rule",
+          "severity",
+          "violation_consequence"
+        ],
+        "properties": {
+          "invariant_id": {
+            "type": "string",
+            "pattern": "^INV-STA-[0-9]{3}$"
+          },
+          "target_entity": {
+            "type": "string",
+            "minLength": 1
+          },
+          "formal_rule": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Formal invariant statement (e.g. settled order cannot transition back to pending payment)"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "CRITICAL",
+              "HIGH",
+              "MEDIUM"
+            ]
+          },
+          "violation_consequence": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Catastrophic violation consequences"
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

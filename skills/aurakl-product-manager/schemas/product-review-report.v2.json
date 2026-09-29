@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema://product-management/product-review-report/v2",
+  "title": "ProductReadinessReviewReportV2",
+  "description": "Step 07 review artifact: two-way lineage, invariant coverage, and release readiness audit.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "product_name",
+    "readiness_status",
+    "overall_readiness_score",
+    "traceability_audit",
+    "invariant_enforcement_audit",
+    "blocking_findings",
+    "advisory_findings",
+    "decision_rationale",
+    "summary"
+  ],
+  "properties": {
+    "product_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "readiness_status": {
+      "type": "string",
+      "enum": [
+        "READY_FOR_DEV",
+        "NEEDS_REFINEMENT",
+        "BLOCKED"
+      ],
+      "description": "Development readiness status (must veto READY_FOR_DEV if any blocking defects exist)."
+    },
+    "overall_readiness_score": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 100.0
+    },
+    "traceability_audit": {
+      "type": "object",
+      "description": "End-to-end two-way lineage audit results",
+      "additionalProperties": false,
+      "required": [
+        "requirements_to_stories_coverage_pct",
+        "stories_to_features_coverage_pct",
+        "invariants_to_criteria_coverage_pct",
+        "broken_reference_count"
+      ],
+      "properties": {
+        "requirements_to_stories_coverage_pct": {
+          "type": "number",
+          "minimum": 100.0,
+          "maximum": 100.0
+        },
+        "stories_to_features_coverage_pct": {
+          "type": "number",
+          "minimum": 100.0,
+          "maximum": 100.0
+        },
+        "invariants_to_criteria_coverage_pct": {
+          "type": "number",
+          "minimum": 100.0,
+          "maximum": 100.0
+        },
+        "broken_reference_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 0
+        }
+      }
+    },
+    "invariant_enforcement_audit": {
+      "type": "object",
+      "description": "Product invariant defense audit",
+      "additionalProperties": false,
+      "required": [
+        "total_invariants",
+        "critically_enforced_count",
+        "has_unprotected_invariants"
+      ],
+      "properties": {
+        "total_invariants": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "critically_enforced_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "has_unprotected_invariants": {
+          "type": "boolean",
+          "enum": [
+            false
+          ]
+        }
+      }
+    },
+    "blocking_findings": {
+      "type": "array",
+      "description": "Blocking defect findings list",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "target_artifact",
+          "field_pointer",
+          "description",
+          "required_fix"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "target_artifact": {
+            "type": "string",
+            "minLength": 1
+          },
+          "field_pointer": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "required_fix": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "advisory_findings": {
+      "type": "array",
+      "description": "Advisory improvement recommendations",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "target_artifact",
+          "description",
+          "recommendation"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "target_artifact": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "recommendation": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "decision_rationale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema://software-architecture/compatibility-compliance-findings/v1",
+  "title": "CompatibilityComplianceFindings",
+  "type": "object",
+  "required": [
+    "backward_compatibility_verified",
+    "has_breaking_changes",
+    "blocking_findings",
+    "advisory_findings"
+  ],
+  "properties": {
+    "backward_compatibility_verified": {
+      "type": "boolean"
+    },
+    "has_breaking_changes": {
+      "type": "boolean"
+    },
+    "blocking_findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "category",
+          "description",
+          "violating_artifact",
+          "required_fix"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^BLK-[0-9]{3,}$"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "BREAKING_API_CHANGE",
+              "UNPROTECTED_DATA_INVARIANT",
+              "CIRCULAR_DEPENDENCY",
+              "LAYER_VIOLATION",
+              "PRD_TECH_CONSTRAINT_VIOLATION"
+            ]
+          },
+          "description": {
+            "type": "string"
+          },
+          "violating_artifact": {
+            "type": "string"
+          },
+          "required_fix": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "advisory_findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "category",
+          "description",
+          "recommendation"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^ADV-[0-9]{3,}$"
+          },
+          "category": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "recommendation": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

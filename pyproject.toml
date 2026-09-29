@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aurakl-plugin"
+version = "1.0.0"
+description = "Industrial-grade Product Management & Software Architecture Agent Skills with mathematical invariants, Cartesian completeness, and Python validation engines."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Apache-2.0" }
+authors = [
+  { name = "Aurakl Team", email = "dev@aurakl.io" }
+]
+keywords = [
+  "antigravity",
+  "agent-skills",
+  "plugin",
+  "product-management",
+  "software-architecture",
+  "prd",
+  "system-design",
+  "invariants",
+  "cartesian-audit"
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "Topic :: Software Development :: Build Tools",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13"
+]
+dependencies = []
+
+[project.scripts]
+aurakl = "aurakl_cli:main"
+
+[tool.setuptools]
+py-modules = ["aurakl_cli"]

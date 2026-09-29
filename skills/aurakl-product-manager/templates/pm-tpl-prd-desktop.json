@@ -1,0 +1,119 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Template",
+  "metadata": {
+    "id": "pm-tpl-prd-desktop",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:ac98795c7bcd96b620ba2a7452becc2895428b2bfbd52e096760c09f8e0ab0e3",
+    "created_at": 1764000000000,
+    "created_by": "jaxon",
+    "change_reason": "Desktop client PRD template: OS lifecycle, local storage, auto-update, and IPC contracts",
+    "labels": {
+      "owner": "product",
+      "migrated_from": "aurakl-core/resources/experts/product-manager/templates/prd-template-desktop.md",
+      "product_type": "desktop",
+      "serves_step": "assemble_comprehensive_prd",
+      "serves_output_slot": "prd"
+    }
+  },
+  "spec": {
+    "name": "Desktop Client PRD Template",
+    "artifact_kind": "text_document",
+    "sections": [
+      {
+        "id": "app_positioning",
+        "title": "Application Scope & Positioning",
+        "required": true,
+        "content_hint": null,
+        "min_items": null
+      },
+      {
+        "id": "system_requirements",
+        "title": "System Requirements",
+        "required": true,
+        "content_hint": "Supported OS versions and minimum CPU, memory, and disk requirements",
+        "min_items": null
+      },
+      {
+        "id": "install_and_update",
+        "title": "Installation & Update Mechanism",
+        "required": true,
+        "content_hint": "Packaging format, background silent updates, and automatic rollback on failure",
+        "min_items": null
+      },
+      {
+        "id": "core_features",
+        "title": "Core Functional Features",
+        "required": true,
+        "content_hint": null,
+        "min_items": 1
+      },
+      {
+        "id": "local_storage",
+        "title": "Local Data Storage",
+        "required": true,
+        "content_hint": "Storage location, format, encryption, and cache eviction policies",
+        "min_items": null
+      },
+      {
+        "id": "os_integration",
+        "title": "Operating System Integration",
+        "required": true,
+        "content_hint": "File associations, system tray, global hotkeys, and desktop notifications",
+        "min_items": null
+      },
+      {
+        "id": "offline_and_network",
+        "title": "Offline & Network Resilience",
+        "required": true,
+        "content_hint": "Offline mode degradation and reconnection retry behavior",
+        "min_items": null
+      },
+      {
+        "id": "performance",
+        "title": "Performance Requirements",
+        "required": true,
+        "content_hint": "Cold start latency and RAM footprint targets with explicit numerical bounds",
+        "min_items": null
+      },
+      {
+        "id": "crash_handling",
+        "title": "Crash & Error Handling",
+        "required": true,
+        "content_hint": "Crash diagnostics reporting and recovery of unsaved local state",
+        "min_items": null
+      },
+      {
+        "id": "accessibility",
+        "title": "Accessibility Requirements",
+        "required": true,
+        "content_hint": "Keyboard navigation, screen reader support, and color contrast compliance",
+        "min_items": null
+      },
+      {
+        "id": "risks_assumptions",
+        "title": "Risks & Assumptions",
+        "required": true,
+        "content_hint": "Platform fragmentation risks and fallbacks",
+        "min_items": null
+      },
+      {
+        "id": "version_history",
+        "title": "Version History",
+        "required": true,
+        "content_hint": "Document change log",
+        "min_items": null
+      }
+    ],
+    "item_anchor": {
+      "id_pattern": {
+        "explicit": {
+          "prefix": "REQ-"
+        }
+      },
+      "scope": "section"
+    },
+    "anchor_stability": "per_attempt"
+  }
+}

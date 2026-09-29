@@ -1,0 +1,52 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Template",
+  "metadata": {
+    "id": "arch-tpl-database-design",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:a813000400004000800000000000003400000000000000000000000000000001",
+    "created_at": 1764000000000,
+    "created_by": "aurakl",
+    "change_reason": "Data model and storage design template: DDL, indexes, invariant constraints, and lossless migration",
+    "labels": {
+      "owner": "architecture",
+      "serves_step": "design_data_model_and_storage",
+      "serves_output_slot": "database_design_spec"
+    }
+  },
+  "spec": {
+    "name": "Data Model & Storage Design Specification Template",
+    "artifact_kind": "text_document",
+    "sections": [
+      {
+        "id": "database_overview",
+        "title": "Storage Architecture Overview",
+        "required": true,
+        "content_hint": "Database engine selection, connection pooling, and storage strategy",
+        "min_items": null
+      },
+      {
+        "id": "physical_tables",
+        "title": "Physical Schema & Indexes",
+        "required": true,
+        "content_hint": "Field types, primary keys, foreign keys, unique constraints, and composite indexes",
+        "min_items": 1
+      },
+      {
+        "id": "invariant_enforcement",
+        "title": "Product Invariant Storage Enforcement",
+        "required": true,
+        "content_hint": "Database-level enforcement mechanisms for data conservation and state invariants",
+        "min_items": 1
+      },
+      {
+        "id": "migration_strategy",
+        "title": "Data Migration & Rollback Strategy",
+        "required": true,
+        "content_hint": "Expand-Contract migration scripts, rollback plans, and zero-downtime procedures",
+        "min_items": 1
+      }
+    ]
+  }
+}

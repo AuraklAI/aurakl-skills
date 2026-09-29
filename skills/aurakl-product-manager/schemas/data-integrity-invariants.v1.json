@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema://product-management/data-integrity-invariants/v1",
+  "title": "DataIntegrityInvariantsV1",
+  "description": "Step 05 artifact: data integrity, algebraic conservation formulas, and reconciliation constraints.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "product_name",
+    "data_integrity_invariants",
+    "summary"
+  ],
+  "properties": {
+    "product_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "data_integrity_invariants": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Data integrity and conservation invariants",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "invariant_id",
+          "target_data_model",
+          "conservation_rule",
+          "severity",
+          "violation_consequence"
+        ],
+        "properties": {
+          "invariant_id": {
+            "type": "string",
+            "pattern": "^INV-DAT-[0-9]{3}$"
+          },
+          "target_data_model": {
+            "type": "string",
+            "minLength": 1
+          },
+          "conservation_rule": {
+            "type": "string",
+            "minLength": 1,
+            "description": "e.g. Sum of individual line items must strictly equal total ledger amount"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "CRITICAL",
+              "HIGH",
+              "MEDIUM"
+            ]
+          },
+          "violation_consequence": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

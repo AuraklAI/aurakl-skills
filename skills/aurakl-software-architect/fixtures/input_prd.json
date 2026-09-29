@@ -1,0 +1,85 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "PRD",
+  "metadata": {
+    "id": "prd-aurakl-core-ledger",
+    "name": "Aurakl Enterprise Multi-Currency Ledger Platform",
+    "version": "1.0.0",
+    "author": "Aurakl Product Team"
+  },
+  "frontmatter": {
+    "tech_stack": {
+      "language": "Rust",
+      "storage": "PostgreSQL 16",
+      "transport": "gRPC + Protobuf"
+    }
+  },
+  "requirements": [
+    {
+      "id": "REQ-001",
+      "title": "Double-entry bookkeeping journal entries",
+      "priority": "MUST_HAVE",
+      "description": "Every transaction must consist of balanced debit and credit entries summing strictly to zero.",
+      "acceptance_criteria": ["AC-001", "AC-002"]
+    },
+    {
+      "id": "REQ-002",
+      "title": "Optimistic concurrency control on account balances",
+      "priority": "MUST_HAVE",
+      "description": "Prevent concurrent double-spending via row-level balance versioning.",
+      "acceptance_criteria": ["AC-003"]
+    },
+    {
+      "id": "REQ-003",
+      "title": "Idempotent transaction submission",
+      "priority": "MUST_HAVE",
+      "description": "Clients supply an Idempotency-Key; duplicate submissions must return original result without re-executing.",
+      "acceptance_criteria": ["AC-004"]
+    },
+    {
+      "id": "REQ-004",
+      "title": "Multi-tenant tenant isolation",
+      "priority": "MUST_HAVE",
+      "description": "Data strictly isolated by tenant_id across all storage queries and API endpoints.",
+      "acceptance_criteria": ["AC-005"]
+    },
+    {
+      "id": "REQ-005",
+      "title": "Audit log and immutable transaction history",
+      "priority": "MUST_HAVE",
+      "description": "Append-only ledger journal with cryptographic checksum chaining.",
+      "acceptance_criteria": ["AC-006"]
+    }
+  ],
+  "product_invariants": [
+    {
+      "id": "INV-001",
+      "title": "Zero-Sum Conservation Law",
+      "rule": "Sum of debits must equal sum of credits for every posted journal batch."
+    },
+    {
+      "id": "INV-002",
+      "title": "Non-Negative Available Balance",
+      "rule": "Account balance cannot drop below zero unless explicitly configured with credit line."
+    },
+    {
+      "id": "INV-003",
+      "title": "Immutability of Posted Entries",
+      "rule": "Posted ledger entries can never be modified or deleted; corrections require offsetting reversal entries."
+    }
+  ],
+  "entities": [
+    {
+      "name": "LedgerAccount",
+      "description": "Represents an individual balance account within a tenant domain."
+    },
+    {
+      "name": "JournalBatch",
+      "description": "Atomic transaction containing paired debit and credit postings."
+    },
+    {
+      "name": "PostingEntry",
+      "description": "Individual debit or credit leg linked to a ledger account."
+    }
+  ]
+}

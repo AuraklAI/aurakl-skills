@@ -1,0 +1,90 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Template",
+  "metadata": {
+    "id": "pm-tpl-acceptance-criteria",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:0e6bab7180c00fab09f712210fb1b69581f4e4f8d3c6837835f0ec596071f621",
+    "created_at": 1764000000000,
+    "created_by": "jaxon",
+    "change_reason": "Structured template for acceptance criteria, test suites, and DoD verification gates",
+    "labels": {
+      "owner": "product",
+      "migrated_from": "aurakl-core/resources/experts/product-manager/templates/acceptance-criteria-template.md",
+      "serves_step": "assemble_acceptance_criteria_and_dod",
+      "serves_output_slot": "acceptance_criteria_set"
+    }
+  },
+  "spec": {
+    "name": "Acceptance Criteria Template",
+    "artifact_kind": "text_document",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "required": true,
+        "content_hint": "Coverage of functional REQs with explicit rationale for any omissions",
+        "min_items": null
+      },
+      {
+        "id": "functional_acceptance",
+        "title": "Functional Acceptance Criteria",
+        "required": true,
+        "content_hint": "Every REQ must contain happy, boundary, and error scenarios with assertable Then clauses",
+        "min_items": 3
+      },
+      {
+        "id": "non_functional_acceptance",
+        "title": "Non-Functional Acceptance Criteria",
+        "required": true,
+        "content_hint": "Performance thresholds must reflect PRD targets with concrete numeric bounds",
+        "min_items": 1
+      },
+      {
+        "id": "integration_acceptance",
+        "title": "Integration Test Acceptance Criteria",
+        "required": true,
+        "content_hint": "End-to-end integration across modules and platforms",
+        "min_items": null
+      },
+      {
+        "id": "test_data",
+        "title": "Test Data Requirements",
+        "required": true,
+        "content_hint": "Five boundary classes: minimum, min-1, maximum, max+1, and null/empty",
+        "min_items": null
+      },
+      {
+        "id": "defect_policy",
+        "title": "Defect Severity & Release Gates",
+        "required": true,
+        "content_hint": "Four-tier defect taxonomy (critical/major/minor/trivial) and zero-open-blocker release gate",
+        "min_items": 4
+      },
+      {
+        "id": "priority",
+        "title": "Acceptance Criteria Priority",
+        "required": true,
+        "content_hint": "Mandatory release criteria versus deferrable criteria",
+        "min_items": null
+      },
+      {
+        "id": "version_history",
+        "title": "Version History",
+        "required": true,
+        "content_hint": "Audit trail of document revisions",
+        "min_items": null
+      }
+    ],
+    "item_anchor": {
+      "id_pattern": {
+        "explicit": {
+          "prefix": "AC-"
+        }
+      },
+      "scope": "section"
+    },
+    "anchor_stability": "per_attempt"
+  }
+}

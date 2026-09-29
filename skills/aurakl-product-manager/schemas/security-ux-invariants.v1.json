@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema://product-management/security-ux-invariants/v1",
+  "title": "SecurityUxInvariantsV1",
+  "description": "Step 05 invariant artifact: access control and interactive UX safety invariants.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "product_name",
+    "security_and_privacy_invariants",
+    "ux_and_safety_invariants",
+    "summary"
+  ],
+  "properties": {
+    "product_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "security_and_privacy_invariants": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Access control and multi-tenant isolation invariants",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "invariant_id",
+          "scope",
+          "isolation_rule",
+          "severity",
+          "violation_consequence"
+        ],
+        "properties": {
+          "invariant_id": {
+            "type": "string",
+            "pattern": "^INV-SEC-[0-9]{3}$"
+          },
+          "scope": {
+            "type": "string",
+            "minLength": 1
+          },
+          "isolation_rule": {
+            "type": "string",
+            "minLength": 1,
+            "description": "e.g. Tenant A must never read Tenant B data across tenant boundaries"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "CRITICAL",
+              "HIGH",
+              "MEDIUM"
+            ]
+          },
+          "violation_consequence": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "ux_and_safety_invariants": {
+      "type": "array",
+      "minItems": 1,
+      "description": "User experience and destructive interaction safety invariants",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "invariant_id",
+          "interaction_scope",
+          "safety_rule",
+          "severity",
+          "violation_consequence"
+        ],
+        "properties": {
+          "invariant_id": {
+            "type": "string",
+            "pattern": "^INV-UXS-[0-9]{3}$"
+          },
+          "interaction_scope": {
+            "type": "string",
+            "minLength": 1
+          },
+          "safety_rule": {
+            "type": "string",
+            "minLength": 1,
+            "description": "e.g. All irreversible deletions must require explicit confirmation and soft-delete retention"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "CRITICAL",
+              "HIGH",
+              "MEDIUM"
+            ]
+          },
+          "violation_consequence": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

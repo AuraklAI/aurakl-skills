@@ -1,0 +1,74 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Template",
+  "metadata": {
+    "id": "pm-tpl-prd-lingforge",
+    "version": "1.0.0",
+    "parent": null,
+    "created_at": 1764000000000,
+    "created_by": "jaxon",
+    "change_reason": "Lingforge style PRD template with block-id anchors, structured tables, and verification matrices",
+    "labels": {
+      "owner": "product",
+      "flavor": "lingforge",
+      "serves_output_slot": "prd"
+    }
+  },
+  "spec": {
+    "name": "Lingforge PRD Template",
+    "artifact_kind": "text_document",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "required": true,
+        "content_hint": "Background summary, SMART goal table, and In/Out scope boundaries",
+        "min_items": null
+      },
+      {
+        "id": "functional_requirements",
+        "title": "Functional Requirements",
+        "required": true,
+        "content_hint": "Structured requirement blocks with block-id anchors, preconditions, and flows",
+        "min_items": 1
+      },
+      {
+        "id": "non_functional_requirements",
+        "title": "Non-Functional Requirements",
+        "required": true,
+        "content_hint": "Quantified performance, security, and platform compatibility tables",
+        "min_items": 1
+      },
+      {
+        "id": "dependencies_constraints",
+        "title": "Dependencies & Constraints",
+        "required": true,
+        "content_hint": "Upstream technical dependencies and non-negotiable constraints",
+        "min_items": null
+      },
+      {
+        "id": "risks_assumptions",
+        "title": "Risks & Assumptions",
+        "required": true,
+        "content_hint": "Risk evaluation matrix and hypothesis validation criteria",
+        "min_items": null
+      },
+      {
+        "id": "version_history",
+        "title": "Version History",
+        "required": true,
+        "content_hint": "Revision log with author, date, and changes",
+        "min_items": null
+      }
+    ],
+    "item_anchor": {
+      "id_pattern": {
+        "explicit": {
+          "prefix": "REQ-F"
+        }
+      },
+      "scope": "section"
+    },
+    "anchor_stability": "per_attempt"
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Standard",
+  "metadata": {
+    "id": "pm-std-requirement-gathering-quality",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:ea89e84e09d62e8984a0975acb634d33ba771069593b402e7d4ad6cdf2885091",
+    "created_at": 1764000000000,
+    "created_by": "jaxon",
+    "change_reason": "Requirement gathering quality standard: each mandate points to a concrete criterion or explicit guidance",
+    "labels": {
+      "owner": "product",
+      "migrated_from": "aurakl-core/resources/experts/product-manager/standards/requirement-gathering-quality.md",
+      "referenced_by_sop": "50130003-0000-4000-8000-000000000001",
+      "referenced_by_step": "analyze_requirements",
+      "governs_schema": "schema://product/requirement-analysis/v1",
+      "governs_template": "pm-tpl-requirement-analysis"
+    }
+  },
+  "spec": {
+    "name": "Requirement Gathering & Elicitation Quality Standard",
+    "scope": "step",
+    "rules": [
+      {
+        "id": "rg.five_w_one_h_complete",
+        "statement": "All 6 dimensions of 5W1H must have explicit answers without remaining unknown",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "all_six_dimensions_are_answered",
+        "evidence_hint": [
+          {
+            "required_fields": [
+              {
+                "semantics": "rfc6901",
+                "pointer": "/missing_paths"
+              }
+            ],
+            "locator": "whole_subject_allowed",
+            "binding": "target",
+            "freshness": "target_bound",
+            "provenance": "any_trusted_validator"
+          }
+        ]
+      },
+      {
+        "id": "rg.implicit_requirements",
+        "statement": "Must discover at least 3 implicit non-functional requirements, stating technical category and inclusion decision",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "analysis_lists_enough_implicit_requirements",
+        "evidence_hint": [
+          {
+            "required_fields": [
+              {
+                "semantics": "rfc6901",
+                "pointer": "/actual_count"
+              }
+            ],
+            "locator": "whole_subject_allowed",
+            "binding": "target",
+            "freshness": "target_bound",
+            "provenance": "any_trusted_validator"
+          }
+        ]
+      },
+      {
+        "id": "rg.non_goals",
+        "statement": "Must define at least 3 Non-Goals explicitly stating what is excluded or where boundaries end, with rationale",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "analysis_lists_enough_non_goals",
+        "evidence_hint": [
+          {
+            "required_fields": [
+              {
+                "semantics": "rfc6901",
+                "pointer": "/actual_count"
+              }
+            ],
+            "locator": "whole_subject_allowed",
+            "binding": "target",
+            "freshness": "target_bound",
+            "provenance": "any_trusted_validator"
+          }
+        ]
+      },
+      {
+        "id": "rg.quantified",
+        "statement": "All performance and capacity metrics must use concrete numerical values, avoiding vague terms like fast, large, or reasonable",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "analysis_is_quantified_and_decided",
+        "evidence_hint": [
+          {
+            "required_fields": [
+              {
+                "semantics": "rfc6901",
+                "pointer": "/samples"
+              },
+              {
+                "semantics": "rfc6901",
+                "pointer": "/agreement_basis_points"
+              }
+            ],
+            "locator": "whole_subject_allowed",
+            "binding": "target",
+            "freshness": "target_bound",
+            "provenance": "independent_from_producer"
+          }
+        ]
+      },
+      {
+        "id": "rg.stakeholders",
+        "statement": "Must cover at least 4 stakeholder categories: users, buyers, decision-makers, and influencers",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "analysis_lists_enough_stakeholders",
+        "evidence_hint": [
+          {
+            "required_fields": [
+              {
+                "semantics": "rfc6901",
+                "pointer": "/actual_count"
+              }
+            ],
+            "locator": "whole_subject_allowed",
+            "binding": "target",
+            "freshness": "target_bound",
+            "provenance": "any_trusted_validator"
+          }
+        ]
+      },
+      {
+        "id": "rg.open_questions_bounded",
+        "statement": "Unresolved questions must not exceed 10 items; exceeding indicates insufficient requirement maturity",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "open_questions_are_bounded",
+        "evidence_hint": [
+          {
+            "required_fields": [
+              {
+                "semantics": "rfc6901",
+                "pointer": "/actual_count"
+              }
+            ],
+            "locator": "whole_subject_allowed",
+            "binding": "target",
+            "freshness": "target_bound",
+            "provenance": "any_trusted_validator"
+          }
+        ]
+      },
+      {
+        "id": "rg.priority_spread",
+        "statement": "Priorities must not be uniform; P0 items must not exceed 30% of total features",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "analysis_is_quantified_and_decided",
+        "evidence_hint": [
+          {
+            "required_fields": [
+              {
+                "semantics": "rfc6901",
+                "pointer": "/samples"
+              },
+              {
+                "semantics": "rfc6901",
+                "pointer": "/agreement_basis_points"
+              }
+            ],
+            "locator": "whole_subject_allowed",
+            "binding": "target",
+            "freshness": "target_bound",
+            "provenance": "independent_from_producer"
+          }
+        ]
+      },
+      {
+        "id": "rg.implicit_dimensions",
+        "statement": "Implicit requirements must span at least 3 distinct non-functional dimensions with priorities and inclusion decisions",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "analysis_is_quantified_and_decided",
+        "evidence_hint": [
+          {
+            "required_fields": [
+              {
+                "semantics": "rfc6901",
+                "pointer": "/samples"
+              },
+              {
+                "semantics": "rfc6901",
+                "pointer": "/agreement_basis_points"
+              }
+            ],
+            "locator": "whole_subject_allowed",
+            "binding": "target",
+            "freshness": "target_bound",
+            "provenance": "independent_from_producer"
+          }
+        ]
+      },
+      {
+        "id": "rg.non_goal_reasons",
+        "statement": "Every Non-Goal must define boundaries with explicit negative statements and clear rationale",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "analysis_has_required_shape",
+        "evidence_hint": [
+          {
+            "required_fields": [
+              {
+                "semantics": "rfc6901",
+                "pointer": "/missing_paths"
+              }
+            ],
+            "locator": "whole_subject_allowed",
+            "binding": "target",
+            "freshness": "target_bound",
+            "provenance": "any_trusted_validator"
+          }
+        ]
+      }
+    ],
+    "source_refs": [
+      {
+        "kind": "migrated_document",
+        "uri": "aurakl-core/resources/experts/product-manager/standards/requirement-gathering-quality.md",
+        "note": "Canonical specification migrated from legacy markdown rules"
+      }
+    ],
+    "applicable_artifact_kinds": [
+      "structured_record",
+      "text_document"
+    ]
+  }
+}

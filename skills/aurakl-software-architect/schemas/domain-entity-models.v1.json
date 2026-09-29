@@ -1,0 +1,131 @@
+{
+  "$id": "schema://software-architecture/domain-entity-models/v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DomainEntityModels",
+  "type": "object",
+  "required": [
+    "system_name",
+    "aggregates",
+    "entities",
+    "value_objects",
+    "domain_events",
+    "implements"
+  ],
+  "properties": {
+    "system_name": {
+      "type": "string"
+    },
+    "aggregates": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "root_entity",
+          "enclosed_entities",
+          "consistency_boundary_rule"
+        ],
+        "properties": {
+          "name": { "type": "string" },
+          "root_entity": { "type": "string" },
+          "enclosed_entities": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "consistency_boundary_rule": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "entities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "primary_key_field",
+          "fields",
+          "business_rules",
+          "derived_from_requirements"
+        ],
+        "properties": {
+          "name": { "type": "string" },
+          "primary_key_field": { "type": "string" },
+          "fields": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["name", "type", "description", "nullable"],
+              "properties": {
+                "name": { "type": "string" },
+                "type": { "type": "string" },
+                "description": { "type": "string" },
+                "nullable": { "type": "boolean" }
+              },
+              "additionalProperties": false
+            }
+          },
+          "business_rules": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "derived_from_requirements": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "value_objects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "fields", "immutability_guarantee"],
+        "properties": {
+          "name": { "type": "string" },
+          "fields": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["name", "type"],
+              "properties": {
+                "name": { "type": "string" },
+                "type": { "type": "string" }
+              },
+              "additionalProperties": false
+            }
+          },
+          "immutability_guarantee": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "domain_events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["event_name", "trigger_condition", "payload_fields"],
+        "properties": {
+          "event_name": { "type": "string" },
+          "trigger_condition": { "type": "string" },
+          "payload_fields": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "implements": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}

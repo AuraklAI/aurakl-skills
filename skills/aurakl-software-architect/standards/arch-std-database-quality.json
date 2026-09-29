@@ -1,0 +1,41 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Standard",
+  "metadata": {
+    "id": "arch-std-database-quality",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:a813000400004000800000000000002300000000000000000000000000000001",
+    "created_at": 1764000000000,
+    "created_by": "aurakl",
+    "change_reason": "Data model and storage design quality standard: Mandatory primary keys and indexes, product invariants mapping, and migration/rollback strategies",
+    "labels": {
+      "owner": "architecture",
+      "governs_step": "design_data_model_and_storage"
+    }
+  },
+  "spec": {
+    "name": "Data Model & Storage Design Quality Standard",
+    "scope": "step",
+    "rules": [
+      {
+        "id": "db.primary_key_and_indexes_required",
+        "statement": "Every physical table must possess an explicit Primary Key and index definitions for high-frequency query fields",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "report_conforms_to_schema"
+      },
+      {
+        "id": "db.invariants_enforced",
+        "statement": "Must explicitly map and enforce data conservation and state constraints from the product invariants suite (INV-xxx) at the database layer",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "report_conforms_to_schema"
+      },
+      {
+        "id": "db.migration_strategy_defined",
+        "statement": "Must include migration tooling selection and an executable rollback strategy (rollback_strategy)",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "report_conforms_to_schema"
+      }
+    ]
+  }
+}

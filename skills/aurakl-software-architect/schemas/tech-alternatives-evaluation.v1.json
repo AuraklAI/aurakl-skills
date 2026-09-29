@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema://software-architecture/tech-alternatives-evaluation/v1",
+  "title": "TechAlternativesEvaluation",
+  "type": "object",
+  "required": [
+    "decisions"
+  ],
+  "properties": {
+    "decisions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "decision_id",
+          "subject",
+          "alternatives",
+          "chosen_alternative",
+          "decision_rationale"
+        ],
+        "properties": {
+          "decision_id": {
+            "type": "string",
+            "pattern": "^ADR-[0-9]{3,}$"
+          },
+          "subject": {
+            "type": "string"
+          },
+          "alternatives": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "object",
+              "required": [
+                "name",
+                "maturity",
+                "pros",
+                "cons",
+                "evaluation_score"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "maturity": {
+                  "type": "string",
+                  "enum": [
+                    "Boring_Mature",
+                    "Widely_Adopted",
+                    "Emerging",
+                    "Experimental"
+                  ]
+                },
+                "pros": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "cons": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "evaluation_score": {
+                  "type": "number",
+                  "minimum": 0.0,
+                  "maximum": 100.0
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "chosen_alternative": {
+            "type": "string"
+          },
+          "decision_rationale": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

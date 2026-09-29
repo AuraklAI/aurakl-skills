@@ -1,0 +1,41 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Standard",
+  "metadata": {
+    "id": "arch-std-readiness-quality",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:a813000400004000800000000000002700000000000000000000000000000001",
+    "created_at": 1764000000000,
+    "created_by": "aurakl",
+    "change_reason": "Architecture completeness and readiness review quality standard: 100% must-have coverage, one-vote veto, and zero placeholders",
+    "labels": {
+      "owner": "architecture",
+      "governs_step": "review_architecture_readiness"
+    }
+  },
+  "spec": {
+    "name": "Architecture Completeness & Readiness Review Quality Standard",
+    "scope": "step",
+    "rules": [
+      {
+        "id": "review.must_have_coverage_100_percent",
+        "statement": "All Must-Have requirements in the PRD must be 100% implemented and explicitly referenced in the architecture design (must_have_coverage_pct must be 100.0%)",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "report_conforms_to_schema"
+      },
+      {
+        "id": "review.blocking_findings_veto",
+        "statement": "Strictly enforce the one-vote veto rule: as long as any blocking_findings exist, ruling READY_FOR_DEV is strictly prohibited",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "report_conforms_to_schema"
+      },
+      {
+        "id": "review.no_placeholders",
+        "statement": "Pending placeholders in review decisions and rationales are strictly prohibited",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "report_conforms_to_schema"
+      }
+    ]
+  }
+}

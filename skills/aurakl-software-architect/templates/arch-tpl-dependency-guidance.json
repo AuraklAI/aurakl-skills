@@ -1,0 +1,59 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Template",
+  "metadata": {
+    "id": "arch-tpl-dependency-guidance",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:a813000400004000800000000000003800000000000000000000000000000001",
+    "created_at": 1764000000000,
+    "created_by": "aurakl",
+    "change_reason": "Technical dependency DAG and development guidance template: Acyclic DAG, critical path, sequential phases, and algorithmic spikes",
+    "labels": {
+      "owner": "architecture",
+      "serves_step": "plan_dependencies_and_guidance",
+      "serves_output_slot": "technical_dependency_dag_spec"
+    }
+  },
+  "spec": {
+    "name": "Technical Dependency DAG & Development Guidance Specification Template",
+    "artifact_kind": "text_document",
+    "sections": [
+      {
+        "id": "dependency_overview",
+        "title": "Technical Dependency & Guidance Overview",
+        "required": true,
+        "content_hint": "System build summary, core dependency principles, and architectural guidance goals",
+        "min_items": null
+      },
+      {
+        "id": "dependency_dag_nodes_and_edges",
+        "title": "Technical Dependency Directed Acyclic Graph (DAG)",
+        "required": true,
+        "content_hint": "Component nodes, prerequisites, compilation/interface dependency edges, and zero-cycle guarantee",
+        "min_items": 1
+      },
+      {
+        "id": "critical_path_and_bottlenecks",
+        "title": "Critical Path & Core Bottleneck Analysis",
+        "required": true,
+        "content_hint": "Critical path sequence, bottleneck evaluations, and decoupling strategies",
+        "min_items": 1
+      },
+      {
+        "id": "technical_build_sequence",
+        "title": "Technical Build Sequence & Entry/Exit Criteria",
+        "required": true,
+        "content_hint": "Sequential build phases, entry preconditions, and exit acceptance criteria for engineering teams",
+        "min_items": 1
+      },
+      {
+        "id": "complex_feature_spike_guides",
+        "title": "High-Risk Algorithm Pseudocode & Spike Plans",
+        "required": true,
+        "content_hint": "Executable algorithm pseudocode, time/space complexity analysis, and timeboxed Spike validation plans",
+        "min_items": 1
+      }
+    ]
+  }
+}

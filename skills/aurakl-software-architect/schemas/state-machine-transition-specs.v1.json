@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema://software-architecture/state-machine-transition-specs/v1",
+  "title": "StateMachineTransitionSpecs",
+  "type": "object",
+  "required": [
+    "state_machines"
+  ],
+  "properties": {
+    "state_machines": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "entity_name",
+          "initial_state",
+          "terminal_states",
+          "states",
+          "transitions"
+        ],
+        "properties": {
+          "entity_name": {
+            "type": "string"
+          },
+          "initial_state": {
+            "type": "string"
+          },
+          "terminal_states": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          },
+          "states": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "string"
+            }
+          },
+          "transitions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "from_state",
+                "to_state",
+                "trigger_event",
+                "guard_condition"
+              ],
+              "properties": {
+                "from_state": {
+                  "type": "string"
+                },
+                "to_state": {
+                  "type": "string"
+                },
+                "trigger_event": {
+                  "type": "string"
+                },
+                "guard_condition": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

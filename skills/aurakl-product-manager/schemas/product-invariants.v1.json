@@ -1,0 +1,199 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema://product-management/product-invariants/v1",
+  "title": "ProductInvariantSetV1",
+  "description": "Step 05 artifact: formal invariants across state machines, data integrity, permissions, and UX safety.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "product_name",
+    "state_invariants",
+    "data_integrity_invariants",
+    "security_and_privacy_invariants",
+    "ux_and_safety_invariants",
+    "summary"
+  ],
+  "properties": {
+    "product_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "state_invariants": {
+      "type": "array",
+      "minItems": 1,
+      "description": "State machine unidirectionality and legal transition invariants",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "invariant_id",
+          "target_entity",
+          "formal_rule",
+          "severity",
+          "violation_consequence"
+        ],
+        "properties": {
+          "invariant_id": {
+            "type": "string",
+            "pattern": "^INV-STA-[0-9]{3}$"
+          },
+          "target_entity": {
+            "type": "string",
+            "minLength": 1
+          },
+          "formal_rule": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Formal invariant statement (e.g. settled order cannot transition back to pending payment)"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "CRITICAL",
+              "HIGH",
+              "MEDIUM"
+            ]
+          },
+          "violation_consequence": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Catastrophic violation consequences"
+          }
+        }
+      }
+    },
+    "data_integrity_invariants": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Data integrity and conservation invariants",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "invariant_id",
+          "target_data_model",
+          "conservation_rule",
+          "severity",
+          "violation_consequence"
+        ],
+        "properties": {
+          "invariant_id": {
+            "type": "string",
+            "pattern": "^INV-DAT-[0-9]{3}$"
+          },
+          "target_data_model": {
+            "type": "string",
+            "minLength": 1
+          },
+          "conservation_rule": {
+            "type": "string",
+            "minLength": 1,
+            "description": "e.g. Sum of individual line items must strictly equal total ledger amount"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "CRITICAL",
+              "HIGH",
+              "MEDIUM"
+            ]
+          },
+          "violation_consequence": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "security_and_privacy_invariants": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Access control and multi-tenant isolation invariants",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "invariant_id",
+          "scope",
+          "isolation_rule",
+          "severity",
+          "violation_consequence"
+        ],
+        "properties": {
+          "invariant_id": {
+            "type": "string",
+            "pattern": "^INV-SEC-[0-9]{3}$"
+          },
+          "scope": {
+            "type": "string",
+            "minLength": 1
+          },
+          "isolation_rule": {
+            "type": "string",
+            "minLength": 1,
+            "description": "e.g. Tenant A must never read Tenant B data across tenant boundaries"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "CRITICAL",
+              "HIGH",
+              "MEDIUM"
+            ]
+          },
+          "violation_consequence": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "ux_and_safety_invariants": {
+      "type": "array",
+      "minItems": 1,
+      "description": "User experience and destructive interaction safety invariants",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "invariant_id",
+          "interaction_scope",
+          "safety_rule",
+          "severity",
+          "violation_consequence"
+        ],
+        "properties": {
+          "invariant_id": {
+            "type": "string",
+            "pattern": "^INV-UXS-[0-9]{3}$"
+          },
+          "interaction_scope": {
+            "type": "string",
+            "minLength": 1
+          },
+          "safety_rule": {
+            "type": "string",
+            "minLength": 1,
+            "description": "e.g. All irreversible deletions must require explicit confirmation and soft-delete retention"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "CRITICAL",
+              "HIGH",
+              "MEDIUM"
+            ]
+          },
+          "violation_consequence": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

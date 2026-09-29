@@ -1,0 +1,52 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Template",
+  "metadata": {
+    "id": "arch-tpl-feature-guide",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:a813000400004000800000000000003900000000000000000000000000000001",
+    "created_at": 1764000000000,
+    "created_by": "aurakl",
+    "change_reason": "Complex feature implementation guidance template: Algorithm pseudocode, complexity, memory layout, and spike plans",
+    "labels": {
+      "owner": "architecture",
+      "serves_step": "guide_complex_features",
+      "serves_output_slot": "feature_implementation_guide"
+    }
+  },
+  "spec": {
+    "name": "Complex Feature Implementation Guidance Template",
+    "artifact_kind": "text_document",
+    "sections": [
+      {
+        "id": "guide_overview",
+        "title": "Complex Feature Guidance Overview",
+        "required": true,
+        "content_hint": "High-risk/high-complexity module inventory and guidance objectives",
+        "min_items": null
+      },
+      {
+        "id": "feature_algorithms",
+        "title": "Algorithm Pseudocode & Complexity Analysis",
+        "required": true,
+        "content_hint": "Core algorithm pseudocode, time complexity, space complexity, and boundary conditions",
+        "min_items": 1
+      },
+      {
+        "id": "memory_and_concurrency",
+        "title": "Memory Layout & Concurrency Guidance",
+        "required": true,
+        "content_hint": "Memory allocations, caching strategies, and thread/coroutine safety rules",
+        "min_items": 1
+      },
+      {
+        "id": "spike_plans",
+        "title": "Spike Validation Plans",
+        "required": true,
+        "content_hint": "Validation targets, timeboxes, and exit criteria for technical uncertainties",
+        "min_items": 1
+      }
+    ]
+  }
+}

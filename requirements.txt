@@ -1,0 +1,6 @@
+# Aurakl Plugin Dependencies
+# --------------------------
+# ZERO external dependencies required!
+# All validation, calculation, rendering, and lineage engines are built
+# exclusively using the Python 3.9+ standard library (json, argparse,
+# pathlib, re, unittest, dataclasses, typing).

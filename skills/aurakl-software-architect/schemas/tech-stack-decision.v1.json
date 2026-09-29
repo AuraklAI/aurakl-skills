@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema://software-architecture/tech-stack-decision/v1",
+  "title": "TechStackDecision",
+  "type": "object",
+  "required": [
+    "product_name",
+    "design_mode",
+    "must_have_requirement_ids",
+    "locked_stack_items",
+    "evaluated_adrs",
+    "final_tech_stack",
+    "compatibility_guarantees",
+    "summary"
+  ],
+  "properties": {
+    "product_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "design_mode": {
+      "type": "string",
+      "enum": [
+        "FULL_DESIGN",
+        "INCREMENTAL_DESIGN"
+      ]
+    },
+    "must_have_requirement_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^REQ-[A-Z0-9_-]+$"
+      }
+    },
+    "locked_stack_items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "category",
+          "technology",
+          "source_constraint"
+        ],
+        "properties": {
+          "category": {
+            "type": "string"
+          },
+          "technology": {
+            "type": "string"
+          },
+          "source_constraint": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "evaluated_adrs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "adr_id",
+          "title",
+          "status",
+          "context",
+          "decision",
+          "consequences"
+        ],
+        "properties": {
+          "adr_id": {
+            "type": "string",
+            "pattern": "^ADR-[0-9]{3,}$"
+          },
+          "title": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACCEPTED",
+              "PROPOSED",
+              "SUPERSEDED"
+            ]
+          },
+          "context": {
+            "type": "string"
+          },
+          "decision": {
+            "type": "string"
+          },
+          "consequences": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "final_tech_stack": {
+      "type": "object",
+      "required": [
+        "frontend",
+        "backend_core",
+        "persistence",
+        "communication_protocol",
+        "runtime_environment"
+      ],
+      "properties": {
+        "frontend": {
+          "type": "string"
+        },
+        "backend_core": {
+          "type": "string"
+        },
+        "persistence": {
+          "type": "string"
+        },
+        "communication_protocol": {
+          "type": "string"
+        },
+        "runtime_environment": {
+          "type": "string"
+        },
+        "observability": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "compatibility_guarantees": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 10
+    }
+  },
+  "additionalProperties": false
+}

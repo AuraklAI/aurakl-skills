@@ -1,0 +1,68 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Template",
+  "metadata": {
+    "id": "pm-tpl-competitive-analysis",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:0378c37051ea22f67c48f0b8e42f418d8375b4ad644f20d0f508c31cd0b7895d",
+    "created_at": 1764000000000,
+    "created_by": "lumen",
+    "change_reason": "Market research and competitive analysis template: competitor matrix, beachhead positioning, and win justification",
+    "labels": {
+      "owner": "product",
+      "serves_step": "assess_moat_and_win_rate",
+      "serves_output_slot": "competitive_intelligence"
+    }
+  },
+  "spec": {
+    "name": "Competitive Analysis Template",
+    "artifact_kind": "text_document",
+    "sections": [
+      {
+        "id": "market_overview",
+        "title": "Market Overview",
+        "required": true,
+        "content_hint": "Market size, growth drivers, key trends, and unmet demands",
+        "min_items": null
+      },
+      {
+        "id": "competitors",
+        "title": "Mainstream Competitor Analysis Matrix",
+        "required": true,
+        "content_hint": "Benchmarking features, strengths, and weaknesses of at least 2 competitors",
+        "min_items": 2
+      },
+      {
+        "id": "beachhead_strategy",
+        "title": "Beachhead Strategy",
+        "required": true,
+        "content_hint": "Differentiated wedge entry, value curve reconstruction, and initial target segment",
+        "min_items": null
+      },
+      {
+        "id": "moat_assessment",
+        "title": "Long-Term Moat Assessment",
+        "required": true,
+        "content_hint": "Assessment across cost advantages, network effects, switching costs, and IP barriers",
+        "min_items": null
+      },
+      {
+        "id": "why_we_win",
+        "title": "Why We Win",
+        "required": true,
+        "content_hint": "Sustainable competitive moats, technical differentiation, and win probability justification",
+        "min_items": null
+      }
+    ],
+    "item_anchor": {
+      "id_pattern": {
+        "explicit": {
+          "prefix": "CMP-"
+        }
+      },
+      "scope": "section"
+    },
+    "anchor_stability": "per_attempt"
+  }
+}

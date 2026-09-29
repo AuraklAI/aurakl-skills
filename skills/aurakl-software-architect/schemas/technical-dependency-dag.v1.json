@@ -1,0 +1,94 @@
+{
+  "$id": "schema://software-architecture/technical-dependency-dag/v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TechnicalDependencyDagAndDevGuidance",
+  "type": "object",
+  "required": [
+    "system_name",
+    "dependency_nodes",
+    "dependency_edges",
+    "critical_path",
+    "technical_build_sequence",
+    "complex_feature_spike_plans",
+    "implements"
+  ],
+  "properties": {
+    "system_name": {
+      "type": "string"
+    },
+    "dependency_nodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "kind", "layer", "prerequisites", "owner_role"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "kind": { "type": "string", "enum": ["core_trait", "domain_model", "storage_layer", "business_engine", "api_gateway", "resilience_middleware"] },
+          "layer": { "type": "string" },
+          "prerequisites": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "owner_role": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "dependency_edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from_node", "to_node", "dependency_type"],
+        "properties": {
+          "from_node": { "type": "string" },
+          "to_node": { "type": "string" },
+          "dependency_type": { "type": "string", "enum": ["compile_time_import", "interface_implementation", "runtime_call", "data_migration_prerequisite"] }
+        },
+        "additionalProperties": false
+      }
+    },
+    "critical_path": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    },
+    "technical_build_sequence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["order", "node_id", "entry_criteria", "exit_criteria"],
+        "properties": {
+          "order": { "type": "integer" },
+          "node_id": { "type": "string" },
+          "entry_criteria": { "type": "string" },
+          "exit_criteria": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "complex_feature_spike_plans": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["feature_name", "risk_hypothesis", "algorithm_pseudo_code", "timebox_days", "exit_criteria"],
+        "properties": {
+          "feature_name": { "type": "string" },
+          "risk_hypothesis": { "type": "string" },
+          "algorithm_pseudo_code": { "type": "string" },
+          "timebox_days": { "type": "integer" },
+          "exit_criteria": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "implements": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}

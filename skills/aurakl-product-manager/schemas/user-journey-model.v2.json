@@ -1,0 +1,238 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema://product-management/user-journey-model/v2",
+  "title": "UserJourneyModelV2",
+  "description": "Step 03 artifact: concrete user personas, end-to-end happy path journeys, and core business scenarios.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "product_name",
+    "personas",
+    "journey_stages",
+    "scenarios",
+    "summary"
+  ],
+  "properties": {
+    "product_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "personas": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 6,
+      "description": "Concrete user persona profiles",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "role",
+          "core_motivation",
+          "pain_points",
+          "technical_proficiency",
+          "context_of_use"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^PSA-[0-9]{3}$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "core_motivation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "pain_points": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "technical_proficiency": {
+            "type": "string",
+            "enum": [
+              "novice",
+              "intermediate",
+              "expert"
+            ]
+          },
+          "context_of_use": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "journey_stages": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 25,
+      "description": "Lifecycle journey stages (Discovery -> Onboarding -> Core Flow -> Output -> Retention)",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "stage_id",
+          "stage_name",
+          "user_goal",
+          "touchpoints"
+        ],
+        "properties": {
+          "stage_id": {
+            "type": "string",
+            "pattern": "^STG(-[A-Z0-9]{2,8})?-[0-9]{3}$"
+          },
+          "stage_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "user_goal": {
+            "type": "string",
+            "minLength": 1
+          },
+          "touchpoints": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "touchpoint_id",
+                "name",
+                "channel",
+                "actor_persona_id",
+                "user_action",
+                "emotion_score",
+                "friction_or_pain",
+                "opportunity"
+              ],
+              "properties": {
+                "touchpoint_id": {
+                  "type": "string",
+                  "pattern": "^TP(-[A-Z0-9]{2,8})?-[0-9]{3}$"
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "channel": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "actor_persona_id": {
+                  "type": "string",
+                  "pattern": "^PSA-[0-9]{3}$",
+                  "description": "Explicit persona ID (PSA-xxx) that this journey touchpoint belongs to"
+                },
+                "user_action": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "emotion_score": {
+                  "type": "integer",
+                  "minimum": -2,
+                  "maximum": 2,
+                  "description": "-2 (Very Poor) to +2 (Excellent)"
+                },
+                "friction_or_pain": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "opportunity": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "scenarios": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 20,
+      "description": "Core business scenarios focusing on positive value flow",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "scenario_id",
+          "title",
+          "persona_id",
+          "trigger_context",
+          "happy_path_steps",
+          "related_touchpoint_ids"
+        ],
+        "properties": {
+          "scenario_id": {
+            "type": "string",
+            "pattern": "^SCN(-[A-Z0-9]{2,8})?-[0-9]{3}$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "persona_id": {
+            "type": "string",
+            "pattern": "^PSA-[0-9]{3}$"
+          },
+          "trigger_context": {
+            "type": "string",
+            "minLength": 1
+          },
+          "happy_path_steps": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "step_number",
+                "user_action",
+                "expected_experience"
+              ],
+              "properties": {
+                "step_number": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "user_action": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "expected_experience": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "related_touchpoint_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "pattern": "^TP(-[A-Z0-9]{2,8})?-[0-9]{3}$"
+            }
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

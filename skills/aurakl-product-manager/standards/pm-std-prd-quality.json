@@ -1,0 +1,137 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Standard",
+  "metadata": {
+    "id": "pm-std-prd-quality",
+    "version": "2.4.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:eb0eba53555d7704ca7b4b8548b8b0eb81dfcbfc78cc3a85f1660f262c2cdf6e",
+    "created_at": 1764000000000,
+    "created_by": "lumen",
+    "change_reason": "Add mandatory release priority grading rule (P0/P1/P2) following Big Tech (Google) PRD standards.",
+    "labels": {
+      "owner": "product",
+      "governs_step": "assemble_comprehensive_prd"
+    }
+  },
+  "spec": {
+    "name": "In-Depth PRD Authoring Quality Standard",
+    "scope": "step",
+    "rules": [
+      {
+        "id": "prd.features_trace_to_stories",
+        "statement": "Every feature specification in the PRD must trace back to at least one user story",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "features_trace_to_user_stories"
+      },
+      {
+        "id": "prd.all_stories_covered_by_features",
+        "statement": "Every user story declared in the User Story set must be mapped and implemented by at least one feature specification in the PRD (100% story coverage). Zero orphan stories permitted.",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "all_stories_covered_by_features"
+      },
+      {
+        "id": "prd.all_personas_features_covered",
+        "statement": "Every declared user persona must have substantive feature specifications supporting their primary jobs and operational workflows across all tiers.",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "all_personas_covered_in_prd"
+      },
+      {
+        "id": "prd.features_substantive_depth",
+        "statement": "Every feature specification must define at least 3 detailed business rules (>= 20 chars each), >= 2 preconditions, and >= 2 postconditions. One-sentence stubs are strictly rejected.",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "features_substantive_depth"
+      },
+      {
+        "id": "prd.features_io_and_error_handling",
+        "statement": "Every feature specification must define concrete Input parameters (>= 1 with type, required flag, validation constraints), Output artifacts (>= 1 with type and business description), and Feature-level Error Cases (>= 1 with error code, trigger condition, user feedback, and recovery action).",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "features_io_and_error_handling_complete"
+      },
+      {
+        "id": "prd.precondition_data_closure",
+        "statement": "Every feature specification must declare explicit data dependencies with verified closed-world source attribution (INTERNAL_FEATURE, COLD_START_SEED, EXTERNAL_API, USER_INPUT). All internal producer references must resolve to valid feature IDs, strictly eliminating dangling preconditions.",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "precondition_data_closure_complete"
+      },
+      {
+        "id": "prd.all_modules_covered",
+        "statement": "Every module declared in Information Architecture must be covered by at least one concrete feature specification.",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "all_ia_modules_covered"
+      },
+      {
+        "id": "prd.state_machines_deterministic",
+        "statement": "Core business entities must possess explicit state machine definitions with zero isolated deadlock states and explicit transition triggers, conditions, and actions",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "state_transitions_deterministic"
+      },
+      {
+        "id": "prd.error_handling_and_tracking_complete",
+        "statement": "Must fully specify system/business exception recovery strategies and Tracking Plan analytics instrumentation",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "error_handling_and_tracking_fully_covered"
+      },
+      {
+        "id": "prd.non_functional_requirements_exhaustive",
+        "statement": "Must fully specify performance, security, reliability/availability, privacy, and compliance requirements.",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "nfr_fully_covered"
+      },
+      {
+        "id": "prd.no_unverified_placeholders",
+        "statement": "Strictly prohibit unverified placeholders such as TBD or Pending across all PRD sections",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "analysis_excludes_unverified_placeholders"
+      },
+      {
+        "id": "prd.no_code_level_sql_pollution",
+        "statement": "PRD must strictly focus on behavioral contracts and business rules, prohibiting code-level SQL DDL or frontend implementation details",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "analysis_excludes_unverified_placeholders"
+      },
+      {
+        "id": "prd.domain_compliance",
+        "statement": "PRD must explicitly declare a target domain_profile (mobile, desktop, backend, iot_hardware, or hybrid) and formulate domain-specific non-functional and behavioral specifications.",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "domain_compliance_complete"
+      },
+      {
+        "id": "prd.rfc2119_normative_language",
+        "statement": "PRD business rules must strictly adhere to RFC 2119 normative keywords (MUST, MUST NOT, SHALL, SHOULD, MAY, 必须, 严禁, 应当), eliminating vague expressions like '酌情', '大概', or '视情况而定'.",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "rfc2119_normative_language_rigor"
+      },
+      {
+        "id": "prd.upstream_stages_presence",
+        "statement": "PRD authoring strictly prohibits standalone hallucination without upstream dependencies. Valid user stories (Stage 03) and 5W1H requirements (Stage 01) must be physically grounded in the project context.",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "upstream_stages_presence_verified"
+      },
+      {
+        "id": "prd.business_rule_semantic_density",
+        "statement": "Every feature input parameter must define an explicit, non-empty validation_rule (>= 5 chars). Every error recovery action must provide substantive, actionable instructions (>= 10 chars). Superficial one-word placeholders are strictly vetoed.",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "business_rule_semantic_density_verified"
+      },
+      {
+        "id": "prd.priority_explicitly_graded",
+        "statement": "Every feature specification in the PRD must be explicitly graded with a release priority (P0, P1, or P2). P0 features (launch blockers) must form an end-to-end viable backbone.",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "priority_explicitly_graded_verified"
+      },
+      {
+        "id": "prd.id_conformance_and_continuity",
+        "statement": "All PRD IDs (MOD-xxx, FEAT-xxx, ERR_xxx) must be strictly formatted, globally unique, feature IDs must bind to their module namespace, and feature sequences must be 1-based monotonically increasing without gaps.",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "prd_ids_valid_and_continuous"
+      },
+      {
+        "id": "prd.typography_and_pangu_spacing",
+        "statement": "All human-readable narrative and documentation must enforce CJK-Latin typography standards (盘古之白): inserting spaces between Chinese characters and English words/numbers, wrapping technical identifiers, parameters, and error codes in backticks, and ensuring comfortable Markdown visual hierarchy.",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "typography_and_pangu_spacing_verified"
+      }
+    ]
+  }
+}

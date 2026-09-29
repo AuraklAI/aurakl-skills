@@ -1,0 +1,158 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Standard",
+  "metadata": {
+    "id": "pm-std-user-story-quality",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:cc38cc0b68c3b0919bed7c84776ee5b52930d65003fecf94031743c7ca4b9186",
+    "created_at": 1764000000000,
+    "created_by": "jaxon",
+    "change_reason": "User story quality standard: enforces three-part format, observable acceptance, small sizing, and traceability",
+    "labels": {
+      "owner": "product",
+      "migrated_from": "aurakl-core/resources/experts/product-manager/standards/user-story-quality.md",
+      "referenced_by_sop": "50130003-0000-4000-8000-000000000002",
+      "referenced_by_step": "write_user_stories",
+      "governs_schema": "schema://product/user-story-set/v1",
+      "governs_template": "pm-tpl-user-story-set"
+    }
+  },
+  "spec": {
+    "name": "User Story Quality Standard",
+    "scope": "step",
+    "rules": [
+      {
+        "id": "us.three_part_form",
+        "statement": "Every story must use the Three-Part format (As a / I want to / So that) with specific user personas rather than System",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "stories_are_invest_shaped",
+        "evidence_hint": [
+          {
+            "required_fields": [
+              {
+                "semantics": "rfc6901",
+                "pointer": "/samples"
+              },
+              {
+                "semantics": "rfc6901",
+                "pointer": "/agreement_basis_points"
+              }
+            ],
+            "locator": "whole_subject_allowed",
+            "binding": "target",
+            "freshness": "target_bound",
+            "provenance": "independent_from_producer"
+          }
+        ]
+      },
+      {
+        "id": "us.gwt_observable",
+        "statement": "The Then clause of every acceptance scenario must represent observable behavior, not vague assertions like handled properly",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "stories_are_invest_shaped",
+        "evidence_hint": [
+          {
+            "required_fields": [
+              {
+                "semantics": "rfc6901",
+                "pointer": "/samples"
+              },
+              {
+                "semantics": "rfc6901",
+                "pointer": "/agreement_basis_points"
+              }
+            ],
+            "locator": "whole_subject_allowed",
+            "binding": "target",
+            "freshness": "target_bound",
+            "provenance": "independent_from_producer"
+          }
+        ]
+      },
+      {
+        "id": "us.small",
+        "statement": "Individual story effort must not exceed 5 person-days",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "stories_are_invest_shaped",
+        "evidence_hint": [
+          {
+            "required_fields": [
+              {
+                "semantics": "rfc6901",
+                "pointer": "/samples"
+              },
+              {
+                "semantics": "rfc6901",
+                "pointer": "/agreement_basis_points"
+              }
+            ],
+            "locator": "whole_subject_allowed",
+            "binding": "target",
+            "freshness": "target_bound",
+            "provenance": "independent_from_producer"
+          }
+        ]
+      },
+      {
+        "id": "us.independent",
+        "statement": "Blocked_by dependencies for a single story must not exceed 3, ensuring INVEST independence",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "stories_are_invest_shaped",
+        "evidence_hint": [
+          {
+            "required_fields": [
+              {
+                "semantics": "rfc6901",
+                "pointer": "/samples"
+              },
+              {
+                "semantics": "rfc6901",
+                "pointer": "/agreement_basis_points"
+              }
+            ],
+            "locator": "whole_subject_allowed",
+            "binding": "target",
+            "freshness": "target_bound",
+            "provenance": "independent_from_producer"
+          }
+        ]
+      },
+      {
+        "id": "us.traceable",
+        "statement": "Every story must declare the requirement ID it implements and include supporting requirement excerpts",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "stories_trace_to_requirements",
+        "evidence_hint": [
+          {
+            "required_fields": [
+              {
+                "semantics": "rfc6901",
+                "pointer": "/samples"
+              },
+              {
+                "semantics": "rfc6901",
+                "pointer": "/agreement_basis_points"
+              }
+            ],
+            "locator": "whole_subject_allowed",
+            "binding": "target",
+            "freshness": "target_bound",
+            "provenance": "independent_from_producer"
+          }
+        ]
+      }
+    ],
+    "source_refs": [
+      {
+        "kind": "migrated_document",
+        "uri": "aurakl-core/resources/experts/product-manager/standards/user-story-quality.md",
+        "note": "Canonical specification migrated from legacy markdown rules"
+      }
+    ],
+    "applicable_artifact_kinds": [
+      "structured_record",
+      "text_document"
+    ]
+  }
+}

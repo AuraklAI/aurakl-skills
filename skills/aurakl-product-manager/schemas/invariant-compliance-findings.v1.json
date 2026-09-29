@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema://product-management/invariant-compliance-findings/v1",
+  "title": "InvariantComplianceFindingsV1",
+  "description": "Step 07 artifact: invariant defense completeness and compliance risk findings.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "product_name",
+    "total_invariants",
+    "critically_enforced_count",
+    "has_unprotected_invariants",
+    "blocking_findings",
+    "advisory_findings",
+    "summary"
+  ],
+  "properties": {
+    "product_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "total_invariants": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "critically_enforced_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "has_unprotected_invariants": {
+      "type": "boolean",
+      "enum": [
+        false
+      ]
+    },
+    "blocking_findings": {
+      "type": "array",
+      "description": "Blocking defect findings list",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "target_artifact",
+          "field_pointer",
+          "description",
+          "required_fix"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "target_artifact": {
+            "type": "string",
+            "minLength": 1
+          },
+          "field_pointer": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "required_fix": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "advisory_findings": {
+      "type": "array",
+      "description": "Advisory improvement recommendations",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "target_artifact",
+          "description",
+          "recommendation"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "target_artifact": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "recommendation": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

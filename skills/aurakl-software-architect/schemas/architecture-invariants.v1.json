@@ -1,0 +1,94 @@
+{
+  "$id": "schema://software-architecture/architecture-invariants/v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ArchitectureInvariants",
+  "type": "object",
+  "required": [
+    "system_name",
+    "invariants",
+    "defense_coverage_pct",
+    "implements"
+  ],
+  "properties": {
+    "system_name": {
+      "type": "string"
+    },
+    "invariants": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "dimension",
+          "statement",
+          "enforcement_level",
+          "defense_mechanism",
+          "violation_remediation",
+          "criticality"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^INV-ARCH-[0-9]{3}$"
+          },
+          "dimension": {
+            "type": "string",
+            "enum": [
+              "compatibility_and_evolution",
+              "layering_and_dependency",
+              "data_consistency_and_storage",
+              "concurrency_and_state",
+              "security_and_tenant_isolation",
+              "performance_and_resource_budget",
+              "code_and_engineering_standards",
+              "resilience_and_fault_tolerance",
+              "observability_and_runtime_ops"
+            ]
+          },
+          "statement": {
+            "type": "string"
+          },
+          "enforcement_level": {
+            "type": "string",
+            "enum": [
+              "database_constraint",
+              "api_gateway_filter",
+              "domain_type_system",
+              "concurrency_lock",
+              "static_analysis_lint",
+              "compiler_flag",
+              "runtime_middleware",
+              "resilience_circuit_breaker",
+              "telemetry_interceptor",
+              "ci_cd_gate"
+            ]
+          },
+          "defense_mechanism": {
+            "type": "string"
+          },
+          "violation_remediation": {
+            "type": "string"
+          },
+          "criticality": {
+            "type": "string",
+            "enum": ["CRITICAL", "HIGH", "MEDIUM"]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "defense_coverage_pct": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "implements": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

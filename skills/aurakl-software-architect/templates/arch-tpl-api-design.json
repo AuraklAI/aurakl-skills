@@ -1,0 +1,59 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Template",
+  "metadata": {
+    "id": "arch-tpl-api-design",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:a813000400004000800000000000003500000000000000000000000000000001",
+    "created_at": 1764000000000,
+    "created_by": "aurakl",
+    "change_reason": "API contract and communication interface template: Strict typing, idempotency, and backward compatibility",
+    "labels": {
+      "owner": "architecture",
+      "serves_step": "design_api_and_communication",
+      "serves_output_slot": "api_contract_suite"
+    }
+  },
+  "spec": {
+    "name": "API Contracts & Communication Protocols Template",
+    "artifact_kind": "text_document",
+    "sections": [
+      {
+        "id": "api_overview",
+        "title": "API Architecture & Protocol Overview",
+        "required": true,
+        "content_hint": "Protocol selection (REST/gRPC), authentication model, and versioning strategy",
+        "min_items": null
+      },
+      {
+        "id": "endpoints_and_contracts",
+        "title": "API Endpoints & Strongly Typed Contracts",
+        "required": true,
+        "content_hint": "Method, URI, request schema, response schema, and field-level validation",
+        "min_items": 1
+      },
+      {
+        "id": "idempotency_and_headers",
+        "title": "Idempotency & Standard Headers",
+        "required": true,
+        "content_hint": "Idempotency token mechanisms for mutating verbs, TraceID, and auth headers",
+        "min_items": 1
+      },
+      {
+        "id": "error_handling_matrix",
+        "title": "Unified Error Code Matrix",
+        "required": true,
+        "content_hint": "Domain error codes, HTTP status mapping, and actionable error response payload",
+        "min_items": 1
+      },
+      {
+        "id": "backward_compatibility_policy",
+        "title": "Backward Compatibility & Evolution Policy",
+        "required": true,
+        "content_hint": "Deprecation lifecycle, non-breaking schema additions, and breaking_changes_allowed=false rule",
+        "min_items": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Template",
+  "metadata": {
+    "id": "arch-tpl-business-flow",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:a813000400004000800000000000003600000000000000000000000000000001",
+    "created_at": 1764000000000,
+    "created_by": "aurakl",
+    "change_reason": "Business sequence and state machine architecture template: 3-path sequences, deadlock-free state machines, and concurrency control",
+    "labels": {
+      "owner": "architecture",
+      "serves_step": "model_business_flows_and_states",
+      "serves_output_slot": "business_flow_spec"
+    }
+  },
+  "spec": {
+    "name": "Business Sequence & State Machine Specification Template",
+    "artifact_kind": "text_document",
+    "sections": [
+      {
+        "id": "flow_overview",
+        "title": "Business Flow Architecture Overview",
+        "required": true,
+        "content_hint": "Core operational scenarios, transactional boundaries, and stateful lifecycles",
+        "min_items": null
+      },
+      {
+        "id": "sequence_diagrams",
+        "title": "3-Path Sequence Diagrams (Happy, Edge, Error)",
+        "required": true,
+        "content_hint": "Standard Mermaid sequence diagrams with actor roles and step-by-step descriptions",
+        "min_items": 1
+      },
+      {
+        "id": "state_machine_specs",
+        "title": "Deadlock-Free State Machine Specifications",
+        "required": true,
+        "content_hint": "Initial states, terminal states, transition guards, and invalid transition rejections",
+        "min_items": 1
+      },
+      {
+        "id": "concurrency_and_locking",
+        "title": "Concurrency Control & Transaction Boundaries",
+        "required": true,
+        "content_hint": "Optimistic locking (version column), distributed locks, and compensation strategies",
+        "min_items": 1
+      }
+    ]
+  }
+}

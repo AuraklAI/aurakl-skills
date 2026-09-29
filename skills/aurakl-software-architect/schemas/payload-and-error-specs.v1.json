@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema://software-architecture/payload-and-error-specs/v1",
+  "title": "PayloadAndErrorSpecs",
+  "type": "object",
+  "required": [
+    "common_response_format",
+    "global_error_codes",
+    "endpoint_payloads"
+  ],
+  "properties": {
+    "common_response_format": {
+      "type": "object",
+      "required": [
+        "success_schema",
+        "error_schema"
+      ],
+      "properties": {
+        "success_schema": {
+          "type": "string"
+        },
+        "error_schema": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "global_error_codes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "code",
+          "http_status",
+          "message",
+          "description"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "http_status": {
+            "type": "integer"
+          },
+          "message": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "endpoint_payloads": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "endpoint_id",
+          "request_body",
+          "response_body",
+          "possible_errors"
+        ],
+        "properties": {
+          "endpoint_id": {
+            "type": "string"
+          },
+          "request_body": {
+            "type": "object"
+          },
+          "response_body": {
+            "type": "object"
+          },
+          "possible_errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,41 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Standard",
+  "metadata": {
+    "id": "pm-std-review-quality",
+    "version": "2.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:970fa9022ba3eea03200afde1fc953910382cafaa3bff719bfa5193fce304be1",
+    "created_at": 1764000000000,
+    "created_by": "lumen",
+    "change_reason": "Panoramic deliverable review and readiness quality standard, enforcing two-way lineage verification and zero-tolerance veto for blocking findings",
+    "labels": {
+      "owner": "product",
+      "governs_step": "synthesize_product_readiness_decision"
+    }
+  },
+  "spec": {
+    "name": "Panoramic Deliverables Review Quality Standard",
+    "scope": "step",
+    "rules": [
+      {
+        "id": "rev.all_seven_artifacts_audited",
+        "statement": "Must perform full two-way lineage and consistency audits across all 6 preceding stage artifacts",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "all_seven_artifacts_audited"
+      },
+      {
+        "id": "rev.blocking_findings_veto_ready",
+        "statement": "Must veto READY_FOR_DEV status whenever any blocking findings are detected",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "blocking_findings_strictly_forbid_ready_status"
+      },
+      {
+        "id": "rev.no_placeholders",
+        "statement": "Review report strictly prohibits unresolved placeholders such as TBD or TODO",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "analysis_excludes_unverified_placeholders"
+      }
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Standard",
+  "metadata": {
+    "id": "arch-std-dependency-guidance-quality",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:a813000400004000800000000000003000000000000000000000000000000001",
+    "created_at": 1764000000000,
+    "created_by": "aurakl",
+    "change_reason": "Technical dependency DAG and development guidance quality standard: Strictly acyclic DAG, critical path, algorithm pseudocode, and spike validation",
+    "labels": {
+      "owner": "architecture",
+      "serves_sop": "08-technical-dependency-dag-and-development-guidance"
+    }
+  },
+  "spec": {
+    "name": "Technical Dependency DAG & Development Guidance Quality Standard",
+    "objective": "Ensure technical dependencies form a strictly acyclic DAG, critical paths and bottlenecks are identified for engineering scheduling, and complex features have actionable pseudocode and timeboxed spikes",
+    "principles": [
+      "Strictly Acyclic Dependency DAG: Component dependencies must form a directed acyclic graph; circular dependencies are strictly forbidden",
+      "Explicit Critical Path Analysis: Highlight core system bottlenecks and critical build sequence to assist engineering leads in project scheduling",
+      "Actionable Algorithm Guidance: Complex algorithms must provide concrete pseudocode and time/space complexity analysis; vague descriptions are prohibited",
+      "Explicit Spike Validation Goals: Major technical uncertainties must establish timeboxes, hypothesis validation plans, and exit criteria"
+    ],
+    "review_dimensions": [
+      {
+        "id": "dag_acyclicity_and_clarity",
+        "name": "Dependency DAG Acyclicity & Clarity",
+        "weight": 0.35,
+        "description": "Whether the dependency graph is strictly acyclic and component relationships are unambiguous"
+      },
+      {
+        "id": "critical_path_soundness",
+        "name": "Critical Path Analysis Soundness",
+        "weight": 0.25,
+        "description": "Whether critical paths and core bottleneck identifications are accurate"
+      },
+      {
+        "id": "algorithm_guidance_depth",
+        "name": "Algorithm Pseudocode & Complexity Depth",
+        "weight": 0.25,
+        "description": "Whether algorithm pseudocode is executable and time/space complexity is explicit"
+      },
+      {
+        "id": "spike_actionability",
+        "name": "Spike Validation Actionability",
+        "weight": 0.15,
+        "description": "Whether spike timeboxes and exit criteria are concrete and actionable"
+      }
+    ]
+  }
+}

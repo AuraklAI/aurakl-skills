@@ -1,0 +1,89 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Standard",
+  "metadata": {
+    "id": "pm-std-user-journey-and-stories",
+    "version": "2.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:f45c6e951e052a066d66f61e2e9f481ea2760b10686e5114a6bfd210525207c9",
+    "created_at": 1764000000000,
+    "created_by": "lumen",
+    "change_reason": "User journey and story suite standard, enforcing 100% touchpoint coverage, INVEST value flow principles, and zero system-exception pollution",
+    "labels": {
+      "owner": "product",
+      "governs_step": "derive_invest_user_stories"
+    }
+  },
+  "spec": {
+    "name": "User Personas, Journeys & Story Suite Quality Standard",
+    "scope": "step",
+    "rules": [
+      {
+        "id": "us.touchpoints_fully_covered",
+        "statement": "User story suite must achieve 100% coverage over all declared journey touchpoints",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "all_journey_touchpoints_covered_by_stories"
+      },
+      {
+        "id": "us.invest_principles_enforced",
+        "statement": "User stories must adhere to INVEST principles, specifying persona, goal, business value, and priority",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "stories_and_epics_count_between"
+      },
+      {
+        "id": "us.stories_trace_to_personas",
+        "statement": "The role in every user story must trace back to declared user personas",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "stories_trace_to_personas"
+      },
+      {
+        "id": "us.requirement_lineage_traceable",
+        "statement": "Every user story must explicitly map to at least one upstream requirement REQA-xxx ID",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "stories_implements_valid_requirements"
+      },
+      {
+        "id": "us.no_system_exception_pollution",
+        "statement": "Strictly prohibit low-level system error codes or database implementation details in user stories, focusing on user business value flow",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "analysis_excludes_unverified_placeholders"
+      },
+      {
+        "id": "us.multi_role_admin_coverage",
+        "statement": "When requirements or architecture specify administrative, operational, or back-office subsystems (e.g. ERP, supplier databases, RAG knowledge bases, finance settlement), personas and journeys must model distinct operational and administrative roles rather than solely C-end consumers",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "admin_and_operational_personas_covered"
+      },
+      {
+        "id": "us.stakeholder_intent_traceability",
+        "statement": "All operational stakeholders identified during requirement elicitation must possess dedicated personas, touchpoints, and value-delivering user stories",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "stakeholders_trace_to_personas"
+      },
+      {
+        "id": "us.per_persona_journey_coverage",
+        "statement": "Every declared persona must possess distinct lifecycle journey touchpoints explicitly bound via actor_persona_id, with at least 2 touchpoints per persona",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "each_persona_has_touchpoints"
+      },
+      {
+        "id": "us.per_persona_scenario_cardinality",
+        "statement": "Every declared persona must possess at least 2 distinct operational business scenarios explicitly bound via persona_id covering both happy path and exception/edge conditions",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "each_persona_has_scenarios"
+      },
+      {
+        "id": "us.per_persona_story_distribution",
+        "statement": "Every declared persona must be allocated at least 2 distinct INVEST user stories delivering measurable business value, strictly forbidding orphan or token personas",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "each_persona_has_user_stories"
+      },
+      {
+        "id": "us.id_conformance_and_continuity",
+        "statement": "All Journey and Story IDs (PSA, STG, TP, SCN, USR, EPIC) must be strictly formatted, globally unique, sequential without duplicate consecutive stage IDs within persona journeys",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "journey_and_story_ids_valid_and_continuous"
+      }
+    ]
+  }
+}

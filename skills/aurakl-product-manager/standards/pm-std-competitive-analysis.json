@@ -1,0 +1,41 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Standard",
+  "metadata": {
+    "id": "pm-std-competitive-analysis",
+    "version": "2.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:aeb8d78f634c0621cf21ee155e90289824cf6e94783bfc0d644bb973cee27729",
+    "created_at": 1764000000000,
+    "created_by": "lumen",
+    "change_reason": "Market research and competitive analysis quality standard, covering competitor sampling, beachhead positioning, moat assessment, and win probability",
+    "labels": {
+      "owner": "product",
+      "governs_step": "analyze_market_and_competitors"
+    }
+  },
+  "spec": {
+    "name": "Market Research & Competitive Analysis Quality Standard",
+    "scope": "step",
+    "rules": [
+      {
+        "id": "comp.competitors_count_sufficient",
+        "statement": "Must benchmark against at least 2 direct or indirect leading competitors",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "competitors_count_between"
+      },
+      {
+        "id": "comp.beachhead_strategy_defined",
+        "statement": "Must articulate a differentiated beachhead entry strategy and value curve reconstruction",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "moat_and_strategy_fully_covered"
+      },
+      {
+        "id": "comp.why_we_win_grounded",
+        "statement": "Must provide grounded win justification based on moat evaluation and unmet customer needs",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "differentiator_traces_to_unmet_needs"
+      }
+    ]
+  }
+}

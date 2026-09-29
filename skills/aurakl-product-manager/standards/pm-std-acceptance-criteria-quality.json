@@ -1,0 +1,47 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Standard",
+  "metadata": {
+    "id": "pm-std-acceptance-criteria-quality",
+    "version": "2.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:c6e222e9d682038042d3fc7839b5d9f8ee7ec64c01d23d09452fd373e148ecd6",
+    "created_at": 1764000000000,
+    "created_by": "lumen",
+    "change_reason": "Acceptance criteria and test specification quality standard, enforcing 100% product invariant coverage and >= 30% defensive negative scenarios",
+    "labels": {
+      "owner": "product",
+      "governs_step": "assemble_acceptance_criteria_and_dod"
+    }
+  },
+  "spec": {
+    "name": "Acceptance Criteria & Test Specification Quality Standard",
+    "scope": "step",
+    "rules": [
+      {
+        "id": "ac.invariants_fully_covered",
+        "statement": "Acceptance test cases must achieve 100% verification coverage over product invariants",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "all_invariants_covered_by_acceptance_criteria"
+      },
+      {
+        "id": "ac.negative_defense_ratio_sufficient",
+        "statement": "Defensive/negative test scenarios must account for at least 30% of total acceptance test cases",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "negative_cases_ratio_above_thirty_percent"
+      },
+      {
+        "id": "ac.criteria_trace_to_stories",
+        "statement": "Every acceptance scenario must explicitly trace to user stories and invariants",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "criteria_trace_to_features_and_invariants"
+      },
+      {
+        "id": "ac.no_placeholders",
+        "statement": "Acceptance criteria and DoD gates strictly prohibit unresolved placeholders such as TBD or TODO",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "analysis_excludes_unverified_placeholders"
+      }
+    ]
+  }
+}

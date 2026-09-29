@@ -1,0 +1,71 @@
+{
+  "$id": "schema://software-architecture/domain-abstractions/v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DomainAbstractionsAndTraits",
+  "type": "object",
+  "required": [
+    "system_name",
+    "core_traits_or_interfaces",
+    "component_contracts",
+    "implements"
+  ],
+  "properties": {
+    "system_name": {
+      "type": "string"
+    },
+    "core_traits_or_interfaces": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "purpose",
+          "methods",
+          "error_handling_model"
+        ],
+        "properties": {
+          "name": { "type": "string" },
+          "purpose": { "type": "string" },
+          "methods": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["signature", "description", "purity_or_side_effects"],
+              "properties": {
+                "signature": { "type": "string" },
+                "description": { "type": "string" },
+                "purity_or_side_effects": { "type": "string" }
+              },
+              "additionalProperties": false
+            }
+          },
+          "error_handling_model": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "component_contracts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["caller_component", "provider_component", "bound_trait_or_interface", "communication_mode"],
+        "properties": {
+          "caller_component": { "type": "string" },
+          "provider_component": { "type": "string" },
+          "bound_trait_or_interface": { "type": "string" },
+          "communication_mode": { "type": "string", "enum": ["direct_function_call", "trait_object_dispatch", "in_process_channel", "rpc_or_event"] }
+        },
+        "additionalProperties": false
+      }
+    },
+    "implements": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}

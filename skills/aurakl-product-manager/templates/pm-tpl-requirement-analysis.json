@@ -1,0 +1,97 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Template",
+  "metadata": {
+    "id": "pm-tpl-requirement-analysis",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:9315a4ded8d5fc17cad4e248134e870c12f9ca4ccdf1d260fe58edf55f94626b",
+    "created_at": 1764000000000,
+    "created_by": "jaxon",
+    "change_reason": "5W1H requirement analysis template with demand validation, explicit non-goals, and open decisions",
+    "labels": {
+      "owner": "product",
+      "migrated_from": "aurakl-core/resources/experts/product-manager/templates/requirement-analysis-template.md",
+      "serves_step": "analyze_requirements",
+      "serves_output_slot": "requirement_analysis"
+    }
+  },
+  "spec": {
+    "name": "Requirement Analysis Template",
+    "artifact_kind": "text_document",
+    "sections": [
+      {
+        "id": "what",
+        "title": "What (Deliverables & Scope)",
+        "required": true,
+        "content_hint": "Functional inventory with anchors and original brief citations",
+        "min_items": 1
+      },
+      {
+        "id": "why",
+        "title": "Why (Business Motivation)",
+        "required": true,
+        "content_hint": "Root cause pain points, cost of inaction, and urgency drivers",
+        "min_items": null
+      },
+      {
+        "id": "who",
+        "title": "Who (Stakeholder Personas)",
+        "required": true,
+        "content_hint": "Users, buyers, decision-makers, and influencers",
+        "min_items": 4
+      },
+      {
+        "id": "when_where_how",
+        "title": "When / Where / How (Context & Journey)",
+        "required": true,
+        "content_hint": "Temporal triggers, execution environments, and user interaction flow",
+        "min_items": null
+      },
+      {
+        "id": "implicit_requirements",
+        "title": "Implicit Requirements",
+        "required": true,
+        "content_hint": "Non-functional discovery across performance, security, and compliance",
+        "min_items": 3
+      },
+      {
+        "id": "non_goals",
+        "title": "Non-Goals",
+        "required": true,
+        "content_hint": "Explicitly excluded boundaries with justifications",
+        "min_items": 3
+      },
+      {
+        "id": "priority",
+        "title": "Core Feature Priorities",
+        "required": true,
+        "content_hint": "Prioritized feature tiers with P0 bounded under 30%",
+        "min_items": null
+      },
+      {
+        "id": "product_type",
+        "title": "Product Classification",
+        "required": true,
+        "content_hint": "Classification determining downstream PRD template selection",
+        "min_items": null
+      },
+      {
+        "id": "open_questions",
+        "title": "Open Questions & Risks",
+        "required": true,
+        "content_hint": "Owner-assigned questions list bounded to <= 10 items",
+        "min_items": null
+      }
+    ],
+    "item_anchor": {
+      "id_pattern": {
+        "explicit": {
+          "prefix": "REQA-"
+        }
+      },
+      "scope": "section"
+    },
+    "anchor_stability": "per_attempt"
+  }
+}

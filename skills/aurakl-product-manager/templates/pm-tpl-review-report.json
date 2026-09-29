@@ -1,0 +1,75 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Template",
+  "metadata": {
+    "id": "pm-tpl-review-report",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:0000000000000000000000000000000000000000000000000000000000000000",
+    "created_at": 1764000000000,
+    "created_by": "lumen",
+    "change_reason": "Panoramic review template covering two-way lineage, invariant defense audit, and readiness verdict",
+    "labels": {
+      "owner": "product",
+      "serves_step": "synthesize_product_readiness_decision",
+      "serves_output_slot": "product_readiness_review_report"
+    }
+  },
+  "spec": {
+    "name": "Panoramic Deliverables Review Report Template",
+    "artifact_kind": "text_document",
+    "sections": [
+      {
+        "id": "executive_summary",
+        "title": "Executive Summary & Verdict",
+        "required": true,
+        "content_hint": "Product name, overall readiness score, and verdict (READY_FOR_DEV / NEEDS_REFINEMENT / BLOCKED)",
+        "min_items": null
+      },
+      {
+        "id": "traceability_audit",
+        "title": "Traceability Lineage Audit",
+        "required": true,
+        "content_hint": "Coverage statistics across requirements, stories, PRDs, invariants, and test criteria",
+        "min_items": null
+      },
+      {
+        "id": "invariant_defense_audit",
+        "title": "Invariant Defense Audit",
+        "required": true,
+        "content_hint": "Verification completeness of negative defensive test cases across 4 invariant dimensions",
+        "min_items": null
+      },
+      {
+        "id": "blocking_findings",
+        "title": "Blocking Findings",
+        "required": false,
+        "content_hint": "Critical defects that veto release until resolved",
+        "min_items": null
+      },
+      {
+        "id": "advisory_findings",
+        "title": "Advisory Findings",
+        "required": false,
+        "content_hint": "Non-blocking recommendations for quality and UX polish",
+        "min_items": null
+      },
+      {
+        "id": "decision_rationale",
+        "title": "Decision Rationale",
+        "required": true,
+        "content_hint": "Detailed justification, residual risk evaluation, and next milestone roadmap",
+        "min_items": null
+      }
+    ],
+    "item_anchor": {
+      "id_pattern": {
+        "explicit": {
+          "prefix": "REV-"
+        }
+      },
+      "scope": "section"
+    },
+    "anchor_stability": "per_attempt"
+  }
+}

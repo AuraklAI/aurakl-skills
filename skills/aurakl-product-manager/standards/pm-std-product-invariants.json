@@ -1,0 +1,47 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Standard",
+  "metadata": {
+    "id": "pm-std-product-invariants",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:3758df5ebbd00f6638cf4b068b1ca4e842953c9d1d55503cca252a01a3f645be",
+    "created_at": 1764000000000,
+    "created_by": "lumen",
+    "change_reason": "Product and domain invariant specification quality standard, enforcing comprehensive coverage across state machines, data integrity, access isolation, and UX safety",
+    "labels": {
+      "owner": "product",
+      "governs_step": "assemble_product_invariants"
+    }
+  },
+  "spec": {
+    "name": "Product & Domain Invariants Quality Standard",
+    "scope": "step",
+    "rules": [
+      {
+        "id": "inv.all_dimensions_covered",
+        "statement": "Invariant suite must fully cover state transitions, data conservation, permission isolation, and user safety dimensions",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "all_four_invariant_dimensions_covered"
+      },
+      {
+        "id": "inv.bind_to_prd_entities",
+        "statement": "Every invariant must explicitly bind to PRD entities or state machines",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "invariants_bind_to_prd_entities"
+      },
+      {
+        "id": "inv.explicit_severity_and_consequence",
+        "statement": "Every invariant must declare explicit severity levels and catastrophic failure consequences",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "critical_invariants_have_explicit_consequence"
+      },
+      {
+        "id": "inv.no_placeholders",
+        "statement": "Invariant definitions strictly prohibit unresolved placeholders such as TBD or TODO",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "analysis_excludes_unverified_placeholders"
+      }
+    ]
+  }
+}

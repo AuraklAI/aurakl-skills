@@ -1,0 +1,90 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Template",
+  "metadata": {
+    "id": "pm-tpl-user-story-set",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:d9c64c347252e29789df163d1947f0cce3b3d5d0297c69308d44e245d6a3d99d",
+    "created_at": 1764000000000,
+    "created_by": "jaxon",
+    "change_reason": "Standard user story template with USR- item anchors, INVEST principles, and Given-When-Then criteria",
+    "labels": {
+      "owner": "product",
+      "migrated_from": "aurakl-core/resources/experts/product-manager/templates/user-story-template.md",
+      "serves_step": "derive_invest_user_stories",
+      "serves_output_slot": "user_story_set"
+    }
+  },
+  "spec": {
+    "name": "User Story Suite Template",
+    "artifact_kind": "text_document",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "required": true,
+        "content_hint": "Summary of user story suite",
+        "min_items": null
+      },
+      {
+        "id": "epics",
+        "title": "Epics",
+        "required": true,
+        "content_hint": "Scenario-driven Epics (3-7 total, at least one P0)",
+        "min_items": 3
+      },
+      {
+        "id": "user_stories",
+        "title": "User Stories",
+        "required": true,
+        "content_hint": "Three-part format with GWT criteria, item anchors, parent_epic, and implements traceability",
+        "min_items": 1
+      },
+      {
+        "id": "user_personas",
+        "title": "User Personas",
+        "required": true,
+        "content_hint": "Specific concrete user personas, avoiding generic System roles",
+        "min_items": 1
+      },
+      {
+        "id": "user_journeys",
+        "title": "User Journeys",
+        "required": true,
+        "content_hint": "End-to-end journey maps revealing omitted intermediate steps",
+        "min_items": null
+      },
+      {
+        "id": "priority_matrix",
+        "title": "Priority Matrix",
+        "required": true,
+        "content_hint": "Balanced priority distribution with P0 strictly below 30%",
+        "min_items": null
+      },
+      {
+        "id": "dependencies",
+        "title": "Dependencies",
+        "required": true,
+        "content_hint": "Blocked_by dependencies bounded to <= 3 per story for INVEST independence",
+        "min_items": null
+      },
+      {
+        "id": "version_history",
+        "title": "Version History",
+        "required": true,
+        "content_hint": "Document revision log",
+        "min_items": null
+      }
+    ],
+    "item_anchor": {
+      "id_pattern": {
+        "explicit": {
+          "prefix": "USR-"
+        }
+      },
+      "scope": "section"
+    },
+    "anchor_stability": "per_attempt"
+  }
+}

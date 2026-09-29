@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema://product-management/product-brief/v1",
+  "title": "ProductBrief",
+  "description": "Product brief supplied as a structured SOP input.",
+  "type": "object",
+  "additionalProperties": true
+}

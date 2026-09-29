@@ -1,0 +1,61 @@
+{
+  "$id": "schema://software-architecture/invariant-enforcement-specs/v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "InvariantEnforcementSpecs",
+  "type": "object",
+  "required": [
+    "system_name",
+    "enforcement_rules"
+  ],
+  "properties": {
+    "system_name": {
+      "type": "string"
+    },
+    "enforcement_rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "invariant_id",
+          "enforcement_level",
+          "defense_mechanism",
+          "violation_remediation",
+          "verification_method"
+        ],
+        "properties": {
+          "invariant_id": {
+            "type": "string",
+            "pattern": "^INV-ARCH-[0-9]{3}$"
+          },
+          "enforcement_level": {
+            "type": "string",
+            "enum": [
+              "database_constraint",
+              "api_gateway_filter",
+              "domain_type_system",
+              "concurrency_lock",
+              "static_analysis_lint",
+              "compiler_flag",
+              "runtime_middleware",
+              "resilience_circuit_breaker",
+              "telemetry_interceptor",
+              "ci_cd_gate"
+            ]
+          },
+          "defense_mechanism": {
+            "type": "string"
+          },
+          "violation_remediation": {
+            "type": "string"
+          },
+          "verification_method": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

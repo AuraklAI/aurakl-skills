@@ -1,0 +1,59 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Template",
+  "metadata": {
+    "id": "arch-tpl-tech-stack",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:a813000400004000800000000000003100000000000000000000000000000001",
+    "created_at": 1764000000000,
+    "created_by": "aurakl",
+    "change_reason": "Tech Stack Decision and Architecture Decision Record (ADR) template",
+    "labels": {
+      "owner": "architecture",
+      "serves_step": "select_tech_stack",
+      "serves_output_slot": "tech_stack_decision"
+    }
+  },
+  "spec": {
+    "name": "Technology Stack Decision & ADR Template",
+    "artifact_kind": "text_document",
+    "sections": [
+      {
+        "id": "executive_summary",
+        "title": "Tech Stack Decision Overview",
+        "required": true,
+        "content_hint": "Product name, design mode (greenfield/incremental), and core stack summary",
+        "min_items": null
+      },
+      {
+        "id": "locked_constraints",
+        "title": "PRD Locked Constraints",
+        "required": true,
+        "content_hint": "Non-negotiable technical constraints inherited from PRD frontmatter",
+        "min_items": 1
+      },
+      {
+        "id": "evaluated_adrs",
+        "title": "Architecture Decision Records (ADRs)",
+        "required": true,
+        "content_hint": "Multi-alternative evaluation matrices and trade-off rationales for undecided tech selections",
+        "min_items": 1
+      },
+      {
+        "id": "final_stack",
+        "title": "Finalized Technology Stack Panorama",
+        "required": true,
+        "content_hint": "Frontend, backend, storage, communication, and runtime environment selections",
+        "min_items": 1
+      },
+      {
+        "id": "compatibility",
+        "title": "Backward Compatibility Guarantee",
+        "required": true,
+        "content_hint": "Compatibility commitments and protective boundaries for legacy systems or prior versions",
+        "min_items": null
+      }
+    ]
+  }
+}

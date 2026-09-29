@@ -1,0 +1,126 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Template",
+  "metadata": {
+    "id": "pm-tpl-prd-cloud-platform",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:a5426474b0155ce044b9e0df073b81d0598982704a60b316f66cabed4330fc5a",
+    "created_at": 1764000000000,
+    "created_by": "jaxon",
+    "change_reason": "Cloud platform PRD template: multi-tenancy, APIs, quota management, observability, and high availability",
+    "labels": {
+      "owner": "product",
+      "migrated_from": "aurakl-core/resources/experts/product-manager/templates/prd-template-cloud-platform.md",
+      "product_type": "cloud_platform",
+      "serves_step": "assemble_comprehensive_prd",
+      "serves_output_slot": "prd"
+    }
+  },
+  "spec": {
+    "name": "Cloud Platform PRD Template",
+    "artifact_kind": "text_document",
+    "sections": [
+      {
+        "id": "cloud_scope",
+        "title": "Cloud Scope of Responsibility",
+        "required": true,
+        "content_hint": "Cloud responsibilities and explicit boundary lines with client endpoints",
+        "min_items": null
+      },
+      {
+        "id": "service_modules",
+        "title": "Service Modules Inventory",
+        "required": true,
+        "content_hint": "Responsibility boundaries for each cloud service",
+        "min_items": 1
+      },
+      {
+        "id": "core_service_requirements",
+        "title": "Core Service Requirements",
+        "required": true,
+        "content_hint": null,
+        "min_items": 1
+      },
+      {
+        "id": "ai_integration",
+        "title": "AI Service Integration Requirements",
+        "required": false,
+        "content_hint": "AI model specifications, fallback routes, and cost ceiling (omit if no AI capability)",
+        "min_items": null
+      },
+      {
+        "id": "data_storage",
+        "title": "Data Storage Requirements",
+        "required": true,
+        "content_hint": "Data retention, schema persistence, partitioning, and backup policies",
+        "min_items": null
+      },
+      {
+        "id": "privacy_compliance",
+        "title": "Privacy & Compliance Requirements",
+        "required": true,
+        "content_hint": "PII data scope, retention periods, deletion mechanisms, and privacy regulations",
+        "min_items": null
+      },
+      {
+        "id": "sla",
+        "title": "SLA Definitions",
+        "required": true,
+        "content_hint": "Availability, latency (P95/P99), and error rates with exact measurement windows",
+        "min_items": null
+      },
+      {
+        "id": "background_jobs",
+        "title": "Background Tasks & Jobs",
+        "required": true,
+        "content_hint": "Scheduled cron jobs, retry backoff strategies, and idempotency keys",
+        "min_items": null
+      },
+      {
+        "id": "admin_console",
+        "title": "Admin Console Requirements",
+        "required": true,
+        "content_hint": "Admin portal scope; state alternative operations if omitted",
+        "min_items": null
+      },
+      {
+        "id": "non_functional_requirements",
+        "title": "Non-Functional Requirements",
+        "required": true,
+        "content_hint": "P99 latency, throughput, concurrency, and compliance SLAs",
+        "min_items": null
+      },
+      {
+        "id": "dependencies_constraints",
+        "title": "Dependencies & Constraints",
+        "required": true,
+        "content_hint": "Upstream cloud services and external integrations",
+        "min_items": null
+      },
+      {
+        "id": "risks_assumptions",
+        "title": "Risks & Assumptions",
+        "required": true,
+        "content_hint": "Identified failure risks and mitigation strategies",
+        "min_items": null
+      },
+      {
+        "id": "version_history",
+        "title": "Version History",
+        "required": true,
+        "content_hint": "Document change log",
+        "min_items": null
+      }
+    ],
+    "item_anchor": {
+      "id_pattern": {
+        "explicit": {
+          "prefix": "REQ-"
+        }
+      },
+      "scope": "section"
+    },
+    "anchor_stability": "per_attempt"
+  }
+}

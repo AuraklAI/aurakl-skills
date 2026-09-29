@@ -1,0 +1,266 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema://product/requirement-analysis/v1",
+  "title": "Requirement Analysis",
+  "description": "Step 01 requirement analysis artifact: structured 5W1H elicitation, demand validation, and explicit non-goals.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "product_name",
+    "five_w_one_h",
+    "stakeholders",
+    "requirements",
+    "implicit_requirements",
+    "non_goals",
+    "open_questions"
+  ],
+  "properties": {
+    "product_name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Product name: downstream PRD product_name must match exactly."
+    },
+    "five_w_one_h": {
+      "type": "object",
+      "description": "All 6 dimensions must have explicit answers; unresolved items belong in open_questions.",
+      "additionalProperties": false,
+      "required": [
+        "what",
+        "why",
+        "who",
+        "when",
+        "where",
+        "how"
+      ],
+      "properties": {
+        "what": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What: deliverable capabilities and features"
+        },
+        "why": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Why: business drivers and cost of inaction"
+        },
+        "who": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Who: specific user personas and roles"
+        },
+        "when": {
+          "type": "string",
+          "minLength": 1,
+          "description": "When: operational timeline and deadlines"
+        },
+        "where": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Where: deployment and execution environment"
+        },
+        "how": {
+          "type": "string",
+          "minLength": 1,
+          "description": "How: user journey and usage path (not code implementation)"
+        }
+      }
+    },
+    "stakeholders": {
+      "type": "array",
+      "description": "Stakeholders covering users, buyers, decision-makers, and influencers.",
+      "minItems": 4,
+      "maxItems": 30,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "role",
+          "category",
+          "concern"
+        ],
+        "properties": {
+          "role": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Specific persona name, avoiding generic 'User'"
+          },
+          "category": {
+            "enum": [
+              "user",
+              "buyer",
+              "decider",
+              "influencer"
+            ],
+            "description": "End-user / Buyer / Decision-Maker / Influencer"
+          },
+          "concern": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Key value priority and primary concern"
+          }
+        }
+      }
+    },
+    "requirements": {
+      "type": "array",
+      "description": "Explicit requirements: extracted directly from input brief",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "statement",
+          "priority",
+          "source_quote"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^REQA-[0-9]{3}$",
+            "description": "REQA-001 sequential identifier"
+          },
+          "statement": {
+            "type": "string",
+            "minLength": 1
+          },
+          "priority": {
+            "enum": [
+              "P0",
+              "P1",
+              "P2"
+            ]
+          },
+          "source_quote": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Direct brief citation; uncited items belong in implicit requirements or open questions."
+          }
+        }
+      }
+    },
+    "implicit_requirements": {
+      "type": "array",
+      "description": "Implicit non-functional requirements discovered through expert probing.",
+      "minItems": 3,
+      "maxItems": 50,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "statement",
+          "dimension",
+          "technique",
+          "priority",
+          "decision"
+        ],
+        "properties": {
+          "statement": {
+            "type": "string",
+            "minLength": 1
+          },
+          "dimension": {
+            "enum": [
+              "performance",
+              "security",
+              "compliance",
+              "operations",
+              "data",
+              "usability"
+            ],
+            "description": "Must span at least 3 distinct dimensions (performance, security, compliance, reliability)."
+          },
+          "technique": {
+            "enum": [
+              "analogy",
+              "five_whys",
+              "scenario",
+              "boundary",
+              "alternative"
+            ],
+            "description": "Elicitation technique utilized"
+          },
+          "priority": {
+            "enum": [
+              "P0",
+              "P1",
+              "P2",
+              "P3"
+            ]
+          },
+          "decision": {
+            "enum": [
+              "include",
+              "defer",
+              "reject"
+            ],
+            "description": "Disposition: included, deferred, or rejected."
+          },
+          "reason": {
+            "type": "string",
+            "description": "Explicit rationale when deferred or rejected"
+          }
+        }
+      }
+    },
+    "non_goals": {
+      "type": "array",
+      "description": "Explicit scope boundaries and Non-Goals with justified rationale.",
+      "minItems": 3,
+      "maxItems": 30,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "statement",
+          "reason"
+        ],
+        "properties": {
+          "statement": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Explicit statement of excluded capability or boundary limit"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Rationale for setting this boundary"
+          }
+        }
+      }
+    },
+    "open_questions": {
+      "type": "array",
+      "description": "Owner-assigned open questions bounded to <= 10 items.",
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "question",
+          "blocks"
+        ],
+        "properties": {
+          "question": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Specific unresolved inquiry, avoiding vague placeholders"
+          },
+          "blocks": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Downstream milestone blocked by this question"
+          },
+          "owner": {
+            "type": "string",
+            "description": "Assigned stakeholder or decision-maker owner"
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "string",
+      "description": "Human-readable summary narrative"
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema://software-architecture/architecture-pattern/v1",
+  "title": "ArchitecturePattern",
+  "type": "object",
+  "required": [
+    "selected_pattern",
+    "monolith_first_assessment",
+    "boundary_definitions"
+  ],
+  "properties": {
+    "selected_pattern": {
+      "type": "string",
+      "enum": [
+        "Modular_Monolith",
+        "Microservices",
+        "Layered_Monolith",
+        "Event_Driven_Monolith"
+      ]
+    },
+    "monolith_first_assessment": {
+      "type": "object",
+      "required": [
+        "team_size_threshold_met",
+        "heterogeneous_tech_required",
+        "pattern_rationale"
+      ],
+      "properties": {
+        "team_size_threshold_met": {
+          "type": "boolean"
+        },
+        "heterogeneous_tech_required": {
+          "type": "boolean"
+        },
+        "pattern_rationale": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "boundary_definitions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "boundary_id",
+          "domain_name",
+          "scope",
+          "cohesion_focus"
+        ],
+        "properties": {
+          "boundary_id": {
+            "type": "string"
+          },
+          "domain_name": {
+            "type": "string"
+          },
+          "scope": {
+            "type": "string"
+          },
+          "cohesion_focus": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

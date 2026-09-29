@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema://product-management/personas-and-journey/v1",
+  "title": "PersonasAndJourneyV1",
+  "description": "Step 03 artifact: concrete personas and lifecycle journey touchpoints.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "product_name",
+    "personas",
+    "journey_stages",
+    "summary"
+  ],
+  "properties": {
+    "product_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "personas": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 6,
+      "description": "Concrete user persona profiles",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "role",
+          "core_motivation",
+          "pain_points",
+          "technical_proficiency",
+          "context_of_use"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^PSA-[0-9]{3}$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "core_motivation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "pain_points": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "technical_proficiency": {
+            "type": "string",
+            "enum": [
+              "novice",
+              "intermediate",
+              "expert"
+            ]
+          },
+          "context_of_use": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "journey_stages": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 8,
+      "description": "Lifecycle journey stages (Discovery -> Onboarding -> Core Flow -> Output -> Retention)",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "stage_id",
+          "stage_name",
+          "user_goal",
+          "touchpoints"
+        ],
+        "properties": {
+          "stage_id": {
+            "type": "string",
+            "pattern": "^STG-[0-9]{3}$"
+          },
+          "stage_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "user_goal": {
+            "type": "string",
+            "minLength": 1
+          },
+          "touchpoints": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "touchpoint_id",
+                "name",
+                "channel",
+                "user_action",
+                "emotion_score",
+                "friction_or_pain",
+                "opportunity"
+              ],
+              "properties": {
+                "touchpoint_id": {
+                  "type": "string",
+                  "pattern": "^TP-[0-9]{3}$"
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "channel": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "user_action": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "emotion_score": {
+                  "type": "integer",
+                  "minimum": -2,
+                  "maximum": 2,
+                  "description": "-2 (Very Poor) to +2 (Excellent)"
+                },
+                "friction_or_pain": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "opportunity": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

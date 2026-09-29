@@ -1,0 +1,274 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema://product-management/competitive-analysis/v2",
+  "title": "CompetitiveIntelligenceV2",
+  "description": "Step 02 artifact: market feasibility, competitor matrix, beachhead entry, and multi-dimensional moat assessment.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "product_name",
+    "market_overview",
+    "competitors",
+    "gap_analysis",
+    "beachhead_strategy",
+    "moat_assessment",
+    "why_we_win",
+    "summary"
+  ],
+  "properties": {
+    "product_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "market_overview": {
+      "type": "object",
+      "description": "Macro market overview and window of opportunity assessment",
+      "additionalProperties": false,
+      "required": [
+        "target_industry",
+        "market_timing",
+        "market_size_estimation",
+        "key_industry_trends"
+      ],
+      "properties": {
+        "target_industry": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Target market vertical and sector segmentation"
+        },
+        "market_timing": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Market timing and window of opportunity (why now is the ideal time to enter)"
+        },
+        "market_size_estimation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "tam",
+            "sam",
+            "som"
+          ],
+          "properties": {
+            "tam": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Total Addressable Market (TAM)"
+            },
+            "sam": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Serviceable Addressable Market (SAM)"
+            },
+            "som": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Serviceable Obtainable Market (SOM)"
+            }
+          }
+        },
+        "key_industry_trends": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "competitors": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 10,
+      "description": "Mainstream competitor benchmarking matrix (direct and indirect competitors)",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "category",
+          "core_features",
+          "strengths",
+          "weaknesses",
+          "pricing_model"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "direct",
+              "indirect",
+              "potential_substitute"
+            ]
+          },
+          "core_features": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "strengths": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "weaknesses": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "pricing_model": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reference_url": {
+            "type": "string",
+            "description": "Official competitor URL, pricing page, or verified public factual sources"
+          }
+        }
+      }
+    },
+    "gap_analysis": {
+      "type": "object",
+      "description": "Gap analysis of competitor offerings and unmet customer demands",
+      "additionalProperties": false,
+      "required": [
+        "unmet_customer_needs",
+        "feature_parity_gaps",
+        "user_experience_frictions"
+      ],
+      "properties": {
+        "unmet_customer_needs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "feature_parity_gaps": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "user_experience_frictions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "beachhead_strategy": {
+      "type": "object",
+      "description": "Differentiated beachhead entry strategy",
+      "additionalProperties": false,
+      "required": [
+        "target_niche",
+        "entry_point_feature",
+        "value_curve_differentiation"
+      ],
+      "properties": {
+        "target_niche": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Initial niche target audience or high-priority core scenarios"
+        },
+        "entry_point_feature": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Killer wedge feature for sharp market penetration"
+        },
+        "value_curve_differentiation": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Value curve reconstruction (where to eliminate, reduce, raise, and create)"
+        }
+      }
+    },
+    "moat_assessment": {
+      "type": "object",
+      "description": "Long-term defensible moats and competitive barriers",
+      "additionalProperties": false,
+      "required": [
+        "cost_advantage",
+        "network_effects",
+        "switching_costs",
+        "technology_or_data_moat"
+      ],
+      "properties": {
+        "cost_advantage": {
+          "type": "string",
+          "minLength": 1
+        },
+        "network_effects": {
+          "type": "string",
+          "minLength": 1
+        },
+        "switching_costs": {
+          "type": "string",
+          "minLength": 1
+        },
+        "technology_or_data_moat": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "why_we_win": {
+      "type": "object",
+      "description": "Rigorous win probability justification and defensive strategy",
+      "additionalProperties": false,
+      "required": [
+        "core_competitive_advantages",
+        "defensibility_arguments",
+        "strategic_risks"
+      ],
+      "properties": {
+        "core_competitive_advantages": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "defensibility_arguments": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Why competitors cannot easily replicate our core advantage within 6-12 months"
+        },
+        "strategic_risks": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

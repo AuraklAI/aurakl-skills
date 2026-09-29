@@ -1,0 +1,105 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Template",
+  "metadata": {
+    "id": "pm-tpl-prd-generic",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:6a383424e2866896623da1ba5a4b42774652c5627d60827aa7bc08b33f8276c0",
+    "created_at": 1764000000000,
+    "created_by": "jaxon",
+    "change_reason": "Generic PRD template: background, SMART goals, in/out scope, behavioral requirements, and SLAs",
+    "labels": {
+      "owner": "product",
+      "migrated_from": "aurakl-core/resources/experts/product-manager/templates/prd-template.md",
+      "product_type": "generic, multi_platform",
+      "serves_step": "assemble_comprehensive_prd",
+      "serves_output_slot": "prd"
+    }
+  },
+  "spec": {
+    "name": "Generic PRD Template",
+    "artifact_kind": "text_document",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "required": true,
+        "content_hint": "Concise summary of system scope, purpose, and target users",
+        "min_items": null
+      },
+      {
+        "id": "background",
+        "title": "Background & Market Context",
+        "required": true,
+        "content_hint": "Current user pain points and urgency rationale",
+        "min_items": null
+      },
+      {
+        "id": "goals",
+        "title": "Project Goals & Metrics",
+        "required": true,
+        "content_hint": "Measurable SMART objectives and success KPIs",
+        "min_items": 3
+      },
+      {
+        "id": "scope",
+        "title": "Scope & Non-Goals",
+        "required": true,
+        "content_hint": "Deliverables in scope and explicit justified scope exclusions",
+        "min_items": 3
+      },
+      {
+        "id": "do_not_change",
+        "title": "DO NOT CHANGE Invariants",
+        "required": true,
+        "content_hint": "Pre-existing system invariants and architectural constraints that must be preserved",
+        "min_items": null
+      },
+      {
+        "id": "functional_requirements",
+        "title": "Functional Requirements",
+        "required": true,
+        "content_hint": "Modular feature blocks with item anchors, implements links, and RFC 2119 keywords",
+        "min_items": 1
+      },
+      {
+        "id": "non_functional_requirements",
+        "title": "Non-Functional Requirements",
+        "required": true,
+        "content_hint": "Performance, capacity, security, and compliance quantified targets",
+        "min_items": null
+      },
+      {
+        "id": "dependencies_constraints",
+        "title": "Dependencies & Constraints",
+        "required": true,
+        "content_hint": "Upstream systems, third-party services, and compliance constraints",
+        "min_items": null
+      },
+      {
+        "id": "risks_assumptions",
+        "title": "Risks & Assumptions",
+        "required": true,
+        "content_hint": "Identified technical and product risks with mitigations",
+        "min_items": null
+      },
+      {
+        "id": "version_history",
+        "title": "Version History",
+        "required": true,
+        "content_hint": "Document revision log",
+        "min_items": null
+      }
+    ],
+    "item_anchor": {
+      "id_pattern": {
+        "explicit": {
+          "prefix": "REQ-"
+        }
+      },
+      "scope": "section"
+    },
+    "anchor_stability": "per_attempt"
+  }
+}

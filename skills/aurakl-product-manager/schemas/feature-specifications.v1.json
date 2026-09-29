@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schema://product-management/feature-specifications/v1",
+  "title": "FeatureSpecificationsV1",
+  "description": "Step 04 artifact: progressive feature specifications with behavioral contracts.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "product_name",
+    "features",
+    "summary"
+  ],
+  "properties": {
+    "product_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "features": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Detailed feature inventory and behavioral contract specifications",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "feature_id",
+          "name",
+          "module_id",
+          "derived_from_user_stories",
+          "preconditions",
+          "postconditions",
+          "business_rules"
+        ],
+        "properties": {
+          "feature_id": {
+            "type": "string",
+            "pattern": "^FEAT-[A-Z0-9]{2,8}-[0-9]{3}$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "module_id": {
+            "type": "string",
+            "pattern": "^MOD-[A-Z0-9]{2,8}$"
+          },
+          "derived_from_user_stories": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "pattern": "^USR-[A-Z0-9]{1,10}-[0-9]{3}$"
+            }
+          },
+          "preconditions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "postconditions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "business_rules": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

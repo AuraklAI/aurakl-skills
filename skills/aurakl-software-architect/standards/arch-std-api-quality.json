@@ -1,0 +1,41 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Standard",
+  "metadata": {
+    "id": "arch-std-api-quality",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:a813000400004000800000000000002400000000000000000000000000000001",
+    "created_at": 1764000000000,
+    "created_by": "aurakl",
+    "change_reason": "API contract and communication interface quality standard: Strict backward compatibility, idempotency for mutating verbs, and unified error codes",
+    "labels": {
+      "owner": "architecture",
+      "governs_step": "design_api_and_communication"
+    }
+  },
+  "spec": {
+    "name": "API Contract & Communication Protocol Quality Standard",
+    "scope": "step",
+    "rules": [
+      {
+        "id": "api.backward_compatibility_enforced",
+        "statement": "Backward compatibility is an iron law: introducing breaking API changes without an established deprecation lifecycle is strictly prohibited (breaking_changes_allowed must be false)",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "report_conforms_to_schema"
+      },
+      {
+        "id": "api.idempotency_defined",
+        "statement": "All mutating write endpoints (POST/PUT/PATCH/DELETE) must define an explicit idempotency mechanism",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "report_conforms_to_schema"
+      },
+      {
+        "id": "api.error_codes_comprehensive",
+        "statement": "Must provide a globally unified business error code taxonomy with explicit HTTP status code mappings",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "report_conforms_to_schema"
+      }
+    ]
+  }
+}

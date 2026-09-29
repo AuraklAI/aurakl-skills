@@ -1,0 +1,41 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Standard",
+  "metadata": {
+    "id": "arch-std-feature-guide-quality",
+    "version": "1.0.0",
+    "parent": null,
+    "content_hash": "sha256:jcs-v1:a813000400004000800000000000002600000000000000000000000000000001",
+    "created_at": 1764000000000,
+    "created_by": "aurakl",
+    "change_reason": "Complex feature implementation quality standard: Actionable algorithm pseudocode, time/space complexity, and timeboxed spike plans",
+    "labels": {
+      "owner": "architecture",
+      "governs_step": "guide_complex_features"
+    }
+  },
+  "spec": {
+    "name": "Complex Feature Implementation Quality Standard",
+    "scope": "step",
+    "rules": [
+      {
+        "id": "guide.pseudocode_and_complexity_required",
+        "statement": "High-risk or high-complexity features must provide detailed algorithm pseudocode along with explicit time and space complexity analysis",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "report_conforms_to_schema"
+      },
+      {
+        "id": "guide.spike_plans_timeboxed",
+        "statement": "For modules with technical uncertainty, must provide timeboxed Spike validation plans with definitive acceptance criteria",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "report_conforms_to_schema"
+      },
+      {
+        "id": "guide.no_placeholders",
+        "statement": "Leaving blank sections or using TODO/TBD placeholders in algorithms and implementation details is strictly prohibited",
+        "enforceability": "requires_criterion",
+        "criterion_hint": "report_conforms_to_schema"
+      }
+    ]
+  }
+}

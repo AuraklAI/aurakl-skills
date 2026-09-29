@@ -1,0 +1,88 @@
+{
+  "api_version": "aurakl.dev/v1",
+  "kind": "Template",
+  "metadata": {
+    "id": "pm-tpl-user-story-lingforge",
+    "version": "1.0.0",
+    "parent": null,
+    "created_at": 1764000000000,
+    "created_by": "jaxon",
+    "change_reason": "Lingforge format user story template with Epics, INVEST stories, Personas, journeys, and priority matrix",
+    "labels": {
+      "owner": "product",
+      "flavor": "lingforge",
+      "serves_output_slot": "user_stories"
+    }
+  },
+  "spec": {
+    "name": "Lingforge User Story Template",
+    "artifact_kind": "text_document",
+    "sections": [
+      {
+        "id": "overview",
+        "title": "Overview",
+        "required": true,
+        "content_hint": "Summary of story suite and delivery theme",
+        "min_items": null
+      },
+      {
+        "id": "epics",
+        "title": "Epics",
+        "required": true,
+        "content_hint": "Epic business objectives, value proposition, story breakdown, and effort estimates",
+        "min_items": 1
+      },
+      {
+        "id": "user_stories",
+        "title": "User Stories",
+        "required": true,
+        "content_hint": "INVEST stories with GWT acceptance criteria, dependencies, UI/UX notes, and success metrics",
+        "min_items": 1
+      },
+      {
+        "id": "user_personas",
+        "title": "User Personas",
+        "required": true,
+        "content_hint": "Persona characteristics, pain points, and core user goals",
+        "min_items": 1
+      },
+      {
+        "id": "user_journeys",
+        "title": "User Journeys",
+        "required": true,
+        "content_hint": "Step-by-step user actions, system responses, emotional curves, and friction points",
+        "min_items": 1
+      },
+      {
+        "id": "priority_matrix",
+        "title": "Priority Matrix",
+        "required": true,
+        "content_hint": "Must Have, Should Have, Could Have prioritization matrix",
+        "min_items": null
+      },
+      {
+        "id": "dependencies",
+        "title": "Dependencies",
+        "required": true,
+        "content_hint": "Upstream prerequisites and downstream deliverables",
+        "min_items": null
+      },
+      {
+        "id": "version_history",
+        "title": "Version History",
+        "required": true,
+        "content_hint": "Document revision log",
+        "min_items": null
+      }
+    ],
+    "item_anchor": {
+      "id_pattern": {
+        "explicit": {
+          "prefix": "USR-"
+        }
+      },
+      "scope": "section"
+    },
+    "anchor_stability": "per_attempt"
+  }
+}
