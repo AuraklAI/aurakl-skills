@@ -28,5 +28,5 @@ When the `aurakl-plugin` is active, all agents executing product management or s
 
 ## 4. Verification Before Delivery (铁律四：交付前必经 Oracle 门禁验证)
 - The agent MUST NOT declare a task or artifact "Done" based on hallucinated self-assertion.
-- All JSON deliverables must be verified by executing the Python validation and oracle tools (`lumen_pm.py validate/audit` or `aurakl_arch.py validate/oracle`).
+- All JSON deliverables must be verified by executing the Python validation and oracle tools (`aurakl pm validate/audit` or `aurakl arch validate/oracle`).
 - Only when the automated validator returns `PASSED` with 0 blocking errors may the artifact be presented to the user.

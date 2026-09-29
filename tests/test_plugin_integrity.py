@@ -58,11 +58,9 @@ class TestPluginIntegrity(unittest.TestCase):
             self.assertIn(f"name: {expected_name}", content)
             self.assertIn("description:", content)
 
-    def test_backward_compatibility_symlinks(self):
-        lumen_pm = self.skills_dir / "lumen-product-manager"
-        lumen_arch = self.skills_dir / "lumen-software-architect"
-        self.assertTrue(lumen_pm.exists(), "lumen-product-manager alias must exist")
-        self.assertTrue(lumen_arch.exists(), "lumen-software-architect alias must exist")
+    def test_skills_are_pure_aurakl(self):
+        skill_dirs = [p.name for p in self.skills_dir.iterdir() if not p.name.startswith(".")]
+        self.assertCountEqual(skill_dirs, ["aurakl-product-manager", "aurakl-software-architect"])
 
     def test_unified_cli_status(self):
         cli_py = self.plugin_root / "aurakl_cli.py"
