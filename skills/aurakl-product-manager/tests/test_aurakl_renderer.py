@@ -15,7 +15,7 @@ TEST_DIR = Path(__file__).resolve().parent
 SCRIPTS_DIR = TEST_DIR.parent / "scripts"
 sys.path.insert(0, str(SCRIPTS_DIR))
 
-from aurakl_renderer import AuraklMarkdownRenderer, LumenMarkdownRenderer, render_all_artifacts
+from aurakl_renderer import AuraklMarkdownRenderer, render_all_artifacts
 
 SKILL_ROOT = Path(__file__).resolve().parent.parent
 FIXTURES_DIR = SKILL_ROOT / "fixtures"
@@ -124,26 +124,26 @@ class TestAuraklMarkdownRenderer(unittest.TestCase):
     # =========================================================================
     def test_dynamic_language_matching_chinese_input(self):
         zh_req = {
-            "product_name": "测试安全哨兵",
+            "product_name": "\u6d4b\u8bd5\u5b89\u5168\u54e8\u5175",
             "five_w_one_h": {
-                "what": "构建企业级不可篡改审计系统",
-                "why": "满足数据主权监管与防篡改硬性要求",
-                "who": "安全架构师与合规官",
-                "when": "实时处理",
-                "where": "私有云环境",
-                "how": "基于流式日志审计"
+                "what": "\u6784\u5efa\u4f01\u4e1a\u7ea7\u4e0d\u53ef\u7be1\u6539\u5ba1\u8ba1\u7cfb\u7edf",
+                "why": "\u6ee1\u8db3\u6570\u636e\u4e3b\u6743\u76d1\u7ba1\u4e0e\u9632\u7be1\u6539\u786c\u6027\u8981\u6c42",
+                "who": "\u5b89\u5168\u67b6\u6784\u5e08\u4e0e\u5408\u89c4\u5b98",
+                "when": "\u5b9e\u65f6\u5904\u7406",
+                "where": "\u79c1\u6709\u4e91\u73af\u5883",
+                "how": "\u57fa\u4e8e\u6d41\u5f0f\u65e5\u5fd7\u5ba1\u8ba1"
             },
             "demand_validation": {
                 "problem_nature": "painkiller",
-                "willingness_to_pay_or_suffer": "监管罚单高达数千万元",
-                "current_workarounds": ["手工审计日志"],
-                "falsification_hypotheses": ["若自建开源方案可达到同等合规水准"],
-                "validation_experiment": "对标客户试点比对"
+                "willingness_to_pay_or_suffer": "\u76d1\u7ba1\u7f5a\u5355\u9ad8\u8fbe\u6570\u5343\u4e07\u5143",
+                "current_workarounds": ["\u624b\u5de5\u5ba1\u8ba1\u65e5\u5fd7"],
+                "falsification_hypotheses": ["\u82e5\u81ea\u5efa\u5f00\u6e90\u65b9\u6848\u53ef\u8fbe\u5230\u540c\u7b49\u5408\u89c4\u6c34\u51c6"],
+                "validation_experiment": "\u5bf9\u6807\u5ba2\u6237\u8bd5\u70b9\u6bd4\u5bf9"
             },
             "stakeholders": [],
-            "goals": [{"id": "G-001", "statement": "零漏报违规流转", "success_metric": "100% 检出"}],
-            "non_goals": [{"statement": "不做通用报表引擎", "reason": "保持领域专注"}],
-            "explicit_requirements": [{"id": "REQ-001", "statement": "日志写入即落锁", "priority": "P0", "related_goal_id": "G-001", "source_quote": "必须支持 WORM"}],
+            "goals": [{"id": "G-001", "statement": "\u96f6\u6f0f\u62a5\u8fdd\u89c4\u6d41\u8f6c", "success_metric": "100% \u68c0\u51fa"}],
+            "non_goals": [{"statement": "\u4e0d\u505a\u901a\u7528\u62a5\u8868\u5f15\u64ce", "reason": "\u4fdd\u6301\u9886\u57df\u4e13\u6ce8"}],
+            "explicit_requirements": [{"id": "REQ-001", "statement": "\u65e5\u5fd7\u5199\u5165\u5373\u843d\u9501", "priority": "P0", "related_goal_id": "G-001", "source_quote": "\u5fc5\u987b\u652f\u6301 WORM"}],
             "implicit_requirements": [],
             "product_type": "cloud_platform",
             "open_questions": []
@@ -151,11 +151,11 @@ class TestAuraklMarkdownRenderer(unittest.TestCase):
 
         # Auto-detects Chinese from contents
         md_zh = self.renderer.render_requirement_analysis(zh_req)
-        self.assertIn("## What（做什么）", md_zh)
-        self.assertIn("## Why（为什么）", md_zh)
-        self.assertIn("## Who（给谁用）", md_zh)
-        self.assertIn("## 隐性需求挖掘", md_zh)
-        self.assertIn("## 核心功能优先级", md_zh)
+        self.assertIn("## What\uff08\u505a\u4ec0\u4e48\uff09", md_zh)
+        self.assertIn("## Why\uff08\u4e3a\u4ec0\u4e48\uff09", md_zh)
+        self.assertIn("## Who\uff08\u7ed9\u8c01\u7528\uff09", md_zh)
+        self.assertIn("## \u9690\u6027\u9700\u6c42\u6316\u6398", md_zh)
+        self.assertIn("## \u6838\u5fc3\u529f\u80fd\u4f18\u5148\u7ea7", md_zh)
 
         # Explicit language parameter forces English if requested
         md_en_forced = self.renderer.render_requirement_analysis(zh_req, lang="en")
@@ -164,20 +164,20 @@ class TestAuraklMarkdownRenderer(unittest.TestCase):
 
     def test_dynamic_language_matching_chinese_prd_and_invariants(self):
         zh_inv = {
-            "product_name": "中文测试产品",
-            "state_invariants": [{"invariant_id": "INV-STA-001", "target_entity": "交易流", "formal_rule": "单向推进", "severity": "CRITICAL", "violation_consequence": "状态逆流"}],
-            "data_integrity_invariants": [{"invariant_id": "INV-DAT-001", "target_data_model": "账户账本", "conservation_rule": "借贷必平衡", "severity": "CRITICAL", "violation_consequence": "账实不符"}],
-            "security_and_privacy_invariants": [{"invariant_id": "INV-SEC-001", "scope": "租户隔离", "isolation_rule": "硬性隔离", "severity": "CRITICAL", "violation_consequence": "跨租户泄露"}],
-            "ux_and_safety_invariants": [{"invariant_id": "INV-UXS-001", "interaction_scope": "销毁操作", "safety_rule": "二次确认", "severity": "HIGH", "violation_consequence": "误删除"}]
+            "product_name": "\u4e2d\u6587\u6d4b\u8bd5\u4ea7\u54c1",
+            "state_invariants": [{"invariant_id": "INV-STA-001", "target_entity": "\u4ea4\u6613\u6d41", "formal_rule": "\u5355\u5411\u63a8\u8fdb", "severity": "CRITICAL", "violation_consequence": "\u72b6\u6001\u9006\u6d41"}],
+            "data_integrity_invariants": [{"invariant_id": "INV-DAT-001", "target_data_model": "\u8d26\u6237\u8d26\u672c", "conservation_rule": "\u501f\u8d37\u5fc5\u5e73\u8861", "severity": "CRITICAL", "violation_consequence": "\u8d26\u5b9e\u4e0d\u7b26"}],
+            "security_and_privacy_invariants": [{"invariant_id": "INV-SEC-001", "scope": "\u79df\u6237\u9694\u79bb", "isolation_rule": "\u786c\u6027\u9694\u79bb", "severity": "CRITICAL", "violation_consequence": "\u8de8\u79df\u6237\u6cc4\u9732"}],
+            "ux_and_safety_invariants": [{"invariant_id": "INV-UXS-001", "interaction_scope": "\u9500\u6bc1\u64cd\u4f5c", "safety_rule": "\u4e8c\u6b21\u786e\u8ba4", "severity": "HIGH", "violation_consequence": "\u8bef\u5220\u9664"}]
         }
         md = self.renderer.render_product_invariants(zh_inv)
-        self.assertIn("## 状态机不变量", md)
-        self.assertIn("## 数据一致性与守恒不变量", md)
-        self.assertIn("## 权限与租户隔离不变量", md)
-        self.assertIn("## 交互体验安全不变量", md)
+        self.assertIn("## \u72b6\u6001\u673a\u4e0d\u53d8\u91cf", md)
+        self.assertIn("## \u6570\u636e\u4e00\u81f4\u6027\u4e0e\u5b88\u6052\u4e0d\u53d8\u91cf", md)
+        self.assertIn("## \u6743\u9650\u4e0e\u79df\u6237\u9694\u79bb\u4e0d\u53d8\u91cf", md)
+        self.assertIn("## \u4ea4\u4e92\u4f53\u9a8c\u5b89\u5168\u4e0d\u53d8\u91cf", md)
 
-    def test_backward_compatibility_alias(self):
-        self.assertIs(AuraklMarkdownRenderer, LumenMarkdownRenderer)
+    def test_renderer_initialization(self):
+        self.assertIsInstance(self.renderer, AuraklMarkdownRenderer)
 
 
 if __name__ == "__main__":

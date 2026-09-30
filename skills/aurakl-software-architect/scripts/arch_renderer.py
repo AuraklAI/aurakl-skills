@@ -95,7 +95,7 @@ class PanguTypographyEngine:
     """
     Automated Typography & Visual Ergonomics Engine.
     Strictly conforms to:
-    1. 《中文文案排版指北》(Chinese Copywriting Guidelines / 盘古之白):
+    1. \u300a\u4e2d\u6587\u6587\u6848\u6392\u7248\u6307\u5317\u300b(Chinese Copywriting Guidelines / \u76d8\u53e4\u4e4b\u767d):
        - Inserts half-width space between CJK characters and Latin/Digits/Symbols.
        - Enforces backtick wrappers around code, identifiers, and parameters.
        - Preserves Markdown code blocks, inline code, and URL link targets untouched.
@@ -227,56 +227,56 @@ class AuraklArchitectureRenderer:
 
         if lang == "zh":
             lines = [
-                f"# {pname} 技术选型与架构决策规约 (ADR)",
+                f"# {pname} \u6280\u672f\u9009\u578b\u4e0e\u67b6\u6784\u51b3\u7b56\u89c4\u7ea6 (ADR)",
                 "",
                 "```yaml",
                 "metadata:",
-                f'  title: "{pname} 技术选型决策规约"',
+                f'  title: "{pname} \u6280\u672f\u9009\u578b\u51b3\u7b56\u89c4\u7ea6"',
                 f'  template_id: "{tpl.get("metadata", {}).get("id")}"',
                 '  api_version: "aurakl.dev/v1"',
                 f'  design_mode: "{mode}"',
                 f'  must_have_requirements_count: {len(reqs)}',
                 "```",
                 "",
-                "> 本文档定义系统技术架构底座，固化 PRD 强约束技术栈，通过多维评分矩阵确定未决技术方案，并提供架构决策记录 (ADR)。",
+                "> \u672c\u6587\u6863\u5b9a\u4e49\u7cfb\u7edf\u6280\u672f\u67b6\u6784\u5e95\u5ea7\uff0c\u56fa\u5316 PRD \u5f3a\u7ea6\u675f\u6280\u672f\u6808\uff0c\u901a\u8fc7\u591a\u7ef4\u8bc4\u5206\u77e9\u9635\u786e\u5b9a\u672a\u51b3\u6280\u672f\u65b9\u6848\uff0c\u5e76\u63d0\u4f9b\u67b6\u6784\u51b3\u7b56\u8bb0\u5f55 (ADR)\u3002",
                 "",
                 "---",
                 "",
-                "## 1. 约束继承与设计模式 (Design Context)",
+                "## 1. \u7ea6\u675f\u7ee7\u627f\u4e0e\u8bbe\u8ba1\u6a21\u5f0f (Design Context)",
                 "",
-                f"- **系统设计模式**：`{mode}`",
-                f"- **关联 PRD Must-Have 需求数**：`{len(reqs)}` 项 ({', '.join(reqs)})",
+                f"- **\u7cfb\u7edf\u8bbe\u8ba1\u6a21\u5f0f**\uff1a`{mode}`",
+                f"- **\u5173\u8054 PRD Must-Have \u9700\u6c42\u6570**\uff1a`{len(reqs)}` \u9879 ({', '.join(reqs)})",
                 "",
-                "### 固化技术栈清单 (Locked Tech Stack)",
+                "### \u56fa\u5316\u6280\u672f\u6808\u6e05\u5355 (Locked Tech Stack)",
                 "",
-                "| 技术维度 | 选型结果 | 约束来源 | 架构合理性论证 |",
+                "| \u6280\u672f\u7ef4\u5ea6 | \u9009\u578b\u7ed3\u679c | \u7ea6\u675f\u6765\u6e90 | \u67b6\u6784\u5408\u7406\u6027\u8bba\u8bc1 |",
                 "| :--- | :--- | :--- | :--- |",
             ]
             for item in locked:
-                dim = item.get('dimension') or item.get('category', '技术组件')
+                dim = item.get('dimension') or item.get('category', '\u6280\u672f\u7ec4\u4ef6')
                 tech = item.get('technology', '-')
-                src = item.get('constraint_source') or item.get('source_constraint', 'PRD 不变量')
+                src = item.get('constraint_source') or item.get('source_constraint', 'PRD \u4e0d\u53d8\u91cf')
                 rat = item.get('rationale', '')
                 lines.append(f"| **{dim}** | `{tech}` | {src} | {rat} |")
 
             lines.extend([
                 "",
-                "## 2. 备选技术多维评估矩阵与 ADR (Evaluated ADRs)",
+                "## 2. \u5907\u9009\u6280\u672f\u591a\u7ef4\u8bc4\u4f30\u77e9\u9635\u4e0e ADR (Evaluated ADRs)",
                 "",
             ])
             for adr in adrs:
                 aid = adr.get('adr_id') or adr.get('id', 'ADR-001')
-                decision = adr.get('chosen_alternative') or adr.get('decision', '已定案选型')
+                decision = adr.get('chosen_alternative') or adr.get('decision', '\u5df2\u5b9a\u6848\u9009\u578b')
                 lines.extend([
                     f"### {aid}: {adr.get('title')}",
-                    f"- **决策状态**：`{adr.get('status', 'ACCEPTED')}`",
-                    f"- **上下文背景**：{adr.get('context')}",
-                    f"- **最终决策**：选用 `{decision}`",
-                    f"- **决策理由**：{adr.get('rationale')}",
-                    f"- **架构影响与后果**：{adr.get('consequences')}",
+                    f"- **\u51b3\u7b56\u72b6\u6001**\uff1a`{adr.get('status', 'ACCEPTED')}`",
+                    f"- **\u4e0a\u4e0b\u6587\u80cc\u666f**\uff1a{adr.get('context')}",
+                    f"- **\u6700\u7ec8\u51b3\u7b56**\uff1a\u9009\u7528 `{decision}`",
+                    f"- **\u51b3\u7b56\u7406\u7531**\uff1a{adr.get('rationale')}",
+                    f"- **\u67b6\u6784\u5f71\u54cd\u4e0e\u540e\u679c**\uff1a{adr.get('consequences')}",
                     "",
-                    "#### 备选方案评分对比",
-                    "| 方案名称 | 技术特征 | 综合评分 | 判定结论 |",
+                    "#### \u5907\u9009\u65b9\u6848\u8bc4\u5206\u5bf9\u6bd4",
+                    "| \u65b9\u6848\u540d\u79f0 | \u6280\u672f\u7279\u5f81 | \u7efc\u5408\u8bc4\u5206 | \u5224\u5b9a\u7ed3\u8bba |",
                     "| :--- | :--- | :--- | :--- |",
                 ])
                 alts = adr.get("evaluated_alternatives") or adr.get("alternatives_considered", [])
@@ -288,9 +288,9 @@ class AuraklArchitectureRenderer:
                     if not pros_cons:
                         pc_parts = []
                         if pros:
-                            pc_parts.append(f"优势: {', '.join(pros)}")
+                            pc_parts.append(f"\u4f18\u52bf: {', '.join(pros)}")
                         if cons:
-                            pc_parts.append(f"劣势: {', '.join(cons)}")
+                            pc_parts.append(f"\u52a3\u52bf: {', '.join(cons)}")
                         pros_cons = "; ".join(pc_parts) or alt.get('summary', '-')
                     score = alt.get('score', 0.0)
                     is_chosen = (
@@ -301,35 +301,35 @@ class AuraklArchitectureRenderer:
                         or (decision and decision in alt_name)
                         or (adr.get('status') == 'ACCEPTED' and alts and score == max(a.get('score', 0.0) for a in alts) and score > 8.0)
                     )
-                    conc = "✅ 采纳" if is_chosen else "❌ 放弃"
+                    conc = "✅ \u91c7\u7eb3" if is_chosen else "❌ \u653e\u5f03"
                     lines.append(f"| **{alt_name}** | {pros_cons} | `{score} / 100` | {conc} |")
                 lines.append("")
 
             lines.extend([
-                "## 3. 最终技术栈全景视图 (Final Tech Stack Panorama)",
+                "## 3. \u6700\u7ec8\u6280\u672f\u6808\u5168\u666f\u89c6\u56fe (Final Tech Stack Panorama)",
                 "",
-                "| 分层维度 | 技术组件 / 框架 | 版本要求 | 选型理由 |",
+                "| \u5206\u5c42\u7ef4\u5ea6 | \u6280\u672f\u7ec4\u4ef6 / \u6846\u67b6 | \u7248\u672c\u8981\u6c42 | \u9009\u578b\u7406\u7531 |",
                 "| :--- | :--- | :--- | :--- |",
             ])
             for layer, detail in final_stack.items():
                 if isinstance(detail, dict):
                     lines.append(f"| **{layer}** | `{detail.get('technology')}` | `{detail.get('version', 'latest')}` | {detail.get('rationale')} |")
                 else:
-                    lines.append(f"| **{layer}** | `{detail}` | - | 基础标准选型 |")
+                    lines.append(f"| **{layer}** | `{detail}` | - | \u57fa\u7840\u6807\u51c6\u9009\u578b |")
 
             if isinstance(compat, list):
                 compat_summary = "; ".join(compat)
-                compat_policy = "严格禁止任何破坏性变更，遵循双版本并存与 Expand-Contract 演化策略"
+                compat_policy = "\u4e25\u683c\u7981\u6b62\u4efb\u4f55\u7834\u574f\u6027\u53d8\u66f4\uff0c\u9075\u5faa\u53cc\u7248\u672c\u5e76\u5b58\u4e0e Expand-Contract \u6f14\u5316\u7b56\u7565"
             else:
-                compat_summary = compat.get('guarantee_summary', '严格向后兼容，禁止破坏性变更')
-                compat_policy = compat.get('breaking_change_policy', '非破坏性升级，重大变更须至少双版本并存')
+                compat_summary = compat.get('guarantee_summary', '\u4e25\u683c\u5411\u540e\u517c\u5bb9\uff0c\u7981\u6b62\u7834\u574f\u6027\u53d8\u66f4')
+                compat_policy = compat.get('breaking_change_policy', '\u975e\u7834\u574f\u6027\u5347\u7ea7\uff0c\u91cd\u5927\u53d8\u66f4\u987b\u81f3\u5c11\u53cc\u7248\u672c\u5e76\u5b58')
 
             lines.extend([
                 "",
-                "## 4. 向后兼容性承诺 (Backward Compatibility)",
+                "## 4. \u5411\u540e\u517c\u5bb9\u6027\u627f\u8bfa (Backward Compatibility)",
                 "",
-                f"- **兼容性保障准则**：{compat_summary}",
-                f"- **演化淘汰机制**：{compat_policy}",
+                f"- **\u517c\u5bb9\u6027\u4fdd\u969c\u51c6\u5219**\uff1a{compat_summary}",
+                f"- **\u6f14\u5316\u6dd8\u6c70\u673a\u5236**\uff1a{compat_policy}",
                 "",
             ])
 
@@ -459,15 +459,15 @@ class AuraklArchitectureRenderer:
             trait_name = f"{''.join(w.title() for w in mname.split('_'))}Port"
             derived.append({
                 "code": mid,
-                "name": f"{mname} 组件" if lang == "zh" else f"{mname} Component",
+                "name": f"{mname} \u7ec4\u4ef6" if lang == "zh" else f"{mname} Component",
                 "responsibility": mod.get("responsibilities", mod.get("description", "-")),
                 "trait": trait_name,
-                "entities": ", ".join(mod.get("implements_requirements", [])) or ("核心实体" if lang == "zh" else "CoreEntity")
+                "entities": ", ".join(mod.get("implements_requirements", [])) or ("\u6838\u5fc3\u5b9e\u4f53" if lang == "zh" else "CoreEntity")
             })
         if not derived:
             derived = [
-                {"code": "SUB-01", "name": "核心业务处理子系统" if lang == "zh" else "Core Domain Subsystem", "responsibility": "业务核心逻辑处理与状态机调度" if lang == "zh" else "Core domain logic and state transitions", "trait": "CoreDomainPort", "entities": "DomainAggregate"},
-                {"code": "SUB-02", "name": "接口与协议接入子系统" if lang == "zh" else "Interface Gateway Subsystem", "responsibility": "协议接入与认证鉴权" if lang == "zh" else "Protocol ingress and security validation", "trait": "GatewayPort", "entities": "SecurityContext"}
+                {"code": "SUB-01", "name": "\u6838\u5fc3\u4e1a\u52a1\u5904\u7406\u5b50\u7cfb\u7edf" if lang == "zh" else "Core Domain Subsystem", "responsibility": "\u4e1a\u52a1\u6838\u5fc3\u903b\u8f91\u5904\u7406\u4e0e\u72b6\u6001\u673a\u8c03\u5ea6" if lang == "zh" else "Core domain logic and state transitions", "trait": "CoreDomainPort", "entities": "DomainAggregate"},
+                {"code": "SUB-02", "name": "\u63a5\u53e3\u4e0e\u534f\u8bae\u63a5\u5165\u5b50\u7cfb\u7edf" if lang == "zh" else "Interface Gateway Subsystem", "responsibility": "\u534f\u8bae\u63a5\u5165\u4e0e\u8ba4\u8bc1\u9274\u6743" if lang == "zh" else "Protocol ingress and security validation", "trait": "GatewayPort", "entities": "SecurityContext"}
             ]
         return derived
 
@@ -497,7 +497,7 @@ class AuraklArchitectureRenderer:
                 "name": f"pkg-{lname}",
                 "kind": kind,
                 "exports": ", ".join(mod_names) or (lay.get("responsibility", "-")[:40] + "..."),
-                "dependencies": ", ".join(lay.get("allowed_dependencies", [])) or ("无" if lang == "zh" else "None"),
+                "dependencies": ", ".join(lay.get("allowed_dependencies", [])) or ("\u65e0" if lang == "zh" else "None"),
                 "layer": f"{lid} ({lay.get('name')})"
             })
         return derived or [
@@ -521,9 +521,9 @@ class AuraklArchitectureRenderer:
             is_infra = (lid == "L3" or "storage" in lname or "infra" in lname)
             derived.append({
                 "name": f"{lname}-worker",
-                "model": ("异步事件驱动事件循环 (Async Event-Loop)" if lang == "zh" else "Async Event-Driven Runtime") if is_api else (("专用事务与批处理线程池" if lang == "zh" else "Dedicated Transaction Worker Pool") if not is_infra else ("持久化连接池管理池" if lang == "zh" else "Connection Pool Isolation")),
+                "model": ("\u5f02\u6b65\u4e8b\u4ef6\u9a71\u52a8\u4e8b\u4ef6\u5faa\u73af (Async Event-Loop)" if lang == "zh" else "Async Event-Driven Runtime") if is_api else (("\u4e13\u7528\u4e8b\u52a1\u4e0e\u6279\u5904\u7406\u7ebf\u7a0b\u6c60" if lang == "zh" else "Dedicated Transaction Worker Pool") if not is_infra else ("\u6301\u4e45\u5316\u8fde\u63a5\u6c60\u7ba1\u7406\u6c60" if lang == "zh" else "Connection Pool Isolation")),
                 "resources": "4 Cores / 8 GB / 1000 conns" if is_api else ("4 Cores / 8 GB / 128 conns" if not is_infra else "8 Cores / 16 GB / 64 conns"),
-                "lock": ("无锁事件驱动 + 令牌桶限流" if lang == "zh" else "Lock-free event loops + Token Bucket") if is_api else (("分布式租约锁 + 乐观重试" if lang == "zh" else "Distributed Lease + Optimistic Retry") if not is_infra else ("数据库行锁与连接池排队" if lang == "zh" else "Row-level locks + Pool Queuing")),
+                "lock": ("\u65e0\u9501\u4e8b\u4ef6\u9a71\u52a8 + \u4ee4\u724c\u6876\u9650\u6d41" if lang == "zh" else "Lock-free event loops + Token Bucket") if is_api else (("\u5206\u5e03\u5f0f\u79df\u7ea6\u9501 + \u4e50\u89c2\u91cd\u8bd5" if lang == "zh" else "Distributed Lease + Optimistic Retry") if not is_infra else ("\u6570\u636e\u5e93\u884c\u9501\u4e0e\u8fde\u63a5\u6c60\u6392\u961f" if lang == "zh" else "Row-level locks + Pool Queuing")),
                 "latency": "< 25ms" if is_api else ("< 200ms" if not is_infra else "< 10ms")
             })
         return derived or [
@@ -564,16 +564,16 @@ class AuraklArchitectureRenderer:
             if data_flows and data_flows[0].get("name"):
                 scen_name = data_flows[0].get("name")
             else:
-                scen_name = f"{sys_name} 核心端到端业务闭环执行时序" if lang == "zh" else f"{sys_name} Core End-to-End Execution Scenario"
+                scen_name = f"{sys_name} \u6838\u5fc3\u7aef\u5230\u7aef\u4e1a\u52a1\u95ed\u73af\u6267\u884c\u65f6\u5e8f" if lang == "zh" else f"{sys_name} Core End-to-End Execution Scenario"
         if not steps:
             if data_flows and data_flows[0].get("steps"):
                 steps = [f"{i}. {s}" for i, s in enumerate(data_flows[0].get("steps", []), 1)]
             else:
                 steps = [
-                    "1. **逻辑视图触发**：客户端下发操作请求，接口层拦截并校验请求规范与鉴权安全策略。" if lang == "zh" else "1. **Logical View Trigger**: Client issues request; interface layer performs schema & auth validation.",
-                    "2. **运行视图并发隔离**：运行时工作节点申请分布式并发排他租约，防止重复请求重放与资源争用。" if lang == "zh" else "2. **Process View Concurrency**: Worker node acquires distributed lock to prevent duplicate replay.",
-                    "3. **开发视图契约流转**：模块按分层强类型 Trait 契约调用领域模型，执行核心不变量与状态机校验。" if lang == "zh" else "3. **Development View Trait Call**: Modules invoke strongly typed traits for domain invariants validation.",
-                    "4. **物理视图事务落地**：基础设施层协调跨可用区部署的持久化存储执行事务写入并输出审计凭据。" if lang == "zh" else "4. **Physical View Persistence**: Storage adapters commit ACID transactions across multi-AZ nodes."
+                    "1. **\u903b\u8f91\u89c6\u56fe\u89e6\u53d1**\uff1a\u5ba2\u6237\u7aef\u4e0b\u53d1\u64cd\u4f5c\u8bf7\u6c42\uff0c\u63a5\u53e3\u5c42\u62e6\u622a\u5e76\u6821\u9a8c\u8bf7\u6c42\u89c4\u8303\u4e0e\u9274\u6743\u5b89\u5168\u7b56\u7565\u3002" if lang == "zh" else "1. **Logical View Trigger**: Client issues request; interface layer performs schema & auth validation.",
+                    "2. **\u8fd0\u884c\u89c6\u56fe\u5e76\u53d1\u9694\u79bb**\uff1a\u8fd0\u884c\u65f6\u5de5\u4f5c\u8282\u70b9\u7533\u8bf7\u5206\u5e03\u5f0f\u5e76\u53d1\u6392\u4ed6\u79df\u7ea6\uff0c\u9632\u6b62\u91cd\u590d\u8bf7\u6c42\u91cd\u653e\u4e0e\u8d44\u6e90\u4e89\u7528\u3002" if lang == "zh" else "2. **Process View Concurrency**: Worker node acquires distributed lock to prevent duplicate replay.",
+                    "3. **\u5f00\u53d1\u89c6\u56fe\u5951\u7ea6\u6d41\u8f6c**\uff1a\u6a21\u5757\u6309\u5206\u5c42\u5f3a\u7c7b\u578b Trait \u5951\u7ea6\u8c03\u7528\u9886\u57df\u6a21\u578b\uff0c\u6267\u884c\u6838\u5fc3\u4e0d\u53d8\u91cf\u4e0e\u72b6\u6001\u673a\u6821\u9a8c\u3002" if lang == "zh" else "3. **Development View Trait Call**: Modules invoke strongly typed traits for domain invariants validation.",
+                    "4. **\u7269\u7406\u89c6\u56fe\u4e8b\u52a1\u843d\u5730**\uff1a\u57fa\u7840\u8bbe\u65bd\u5c42\u534f\u8c03\u8de8\u53ef\u7528\u533a\u90e8\u7f72\u7684\u6301\u4e45\u5316\u5b58\u50a8\u6267\u884c\u4e8b\u52a1\u5199\u5165\u5e76\u8f93\u51fa\u5ba1\u8ba1\u51ed\u636e\u3002" if lang == "zh" else "4. **Physical View Persistence**: Storage adapters commit ACID transactions across multi-AZ nodes."
                 ]
         return scen_name, steps
 
@@ -599,7 +599,7 @@ class AuraklArchitectureRenderer:
 
         if lang == "zh":
             lines = [
-                f"# {sys_name} 系统拓扑与分层架构设计规约",
+                f"# {sys_name} \u7cfb\u7edf\u62d3\u6251\u4e0e\u5206\u5c42\u67b6\u6784\u8bbe\u8ba1\u89c4\u7ea6",
                 "",
                 "```yaml",
                 "metadata:",
@@ -609,30 +609,30 @@ class AuraklArchitectureRenderer:
                 f'  layer_count: {layer_count}',
                 "```",
                 "",
-                "> 本设计严格遵循 Linus 极简务实哲学与 4+1 架构视图模型：坚持单体优先，分层严格 <= 3 层，依赖单向无环，模块接口强类型约束，涵盖全局总体架构全景拓扑图与五大架构视图。",
+                "> \u672c\u8bbe\u8ba1\u4e25\u683c\u9075\u5faa Linus \u6781\u7b80\u52a1\u5b9e\u54f2\u5b66\u4e0e 4+1 \u67b6\u6784\u89c6\u56fe\u6a21\u578b\uff1a\u575a\u6301\u5355\u4f53\u4f18\u5148\uff0c\u5206\u5c42\u4e25\u683c <= 3 \u5c42\uff0c\u4f9d\u8d56\u5355\u5411\u65e0\u73af\uff0c\u6a21\u5757\u63a5\u53e3\u5f3a\u7c7b\u578b\u7ea6\u675f\uff0c\u6db5\u76d6\u5168\u5c40\u603b\u4f53\u67b6\u6784\u5168\u666f\u62d3\u6251\u56fe\u4e0e\u4e94\u5927\u67b6\u6784\u89c6\u56fe\u3002",
                 "",
                 "---",
                 "",
-                "## 1. 架构模式与单体优先论证 (Architecture Overview)",
+                "## 1. \u67b6\u6784\u6a21\u5f0f\u4e0e\u5355\u4f53\u4f18\u5148\u8bba\u8bc1 (Architecture Overview)",
                 "",
-                f"- **架构模式**：`{data.get('architecture_pattern', 'Modular_Monolith')}`",
-                f"- **单体优先论证**：{data.get('monolith_justification', '遵循 Linus 极简哲学：微服务是规模化的产物，而不是目标。单体架构具备零网络延迟、单机事务一致性、调试与部署极其简明的高效优势，完全规避分布式事务与网络分区复杂性。')}",
-                f"- **分层数量**：`{layer_count}` 层（严格不超过 3 层，依赖单向流动）",
+                f"- **\u67b6\u6784\u6a21\u5f0f**\uff1a`{data.get('architecture_pattern', 'Modular_Monolith')}`",
+                f"- **\u5355\u4f53\u4f18\u5148\u8bba\u8bc1**\uff1a{data.get('monolith_justification', '\u9075\u5faa Linus \u6781\u7b80\u54f2\u5b66\uff1a\u5fae\u670d\u52a1\u662f\u89c4\u6a21\u5316\u7684\u4ea7\u7269\uff0c\u800c\u4e0d\u662f\u76ee\u6807\u3002\u5355\u4f53\u67b6\u6784\u5177\u5907\u96f6\u7f51\u7edc\u5ef6\u8fdf\u3001\u5355\u673a\u4e8b\u52a1\u4e00\u81f4\u6027\u3001\u8c03\u8bd5\u4e0e\u90e8\u7f72\u6781\u5176\u7b80\u660e\u7684\u9ad8\u6548\u4f18\u52bf\uff0c\u5b8c\u5168\u89c4\u907f\u5206\u5e03\u5f0f\u4e8b\u52a1\u4e0e\u7f51\u7edc\u5206\u533a\u590d\u6742\u6027\u3002')}",
+                f"- **\u5206\u5c42\u6570\u91cf**\uff1a`{layer_count}` \u5c42\uff08\u4e25\u683c\u4e0d\u8d85\u8fc7 3 \u5c42\uff0c\u4f9d\u8d56\u5355\u5411\u6d41\u52a8\uff09",
                 "",
-                "## 2. 总体架构全景拓扑图 (Overall Architecture Panorama)",
+                "## 2. \u603b\u4f53\u67b6\u6784\u5168\u666f\u62d3\u6251\u56fe (Overall Architecture Panorama)",
                 "",
-                "> 全局端到端企业架构全景拓扑：涵盖接入客户端、边缘与协议网关、核心领域引擎、分布式事务编排、流批 CDC 管道、多引擎持久化存储及全链路横切防线。",
+                "> \u5168\u5c40\u7aef\u5230\u7aef\u4f01\u4e1a\u67b6\u6784\u5168\u666f\u62d3\u6251\uff1a\u6db5\u76d6\u63a5\u5165\u5ba2\u6237\u7aef\u3001\u8fb9\u7f18\u4e0e\u534f\u8bae\u7f51\u5173\u3001\u6838\u5fc3\u9886\u57df\u5f15\u64ce\u3001\u5206\u5e03\u5f0f\u4e8b\u52a1\u7f16\u6392\u3001\u6d41\u6279 CDC \u7ba1\u9053\u3001\u591a\u5f15\u64ce\u6301\u4e45\u5316\u5b58\u50a8\u53ca\u5168\u94fe\u8def\u6a2a\u5207\u9632\u7ebf\u3002",
                 "",
                 "```mermaid",
                 overall_diagram.strip() if overall_diagram else (c4.strip() if c4 else "graph TD;\n  Client --> Gateway;\n  Gateway --> CoreDomain;\n  CoreDomain --> Storage;"),
                 "```",
                 "",
-                "## 3. 4+1 架构视图模型全景规约 (4+1 Architectural View Model)",
+                "## 3. 4+1 \u67b6\u6784\u89c6\u56fe\u6a21\u578b\u5168\u666f\u89c4\u7ea6 (4+1 Architectural View Model)",
                 "",
-                "### 3.1 逻辑架构视图 (Logical View)",
-                f"**视图关注点**：{logical_v.get('description', '系统对终端用户与智能体提供的业务功能边界、核心子系统划分、聚合根领域归属与强类型接口契约抽象。')}",
+                "### 3.1 \u903b\u8f91\u67b6\u6784\u89c6\u56fe (Logical View)",
+                f"**\u89c6\u56fe\u5173\u6ce8\u70b9**\uff1a{logical_v.get('description', '\u7cfb\u7edf\u5bf9\u7ec8\u7aef\u7528\u6237\u4e0e\u667a\u80fd\u4f53\u63d0\u4f9b\u7684\u4e1a\u52a1\u529f\u80fd\u8fb9\u754c\u3001\u6838\u5fc3\u5b50\u7cfb\u7edf\u5212\u5206\u3001\u805a\u5408\u6839\u9886\u57df\u5f52\u5c5e\u4e0e\u5f3a\u7c7b\u578b\u63a5\u53e3\u5951\u7ea6\u62bd\u8c61\u3002')}",
                 "",
-                "| 子系统代码 | 子系统名称 | 核心职责与领域边界 | 核心抽象契约 (Core Port / Trait) | 包含领域实体 |",
+                "| \u5b50\u7cfb\u7edf\u4ee3\u7801 | \u5b50\u7cfb\u7edf\u540d\u79f0 | \u6838\u5fc3\u804c\u8d23\u4e0e\u9886\u57df\u8fb9\u754c | \u6838\u5fc3\u62bd\u8c61\u5951\u7ea6 (Core Port / Trait) | \u5305\u542b\u9886\u57df\u5b9e\u4f53 |",
                 "| :--- | :--- | :--- | :--- | :--- |",
             ]
             subsystems = self._synthesize_subsystems(logical_v, modules, "zh")
@@ -649,10 +649,10 @@ class AuraklArchitectureRenderer:
 
             lines.extend([
                 "",
-                "### 3.2 开发架构视图 (Development View)",
-                f"**视图关注点**：{dev_v.get('description', '软件代码在工程开发环境中的模块组织拓扑、Crate/包依赖层级、编译边界防线与物理源码目录结构。')}",
+                "### 3.2 \u5f00\u53d1\u67b6\u6784\u89c6\u56fe (Development View)",
+                f"**\u89c6\u56fe\u5173\u6ce8\u70b9**\uff1a{dev_v.get('description', '\u8f6f\u4ef6\u4ee3\u7801\u5728\u5de5\u7a0b\u5f00\u53d1\u73af\u5883\u4e2d\u7684\u6a21\u5757\u7ec4\u7ec7\u62d3\u6251\u3001Crate/\u5305\u4f9d\u8d56\u5c42\u7ea7\u3001\u7f16\u8bd1\u8fb9\u754c\u9632\u7ebf\u4e0e\u7269\u7406\u6e90\u7801\u76ee\u5f55\u7ed3\u6784\u3002')}",
                 "",
-                "| Crate / 包名称 | 包类型 (Kind) | 核心导出能力 (Exports) | 编译期直接依赖 (Direct Dependencies) | 归属分层 |",
+                "| Crate / \u5305\u540d\u79f0 | \u5305\u7c7b\u578b (Kind) | \u6838\u5fc3\u5bfc\u51fa\u80fd\u529b (Exports) | \u7f16\u8bd1\u671f\u76f4\u63a5\u4f9d\u8d56 (Direct Dependencies) | \u5f52\u5c5e\u5206\u5c42 |",
                 "| :--- | :--- | :--- | :--- | :--- |",
             ])
             packages = self._synthesize_packages(dev_v, data, layers, modules, "zh")
@@ -669,10 +669,10 @@ class AuraklArchitectureRenderer:
 
             lines.extend([
                 "",
-                "### 3.3 运行架构视图 (Process / Runtime View)",
-                f"**视图关注点**：{process_v.get('description', '系统在运行态下的多进程与多线程模型、Tokio 异步事件循环、并发控制机制、分布式租约与跨系统调用延迟/资源预算。')}",
+                "### 3.3 \u8fd0\u884c\u67b6\u6784\u89c6\u56fe (Process / Runtime View)",
+                f"**\u89c6\u56fe\u5173\u6ce8\u70b9**\uff1a{process_v.get('description', '\u7cfb\u7edf\u5728\u8fd0\u884c\u6001\u4e0b\u7684\u591a\u8fdb\u7a0b\u4e0e\u591a\u7ebf\u7a0b\u6a21\u578b\u3001Tokio \u5f02\u6b65\u4e8b\u4ef6\u5faa\u73af\u3001\u5e76\u53d1\u63a7\u5236\u673a\u5236\u3001\u5206\u5e03\u5f0f\u79df\u7ea6\u4e0e\u8de8\u7cfb\u7edf\u8c03\u7528\u5ef6\u8fdf/\u8d44\u6e90\u9884\u7b97\u3002')}",
                 "",
-                "| 运行态进程 / 任务池 | 并发模型与调度器 | 资源配额 (CPU/Mem/Conn) | 核心锁与同步机制 | P99 延迟预算 |",
+                "| \u8fd0\u884c\u6001\u8fdb\u7a0b / \u4efb\u52a1\u6c60 | \u5e76\u53d1\u6a21\u578b\u4e0e\u8c03\u5ea6\u5668 | \u8d44\u6e90\u914d\u989d (CPU/Mem/Conn) | \u6838\u5fc3\u9501\u4e0e\u540c\u6b65\u673a\u5236 | P99 \u5ef6\u8fdf\u9884\u7b97 |",
                 "| :--- | :--- | :--- | :--- | :--- |",
             ])
             processes = self._synthesize_processes(process_v, data, layers, "zh")
@@ -689,10 +689,10 @@ class AuraklArchitectureRenderer:
 
             lines.extend([
                 "",
-                "### 3.4 物理与部署架构视图 (Physical / Deployment View)",
-                f"**视图关注点**：{physical_v.get('description', '系统的物理硬件、云原生网络拓扑、Kubernetes 容器编排、多可用区 (Multi-AZ) 高可用容灾及主从存储拓扑。')}",
+                "### 3.4 \u7269\u7406\u4e0e\u90e8\u7f72\u67b6\u6784\u89c6\u56fe (Physical / Deployment View)",
+                f"**\u89c6\u56fe\u5173\u6ce8\u70b9**\uff1a{physical_v.get('description', '\u7cfb\u7edf\u7684\u7269\u7406\u786c\u4ef6\u3001\u4e91\u539f\u751f\u7f51\u7edc\u62d3\u6251\u3001Kubernetes \u5bb9\u5668\u7f16\u6392\u3001\u591a\u53ef\u7528\u533a (Multi-AZ) \u9ad8\u53ef\u7528\u5bb9\u707e\u53ca\u4e3b\u4ece\u5b58\u50a8\u62d3\u6251\u3002')}",
                 "",
-                "| 部署节点 / 服务组件 | 实例副本数 | 计算规格配额 | 部署可用区 (Topology) | 网络暴露与安全域 |",
+                "| \u90e8\u7f72\u8282\u70b9 / \u670d\u52a1\u7ec4\u4ef6 | \u5b9e\u4f8b\u526f\u672c\u6570 | \u8ba1\u7b97\u89c4\u683c\u914d\u989d | \u90e8\u7f72\u53ef\u7528\u533a (Topology) | \u7f51\u7edc\u66b4\u9732\u4e0e\u5b89\u5168\u57df |",
                 "| :--- | :--- | :--- | :--- | :--- |",
             ])
             nodes = self._synthesize_nodes(physical_v, data, layers, "zh")
@@ -710,11 +710,11 @@ class AuraklArchitectureRenderer:
             scen_name, scenario_steps = self._synthesize_scenario(scenarios_v, data, sys_name, "zh")
             lines.extend([
                 "",
-                "### 3.5 +1 场景用例视图 (Scenarios / Use Case View)",
-                f"**视图关注点**：{scenarios_v.get('description', '驱动并串联逻辑、开发、运行和物理四大视图的核心端到端用例，验证各视图组件在执行真实高价值业务时的协同完备性。')}",
-                f"- **核心用例名称**：`{scen_name}`",
+                "### 3.5 +1 \u573a\u666f\u7528\u4f8b\u89c6\u56fe (Scenarios / Use Case View)",
+                f"**\u89c6\u56fe\u5173\u6ce8\u70b9**\uff1a{scenarios_v.get('description', '\u9a71\u52a8\u5e76\u4e32\u8054\u903b\u8f91\u3001\u5f00\u53d1\u3001\u8fd0\u884c\u548c\u7269\u7406\u56db\u5927\u89c6\u56fe\u7684\u6838\u5fc3\u7aef\u5230\u7aef\u7528\u4f8b\uff0c\u9a8c\u8bc1\u5404\u89c6\u56fe\u7ec4\u4ef6\u5728\u6267\u884c\u771f\u5b9e\u9ad8\u4ef7\u503c\u4e1a\u52a1\u65f6\u7684\u534f\u540c\u5b8c\u5907\u6027\u3002')}",
+                f"- **\u6838\u5fc3\u7528\u4f8b\u540d\u79f0**\uff1a`{scen_name}`",
                 "",
-                "#### 端到端跨视图串联流转时序",
+                "#### \u7aef\u5230\u7aef\u8de8\u89c6\u56fe\u4e32\u8054\u6d41\u8f6c\u65f6\u5e8f",
             ])
             for stp in scenario_steps:
                 lines.append(f"- {stp}")
@@ -729,21 +729,21 @@ class AuraklArchitectureRenderer:
 
             lines.extend([
                 "",
-                "## 4. 三层架构清晰规约 (Layering Specification)",
+                "## 4. \u4e09\u5c42\u67b6\u6784\u6e05\u6670\u89c4\u7ea6 (Layering Specification)",
                 "",
-                "| 分层层级 | 分层名称 (Layer) | 职责边界 (Responsibilities) | 允许依赖目标 (Allowed Dependencies) |",
+                "| \u5206\u5c42\u5c42\u7ea7 | \u5206\u5c42\u540d\u79f0 (Layer) | \u804c\u8d23\u8fb9\u754c (Responsibilities) | \u5141\u8bb8\u4f9d\u8d56\u76ee\u6807 (Allowed Dependencies) |",
                 "| :--- | :--- | :--- | :--- |",
             ])
             for layer in layers:
                 lid = layer.get("layer_id") or layer.get("level") or "L?"
                 lname = layer.get("name", "Layer")
                 lresp = layer.get("responsibilities") or layer.get("responsibility", "")
-                allowed = ", ".join(layer.get("allowed_dependencies", [])) or "无 (底层基础设施)"
+                allowed = ", ".join(layer.get("allowed_dependencies", [])) or "\u65e0 (\u5e95\u5c42\u57fa\u7840\u8bbe\u65bd)"
                 lines.append(f"| **{lid}** | **{lname}** | {lresp} | `{allowed}` |")
 
             lines.extend([
                 "",
-                "## 5. 核心模块划分与接口抽象 (Modules & Interface Contracts)",
+                "## 5. \u6838\u5fc3\u6a21\u5757\u5212\u5206\u4e0e\u63a5\u53e3\u62bd\u8c61 (Modules & Interface Contracts)",
                 "",
             ])
             for mod in modules:
@@ -751,24 +751,24 @@ class AuraklArchitectureRenderer:
                 mname = mod.get("name", "Module")
                 mlayer = mod.get("layer_id") or mod.get("layer", "L2")
                 mdesc = mod.get("responsibilities") or mod.get("description", "")
-                mdeps = ", ".join(mod.get("dependencies", [])) or "无 (独立基础模块)"
-                mreqs = ", ".join(mod.get("implements_requirements", [])) or "无"
+                mdeps = ", ".join(mod.get("dependencies", [])) or "\u65e0 (\u72ec\u7acb\u57fa\u7840\u6a21\u5757)"
+                mreqs = ", ".join(mod.get("implements_requirements", [])) or "\u65e0"
 
                 lines.extend([
                     f"<!-- block-id: {mid} -->",
                     f"<!-- implements: {mreqs} -->",
                     f"<!-- depends_on: {mdeps} -->",
                     f"### {mid}: {mname}",
-                    f"- **所属分层**：`{mlayer}`",
-                    f"- **核心职责**：{mdesc}",
-                    f"- **依赖模块**：`{mdeps}`",
-                    f"- **实现需求**：`{mreqs}`",
+                    f"- **\u6240\u5c5e\u5206\u5c42**\uff1a`{mlayer}`",
+                    f"- **\u6838\u5fc3\u804c\u8d23**\uff1a{mdesc}",
+                    f"- **\u4f9d\u8d56\u6a21\u5757**\uff1a`{mdeps}`",
+                    f"- **\u5b9e\u73b0\u9700\u6c42**\uff1a`{mreqs}`",
                     "",
                 ])
                 if mod.get("interface_signature"):
                     sig_lang = "rust" if "fn " in mod["interface_signature"] else "typescript"
                     lines.extend([
-                        "**强类型接口契约定义**：",
+                        "**\u5f3a\u7c7b\u578b\u63a5\u53e3\u5951\u7ea6\u5b9a\u4e49**\uff1a",
                         f"```{sig_lang}",
                         mod["interface_signature"].strip(),
                         "```",
@@ -776,7 +776,7 @@ class AuraklArchitectureRenderer:
                     ])
 
             lines.extend([
-                "## 6. C4 Container 架构拓扑图 (C4 Diagram)",
+                "## 6. C4 Container \u67b6\u6784\u62d3\u6251\u56fe (C4 Diagram)",
                 "",
                 "```mermaid",
                 c4.strip() if c4 else "graph TD;\n  Client --> Gateway;\n  Gateway --> CoreDomain;\n  CoreDomain --> Storage;",
@@ -786,15 +786,15 @@ class AuraklArchitectureRenderer:
 
             if data_flows:
                 lines.extend([
-                    "## 7. 核心跨层数据流向 (Cross-Layer Data Flows)",
+                    "## 7. \u6838\u5fc3\u8de8\u5c42\u6570\u636e\u6d41\u5411 (Cross-Layer Data Flows)",
                     "",
                 ])
                 for df in data_flows:
                     lines.extend([
                         f"### {df.get('id', 'FLOW')}: {df.get('name', 'Flow')}",
-                        f"**业务说明**：{df.get('description', '')}",
+                        f"**\u4e1a\u52a1\u8bf4\u660e**\uff1a{df.get('description', '')}",
                         "",
-                        "**步骤流转**：",
+                        "**\u6b65\u9aa4\u6d41\u8f6c**\uff1a",
                     ])
                     for sidx, step in enumerate(df.get("steps", []), 1):
                         lines.append(f"{sidx}. {step}")
@@ -802,24 +802,24 @@ class AuraklArchitectureRenderer:
 
             if adrs:
                 lines.extend([
-                    "## 8. 架构决策记录 (ADR)",
+                    "## 8. \u67b6\u6784\u51b3\u7b56\u8bb0\u5f55 (ADR)",
                     "",
                 ])
                 for adr in adrs:
                     lines.extend([
                         f"### {adr.get('id')}: {adr.get('title')}",
-                        f"- **决策上下文**：{adr.get('context')}",
-                        f"- **技术决策**：{adr.get('decision')}",
-                        f"- **预期后果与收益**：{adr.get('consequences')}",
+                        f"- **\u51b3\u7b56\u4e0a\u4e0b\u6587**\uff1a{adr.get('context')}",
+                        f"- **\u6280\u672f\u51b3\u7b56**\uff1a{adr.get('decision')}",
+                        f"- **\u9884\u671f\u540e\u679c\u4e0e\u6536\u76ca**\uff1a{adr.get('consequences')}",
                         "",
                     ])
 
             lines.extend([
-                "## 9. 横切关注点规约 (Cross-Cutting Concerns)",
+                "## 9. \u6a2a\u5207\u5173\u6ce8\u70b9\u89c4\u7ea6 (Cross-Cutting Concerns)",
                 "",
-                f"- **认证鉴权上下文注入**：{cross_cutting.get('security_context', 'API 网关完成 JWT/mTLS 统一鉴权后，将强类型 TenantContext 注入标准上下文，领域层直接消费，禁止绕过网关直连内部方法。')}",
-                f"- **全局全链路追踪**：{cross_cutting.get('observability', '全链路强制透传 OpenTelemetry W3C TraceContext 与 trace_id，跨异步队列与事件消息总线强制保持上下文因果关联。')}",
-                f"- **统一错误处理**：{cross_cutting.get('error_handling', '标准 DomainError 映射至全局统一 HTTP/gRPC 错误码，严禁向客户端抛出未捕获的数据库原生异常堆栈。')}",
+                f"- **\u8ba4\u8bc1\u9274\u6743\u4e0a\u4e0b\u6587\u6ce8\u5165**\uff1a{cross_cutting.get('security_context', 'API \u7f51\u5173\u5b8c\u6210 JWT/mTLS \u7edf\u4e00\u9274\u6743\u540e\uff0c\u5c06\u5f3a\u7c7b\u578b TenantContext \u6ce8\u5165\u6807\u51c6\u4e0a\u4e0b\u6587\uff0c\u9886\u57df\u5c42\u76f4\u63a5\u6d88\u8d39\uff0c\u7981\u6b62\u7ed5\u8fc7\u7f51\u5173\u76f4\u8fde\u5185\u90e8\u65b9\u6cd5\u3002')}",
+                f"- **\u5168\u5c40\u5168\u94fe\u8def\u8ffd\u8e2a**\uff1a{cross_cutting.get('observability', '\u5168\u94fe\u8def\u5f3a\u5236\u900f\u4f20 OpenTelemetry W3C TraceContext \u4e0e trace_id\uff0c\u8de8\u5f02\u6b65\u961f\u5217\u4e0e\u4e8b\u4ef6\u6d88\u606f\u603b\u7ebf\u5f3a\u5236\u4fdd\u6301\u4e0a\u4e0b\u6587\u56e0\u679c\u5173\u8054\u3002')}",
+                f"- **\u7edf\u4e00\u9519\u8bef\u5904\u7406**\uff1a{cross_cutting.get('error_handling', '\u6807\u51c6 DomainError \u6620\u5c04\u81f3\u5168\u5c40\u7edf\u4e00 HTTP/gRPC \u9519\u8bef\u7801\uff0c\u4e25\u7981\u5411\u5ba2\u6237\u7aef\u629b\u51fa\u672a\u6355\u83b7\u7684\u6570\u636e\u5e93\u539f\u751f\u5f02\u5e38\u5806\u6808\u3002')}",
                 "",
             ])
 
@@ -1075,7 +1075,7 @@ class AuraklArchitectureRenderer:
 
         if lang == "zh":
             lines = [
-                f"# {dname} 领域建模与核心抽象规约",
+                f"# {dname} \u9886\u57df\u5efa\u6a21\u4e0e\u6838\u5fc3\u62bd\u8c61\u89c4\u7ea6",
                 "",
                 "```yaml",
                 "metadata:",
@@ -1085,19 +1085,19 @@ class AuraklArchitectureRenderer:
                 f'  coverage_pct: {cov_pct}%',
                 "```",
                 "",
-                "> Linus 铁律：糟糕的程序员担心代码，优秀的程序员关注数据结构与关系。本规约 100% 覆盖 PRD 业务实体与不变量。",
+                "> Linus \u94c1\u5f8b\uff1a\u7cdf\u7cd5\u7684\u7a0b\u5e8f\u5458\u62c5\u5fc3\u4ee3\u7801\uff0c\u4f18\u79c0\u7684\u7a0b\u5e8f\u5458\u5173\u6ce8\u6570\u636e\u7ed3\u6784\u4e0e\u5173\u7cfb\u3002\u672c\u89c4\u7ea6 100% \u8986\u76d6 PRD \u4e1a\u52a1\u5b9e\u4f53\u4e0e\u4e0d\u53d8\u91cf\u3002",
                 "",
                 "---",
                 "",
-                "## 1. 领域模型概述与聚合根划分 (Domain Overview)",
+                "## 1. \u9886\u57df\u6a21\u578b\u6982\u8ff0\u4e0e\u805a\u5408\u6839\u5212\u5206 (Domain Overview)",
                 "",
-                f"- **聚合根数量**：`{len(aggregates)}` 个",
-                f"- **全量实体模型**：`{len(entities)}` 个（100% 覆盖 PRD 核心需求）",
-                f"- **核心 Trait / 接口抽象**：`{len(traits)}` 个",
+                f"- **\u805a\u5408\u6839\u6570\u91cf**\uff1a`{len(aggregates)}` \u4e2a",
+                f"- **\u5168\u91cf\u5b9e\u4f53\u6a21\u578b**\uff1a`{len(entities)}` \u4e2a\uff08100% \u8986\u76d6 PRD \u6838\u5fc3\u9700\u6c42\uff09",
+                f"- **\u6838\u5fc3 Trait / \u63a5\u53e3\u62bd\u8c61**\uff1a`{len(traits)}` \u4e2a",
                 "",
-                "### 聚合根清单 (Aggregate Roots)",
+                "### \u805a\u5408\u6839\u6e05\u5355 (Aggregate Roots)",
                 "",
-                "| 聚合根 ID | 聚合根名称 | 根实体标识 | 边界与不变性约束 |",
+                "| \u805a\u5408\u6839 ID | \u805a\u5408\u6839\u540d\u79f0 | \u6839\u5b9e\u4f53\u6807\u8bc6 | \u8fb9\u754c\u4e0e\u4e0d\u53d8\u6027\u7ea6\u675f |",
                 "| :--- | :--- | :--- | :--- |",
             ]
             for idx, agg in enumerate(aggregates):
@@ -1107,7 +1107,7 @@ class AuraklArchitectureRenderer:
 
             lines.extend([
                 "",
-                "## 2. 领域全量实体模型规约 (Entity Models)",
+                "## 2. \u9886\u57df\u5168\u91cf\u5b9e\u4f53\u6a21\u578b\u89c4\u7ea6 (Entity Models)",
                 "",
             ])
             for ent in entities:
@@ -1119,27 +1119,27 @@ class AuraklArchitectureRenderer:
                 attrs = ent.get("attributes", [])
 
                 lines.extend([
-                    f"### 实体: `{eid}` - {ename}",
-                    f"- **所属聚合根**：`{agg_root}` | **主标识符**：`{p_id}`",
-                    f"- **业务说明**：{desc}",
+                    f"### \u5b9e\u4f53: `{eid}` - {ename}",
+                    f"- **\u6240\u5c5e\u805a\u5408\u6839**\uff1a`{agg_root}` | **\u4e3b\u6807\u8bc6\u7b26**\uff1a`{p_id}`",
+                    f"- **\u4e1a\u52a1\u8bf4\u660e**\uff1a{desc}",
                 ])
                 if attrs:
                     lines.extend([
                         "",
-                        "| 属性字段 | 数据类型 | 可空 | 业务语义与约束规则 |",
+                        "| \u5c5e\u6027\u5b57\u6bb5 | \u6570\u636e\u7c7b\u578b | \u53ef\u7a7a | \u4e1a\u52a1\u8bed\u4e49\u4e0e\u7ea6\u675f\u89c4\u5219 |",
                         "| :--- | :--- | :--- | :--- |",
                     ])
                     for attr in attrs:
                         req_str = "No" if attr.get("nullable") else "Yes"
-                        dfl = f" (默认: `{attr.get('default_value')}`)" if attr.get("default_value") is not None else ""
+                        dfl = f" (\u9ed8\u8ba4: `{attr.get('default_value')}`)" if attr.get("default_value") is not None else ""
                         lines.append(f"| `{attr.get('name')}` | `{attr.get('type', attr.get('data_type', 'String'))}` | {req_str} | {attr.get('description', '')}{dfl} |")
                 lines.append("")
 
             if value_objects:
                 lines.extend([
-                    "## 3. 值对象与领域事件规约 (Value Objects & Events)",
+                    "## 3. \u503c\u5bf9\u8c61\u4e0e\u9886\u57df\u4e8b\u4ef6\u89c4\u7ea6 (Value Objects & Events)",
                     "",
-                    "| 值对象标识 | 名称 | 不变性规约 (Immutability Rules) | 属性清单 |",
+                    "| \u503c\u5bf9\u8c61\u6807\u8bc6 | \u540d\u79f0 | \u4e0d\u53d8\u6027\u89c4\u7ea6 (Immutability Rules) | \u5c5e\u6027\u6e05\u5355 |",
                     "| :--- | :--- | :--- | :--- |",
                 ])
                 for vo in value_objects:
@@ -1148,7 +1148,7 @@ class AuraklArchitectureRenderer:
 
             if traits:
                 lines.extend([
-                    "## 4. 核心 Trait 与接口抽象规约 (Core Traits)",
+                    "## 4. \u6838\u5fc3 Trait \u4e0e\u63a5\u53e3\u62bd\u8c61\u89c4\u7ea6 (Core Traits)",
                     "",
                 ])
                 for idx, trt in enumerate(traits):
@@ -1157,7 +1157,7 @@ class AuraklArchitectureRenderer:
                     tid = trt.get("trait_id") or trt.get("id", f"TRT-{idx+1:03d}")
                     lines.extend([
                         f"### Trait: `{tid}` - {trt.get('name')}",
-                        f"**职责**：{trt.get('description', '')}",
+                        f"**\u804c\u8d23**\uff1a{trt.get('description', '')}",
                         "",
                         "```rust",
                         trt.get("signature_pseudocode", "// trait definition").strip(),
@@ -1166,10 +1166,10 @@ class AuraklArchitectureRenderer:
                     ])
 
             lines.extend([
-                "## 5. PRD 需求覆盖率闭环追踪 (Traceability Matrix)",
+                "## 5. PRD \u9700\u6c42\u8986\u76d6\u7387\u95ed\u73af\u8ffd\u8e2a (Traceability Matrix)",
                 "",
-                f"- **Must-Have 需求覆盖率**：`{cov_pct}%` (100% 达标)",
-                f"- **已闭环需求清单**：`{', '.join(data.get('implements', []))}`",
+                f"- **Must-Have \u9700\u6c42\u8986\u76d6\u7387**\uff1a`{cov_pct}%` (100% \u8fbe\u6807)",
+                f"- **\u5df2\u95ed\u73af\u9700\u6c42\u6e05\u5355**\uff1a`{', '.join(data.get('implements', []))}`",
                 "",
             ])
 
@@ -1290,7 +1290,7 @@ class AuraklArchitectureRenderer:
 
         if lang == "zh":
             lines = [
-                f"# {db_name} 数据库设计与存储规约",
+                f"# {db_name} \u6570\u636e\u5e93\u8bbe\u8ba1\u4e0e\u5b58\u50a8\u89c4\u7ea6",
                 "",
                 "```yaml",
                 "metadata:",
@@ -1301,17 +1301,17 @@ class AuraklArchitectureRenderer:
                 f'  table_count: {len(tables)}',
                 "```",
                 "",
-                "> 严格遵循物理表 DDL 完备性规范：包含完整 CREATE TABLE 语句、字段注释、主外键、检查约束、复合索引与 Expand-Contract 无损迁移脚本。",
+                "> \u4e25\u683c\u9075\u5faa\u7269\u7406\u8868 DDL \u5b8c\u5907\u6027\u89c4\u8303\uff1a\u5305\u542b\u5b8c\u6574 CREATE TABLE \u8bed\u53e5\u3001\u5b57\u6bb5\u6ce8\u91ca\u3001\u4e3b\u5916\u952e\u3001\u68c0\u67e5\u7ea6\u675f\u3001\u590d\u5408\u7d22\u5f15\u4e0e Expand-Contract \u65e0\u635f\u8fc1\u79fb\u811a\u672c\u3002",
                 "",
                 "---",
                 "",
-                "## 1. 存储架构与引擎概览 (Storage Overview)",
+                "## 1. \u5b58\u50a8\u67b6\u6784\u4e0e\u5f15\u64ce\u6982\u89c8 (Storage Overview)",
                 "",
-                f"- **数据库引擎**：`{engine}`",
-                f"- **物理表总数**：`{len(tables)}` 张表",
-                f"- **连接池与隔离级别**：{data.get('isolation_level', '标准连接池管理，核心事务默认 Read Committed，高争用场景采用行级排他锁或版本号乐观锁校验')}",
+                f"- **\u6570\u636e\u5e93\u5f15\u64ce**\uff1a`{engine}`",
+                f"- **\u7269\u7406\u8868\u603b\u6570**\uff1a`{len(tables)}` \u5f20\u8868",
+                f"- **\u8fde\u63a5\u6c60\u4e0e\u9694\u79bb\u7ea7\u522b**\uff1a{data.get('isolation_level', '\u6807\u51c6\u8fde\u63a5\u6c60\u7ba1\u7406\uff0c\u6838\u5fc3\u4e8b\u52a1\u9ed8\u8ba4 Read Committed\uff0c\u9ad8\u4e89\u7528\u573a\u666f\u91c7\u7528\u884c\u7ea7\u6392\u4ed6\u9501\u6216\u7248\u672c\u53f7\u4e50\u89c2\u9501\u6821\u9a8c')}",
                 "",
-                "## 2. 物理表结构与索引设计 (Tables & Indexes)",
+                "## 2. \u7269\u7406\u8868\u7ed3\u6784\u4e0e\u7d22\u5f15\u8bbe\u8ba1 (Tables & Indexes)",
                 "",
             ]
             for idx_t, t in enumerate(tables, 1):
@@ -1325,17 +1325,17 @@ class AuraklArchitectureRenderer:
                 lines.extend([
                     f"<!-- block-id: {bid} -->",
                     f"<!-- implements: {reqs} -->",
-                    f"### {bid}: `{tname}` 表",
-                    f"**用途说明**：{tdesc}",
-                    f"**主键**：`{pk_str}`",
+                    f"### {bid}: `{tname}` \u8868",
+                    f"**\u7528\u9014\u8bf4\u660e**\uff1a{tdesc}",
+                    f"**\u4e3b\u952e**\uff1a`{pk_str}`",
                     "",
-                    "#### 字段 DDL 定义 (Physical DDL)",
+                    "#### \u5b57\u6bb5 DDL \u5b9a\u4e49 (Physical DDL)",
                     "```sql",
                     _format_table_ddl(t),
                     "```",
                     "",
-                    "#### 字段规约表格",
-                    "| 字段名称 | 数据类型 | 可空 | 默认值 | 业务含义与约束规则 |",
+                    "#### \u5b57\u6bb5\u89c4\u7ea6\u8868\u683c",
+                    "| \u5b57\u6bb5\u540d\u79f0 | \u6570\u636e\u7c7b\u578b | \u53ef\u7a7a | \u9ed8\u8ba4\u503c | \u4e1a\u52a1\u542b\u4e49\u4e0e\u7ea6\u675f\u89c4\u5219 |",
                     "| :--- | :--- | :--- | :--- | :--- |",
                 ])
                 for col in t.get("columns", []):
@@ -1349,7 +1349,7 @@ class AuraklArchitectureRenderer:
 
                 lines.extend([
                     "",
-                    "#### 索引设计清单",
+                    "#### \u7d22\u5f15\u8bbe\u8ba1\u6e05\u5355",
                 ])
                 t_indexes = t.get("indexes", [])
                 if t_indexes:
@@ -1360,28 +1360,28 @@ class AuraklArchitectureRenderer:
                         iexp = i_item.get("expected_query") or f"SELECT * FROM {tname} WHERE {i_item.get('columns', ['id'])[0]} = ?"
                         lines.extend([
                             f"```sql\n{_format_index_ddl(tname, i_item)}\n```",
-                            f"- **用途**：{irationale}",
-                            f"- **索引类型**：`{itype}`",
-                            f"- **预期查询**：`{iexp}`",
+                            f"- **\u7528\u9014**\uff1a{irationale}",
+                            f"- **\u7d22\u5f15\u7c7b\u578b**\uff1a`{itype}`",
+                            f"- **\u9884\u671f\u67e5\u8be2**\uff1a`{iexp}`",
                             "",
                         ])
                 else:
-                    lines.append("*(主键索引自动生成)*\n")
+                    lines.append("*(\u4e3b\u952e\u7d22\u5f15\u81ea\u52a8\u751f\u6210)*\n")
 
                 if t.get("business_rules"):
                     lines.extend([
-                        "#### 业务规则 (Business Rules)",
+                        "#### \u4e1a\u52a1\u89c4\u5219 (Business Rules)",
                     ])
                     for r_idx, rule in enumerate(t.get("business_rules", []), 1):
                         lines.append(f"{r_idx}. {rule}")
                     lines.append("")
 
-                lines.append(f"此表**实现了** `{reqs}`。\n\n<!-- /block -->\n")
+                lines.append(f"\u6b64\u8868**\u5b9e\u73b0\u4e86** `{reqs}`\u3002\n\n<!-- /block -->\n")
 
             lines.extend([
-                "## 3. 产品不变量存储层落地规约 (Invariant Enforcement)",
+                "## 3. \u4ea7\u54c1\u4e0d\u53d8\u91cf\u5b58\u50a8\u5c42\u843d\u5730\u89c4\u7ea6 (Invariant Enforcement)",
                 "",
-                "| 不变量标识 | 约束规则描述 | 物理落地载体 (DB Mechanism) | 违规阻断行为 |",
+                "| \u4e0d\u53d8\u91cf\u6807\u8bc6 | \u7ea6\u675f\u89c4\u5219\u63cf\u8ff0 | \u7269\u7406\u843d\u5730\u8f7d\u4f53 (DB Mechanism) | \u8fdd\u89c4\u963b\u65ad\u884c\u4e3a |",
                 "| :--- | :--- | :--- | :--- |",
             ])
             for inv in invariants:
@@ -1389,16 +1389,16 @@ class AuraklArchitectureRenderer:
 
             lines.extend([
                 "",
-                "## 4. 数据库无损迁移与回滚策略 (Zero-Downtime Migration)",
+                "## 4. \u6570\u636e\u5e93\u65e0\u635f\u8fc1\u79fb\u4e0e\u56de\u6eda\u7b56\u7565 (Zero-Downtime Migration)",
                 "",
-                f"- **迁移工具与机制**：`{migrations.get('tool', 'Flyway / Liquibase / Goose')}`",
-                f"- **Expand-Contract 阶段推进**：{migrations.get('expand_contract_procedure', '1. Expand 阶段新增可空列并双写；2. 数据回填；3. Contract 阶段切换读取并在 N+1 版本移除废弃列。')}",
-                f"- **回滚与故障预案**：{migrations.get('rollback_strategy', '严格配备对应版本 Down 回滚脚本，并于预发环境进行 100% 逆向演练。')}",
+                f"- **\u8fc1\u79fb\u5de5\u5177\u4e0e\u673a\u5236**\uff1a`{migrations.get('tool', 'Flyway / Liquibase / Goose')}`",
+                f"- **Expand-Contract \u9636\u6bb5\u63a8\u8fdb**\uff1a{migrations.get('expand_contract_procedure', '1. Expand \u9636\u6bb5\u65b0\u589e\u53ef\u7a7a\u5217\u5e76\u53cc\u5199\uff1b2. \u6570\u636e\u56de\u586b\uff1b3. Contract \u9636\u6bb5\u5207\u6362\u8bfb\u53d6\u5e76\u5728 N+1 \u7248\u672c\u79fb\u9664\u5e9f\u5f03\u5217\u3002')}",
+                f"- **\u56de\u6eda\u4e0e\u6545\u969c\u9884\u6848**\uff1a{migrations.get('rollback_strategy', '\u4e25\u683c\u914d\u5907\u5bf9\u5e94\u7248\u672c Down \u56de\u6eda\u811a\u672c\uff0c\u5e76\u4e8e\u9884\u53d1\u73af\u5883\u8fdb\u884c 100% \u9006\u5411\u6f14\u7ec3\u3002')}",
                 "",
-                "### 迁移脚本示例 (001_initial_schema.sql)",
+                "### \u8fc1\u79fb\u811a\u672c\u793a\u4f8b (001_initial_schema.sql)",
                 "",
                 "```sql",
-                "-- Up Migration: 创建核心物理架构与索引",
+                "-- Up Migration: \u521b\u5efa\u6838\u5fc3\u7269\u7406\u67b6\u6784\u4e0e\u7d22\u5f15",
             ])
             for t in tables[:2]:
                 lines.append(_format_table_ddl(t))
@@ -1406,7 +1406,7 @@ class AuraklArchitectureRenderer:
                     lines.append(_format_index_ddl(t.get("table_name", "table"), idx))
             lines.extend([
                 "",
-                "-- Down Migration: 回滚脚本",
+                "-- Down Migration: \u56de\u6eda\u811a\u672c",
             ])
             for t in reversed(tables[:2]):
                 lines.append(f"DROP TABLE IF EXISTS {t.get('table_name', 'table')} CASCADE;")
@@ -1553,7 +1553,7 @@ class AuraklArchitectureRenderer:
 
         if lang == "zh":
             lines = [
-                f"# {api_title} 强类型接口契约与通信协议规约",
+                f"# {api_title} \u5f3a\u7c7b\u578b\u63a5\u53e3\u5951\u7ea6\u4e0e\u901a\u4fe1\u534f\u8bae\u89c4\u7ea6",
                 "",
                 "```yaml",
                 "metadata:",
@@ -1564,18 +1564,18 @@ class AuraklArchitectureRenderer:
                 f'  endpoint_count: {len(endpoints)}',
                 "```",
                 "",
-                "> 遵循 Lingforge 接口标准：每个接口均提供完整 Mock 请求载荷、200 OK 成功响应、标准 4xx/5xx 错误响应、逐步业务执行逻辑与强制写幂等机制。",
+                "> \u9075\u5faa Lingforge \u63a5\u53e3\u6807\u51c6\uff1a\u6bcf\u4e2a\u63a5\u53e3\u5747\u63d0\u4f9b\u5b8c\u6574 Mock \u8bf7\u6c42\u8f7d\u8377\u3001200 OK \u6210\u529f\u54cd\u5e94\u3001\u6807\u51c6 4xx/5xx \u9519\u8bef\u54cd\u5e94\u3001\u9010\u6b65\u4e1a\u52a1\u6267\u884c\u903b\u8f91\u4e0e\u5f3a\u5236\u5199\u5e42\u7b49\u673a\u5236\u3002",
                 "",
                 "---",
                 "",
-                "## 1. 接口架构与协议规范 (API Overview)",
+                "## 1. \u63a5\u53e3\u67b6\u6784\u4e0e\u534f\u8bae\u89c4\u8303 (API Overview)",
                 "",
-                f"- **协议类型**：`{protocol}`",
-                f"- **接口端点总数**：`{len(endpoints)}` 个端点",
-                f"- **向后兼容铁律**：`breaking_changes_allowed = {compat.get('breaking_changes_allowed', False)}`（严禁破坏性变更，废弃字段需经历 N-2 周期）",
-                f"- **全局认证规范**：{data.get('auth_strategy', 'Authorization: Bearer <JWT> 标头透传，网关注入 X-Tenant-Id 与 X-User-Id')}",
+                f"- **\u534f\u8bae\u7c7b\u578b**\uff1a`{protocol}`",
+                f"- **\u63a5\u53e3\u7aef\u70b9\u603b\u6570**\uff1a`{len(endpoints)}` \u4e2a\u7aef\u70b9",
+                f"- **\u5411\u540e\u517c\u5bb9\u94c1\u5f8b**\uff1a`breaking_changes_allowed = {compat.get('breaking_changes_allowed', False)}`\uff08\u4e25\u7981\u7834\u574f\u6027\u53d8\u66f4\uff0c\u5e9f\u5f03\u5b57\u6bb5\u9700\u7ecf\u5386 N-2 \u5468\u671f\uff09",
+                f"- **\u5168\u5c40\u8ba4\u8bc1\u89c4\u8303**\uff1a{data.get('auth_strategy', 'Authorization: Bearer <JWT> \u6807\u5934\u900f\u4f20\uff0c\u7f51\u5173\u6ce8\u5165 X-Tenant-Id \u4e0e X-User-Id')}",
                 "",
-                "## 2. API 端点详尽契约 (Endpoints Specification)",
+                "## 2. API \u7aef\u70b9\u8be6\u5c3d\u5951\u7ea6 (Endpoints Specification)",
                 "",
             ]
             for ep in endpoints:
@@ -1588,27 +1588,27 @@ class AuraklArchitectureRenderer:
                 deps = ", ".join(ep.get("depends_on", [])) or "ARCH-CORE"
                 idemp = ep.get("idempotency") or ep.get("idempotent", {})
                 if isinstance(idemp, dict):
-                    idemp_desc = f"必填 (Header: `{idemp.get('key_header', 'X-Idempotency-Key')}`, 策略: `{idemp.get('strategy', 'distributed_lock')}`)" if idemp.get("required") else "不强制 (幂等只读或由客户端保证)"
+                    idemp_desc = f"\u5fc5\u586b (Header: `{idemp.get('key_header', 'X-Idempotency-Key')}`, \u7b56\u7565: `{idemp.get('strategy', 'distributed_lock')}`)" if idemp.get("required") else "\u4e0d\u5f3a\u5236 (\u5e42\u7b49\u53ea\u8bfb\u6216\u7531\u5ba2\u6237\u7aef\u4fdd\u8bc1)"
                 elif isinstance(idemp, bool):
-                    idemp_desc = "必填 (Header: `X-Idempotency-Key`, 策略: `distributed_lock`)" if idemp else "不强制"
+                    idemp_desc = "\u5fc5\u586b (Header: `X-Idempotency-Key`, \u7b56\u7565: `distributed_lock`)" if idemp else "\u4e0d\u5f3a\u5236"
                 elif isinstance(idemp, str):
                     idemp_desc = idemp
                 else:
-                    idemp_desc = "不强制 (幂等只读或由客户端保证)"
+                    idemp_desc = "\u4e0d\u5f3a\u5236 (\u5e42\u7b49\u53ea\u8bfb\u6216\u7531\u5ba2\u6237\u7aef\u4fdd\u8bc1)"
 
                 lines.extend([
                     f"<!-- block-id: {eid} -->",
                     f"<!-- implements: {reqs} -->",
                     f"<!-- depends_on: {deps} -->",
                     f"### {eid}: `{method} {path}`",
-                    f"**业务摘要**：{summary}",
-                    f"**详细描述**：{desc}",
-                    f"- **操作标识 (Operation ID)**：`{eid}`",
-                    f"- **写操作幂等**：{idemp_desc}",
-                    f"- **实现需求**：`{reqs}`",
-                    f"- **依赖组件/表**：`{deps}`",
+                    f"**\u4e1a\u52a1\u6458\u8981**\uff1a{summary}",
+                    f"**\u8be6\u7ec6\u63cf\u8ff0**\uff1a{desc}",
+                    f"- **\u64cd\u4f5c\u6807\u8bc6 (Operation ID)**\uff1a`{eid}`",
+                    f"- **\u5199\u64cd\u4f5c\u5e42\u7b49**\uff1a{idemp_desc}",
+                    f"- **\u5b9e\u73b0\u9700\u6c42**\uff1a`{reqs}`",
+                    f"- **\u4f9d\u8d56\u7ec4\u4ef6/\u8868**\uff1a`{deps}`",
                     "",
-                    "#### 1. 请求体示例 (Request Example)",
+                    "#### 1. \u8bf7\u6c42\u4f53\u793a\u4f8b (Request Example)",
                     "```json",
                     json.dumps(ep.get("request_example", ep.get("request_schema", {})), indent=2, ensure_ascii=False),
                     "```",
@@ -1621,8 +1621,8 @@ class AuraklArchitectureRenderer:
                 req_fields = req_schema.get("required", [])
                 if props:
                     lines.extend([
-                        "#### 2. 请求字段结构明细",
-                        "| 字段名称 | 数据类型 | 必填 | 校验规则与说明 |",
+                        "#### 2. \u8bf7\u6c42\u5b57\u6bb5\u7ed3\u6784\u660e\u7ec6",
+                        "| \u5b57\u6bb5\u540d\u79f0 | \u6570\u636e\u7c7b\u578b | \u5fc5\u586b | \u6821\u9a8c\u89c4\u5219\u4e0e\u8bf4\u660e |",
                         "| :--- | :--- | :--- | :--- |",
                     ])
                     for pname, pdetail in props.items():
@@ -1633,13 +1633,13 @@ class AuraklArchitectureRenderer:
                     lines.append("")
 
                 lines.extend([
-                    "#### 3. 成功响应 (200 OK Response)",
+                    "#### 3. \u6210\u529f\u54cd\u5e94 (200 OK Response)",
                     "```json",
                     json.dumps(ep.get("response_example", ep.get("response_schema", {})), indent=2, ensure_ascii=False),
                     "```",
                     "",
-                    "#### 4. 常见错误响应 (Error Responses)",
-                    "##### `400 Bad Request` (参数校验失败)",
+                    "#### 4. \u5e38\u89c1\u9519\u8bef\u54cd\u5e94 (Error Responses)",
+                    "##### `400 Bad Request` (\u53c2\u6570\u6821\u9a8c\u5931\u8d25)",
                     "```json",
                     json.dumps(ep.get("error_400", {
                         "error_code": "ERR_INVALID_ARGUMENT",
@@ -1648,7 +1648,7 @@ class AuraklArchitectureRenderer:
                     }), indent=2, ensure_ascii=False),
                     "```",
                     "",
-                    "##### `401 Unauthorized` / `403 Forbidden` (鉴权与租户隔离阻断)",
+                    "##### `401 Unauthorized` / `403 Forbidden` (\u9274\u6743\u4e0e\u79df\u6237\u9694\u79bb\u963b\u65ad)",
                     "```json",
                     json.dumps(ep.get("error_403", {
                         "error_code": "ERR_TENANT_ACCESS_DENIED",
@@ -1656,7 +1656,7 @@ class AuraklArchitectureRenderer:
                     }), indent=2, ensure_ascii=False),
                     "```",
                     "",
-                    "##### `409 Conflict` (并发冲突或幂等重放)",
+                    "##### `409 Conflict` (\u5e76\u53d1\u51b2\u7a81\u6216\u5e42\u7b49\u91cd\u653e)",
                     "```json",
                     json.dumps(ep.get("error_409", {
                         "error_code": "ERR_IDEMPOTENCY_REPLAY",
@@ -1669,27 +1669,27 @@ class AuraklArchitectureRenderer:
 
                 # Business logic steps
                 steps = ep.get("business_logic_steps", [
-                    "验证调用方 Bearer Token 与 RBAC/ABAC 权限",
-                    "校验入参完整性，若缺少必填项则抛出 400 Bad Request",
-                    "检查 X-Idempotency-Key 并获取排他分布式锁/租约，若已存在则直接返回前次结果",
-                    "调用核心领域模型执行前置影响范围分析与状态流转",
-                    "提交持久化存储事务并写回审计不可变日志",
-                    "释放分布式幂等锁并组装标准响应载荷返回客户端"
+                    "\u9a8c\u8bc1\u8c03\u7528\u65b9 Bearer Token \u4e0e RBAC/ABAC \u6743\u9650",
+                    "\u6821\u9a8c\u5165\u53c2\u5b8c\u6574\u6027\uff0c\u82e5\u7f3a\u5c11\u5fc5\u586b\u9879\u5219\u629b\u51fa 400 Bad Request",
+                    "\u68c0\u67e5 X-Idempotency-Key \u5e76\u83b7\u53d6\u6392\u4ed6\u5206\u5e03\u5f0f\u9501/\u79df\u7ea6\uff0c\u82e5\u5df2\u5b58\u5728\u5219\u76f4\u63a5\u8fd4\u56de\u524d\u6b21\u7ed3\u679c",
+                    "\u8c03\u7528\u6838\u5fc3\u9886\u57df\u6a21\u578b\u6267\u884c\u524d\u7f6e\u5f71\u54cd\u8303\u56f4\u5206\u6790\u4e0e\u72b6\u6001\u6d41\u8f6c",
+                    "\u63d0\u4ea4\u6301\u4e45\u5316\u5b58\u50a8\u4e8b\u52a1\u5e76\u5199\u56de\u5ba1\u8ba1\u4e0d\u53ef\u53d8\u65e5\u5fd7",
+                    "\u91ca\u653e\u5206\u5e03\u5f0f\u5e42\u7b49\u9501\u5e76\u7ec4\u88c5\u6807\u51c6\u54cd\u5e94\u8f7d\u8377\u8fd4\u56de\u5ba2\u6237\u7aef"
                 ])
                 lines.extend([
-                    "#### 5. 核心业务逻辑时序 (Step-by-Step Business Logic)",
+                    "#### 5. \u6838\u5fc3\u4e1a\u52a1\u903b\u8f91\u65f6\u5e8f (Step-by-Step Business Logic)",
                 ])
                 for s_idx, step in enumerate(steps, 1):
                     lines.append(f"{s_idx}. {step}")
                 lines.extend([
                     "",
-                    f"此端点**实现了** `{reqs}`，**依赖于** `{deps}`。\n\n<!-- /block -->\n",
+                    f"\u6b64\u7aef\u70b9**\u5b9e\u73b0\u4e86** `{reqs}`\uff0c**\u4f9d\u8d56\u4e8e** `{deps}`\u3002\n\n<!-- /block -->\n",
                 ])
 
             lines.extend([
-                "## 3. 全局统一业务错误码矩阵 (Global Error Matrix)",
+                "## 3. \u5168\u5c40\u7edf\u4e00\u4e1a\u52a1\u9519\u8bef\u7801\u77e9\u9635 (Global Error Matrix)",
                 "",
-                "| 业务错误码 | HTTP 状态码 | 错误语义 | 建议客户端处置方案 |",
+                "| \u4e1a\u52a1\u9519\u8bef\u7801 | HTTP \u72b6\u6001\u7801 | \u9519\u8bef\u8bed\u4e49 | \u5efa\u8bae\u5ba2\u6237\u7aef\u5904\u7f6e\u65b9\u6848 |",
                 "| :--- | :--- | :--- | :--- |",
             ])
             for err in error_codes:
@@ -1697,10 +1697,10 @@ class AuraklArchitectureRenderer:
 
             lines.extend([
                 "",
-                "## 4. 向后兼容与演进策略 (Backward Compatibility)",
+                "## 4. \u5411\u540e\u517c\u5bb9\u4e0e\u6f14\u8fdb\u7b56\u7565 (Backward Compatibility)",
                 "",
-                f"- **演进方针**：{compat.get('policy_summary', '严格遵循仅增不减原则：禁止重命名字段或删除在用字段；新增字段必须设为可选或具备默认值。')}",
-                f"- **废弃周期流程**：{compat.get('deprecation_process', '字段废弃须经历至少两个主版本的 Deprecated 标头过渡期，通过 Sunset HTTP 响应头通知调用方。')}",
+                f"- **\u6f14\u8fdb\u65b9\u9488**\uff1a{compat.get('policy_summary', '\u4e25\u683c\u9075\u5faa\u4ec5\u589e\u4e0d\u51cf\u539f\u5219\uff1a\u7981\u6b62\u91cd\u547d\u540d\u5b57\u6bb5\u6216\u5220\u9664\u5728\u7528\u5b57\u6bb5\uff1b\u65b0\u589e\u5b57\u6bb5\u5fc5\u987b\u8bbe\u4e3a\u53ef\u9009\u6216\u5177\u5907\u9ed8\u8ba4\u503c\u3002')}",
+                f"- **\u5e9f\u5f03\u5468\u671f\u6d41\u7a0b**\uff1a{compat.get('deprecation_process', '\u5b57\u6bb5\u5e9f\u5f03\u987b\u7ecf\u5386\u81f3\u5c11\u4e24\u4e2a\u4e3b\u7248\u672c\u7684 Deprecated \u6807\u5934\u8fc7\u6e21\u671f\uff0c\u901a\u8fc7 Sunset HTTP \u54cd\u5e94\u5934\u901a\u77e5\u8c03\u7528\u65b9\u3002')}",
                 "",
             ])
 
@@ -1875,7 +1875,7 @@ class AuraklArchitectureRenderer:
 
         if lang == "zh":
             lines = [
-                f"# {title} 业务流程与状态机架构规约",
+                f"# {title} \u4e1a\u52a1\u6d41\u7a0b\u4e0e\u72b6\u6001\u673a\u67b6\u6784\u89c4\u7ea6",
                 "",
                 "```yaml",
                 "metadata:",
@@ -1886,22 +1886,22 @@ class AuraklArchitectureRenderer:
                 f'  state_machines_count: {len(state_machines)}',
                 "```",
                 "",
-                "> 遵循 Lingforge 业务流程设计标准：定义角色与权限矩阵、Mermaid 业务流程图、详尽操作步骤（触发、执行者、操作、输入输出、规则、异常、SLA）、状态机全转移矩阵与领域数据模型。",
+                "> \u9075\u5faa Lingforge \u4e1a\u52a1\u6d41\u7a0b\u8bbe\u8ba1\u6807\u51c6\uff1a\u5b9a\u4e49\u89d2\u8272\u4e0e\u6743\u9650\u77e9\u9635\u3001Mermaid \u4e1a\u52a1\u6d41\u7a0b\u56fe\u3001\u8be6\u5c3d\u64cd\u4f5c\u6b65\u9aa4\uff08\u89e6\u53d1\u3001\u6267\u884c\u8005\u3001\u64cd\u4f5c\u3001\u8f93\u5165\u8f93\u51fa\u3001\u89c4\u5219\u3001\u5f02\u5e38\u3001SLA\uff09\u3001\u72b6\u6001\u673a\u5168\u8f6c\u79fb\u77e9\u9635\u4e0e\u9886\u57df\u6570\u636e\u6a21\u578b\u3002",
                 "",
                 "---",
                 "",
-                "## 1. 业务流程概述与角色矩阵 (Overview & Roles)",
+                "## 1. \u4e1a\u52a1\u6d41\u7a0b\u6982\u8ff0\u4e0e\u89d2\u8272\u77e9\u9635 (Overview & Roles)",
                 "",
-                "### 涉及角色与职责矩阵",
+                "### \u6d89\u53ca\u89d2\u8272\u4e0e\u804c\u8d23\u77e9\u9635",
                 "",
-                "| 角色名称 | 业务职责 | 权限范围 |",
+                "| \u89d2\u8272\u540d\u79f0 | \u4e1a\u52a1\u804c\u8d23 | \u6743\u9650\u8303\u56f4 |",
                 "| :--- | :--- | :--- |",
             ]
             default_roles = [
-                {"role": "业务操作用户 (Operator)", "responsibility": "发起业务操作与查询检索请求", "permissions": "标准业务提交与结果查看"},
-                {"role": "业务自动化服务 (Service/Agent)", "responsibility": "执行受控规则计算与自动化流程编排", "permissions": "受限内部工具与领域服务调用"},
-                {"role": "多因子审批人 (Approver)", "responsibility": "针对高风险节点执行人工复核与安全签署", "permissions": "审批、驳回与异常处置"},
-                {"role": "平台管理员 (Admin)", "responsibility": "全系统配置管理、异常熔断干预与审计监控", "permissions": "全量管理与系统配置"}
+                {"role": "\u4e1a\u52a1\u64cd\u4f5c\u7528\u6237 (Operator)", "responsibility": "\u53d1\u8d77\u4e1a\u52a1\u64cd\u4f5c\u4e0e\u67e5\u8be2\u68c0\u7d22\u8bf7\u6c42", "permissions": "\u6807\u51c6\u4e1a\u52a1\u63d0\u4ea4\u4e0e\u7ed3\u679c\u67e5\u770b"},
+                {"role": "\u4e1a\u52a1\u81ea\u52a8\u5316\u670d\u52a1 (Service/Agent)", "responsibility": "\u6267\u884c\u53d7\u63a7\u89c4\u5219\u8ba1\u7b97\u4e0e\u81ea\u52a8\u5316\u6d41\u7a0b\u7f16\u6392", "permissions": "\u53d7\u9650\u5185\u90e8\u5de5\u5177\u4e0e\u9886\u57df\u670d\u52a1\u8c03\u7528"},
+                {"role": "\u591a\u56e0\u5b50\u5ba1\u6279\u4eba (Approver)", "responsibility": "\u9488\u5bf9\u9ad8\u98ce\u9669\u8282\u70b9\u6267\u884c\u4eba\u5de5\u590d\u6838\u4e0e\u5b89\u5168\u7b7e\u7f72", "permissions": "\u5ba1\u6279\u3001\u9a73\u56de\u4e0e\u5f02\u5e38\u5904\u7f6e"},
+                {"role": "\u5e73\u53f0\u7ba1\u7406\u5458 (Admin)", "responsibility": "\u5168\u7cfb\u7edf\u914d\u7f6e\u7ba1\u7406\u3001\u5f02\u5e38\u7194\u65ad\u5e72\u9884\u4e0e\u5ba1\u8ba1\u76d1\u63a7", "permissions": "\u5168\u91cf\u7ba1\u7406\u4e0e\u7cfb\u7edf\u914d\u7f6e"}
             ]
             for r in roles or default_roles:
                 lines.append(f"| **{r.get('role')}** | {r.get('responsibility')} | {r.get('permissions')} |")
@@ -1909,7 +1909,7 @@ class AuraklArchitectureRenderer:
             if flowchart:
                 lines.extend([
                     "",
-                    "## 2. 核心业务全局主流程图 (Flowchart)",
+                    "## 2. \u6838\u5fc3\u4e1a\u52a1\u5168\u5c40\u4e3b\u6d41\u7a0b\u56fe (Flowchart)",
                     "",
                     "```mermaid",
                     flowchart.strip(),
@@ -1918,7 +1918,7 @@ class AuraklArchitectureRenderer:
 
             lines.extend([
                 "",
-                "## 3. 核心业务流程时序与详细步骤 (Sequence Flows & Step Details)",
+                "## 3. \u6838\u5fc3\u4e1a\u52a1\u6d41\u7a0b\u65f6\u5e8f\u4e0e\u8be6\u7ec6\u6b65\u9aa4 (Sequence Flows & Step Details)",
                 "",
             ])
             for f in flows:
@@ -1932,10 +1932,10 @@ class AuraklArchitectureRenderer:
 
                 lines.extend([
                     f"### {fid}: {fname}",
-                    f"**业务说明**：{fdesc}",
-                    f"- **实现需求**：`{reqs}`",
+                    f"**\u4e1a\u52a1\u8bf4\u660e**\uff1a{fdesc}",
+                    f"- **\u5b9e\u73b0\u9700\u6c42**\uff1a`{reqs}`",
                     "",
-                    "#### 时序交互图 (Sequence Diagram)",
+                    "#### \u65f6\u5e8f\u4ea4\u4e92\u56fe (Sequence Diagram)",
                     "```mermaid",
                     seq.strip() if seq else "sequenceDiagram\n  autonumber\n  Actor->>System: Request\n  System-->>Actor: Response",
                     "```",
@@ -1944,32 +1944,32 @@ class AuraklArchitectureRenderer:
 
                 if steps:
                     lines.extend([
-                        "#### 详细步骤操作规范",
+                        "#### \u8be6\u7ec6\u6b65\u9aa4\u64cd\u4f5c\u89c4\u8303",
                     ])
                     for s in steps:
                         lines.extend([
-                            f"##### 步骤 {s.get('step_number', 1)}: {s.get('step_name', 'Operation')}",
-                            f"- **触发条件**：{s.get('trigger_condition', '用户调用接口')}",
-                            f"- **执行主体**：`{s.get('actor', 'System')}`",
-                            f"- **操作说明**：{s.get('operation_details', '')}",
-                            f"- **输入数据**：`{s.get('inputs', 'Request parameters')}`",
-                            f"- **输出结果**：`{s.get('outputs', 'Execution result')}`",
-                            f"- **业务规则**：{s.get('business_rules', '遵守不可变约束')}",
-                            f"- **异常处理**：{s.get('exception_handling', '触发自动回滚并记录告警')}",
-                            f"- **时效/SLA 要求**：`{s.get('sla_requirement', 'P99 < 500ms')}`",
+                            f"##### \u6b65\u9aa4 {s.get('step_number', 1)}: {s.get('step_name', 'Operation')}",
+                            f"- **\u89e6\u53d1\u6761\u4ef6**\uff1a{s.get('trigger_condition', '\u7528\u6237\u8c03\u7528\u63a5\u53e3')}",
+                            f"- **\u6267\u884c\u4e3b\u4f53**\uff1a`{s.get('actor', 'System')}`",
+                            f"- **\u64cd\u4f5c\u8bf4\u660e**\uff1a{s.get('operation_details', '')}",
+                            f"- **\u8f93\u5165\u6570\u636e**\uff1a`{s.get('inputs', 'Request parameters')}`",
+                            f"- **\u8f93\u51fa\u7ed3\u679c**\uff1a`{s.get('outputs', 'Execution result')}`",
+                            f"- **\u4e1a\u52a1\u89c4\u5219**\uff1a{s.get('business_rules', '\u9075\u5b88\u4e0d\u53ef\u53d8\u7ea6\u675f')}",
+                            f"- **\u5f02\u5e38\u5904\u7406**\uff1a{s.get('exception_handling', '\u89e6\u53d1\u81ea\u52a8\u56de\u6eda\u5e76\u8bb0\u5f55\u544a\u8b66')}",
+                            f"- **\u65f6\u6548/SLA \u8981\u6c42**\uff1a`{s.get('sla_requirement', 'P99 < 500ms')}`",
                             "",
                         ])
 
                 lines.extend([
-                    "#### 三路径行为规约 (Three Paths)",
-                    f"- **正常路径 (Happy Path)**：{paths.get('happy_path', '各节点预检通过，原子提交成功并写回审计日志。')}",
-                    f"- **边缘场景 (Edge Cases)**：{paths.get('edge_cases', '高并发写争用版本冲突，退避重试或触发乐观锁重试机制。')}",
-                    f"- **异常容灾 (Error Handling)**：{paths.get('error_handling', '下游单库超时断连，2PC 自动中断并触发 Saga 逆向补偿回滚。')}",
+                    "#### \u4e09\u8def\u5f84\u884c\u4e3a\u89c4\u7ea6 (Three Paths)",
+                    f"- **\u6b63\u5e38\u8def\u5f84 (Happy Path)**\uff1a{paths.get('happy_path', '\u5404\u8282\u70b9\u9884\u68c0\u901a\u8fc7\uff0c\u539f\u5b50\u63d0\u4ea4\u6210\u529f\u5e76\u5199\u56de\u5ba1\u8ba1\u65e5\u5fd7\u3002')}",
+                    f"- **\u8fb9\u7f18\u573a\u666f (Edge Cases)**\uff1a{paths.get('edge_cases', '\u9ad8\u5e76\u53d1\u5199\u4e89\u7528\u7248\u672c\u51b2\u7a81\uff0c\u9000\u907f\u91cd\u8bd5\u6216\u89e6\u53d1\u4e50\u89c2\u9501\u91cd\u8bd5\u673a\u5236\u3002')}",
+                    f"- **\u5f02\u5e38\u5bb9\u707e (Error Handling)**\uff1a{paths.get('error_handling', '\u4e0b\u6e38\u5355\u5e93\u8d85\u65f6\u65ad\u8fde\uff0c2PC \u81ea\u52a8\u4e2d\u65ad\u5e76\u89e6\u53d1 Saga \u9006\u5411\u8865\u507f\u56de\u6eda\u3002')}",
                     "",
                 ])
 
             lines.extend([
-                "## 4. 核心状态机架构与状态转移图 (State Machine Architecture)",
+                "## 4. \u6838\u5fc3\u72b6\u6001\u673a\u67b6\u6784\u4e0e\u72b6\u6001\u8f6c\u79fb\u56fe (State Machine Architecture)",
                 "",
             ])
             for sm in state_machines:
@@ -1986,24 +1986,24 @@ class AuraklArchitectureRenderer:
                     transitions_map[from_s].append(f"{to_s} ({evt}{guard})")
 
                 lines.extend([
-                    f"### 状态机: `{sm_name}`",
-                    f"- **终态集合 (Terminal States)**：`{', '.join(sm.get('terminal_states', ['COMMITTED', 'ROLLED_BACK']))}` (终态严格不可变)",
+                    f"### \u72b6\u6001\u673a: `{sm_name}`",
+                    f"- **\u7ec8\u6001\u96c6\u5408 (Terminal States)**\uff1a`{', '.join(sm.get('terminal_states', ['COMMITTED', 'ROLLED_BACK']))}` (\u7ec8\u6001\u4e25\u683c\u4e0d\u53ef\u53d8)",
                     "",
-                    "#### 状态定义表格",
-                    "| 状态代码 | 状态名称 | 业务定义与准入准出条件 | 可流转目标状态 |",
+                    "#### \u72b6\u6001\u5b9a\u4e49\u8868\u683c",
+                    "| \u72b6\u6001\u4ee3\u7801 | \u72b6\u6001\u540d\u79f0 | \u4e1a\u52a1\u5b9a\u4e49\u4e0e\u51c6\u5165\u51c6\u51fa\u6761\u4ef6 | \u53ef\u6d41\u8f6c\u76ee\u6807\u72b6\u6001 |",
                     "| :--- | :--- | :--- | :--- |",
                 ])
                 for st in states:
                     if isinstance(st, str):
                         s_code = st
                         s_name = st
-                        s_desc = f"{sm_name} 状态节点：{st}"
-                        s_trans = transitions_map.get(st, ["无 (终态 / Terminal State)"])
+                        s_desc = f"{sm_name} \u72b6\u6001\u8282\u70b9\uff1a{st}"
+                        s_trans = transitions_map.get(st, ["\u65e0 (\u7ec8\u6001 / Terminal State)"])
                     else:
                         s_code = st.get("state") or st.get("code") or st.get("name", "STATE")
                         s_name = st.get("name", s_code)
                         s_desc = st.get("description", "")
-                        s_trans = st.get("transitions") or transitions_map.get(s_code, ["无 (终态 / Terminal State)"])
+                        s_trans = st.get("transitions") or transitions_map.get(s_code, ["\u65e0 (\u7ec8\u6001 / Terminal State)"])
                     lines.append(f"| **`{s_code}`** | {s_name} | {s_desc} | `{', '.join(s_trans)}` |")
 
                 mermaid_dia = sm.get("mermaid_diagram")
@@ -2023,7 +2023,7 @@ class AuraklArchitectureRenderer:
                 if mermaid_dia:
                     lines.extend([
                         "",
-                        "#### 状态流转拓扑图 (State Diagram)",
+                        "#### \u72b6\u6001\u6d41\u8f6c\u62d3\u6251\u56fe (State Diagram)",
                         "```mermaid",
                         mermaid_dia.strip(),
                         "```",
@@ -2032,7 +2032,7 @@ class AuraklArchitectureRenderer:
 
             if data_model:
                 lines.extend([
-                    "## 5. 流程领域数据模型 (Flow Data Model)",
+                    "## 5. \u6d41\u7a0b\u9886\u57df\u6570\u636e\u6a21\u578b (Flow Data Model)",
                     "",
                     "```typescript",
                     data_model.strip(),
@@ -2220,7 +2220,7 @@ class AuraklArchitectureRenderer:
 
         if lang == "zh":
             lines = [
-                f"# {sys_name} 九维全景架构不变量规约",
+                f"# {sys_name} \u4e5d\u7ef4\u5168\u666f\u67b6\u6784\u4e0d\u53d8\u91cf\u89c4\u7ea6",
                 "",
                 "```yaml",
                 "metadata:",
@@ -2231,18 +2231,18 @@ class AuraklArchitectureRenderer:
                 f'  invariants_count: {len(invariants)}',
                 "```",
                 "",
-                "> 架构师主导型工程防御法案：在兼容性、分层、存储、并发、安全、性能、代码规范、容灾与可观测性 9 大核心维度建立 100% 物理防御载体，违规强制阻断并具备自动化处置机制。",
+                "> \u67b6\u6784\u5e08\u4e3b\u5bfc\u578b\u5de5\u7a0b\u9632\u5fa1\u6cd5\u6848\uff1a\u5728\u517c\u5bb9\u6027\u3001\u5206\u5c42\u3001\u5b58\u50a8\u3001\u5e76\u53d1\u3001\u5b89\u5168\u3001\u6027\u80fd\u3001\u4ee3\u7801\u89c4\u8303\u3001\u5bb9\u707e\u4e0e\u53ef\u89c2\u6d4b\u6027 9 \u5927\u6838\u5fc3\u7ef4\u5ea6\u5efa\u7acb 100% \u7269\u7406\u9632\u5fa1\u8f7d\u4f53\uff0c\u8fdd\u89c4\u5f3a\u5236\u963b\u65ad\u5e76\u5177\u5907\u81ea\u52a8\u5316\u5904\u7f6e\u673a\u5236\u3002",
                 "",
                 "---",
                 "",
-                "## 1. 架构不变量概述 (Overview)",
+                "## 1. \u67b6\u6784\u4e0d\u53d8\u91cf\u6982\u8ff0 (Overview)",
                 "",
-                f"- **架构不变量总数**：`{len(invariants)}` 条规约",
-                f"- **物理防御覆盖率**：`{cov_pct}%` (100% 达标铁律)",
+                f"- **\u67b6\u6784\u4e0d\u53d8\u91cf\u603b\u6570**\uff1a`{len(invariants)}` \u6761\u89c4\u7ea6",
+                f"- **\u7269\u7406\u9632\u5fa1\u8986\u76d6\u7387**\uff1a`{cov_pct}%` (100% \u8fbe\u6807\u94c1\u5f8b)",
                 "",
-                "## 2. 九维架构不变量全景明细 (Nine-Dimension Catalog)",
+                "## 2. \u4e5d\u7ef4\u67b6\u6784\u4e0d\u53d8\u91cf\u5168\u666f\u660e\u7ec6 (Nine-Dimension Catalog)",
                 "",
-                "| 不变量编号 | 核心维度 (Dimension) | 不变量陈述 (Rule) | 物理防御机制 (Physical Defense) | 违规补救方案 (Remediation) |",
+                "| \u4e0d\u53d8\u91cf\u7f16\u53f7 | \u6838\u5fc3\u7ef4\u5ea6 (Dimension) | \u4e0d\u53d8\u91cf\u9648\u8ff0 (Rule) | \u7269\u7406\u9632\u5fa1\u673a\u5236 (Physical Defense) | \u8fdd\u89c4\u8865\u6551\u65b9\u6848 (Remediation) |",
                 "| :--- | :--- | :--- | :--- | :--- |",
             ]
             for inv in invariants:
@@ -2250,16 +2250,16 @@ class AuraklArchitectureRenderer:
 
             lines.extend([
                 "",
-                "## 3. 物理防御载体分层落地矩阵 (Implementation Carriers)",
+                "## 3. \u7269\u7406\u9632\u5fa1\u8f7d\u4f53\u5206\u5c42\u843d\u5730\u77e9\u9635 (Implementation Carriers)",
                 "",
-                "- **持久化存储层 (DB Constraints)**：PostgreSQL CHECK 约束、外键级联限制、版本乐观锁、唯一索引",
-                "- **编译期与工具链门禁 (CI/Compiler)**：Rust Clippy deny 规则、ArchUnit 单向分层校验、零 Panic 静态分析",
-                "- **网关与安全拦截器 (Gateway/Security)**：JWT 签名验证、Fine-Grained RBAC 拦截、自适应令牌桶限流",
-                "- **高可用与运行时容灾 (Runtime Resilience)**：Saga 逆向补偿器、断路器熔断、指数退避重试、OpenTelemetry 上下文传递",
+                "- **\u6301\u4e45\u5316\u5b58\u50a8\u5c42 (DB Constraints)**\uff1aPostgreSQL CHECK \u7ea6\u675f\u3001\u5916\u952e\u7ea7\u8054\u9650\u5236\u3001\u7248\u672c\u4e50\u89c2\u9501\u3001\u552f\u4e00\u7d22\u5f15",
+                "- **\u7f16\u8bd1\u671f\u4e0e\u5de5\u5177\u94fe\u95e8\u7981 (CI/Compiler)**\uff1aRust Clippy deny \u89c4\u5219\u3001ArchUnit \u5355\u5411\u5206\u5c42\u6821\u9a8c\u3001\u96f6 Panic \u9759\u6001\u5206\u6790",
+                "- **\u7f51\u5173\u4e0e\u5b89\u5168\u62e6\u622a\u5668 (Gateway/Security)**\uff1aJWT \u7b7e\u540d\u9a8c\u8bc1\u3001Fine-Grained RBAC \u62e6\u622a\u3001\u81ea\u9002\u5e94\u4ee4\u724c\u6876\u9650\u6d41",
+                "- **\u9ad8\u53ef\u7528\u4e0e\u8fd0\u884c\u65f6\u5bb9\u707e (Runtime Resilience)**\uff1aSaga \u9006\u5411\u8865\u507f\u5668\u3001\u65ad\u8def\u5668\u7194\u65ad\u3001\u6307\u6570\u9000\u907f\u91cd\u8bd5\u3001OpenTelemetry \u4e0a\u4e0b\u6587\u4f20\u9012",
                 "",
-                "## 4. PRD 需求血缘追踪矩阵 (Traceability Matrix)",
+                "## 4. PRD \u9700\u6c42\u8840\u7f18\u8ffd\u8e2a\u77e9\u9635 (Traceability Matrix)",
                 "",
-                f"- **关联需求清单**：`{', '.join(data.get('implements', []))}`",
+                f"- **\u5173\u8054\u9700\u6c42\u6e05\u5355**\uff1a`{', '.join(data.get('implements', []))}`",
                 "",
             ])
 
@@ -2326,7 +2326,7 @@ class AuraklArchitectureRenderer:
 
         if lang == "zh":
             lines = [
-                f"# {sys_name} 技术依赖拓扑与开发指导规约",
+                f"# {sys_name} \u6280\u672f\u4f9d\u8d56\u62d3\u6251\u4e0e\u5f00\u53d1\u6307\u5bfc\u89c4\u7ea6",
                 "",
                 "```yaml",
                 "metadata:",
@@ -2337,17 +2337,17 @@ class AuraklArchitectureRenderer:
                 f'  critical_path_length: {len(crit_path)}',
                 "```",
                 "",
-                "> 严格保障依赖 DAG 有向无环，明确关键施工路径与核心技术瓶颈，并遵循 Lingforge complex-feature-guide-writer 实用标准，为高难度特性提供可执行的 Step-by-Step 技术方案、代码范例与验证准则。",
+                "> \u4e25\u683c\u4fdd\u969c\u4f9d\u8d56 DAG \u6709\u5411\u65e0\u73af\uff0c\u660e\u786e\u5173\u952e\u65bd\u5de5\u8def\u5f84\u4e0e\u6838\u5fc3\u6280\u672f\u74f6\u9888\uff0c\u5e76\u9075\u5faa Lingforge complex-feature-guide-writer \u5b9e\u7528\u6807\u51c6\uff0c\u4e3a\u9ad8\u96be\u5ea6\u7279\u6027\u63d0\u4f9b\u53ef\u6267\u884c\u7684 Step-by-Step \u6280\u672f\u65b9\u6848\u3001\u4ee3\u7801\u8303\u4f8b\u4e0e\u9a8c\u8bc1\u51c6\u5219\u3002",
                 "",
                 "---",
                 "",
-                "## 1. 技术依赖与指导概述 (Overview)",
+                "## 1. \u6280\u672f\u4f9d\u8d56\u4e0e\u6307\u5bfc\u6982\u8ff0 (Overview)",
                 "",
-                f"- **组件节点总数**：`{len(nodes)}` 个",
-                f"- **依赖关系边数**：`{len(edges)}` 条（严格 Kahn 算法无环验证通过）",
-                f"- **关键路径节点数**：`{len(crit_path)}` 个",
+                f"- **\u7ec4\u4ef6\u8282\u70b9\u603b\u6570**\uff1a`{len(nodes)}` \u4e2a",
+                f"- **\u4f9d\u8d56\u5173\u7cfb\u8fb9\u6570**\uff1a`{len(edges)}` \u6761\uff08\u4e25\u683c Kahn \u7b97\u6cd5\u65e0\u73af\u9a8c\u8bc1\u901a\u8fc7\uff09",
+                f"- **\u5173\u952e\u8def\u5f84\u8282\u70b9\u6570**\uff1a`{len(crit_path)}` \u4e2a",
                 "",
-                "## 2. 技术依赖有向无环图 (Dependency DAG)",
+                "## 2. \u6280\u672f\u4f9d\u8d56\u6709\u5411\u65e0\u73af\u56fe (Dependency DAG)",
                 "",
                 "```mermaid",
                 "graph TD;",
@@ -2357,42 +2357,42 @@ class AuraklArchitectureRenderer:
             lines.extend([
                 "```",
                 "",
-                "## 3. 关键施工路径与瓶颈评估 (Critical Path & Bottlenecks)",
+                "## 3. \u5173\u952e\u65bd\u5de5\u8def\u5f84\u4e0e\u74f6\u9888\u8bc4\u4f30 (Critical Path & Bottlenecks)",
                 "",
-                f"**关键施工路径 (Critical Path)**：`{' -> '.join(crit_path)}`",
+                f"**\u5173\u952e\u65bd\u5de5\u8def\u5f84 (Critical Path)**\uff1a`{' -> '.join(crit_path)}`",
                 "",
-                "| 节点编号 | 组件名称 | 架构分层 | 责任角色 | 前置依赖 |",
+                "| \u8282\u70b9\u7f16\u53f7 | \u7ec4\u4ef6\u540d\u79f0 | \u67b6\u6784\u5206\u5c42 | \u8d23\u4efb\u89d2\u8272 | \u524d\u7f6e\u4f9d\u8d56 |",
                 "| :--- | :--- | :--- | :--- | :--- |",
             ])
             for node in nodes:
-                is_crit = "🔥 (关键路径)" if node.get("id") in crit_path else ""
-                lines.append(f"| **{node.get('id')}** | {node.get('name')} {is_crit} | `{node.get('layer')}` | {node.get('owner_role')} | `{', '.join(node.get('prerequisites', [])) or '无 (起始根节点)'}` |")
+                is_crit = "🔥 (\u5173\u952e\u8def\u5f84)" if node.get("id") in crit_path else ""
+                lines.append(f"| **{node.get('id')}** | {node.get('name')} {is_crit} | `{node.get('layer')}` | {node.get('owner_role')} | `{', '.join(node.get('prerequisites', [])) or '\u65e0 (\u8d77\u59cb\u6839\u8282\u70b9)'}` |")
 
             lines.extend([
                 "",
-                "#### 瓶颈风险评估与解耦策略 (Bottlenecks & Decoupling)",
+                "#### \u74f6\u9888\u98ce\u9669\u8bc4\u4f30\u4e0e\u89e3\u8026\u7b56\u7565 (Bottlenecks & Decoupling)",
                 "",
-                "| 节点编号 | 组件名称 | 瓶颈风险评估 | 解耦与加速策略 |",
+                "| \u8282\u70b9\u7f16\u53f7 | \u7ec4\u4ef6\u540d\u79f0 | \u74f6\u9888\u98ce\u9669\u8bc4\u4f30 | \u89e3\u8026\u4e0e\u52a0\u901f\u7b56\u7565 |",
                 "| :--- | :--- | :--- | :--- |",
             ])
             for node in nodes:
-                b_risk = node.get("bottleneck_risk", "前置依赖变更可能导致下游重新编译与接口适配")
-                decoup = node.get("decoupling_strategy", "基于纯接口 Trait 进行依赖倒置，保持实现与抽象隔离")
+                b_risk = node.get("bottleneck_risk", "\u524d\u7f6e\u4f9d\u8d56\u53d8\u66f4\u53ef\u80fd\u5bfc\u81f4\u4e0b\u6e38\u91cd\u65b0\u7f16\u8bd1\u4e0e\u63a5\u53e3\u9002\u914d")
+                decoup = node.get("decoupling_strategy", "\u57fa\u4e8e\u7eaf\u63a5\u53e3 Trait \u8fdb\u884c\u4f9d\u8d56\u5012\u7f6e\uff0c\u4fdd\u6301\u5b9e\u73b0\u4e0e\u62bd\u8c61\u9694\u79bb")
                 lines.append(f"| **{node.get('id')}** | {node.get('name')} | {b_risk} | {decoup} |")
 
             lines.extend([
                 "",
-                "## 4. 技术施工有序阶段规划 (Build Sequence)",
+                "## 4. \u6280\u672f\u65bd\u5de5\u6709\u5e8f\u9636\u6bb5\u89c4\u5212 (Build Sequence)",
                 "",
-                "| 阶段顺序 | 构建节点 | 准入条件 (Entry Criteria) | 准出验收条件 (Exit Criteria) |",
+                "| \u9636\u6bb5\u987a\u5e8f | \u6784\u5efa\u8282\u70b9 | \u51c6\u5165\u6761\u4ef6 (Entry Criteria) | \u51c6\u51fa\u9a8c\u6536\u6761\u4ef6 (Exit Criteria) |",
                 "| :--- | :--- | :--- | :--- |",
             ])
             for phase in phases:
-                lines.append(f"| 阶段 {phase.get('order')} | **`{phase.get('node_id')}`** | {phase.get('entry_criteria')} | {phase.get('exit_criteria')} |")
+                lines.append(f"| \u9636\u6bb5 {phase.get('order')} | **`{phase.get('node_id')}`** | {phase.get('entry_criteria')} | {phase.get('exit_criteria')} |")
 
             lines.extend([
                 "",
-                "## 5. 高难度复杂特性实现指导 (Complex Feature Implementation Guides)",
+                "## 5. \u9ad8\u96be\u5ea6\u590d\u6742\u7279\u6027\u5b9e\u73b0\u6307\u5bfc (Complex Feature Implementation Guides)",
                 "",
             ])
             for s_idx, spike in enumerate(spikes, 1):
@@ -2406,20 +2406,20 @@ class AuraklArchitectureRenderer:
                 lines.extend([
                     f"<!-- block-id: {bid} -->",
                     f"### {bid}: {fname}",
-                    f"- **风险假设与瓶颈目标**：{risk}",
-                    f"- **研发验证时间盒 (Timebox)**：`{tbox} 天`",
+                    f"- **\u98ce\u9669\u5047\u8bbe\u4e0e\u74f6\u9888\u76ee\u6807**\uff1a{risk}",
+                    f"- **\u7814\u53d1\u9a8c\u8bc1\u65f6\u95f4\u76d2 (Timebox)**\uff1a`{tbox} \u5929`",
                     "",
-                    "#### 核心算法与生产级代码示例 (Implementation Code)",
+                    "#### \u6838\u5fc3\u7b97\u6cd5\u4e0e\u751f\u4ea7\u7ea7\u4ee3\u7801\u793a\u4f8b (Implementation Code)",
                     "```rust",
                     algo.strip(),
                     "```",
                     "",
-                    "#### 并发与性能考量 (Performance & Concurrency)",
-                    "- **资源隔离与缓冲策略**：实施微批次流水线处理，限制最大内存缓存并配置背压机制。",
-                    "- **连接池与连接泄漏防御**：配置严格的超时借出上限与自动回收心跳。",
+                    "#### \u5e76\u53d1\u4e0e\u6027\u80fd\u8003\u91cf (Performance & Concurrency)",
+                    "- **\u8d44\u6e90\u9694\u79bb\u4e0e\u7f13\u51b2\u7b56\u7565**\uff1a\u5b9e\u65bd\u5fae\u6279\u6b21\u6d41\u6c34\u7ebf\u5904\u7406\uff0c\u9650\u5236\u6700\u5927\u5185\u5b58\u7f13\u5b58\u5e76\u914d\u7f6e\u80cc\u538b\u673a\u5236\u3002",
+                    "- **\u8fde\u63a5\u6c60\u4e0e\u8fde\u63a5\u6cc4\u6f0f\u9632\u5fa1**\uff1a\u914d\u7f6e\u4e25\u683c\u7684\u8d85\u65f6\u501f\u51fa\u4e0a\u9650\u4e0e\u81ea\u52a8\u56de\u6536\u5fc3\u8df3\u3002",
                     "",
-                    "#### 准出与验收验证标准 (Exit & Verification Criteria)",
-                    f"- **验收准则**：{exit_c}",
+                    "#### \u51c6\u51fa\u4e0e\u9a8c\u6536\u9a8c\u8bc1\u6807\u51c6 (Exit & Verification Criteria)",
+                    f"- **\u9a8c\u6536\u51c6\u5219**\uff1a{exit_c}",
                     "",
                     "<!-- /block -->",
                     "",
@@ -2548,7 +2548,7 @@ class AuraklArchitectureRenderer:
 
         if lang == "zh":
             lines = [
-                f"# {pname} 架构就绪度评审与准入报告",
+                f"# {pname} \u67b6\u6784\u5c31\u7eea\u5ea6\u8bc4\u5ba1\u4e0e\u51c6\u5165\u62a5\u544a",
                 "",
                 "```yaml",
                 "metadata:",
@@ -2559,46 +2559,46 @@ class AuraklArchitectureRenderer:
                 f'  architecture_score: {score}',
                 "```",
                 "",
-                f"> **终审结论**：{status_badge} | **综合架构质量评分**：`{score} / 100`",
-                "> 遵循严格的一票否决准入原则：存在任何阻塞性缺陷或需求覆盖不足 100% 均严禁准入研发。",
+                f"> **\u7ec8\u5ba1\u7ed3\u8bba**\uff1a{status_badge} | **\u7efc\u5408\u67b6\u6784\u8d28\u91cf\u8bc4\u5206**\uff1a`{score} / 100`",
+                "> \u9075\u5faa\u4e25\u683c\u7684\u4e00\u7968\u5426\u51b3\u51c6\u5165\u539f\u5219\uff1a\u5b58\u5728\u4efb\u4f55\u963b\u585e\u6027\u7f3a\u9677\u6216\u9700\u6c42\u8986\u76d6\u4e0d\u8db3 100% \u5747\u4e25\u7981\u51c6\u5165\u7814\u53d1\u3002",
                 "",
                 "---",
                 "",
-                "## 1. 核心需求覆盖率审计 (Requirement Coverage Audit)",
+                "## 1. \u6838\u5fc3\u9700\u6c42\u8986\u76d6\u7387\u5ba1\u8ba1 (Requirement Coverage Audit)",
                 "",
-                f"- **PRD Must-Have 核心需求总数**：`{req_audit.get('total_must_have_requirements', 0)}` 项",
-                f"- **架构已闭环需求数**：`{req_audit.get('covered_must_have_requirements', 0)}` 项",
-                f"- **覆盖率百分比**：`{req_audit.get('must_have_coverage_pct', 0.0)}%` (要求: 100%)",
+                f"- **PRD Must-Have \u6838\u5fc3\u9700\u6c42\u603b\u6570**\uff1a`{req_audit.get('total_must_have_requirements', 0)}` \u9879",
+                f"- **\u67b6\u6784\u5df2\u95ed\u73af\u9700\u6c42\u6570**\uff1a`{req_audit.get('covered_must_have_requirements', 0)}` \u9879",
+                f"- **\u8986\u76d6\u7387\u767e\u5206\u6bd4**\uff1a`{req_audit.get('must_have_coverage_pct', 0.0)}%` (\u8981\u6c42: 100%)",
                 "",
-                "## 2. 架构规范与兼容性合规性审计 (Compliance Audit)",
+                "## 2. \u67b6\u6784\u89c4\u8303\u4e0e\u517c\u5bb9\u6027\u5408\u89c4\u6027\u5ba1\u8ba1 (Compliance Audit)",
                 "",
-                f"- **向后兼容性验证**：{'✅ 通过 (无破坏性变更)' if compat_audit.get('backward_compatibility_verified') else '❌ 未通过'}",
-                f"- **三层单体架构合规**：{'✅ 严格符合 (<= 3 层)' if compat_audit.get('layer_count_compliant') else '❌ 违规过度分层'}",
-                f"- **PRD 约束技术栈合规**：{'✅ 100% 继承并落地' if compat_audit.get('prd_tech_stack_compliant') else '❌ 偏离约束'}",
+                f"- **\u5411\u540e\u517c\u5bb9\u6027\u9a8c\u8bc1**\uff1a{'✅ \u901a\u8fc7 (\u65e0\u7834\u574f\u6027\u53d8\u66f4)' if compat_audit.get('backward_compatibility_verified') else '❌ \u672a\u901a\u8fc7'}",
+                f"- **\u4e09\u5c42\u5355\u4f53\u67b6\u6784\u5408\u89c4**\uff1a{'✅ \u4e25\u683c\u7b26\u5408 (<= 3 \u5c42)' if compat_audit.get('layer_count_compliant') else '❌ \u8fdd\u89c4\u8fc7\u5ea6\u5206\u5c42'}",
+                f"- **PRD \u7ea6\u675f\u6280\u672f\u6808\u5408\u89c4**\uff1a{'✅ 100% \u7ee7\u627f\u5e76\u843d\u5730' if compat_audit.get('prd_tech_stack_compliant') else '❌ \u504f\u79bb\u7ea6\u675f'}",
                 "",
-                "## 3. 阻塞性架构缺陷审查 (Blocking Findings - 一票否决项)",
+                "## 3. \u963b\u585e\u6027\u67b6\u6784\u7f3a\u9677\u5ba1\u67e5 (Blocking Findings - \u4e00\u7968\u5426\u51b3\u9879)",
                 "",
             ]
             if blocking:
                 for b in blocking:
                     lines.append(f"- 🔴 **[{b.get('category', 'BLOCKER')}]** {b.get('message')}")
             else:
-                lines.append("✅ **无任何阻塞性缺陷 (Zero Blocking Findings)**：所有架构规约均满足交付红线。")
+                lines.append("✅ **\u65e0\u4efb\u4f55\u963b\u585e\u6027\u7f3a\u9677 (Zero Blocking Findings)**\uff1a\u6240\u6709\u67b6\u6784\u89c4\u7ea6\u5747\u6ee1\u8db3\u4ea4\u4ed8\u7ea2\u7ebf\u3002")
 
             lines.extend([
                 "",
-                "## 4. 建议性优化项审查 (Advisory Findings)",
+                "## 4. \u5efa\u8bae\u6027\u4f18\u5316\u9879\u5ba1\u67e5 (Advisory Findings)",
                 "",
             ])
             if advisory:
                 for a in advisory:
-                    lines.append(f"- 🟡 **[{a.get('category', 'ADVISORY')}]** {a.get('description', a.get('message', ''))} (建议: {a.get('recommendation', '')})")
+                    lines.append(f"- 🟡 **[{a.get('category', 'ADVISORY')}]** {a.get('description', a.get('message', ''))} (\u5efa\u8bae: {a.get('recommendation', '')})")
             else:
-                lines.append("暂无建议优化项。")
+                lines.append("\u6682\u65e0\u5efa\u8bae\u4f18\u5316\u9879\u3002")
 
             lines.extend([
                 "",
-                "## 5. 架构裁决陈述与决策依据 (Decision Rationale)",
+                "## 5. \u67b6\u6784\u88c1\u51b3\u9648\u8ff0\u4e0e\u51b3\u7b56\u4f9d\u636e (Decision Rationale)",
                 "",
                 f"{rationale}",
                 "",

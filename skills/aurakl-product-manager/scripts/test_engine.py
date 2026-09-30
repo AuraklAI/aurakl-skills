@@ -3,10 +3,10 @@
 Pangu Typography & Markdown Visual Ergonomics Conformance Engine.
 
 Strictly enforces:
-1. 《中文文案排版指北》(Chinese Copywriting Guidelines / 盘古之白):
+1. Chinese Copywriting Guidelines / Spacing Standards:
    - Inserts half-width space between CJK characters and Latin/Digits/Symbols.
    - Preserves fenced code blocks, inline code, and Markdown URL link targets.
-   - Correctly handles inline code containing CJK (e.g. `微信小程序 web-view 容器`).
+   - Correctly handles inline code containing CJK.
 2. Markdown Visual Ergonomics & Human Readability:
    - Preserves mathematical comparison operators (<, >, <=, >=).
    - Normalizes vertical rhythm around headings, tables, and horizontal rules.
@@ -107,15 +107,15 @@ class PanguTypographyEngine:
 if __name__ == "__main__":
     # Self-test cases
     samples = [
-        "在微信H5端通过想去与避雷双向标签自主挑选景点",
-        "每天高效处理数十位客户的定制需求，并在5分钟内完成",
-        "提供7座别克GL8商务车、轻奢五星酒店房型",
-        "在PC计调ERP后台接收新工单秒级弹窗",
-        "系统`MOD-CLIENT`模块处理`POST /orders`请求",
-        "【FEAT-CLIENT-001】景点意向选型",
-        "当检测到底层网络断开时，客户端**必须 (MUST)**将当前表单持久化至本地SQLite/MMKV中。",
-        "### 1.2 核心业务目标(Goals)",
-        "| `ERR_CODE` | 用户选型载荷中同一景点ID同时出现在必去与避雷集合中 | 时延要求 < 1000ms 且成功率 > 99.9% |"
+        "\u5728\u5fae\u4fe1H5\u7aef\u901a\u8fc7\u60f3\u53bb\u4e0e\u907f\u96f7\u53cc\u5411\u6807\u7b7e\u81ea\u4e3b\u6311\u9009\u666f\u70b9",
+        "\u6bcf\u5929\u9ad8\u6548\u5904\u7406\u6570\u5341\u4f4d\u5ba2\u6237\u7684\u5b9a\u5236\u9700\u6c42\uff0c\u5e76\u57285\u5206\u949f\u5185\u5b8c\u6210",
+        "\u63d0\u4f9b7\u5ea7\u522b\u514bGL8\u5546\u52a1\u8f66\u3001\u8f7b\u5962\u4e94\u661f\u9152\u5e97\u623f\u578b",
+        "\u5728PC\u8ba1\u8c03ERP\u540e\u53f0\u63a5\u6536\u65b0\u5de5\u5355\u79d2\u7ea7\u5f39\u7a97",
+        "\u7cfb\u7edf`MOD-CLIENT`\u6a21\u5757\u5904\u7406`POST /orders`\u8bf7\u6c42",
+        "\u3010FEAT-CLIENT-001\u3011\u666f\u70b9\u610f\u5411\u9009\u578b",
+        "\u5f53\u68c0\u6d4b\u5230\u5e95\u5c42\u7f51\u7edc\u65ad\u5f00\u65f6\uff0c\u5ba2\u6237\u7aef**\u5fc5\u987b (MUST)**\u5c06\u5f53\u524d\u8868\u5355\u6301\u4e45\u5316\u81f3\u672c\u5730SQLite/MMKV\u4e2d\u3002",
+        "### 1.2 \u6838\u5fc3\u4e1a\u52a1\u76ee\u6807(Goals)",
+        "| `ERR_CODE` | \u7528\u6237\u9009\u578b\u8f7d\u8377\u4e2d\u540c\u4e00\u666f\u70b9ID\u540c\u65f6\u51fa\u73b0\u5728\u5fc5\u53bb\u4e0e\u907f\u96f7\u96c6\u5408\u4e2d | \u65f6\u5ef6\u8981\u6c42 < 1000ms \u4e14\u6210\u529f\u7387 > 99.9% |"
     ]
 
     print("=== PanguTypographyEngine Test Run ===")

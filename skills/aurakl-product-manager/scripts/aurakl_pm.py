@@ -30,7 +30,7 @@ if not ORACLE_SCRIPT.exists():
         ORACLE_SCRIPT = _fallback
 
 from elicit_5w1h import ElicitationEngine, format_report_console
-from aurakl_validator import AuraklValidator, LumenValidator, format_verdict_console
+from aurakl_validator import AuraklValidator, format_verdict_console
 
 
 def cmd_elicit(args: argparse.Namespace) -> int:
@@ -302,7 +302,7 @@ def cmd_standards(args: argparse.Namespace) -> int:
 
 
 def cmd_render(args: argparse.Namespace) -> int:
-    from aurakl_renderer import AuraklMarkdownRenderer, LumenMarkdownRenderer, render_all_artifacts
+    from aurakl_renderer import AuraklMarkdownRenderer, render_all_artifacts
     renderer = AuraklMarkdownRenderer()
 
     if getattr(args, "json_file", None) and getattr(args, "template", None):

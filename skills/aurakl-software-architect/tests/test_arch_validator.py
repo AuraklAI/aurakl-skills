@@ -35,7 +35,7 @@ class TestArchValidator(unittest.TestCase):
         self.assertTrue(any(i.code == "forbidden_placeholder" for i in issues))
 
     def test_chinese_placeholder_rejection(self):
-        bad_doc = {"notes": "该算法待定，后续补充"}
+        bad_doc = {"notes": "\u8be5\u7b97\u6cd5\u5f85\u5b9a\uff0c\u540e\u7eed\u8865\u5145"}
         issues = self.validator.validate_grounding(bad_doc)
         self.assertTrue(any(i.code == "forbidden_placeholder" for i in issues))
 

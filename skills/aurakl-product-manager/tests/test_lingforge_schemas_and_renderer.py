@@ -14,8 +14,8 @@ import unittest
 SKILL_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(SKILL_ROOT / "scripts"))
 
-from aurakl_validator import AuraklValidator, LumenValidator
-from aurakl_renderer import AuraklMarkdownRenderer, LumenMarkdownRenderer
+from aurakl_validator import AuraklValidator
+from aurakl_renderer import AuraklMarkdownRenderer
 
 
 class TestLingforgeSchemasAndRenderer(unittest.TestCase):
@@ -39,7 +39,7 @@ class TestLingforgeSchemasAndRenderer(unittest.TestCase):
                 "id": "story-demo-v1",
                 "type": "story",
                 "version": "1.0",
-                "title": "Demo 用户故事",
+                "title": "Demo \u7528\u6237\u6545\u4e8b",
                 "status": "draft",
                 "author": "product@example.com",
                 "created": "2026-03-01",
@@ -48,60 +48,60 @@ class TestLingforgeSchemasAndRenderer(unittest.TestCase):
                 "tags": ["mvp", "demo"],
                 "priority": "P0"
             },
-            "overview": "这是测试用户故事集的业务目标概述说明。",
+            "overview": "\u8fd9\u662f\u6d4b\u8bd5\u7528\u6237\u6545\u4e8b\u96c6\u7684\u4e1a\u52a1\u76ee\u6807\u6982\u8ff0\u8bf4\u660e\u3002",
             "epics": [
                 {
                     "id": "EPIC-DEMO-001",
-                    "name": "核心认证与授权",
-                    "goal": "完成统一身份鉴权与安全门禁",
-                    "business_value": "降低企业越权风险并提供审计溯源",
+                    "name": "\u6838\u5fc3\u8ba4\u8bc1\u4e0e\u6388\u6743",
+                    "goal": "\u5b8c\u6210\u7edf\u4e00\u8eab\u4efd\u9274\u6743\u4e0e\u5b89\u5168\u95e8\u7981",
+                    "business_value": "\u964d\u4f4e\u4f01\u4e1a\u8d8a\u6743\u98ce\u9669\u5e76\u63d0\u4f9b\u5ba1\u8ba1\u6eaf\u6e90",
                     "contained_stories": ["USR-DEMO-001"],
                     "priority": "Must",
-                    "estimated_effort": "2 人周"
+                    "estimated_effort": "2 \u4eba\u5468"
                 }
             ],
             "stories": [
                 {
                     "id": "USR-DEMO-001",
-                    "title": "用户多因素身份认证",
+                    "title": "\u7528\u6237\u591a\u56e0\u7d20\u8eab\u4efd\u8ba4\u8bc1",
                     "implements_epic": "EPIC-DEMO-001",
                     "depends_on": [],
-                    "as_a": "企业安全管理员",
-                    "i_want": "启用多因素动态口令认证",
-                    "so_that": "防止密码泄漏导致的非授权操作",
+                    "as_a": "\u4f01\u4e1a\u5b89\u5168\u7ba1\u7406\u5458",
+                    "i_want": "\u542f\u7528\u591a\u56e0\u7d20\u52a8\u6001\u53e3\u4ee4\u8ba4\u8bc1",
+                    "so_that": "\u9632\u6b62\u5bc6\u7801\u6cc4\u6f0f\u5bfc\u81f4\u7684\u975e\u6388\u6743\u64cd\u4f5c",
                     "priority": "Must",
-                    "estimated_effort": "3 人天",
+                    "estimated_effort": "3 \u4eba\u5929",
                     "sprint": "Sprint 1",
-                    "background": "传统密码方式容易遭受字典攻击与钓鱼漏洞。",
+                    "background": "\u4f20\u7edf\u5bc6\u7801\u65b9\u5f0f\u5bb9\u6613\u906d\u53d7\u5b57\u5178\u653b\u51fb\u4e0e\u9493\u9c7c\u6f0f\u6d1e\u3002",
                     "acceptance_criteria": [
                         {
-                            "given": "用户输入正确的用户名与密码",
-                            "when": "触发二次短信/TOTP 动态口令校验",
-                            "then": "验证成功签发高安全级别 JWT Token"
+                            "given": "\u7528\u6237\u8f93\u5165\u6b63\u786e\u7684\u7528\u6237\u540d\u4e0e\u5bc6\u7801",
+                            "when": "\u89e6\u53d1\u4e8c\u6b21\u77ed\u4fe1/TOTP \u52a8\u6001\u53e3\u4ee4\u6821\u9a8c",
+                            "then": "\u9a8c\u8bc1\u6210\u529f\u7b7e\u53d1\u9ad8\u5b89\u5168\u7ea7\u522b JWT Token"
                         }
                     ],
-                    "dependencies": ["无"],
-                    "ui_ux_notes": ["在登录框下方动态呼出 6 位验证码输入卡片"],
-                    "technical_constraints": ["验证码有效时间为 60 秒，重试 3 次锁定"],
-                    "success_metrics": "登录成功率 > 99.5%，异常拦截率 100%",
+                    "dependencies": ["\u65e0"],
+                    "ui_ux_notes": ["\u5728\u767b\u5f55\u6846\u4e0b\u65b9\u52a8\u6001\u547c\u51fa 6 \u4f4d\u9a8c\u8bc1\u7801\u8f93\u5165\u5361\u7247"],
+                    "technical_constraints": ["\u9a8c\u8bc1\u7801\u6709\u6548\u65f6\u95f4\u4e3a 60 \u79d2\uff0c\u91cd\u8bd5 3 \u6b21\u9501\u5b9a"],
+                    "success_metrics": "\u767b\u5f55\u6210\u529f\u7387 > 99.5%\uff0c\u5f02\u5e38\u62e6\u622a\u7387 100%",
                     "related_prd": "prd-demo-v1"
                 }
             ],
             "personas": [
                 {
                     "id": "PERSONA-001",
-                    "name": "张工",
-                    "description": "安全合规专家",
+                    "name": "\u5f20\u5de5",
+                    "description": "\u5b89\u5168\u5408\u89c4\u4e13\u5bb6",
                     "demographics": {
                         "age_range": "30-40",
-                        "occupation": "安全架构师",
-                        "tech_level": "专家",
-                        "usage_context": "企业安全管控台"
+                        "occupation": "\u5b89\u5168\u67b6\u6784\u5e08",
+                        "tech_level": "\u4e13\u5bb6",
+                        "usage_context": "\u4f01\u4e1a\u5b89\u5168\u7ba1\u63a7\u53f0"
                     },
-                    "pain_points": ["日志格式不一致，溯源取证耗时长"],
+                    "pain_points": ["\u65e5\u5fd7\u683c\u5f0f\u4e0d\u4e00\u81f4\uff0c\u6eaf\u6e90\u53d6\u8bc1\u8017\u65f6\u957f"],
                     "goals_and_needs": {
-                        "goals": ["保障生产环境核心数据库零违规访问"],
-                        "needs": ["全链路操作审计证据链与自动化拦截"]
+                        "goals": ["\u4fdd\u969c\u751f\u4ea7\u73af\u5883\u6838\u5fc3\u6570\u636e\u5e93\u96f6\u8fdd\u89c4\u8bbf\u95ee"],
+                        "needs": ["\u5168\u94fe\u8def\u64cd\u4f5c\u5ba1\u8ba1\u8bc1\u636e\u94fe\u4e0e\u81ea\u52a8\u5316\u62e6\u622a"]
                     },
                     "related_stories": ["USR-DEMO-001"]
                 }
@@ -109,19 +109,19 @@ class TestLingforgeSchemasAndRenderer(unittest.TestCase):
             "journeys": [
                 {
                     "id": "JOURNEY-001",
-                    "name": "高危操作审批与执行旅程",
-                    "scenario": "管理员下发批量数据订正任务",
+                    "name": "\u9ad8\u5371\u64cd\u4f5c\u5ba1\u6279\u4e0e\u6267\u884c\u65c5\u7a0b",
+                    "scenario": "\u7ba1\u7406\u5458\u4e0b\u53d1\u6279\u91cf\u6570\u636e\u8ba2\u6b63\u4efb\u52a1",
                     "involved_personas": ["PERSONA-001"],
                     "steps": [
                         {
-                            "user_action": "输入管理员账号密码并输入 TOTP 口令",
-                            "system_response": "校验成功进入主控台",
-                            "user_feeling": "顺畅且安全",
+                            "user_action": "\u8f93\u5165\u7ba1\u7406\u5458\u8d26\u53f7\u5bc6\u7801\u5e76\u8f93\u5165 TOTP \u53e3\u4ee4",
+                            "system_response": "\u6821\u9a8c\u6210\u529f\u8fdb\u5165\u4e3b\u63a7\u53f0",
+                            "user_feeling": "\u987a\u7545\u4e14\u5b89\u5168",
                             "related_story": "USR-DEMO-001"
                         }
                     ],
-                    "current_pain_points": ["现有流程人工审批需要等 2 天"],
-                    "improvements": ["引入动态风控规则引擎与分钟级审批通道"],
+                    "current_pain_points": ["\u73b0\u6709\u6d41\u7a0b\u4eba\u5de5\u5ba1\u6279\u9700\u8981\u7b49 2 \u5929"],
+                    "improvements": ["\u5f15\u5165\u52a8\u6001\u98ce\u63a7\u89c4\u5219\u5f15\u64ce\u4e0e\u5206\u949f\u7ea7\u5ba1\u6279\u901a\u9053"],
                     "involved_stories": ["USR-DEMO-001"]
                 }
             ],
@@ -129,17 +129,17 @@ class TestLingforgeSchemasAndRenderer(unittest.TestCase):
                 "must_have": [
                     {
                         "story_id": "USR-DEMO-001",
-                        "title": "用户多因素身份认证",
-                        "business_value": "高",
-                        "tech_complexity": "中",
-                        "dependencies": "无",
-                        "estimated_effort": "3 人天"
+                        "title": "\u7528\u6237\u591a\u56e0\u7d20\u8eab\u4efd\u8ba4\u8bc1",
+                        "business_value": "\u9ad8",
+                        "tech_complexity": "\u4e2d",
+                        "dependencies": "\u65e0",
+                        "estimated_effort": "3 \u4eba\u5929"
                     }
                 ],
                 "should_have": [],
                 "could_have": []
             },
-            "upstream_dependencies": ["无"],
+            "upstream_dependencies": ["\u65e0"],
             "downstream_deliverables": {
                 "prd": "prd-demo-v1",
                 "acceptance_criteria": "ac-demo-v1"
@@ -148,7 +148,7 @@ class TestLingforgeSchemasAndRenderer(unittest.TestCase):
                 {
                     "version": "1.0",
                     "date": "2026-03-01",
-                    "changes": "初始创建",
+                    "changes": "\u521d\u59cb\u521b\u5efa",
                     "author": "product@example.com"
                 }
             ]
@@ -166,8 +166,8 @@ class TestLingforgeSchemasAndRenderer(unittest.TestCase):
         self.assertIn("<!-- block-id: USR-DEMO-001 -->", md)
         self.assertIn("<!-- implements: EPIC-DEMO-001 -->", md)
         self.assertIn("<!-- /block -->", md)
-        self.assertIn("- [ ] **Given** 用户输入正确的用户名与密码", md)
-        self.assertIn("## 优先级矩阵 {#priority-matrix}", md)
+        self.assertIn("- [ ] **Given** \u7528\u6237\u8f93\u5165\u6b63\u786e\u7684\u7528\u6237\u540d\u4e0e\u5bc6\u7801", md)
+        self.assertIn("## \u4f18\u5148\u7ea7\u77e9\u9635 {#priority-matrix}", md)
 
     def test_lingforge_prd_validation_and_rendering(self):
         sample_prd_data = {
@@ -175,7 +175,7 @@ class TestLingforgeSchemasAndRenderer(unittest.TestCase):
                 "id": "prd-demo-v1",
                 "type": "prd",
                 "version": "1.0",
-                "title": "Demo 产品需求文档",
+                "title": "Demo \u4ea7\u54c1\u9700\u6c42\u6587\u6863",
                 "status": "draft",
                 "author": "product@example.com",
                 "created": "2026-03-01",
@@ -186,21 +186,21 @@ class TestLingforgeSchemasAndRenderer(unittest.TestCase):
                 "priority": "P0"
             },
             "overview": {
-                "background": "解决跨系统数据孤岛与传统脚本改写数据库缺乏事务保护的问题。",
+                "background": "\u89e3\u51b3\u8de8\u7cfb\u7edf\u6570\u636e\u5b64\u5c9b\u4e0e\u4f20\u7edf\u811a\u672c\u6539\u5199\u6570\u636e\u5e93\u7f3a\u4e4f\u4e8b\u52a1\u4fdd\u62a4\u7684\u95ee\u9898\u3002",
                 "objectives": [
                     {
-                        "metric_name": "双向同步成功率",
+                        "metric_name": "\u53cc\u5411\u540c\u6b65\u6210\u529f\u7387",
                         "baseline": "0%",
                         "target": "> 99.9%",
-                        "timeframe": "上线后 2 周"
+                        "timeframe": "\u4e0a\u7ebf\u540e 2 \u5468"
                     }
                 ],
                 "scope": {
-                    "in_scope": ["实时数据流接入", "分布式写事务控制"],
+                    "in_scope": ["\u5b9e\u65f6\u6570\u636e\u6d41\u63a5\u5165", "\u5206\u5e03\u5f0f\u5199\u4e8b\u52a1\u63a7\u5236"],
                     "out_of_scope": [
                         {
-                            "item": "全场景低代码拖拽构建器",
-                            "reason": "首期聚焦核心稳定性与事务一致性底座"
+                            "item": "\u5168\u573a\u666f\u4f4e\u4ee3\u7801\u62d6\u62fd\u6784\u5efa\u5668",
+                            "reason": "\u9996\u671f\u805a\u7126\u6838\u5fc3\u7a33\u5b9a\u6027\u4e0e\u4e8b\u52a1\u4e00\u81f4\u6027\u5e95\u5ea7"
                         }
                     ]
                 }
@@ -210,38 +210,38 @@ class TestLingforgeSchemasAndRenderer(unittest.TestCase):
                     "block_id": "REQ-F001",
                     "implements_story_id": "USR-DEMO-001",
                     "depends_on": [],
-                    "name": "多源 CDC 数据接入流编排",
+                    "name": "\u591a\u6e90 CDC \u6570\u636e\u63a5\u5165\u6d41\u7f16\u6392",
                     "user_story": {
-                        "role": "架构师",
-                        "target": "接入物理库变更流",
-                        "benefit": "保持业务语义最新状态"
+                        "role": "\u67b6\u6784\u5e08",
+                        "target": "\u63a5\u5165\u7269\u7406\u5e93\u53d8\u66f4\u6d41",
+                        "benefit": "\u4fdd\u6301\u4e1a\u52a1\u8bed\u4e49\u6700\u65b0\u72b6\u6001"
                     },
                     "priority": "Must Have",
                     "story_id": "USR-DEMO-001",
                     "feature_id": "F-001-001",
                     "preconditions": {
-                        "dependencies": ["底层数据库开启动态 binlog"],
-                        "state_prerequisites": ["Flink 集群网络联通"],
-                        "permissions": ["物理库读写权限"],
-                        "usage_scenario": "数据源接入配置页面"
+                        "dependencies": ["\u5e95\u5c42\u6570\u636e\u5e93\u5f00\u542f\u52a8\u6001 binlog"],
+                        "state_prerequisites": ["Flink \u96c6\u7fa4\u7f51\u7edc\u8054\u901a"],
+                        "permissions": ["\u7269\u7406\u5e93\u8bfb\u5199\u6743\u9650"],
+                        "usage_scenario": "\u6570\u636e\u6e90\u63a5\u5165\u914d\u7f6e\u9875\u9762"
                     },
-                    "description": "系统监听物理库变更流并在 500ms 内同步更新至本体模型。",
+                    "description": "\u7cfb\u7edf\u76d1\u542c\u7269\u7406\u5e93\u53d8\u66f4\u6d41\u5e76\u5728 500ms \u5185\u540c\u6b65\u66f4\u65b0\u81f3\u672c\u4f53\u6a21\u578b\u3002",
                     "main_flow": [
                         {
                             "step_num": 1,
-                            "user_action": "用户输入数据源连接串并点击测试连接",
-                            "system_response": "系统在 3 秒内返回网络与权限探活正常"
+                            "user_action": "\u7528\u6237\u8f93\u5165\u6570\u636e\u6e90\u8fde\u63a5\u4e32\u5e76\u70b9\u51fb\u6d4b\u8bd5\u8fde\u63a5",
+                            "system_response": "\u7cfb\u7edf\u5728 3 \u79d2\u5185\u8fd4\u56de\u7f51\u7edc\u4e0e\u6743\u9650\u63a2\u6d3b\u6b63\u5e38"
                         },
                         {
                             "step_num": 2,
-                            "user_action": "用户选择目标同步表并点击启动流任务",
-                            "system_response": "系统初始化 Flink 监听器并建立增量流通道"
+                            "user_action": "\u7528\u6237\u9009\u62e9\u76ee\u6807\u540c\u6b65\u8868\u5e76\u70b9\u51fb\u542f\u52a8\u6d41\u4efb\u52a1",
+                            "system_response": "\u7cfb\u7edf\u521d\u59cb\u5316 Flink \u76d1\u542c\u5668\u5e76\u5efa\u7acb\u589e\u91cf\u6d41\u901a\u9053"
                         }
                     ],
                     "exception_handling": [
                         {
-                            "scenario": "网络中断或数据库超时",
-                            "handling": "记录 Savepoint 并进行指数退避重试 3 次"
+                            "scenario": "\u7f51\u7edc\u4e2d\u65ad\u6216\u6570\u636e\u5e93\u8d85\u65f6",
+                            "handling": "\u8bb0\u5f55 Savepoint \u5e76\u8fdb\u884c\u6307\u6570\u9000\u907f\u91cd\u8bd5 3 \u6b21"
                         }
                     ],
                     "inputs": [
@@ -249,8 +249,8 @@ class TestLingforgeSchemasAndRenderer(unittest.TestCase):
                             "field": "connectionUrl",
                             "type": "string",
                             "required": True,
-                            "description": "数据库连接 JDBC URL",
-                            "constraints": "格式为 jdbc:mysql://...",
+                            "description": "\u6570\u636e\u5e93\u8fde\u63a5 JDBC URL",
+                            "constraints": "\u683c\u5f0f\u4e3a jdbc:mysql://...",
                             "example": "jdbc:mysql://10.0.0.1:3306/db"
                         }
                     ],
@@ -258,28 +258,28 @@ class TestLingforgeSchemasAndRenderer(unittest.TestCase):
                         {
                             "field": "streamId",
                             "type": "string",
-                            "description": "分配的流任务唯一标识",
+                            "description": "\u5206\u914d\u7684\u6d41\u4efb\u52a1\u552f\u4e00\u6807\u8bc6",
                             "example": "STR-001"
                         }
                     ],
                     "error_handling": [
                         {
                             "code": "ERR_CONN_TIMEOUT",
-                            "scenario": "数据库握手超时",
-                            "user_message": "无法连接至指定数据库，请检查防火墙",
-                            "suggestion": "检查目标端口是否放通并核对账户密码"
+                            "scenario": "\u6570\u636e\u5e93\u63e1\u624b\u8d85\u65f6",
+                            "user_message": "\u65e0\u6cd5\u8fde\u63a5\u81f3\u6307\u5b9a\u6570\u636e\u5e93\uff0c\u8bf7\u68c0\u67e5\u9632\u706b\u5899",
+                            "suggestion": "\u68c0\u67e5\u76ee\u6807\u7aef\u53e3\u662f\u5426\u653e\u901a\u5e76\u6838\u5bf9\u8d26\u6237\u5bc6\u7801"
                         }
                     ],
                     "acceptance_criteria": [
                         {
                             "ac_id": "AC-001",
-                            "given": "数据库凭证正确且网络联通",
-                            "when": "点击启动同步",
-                            "then": "流通道状态变为 RUNNING，延迟低于 500ms"
+                            "given": "\u6570\u636e\u5e93\u51ed\u8bc1\u6b63\u786e\u4e14\u7f51\u7edc\u8054\u901a",
+                            "when": "\u70b9\u51fb\u542f\u52a8\u540c\u6b65",
+                            "then": "\u6d41\u901a\u9053\u72b6\u6001\u53d8\u4e3a RUNNING\uff0c\u5ef6\u8fdf\u4f4e\u4e8e 500ms"
                         }
                     ],
-                    "boundary_conditions": ["单表最高支持 10000 QPS 写入吞吐"],
-                    "business_rules": ["同一实体的数据变更必须保持时序严格递增"],
+                    "boundary_conditions": ["\u5355\u8868\u6700\u9ad8\u652f\u6301 10000 QPS \u5199\u5165\u541e\u5410"],
+                    "business_rules": ["\u540c\u4e00\u5b9e\u4f53\u7684\u6570\u636e\u53d8\u66f4\u5fc5\u987b\u4fdd\u6301\u65f6\u5e8f\u4e25\u683c\u9012\u589e"],
                     "test_requirements": {
                         "normal": True,
                         "boundary": True,
@@ -293,21 +293,21 @@ class TestLingforgeSchemasAndRenderer(unittest.TestCase):
             "non_functional_requirements": {
                 "performance": [
                     {
-                        "dimension": "端到端同步延迟",
-                        "requirement": "流批变更实时透传",
+                        "dimension": "\u7aef\u5230\u7aef\u540c\u6b65\u5ef6\u8fdf",
+                        "requirement": "\u6d41\u6279\u53d8\u66f4\u5b9e\u65f6\u900f\u4f20",
                         "metric": "< 500ms (P99)"
                     }
                 ],
                 "security": [
                     {
-                        "dimension": "传输加密",
-                        "requirement": "数据流防窃听",
-                        "measure": "全链路强制 TLS 1.3"
+                        "dimension": "\u4f20\u8f93\u52a0\u5bc6",
+                        "requirement": "\u6570\u636e\u6d41\u9632\u7a83\u542c",
+                        "measure": "\u5168\u94fe\u8def\u5f3a\u5236 TLS 1.3"
                     }
                 ],
                 "compatibility": [
                     {
-                        "platform": "数据库引擎",
+                        "platform": "\u6570\u636e\u5e93\u5f15\u64ce",
                         "supported_versions": "MySQL 5.7+, PostgreSQL 12+, Oracle 19c+"
                     }
                 ]
@@ -315,30 +315,30 @@ class TestLingforgeSchemasAndRenderer(unittest.TestCase):
             "dependencies_and_constraints": {
                 "dependencies": [
                     {
-                        "target": "Flink 集群 1.18+",
-                        "description": "分布式流式计算底座"
+                        "target": "Flink \u96c6\u7fa4 1.18+",
+                        "description": "\u5206\u5e03\u5f0f\u6d41\u5f0f\u8ba1\u7b97\u5e95\u5ea7"
                     }
                 ],
                 "constraints": {
-                    "mvp_excludes": ["图数据原生计算引擎集成"],
-                    "technical_constraints": ["单节点 JVM 堆内存不少于 8GB"]
+                    "mvp_excludes": ["\u56fe\u6570\u636e\u539f\u751f\u8ba1\u7b97\u5f15\u64ce\u96c6\u6210"],
+                    "technical_constraints": ["\u5355\u8282\u70b9 JVM \u5806\u5185\u5b58\u4e0d\u5c11\u4e8e 8GB"]
                 }
             },
             "risks_and_assumptions": {
                 "risks": [
                     {
-                        "category": "技术稳定性",
-                        "description": "源库大事务 binlog 可能引发瞬时积压",
-                        "likelihood": "中",
-                        "impact": "中",
-                        "mitigation": "设置背压流控阈值并在超过告警水位时自动扩容任务槽位"
+                        "category": "\u6280\u672f\u7a33\u5b9a\u6027",
+                        "description": "\u6e90\u5e93\u5927\u4e8b\u52a1 binlog \u53ef\u80fd\u5f15\u53d1\u77ac\u65f6\u79ef\u538b",
+                        "likelihood": "\u4e2d",
+                        "impact": "\u4e2d",
+                        "mitigation": "\u8bbe\u7f6e\u80cc\u538b\u6d41\u63a7\u9608\u503c\u5e76\u5728\u8d85\u8fc7\u544a\u8b66\u6c34\u4f4d\u65f6\u81ea\u52a8\u6269\u5bb9\u4efb\u52a1\u69fd\u4f4d"
                     }
                 ],
                 "assumptions": [
                     {
-                        "assumption": "目标物理库支持行级变更日志解析",
-                        "validation_method": "连接预检自动扫描 binlog_format 配置",
-                        "fallback": "如仅支持语句级复制则退回至定时全量轮询模式"
+                        "assumption": "\u76ee\u6807\u7269\u7406\u5e93\u652f\u6301\u884c\u7ea7\u53d8\u66f4\u65e5\u5fd7\u89e3\u6790",
+                        "validation_method": "\u8fde\u63a5\u9884\u68c0\u81ea\u52a8\u626b\u63cf binlog_format \u914d\u7f6e",
+                        "fallback": "\u5982\u4ec5\u652f\u6301\u8bed\u53e5\u7ea7\u590d\u5236\u5219\u9000\u56de\u81f3\u5b9a\u65f6\u5168\u91cf\u8f6e\u8be2\u6a21\u5f0f"
                     }
                 ]
             },
@@ -346,7 +346,7 @@ class TestLingforgeSchemasAndRenderer(unittest.TestCase):
                 {
                     "version": "1.0",
                     "date": "2026-03-01",
-                    "changes": "初始创建",
+                    "changes": "\u521d\u59cb\u521b\u5efa",
                     "author": "product@example.com"
                 }
             ]
@@ -363,11 +363,11 @@ class TestLingforgeSchemasAndRenderer(unittest.TestCase):
         self.assertIn("<!-- block-id: REQ-F001 -->", md)
         self.assertIn("<!-- implements: USR-DEMO-001 -->", md)
         self.assertIn("<!-- /block -->", md)
-        self.assertIn("| 字段 | 类型 | 必需 | 说明 |", md)
-        self.assertIn("| 错误码 | 场景 | 用户提示 | 处理建议 |", md)
-        self.assertIn("- AC-001: **Given** 数据库凭证正确且网络联通", md)
+        self.assertIn("| \u5b57\u6bb5 | \u7c7b\u578b | \u5fc5\u9700 | \u8bf4\u660e |", md)
+        self.assertIn("| \u9519\u8bef\u7801 | \u573a\u666f | \u7528\u6237\u63d0\u793a | \u5904\u7406\u5efa\u8bae |", md)
+        self.assertIn("- AC-001: **Given** \u6570\u636e\u5e93\u51ed\u8bc1\u6b63\u786e\u4e14\u7f51\u7edc\u8054\u901a", md)
         self.assertIn("<!-- block-id: REQ-NF001 -->", md)
-        self.assertIn("## 风险与假设 {#risks-assumptions}", md)
+        self.assertIn("## \u98ce\u9669\u4e0e\u5047\u8bbe {#risks-assumptions}", md)
 
 
 if __name__ == "__main__":

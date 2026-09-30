@@ -12,7 +12,7 @@ TEST_DIR = Path(__file__).resolve().parent
 SCRIPTS_DIR = TEST_DIR.parent / "scripts"
 sys.path.insert(0, str(SCRIPTS_DIR))
 
-from aurakl_validator import AuraklValidator, LumenValidator, STANDARDS_DIR
+from aurakl_validator import AuraklValidator, STANDARDS_DIR
 
 SKILL_ROOT = TEST_DIR.parent
 FIXTURES_DIR = SKILL_ROOT / "fixtures"

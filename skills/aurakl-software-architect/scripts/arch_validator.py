@@ -6,7 +6,7 @@ Validates single architecture artifacts or complete architecture suites against 
 strict five-dimensional criteria:
 1. Conformance: JSON Schema v1 adherence (pure Python fallback + optional jsonschema).
 2. Coverage: 100% PRD requirement coverage, 100% domain entity coverage, 9-dimension invariant coverage.
-3. Grounding: Strict blacklist rejection of unverified placeholders (TODO, TBD, PENDING, 待定, 待确认, 暂无).
+3. Grounding: Strict blacklist rejection of unverified placeholders (TODO, TBD, PENDING, etc.).
 4. Consistency: Layer count <= 3, Monolith-first, Acyclic dependency DAG, breaking_changes_allowed == False.
 5. Deterministic Oracle: Integration with architecture_lineage_oracle.py (one-vote veto gatekeeper).
 """
@@ -38,7 +38,7 @@ except ImportError:
     HAS_JSONSCHEMA = False
 
 FORBIDDEN_PLACEHOLDER_REGEX = re.compile(
-    r"\b(TBD|TODO|UNVERIFIED|FIXME|XXX|REPLACE_ME|待确认|待定|暂无|后续补充|待商榷)\b",
+    r"\b(TBD|TODO|UNVERIFIED|FIXME|XXX|REPLACE_ME|\u5f85\u786e\u8ba4|\u5f85\u5b9a|\u6682\u65e0|\u540e\u7eed\u8865\u5145|\u5f85\u5546\u69b7)\b",
     re.IGNORECASE,
 )
 

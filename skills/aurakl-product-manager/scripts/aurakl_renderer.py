@@ -41,7 +41,7 @@ class PanguTypographyEngine:
     """
     Automated Typography & Visual Ergonomics Engine.
     Strictly conforms to:
-    1. 《中文文案排版指北》(Chinese Copywriting Guidelines / 盘古之白):
+    1. \u300a\u4e2d\u6587\u6587\u6848\u6392\u7248\u6307\u5317\u300b(Chinese Copywriting Guidelines / \u76d8\u53e4\u4e4b\u767d):
        - Inserts half-width space between CJK characters and Latin/Digits/Symbols.
        - Enforces backtick wrappers around code, identifiers, and parameters.
        - Preserves Markdown code blocks, inline code, and URL link targets untouched.
@@ -174,7 +174,7 @@ class AuraklMarkdownRenderer:
 
         if lang == "zh":
             lines = [
-                f"# {data.get('product_name', 'Product')} 需求分析与真伪证伪规约",
+                f"# {data.get('product_name', 'Product')} \u9700\u6c42\u5206\u6790\u4e0e\u771f\u4f2a\u8bc1\u4f2a\u89c4\u7ea6",
                 "",
                 "```yaml",
                 "metadata:",
@@ -184,17 +184,17 @@ class AuraklMarkdownRenderer:
                 f'  product_type: "{product_type}"',
                 "```",
                 "",
-                "> 本文档严格按照 Aurakl `pm-tpl-requirement-analysis` 规范渲染生成，用于人类评审与工程交接。",
+                "> \u672c\u6587\u6863\u4e25\u683c\u6309\u7167 Aurakl `pm-tpl-requirement-analysis` \u89c4\u8303\u6e32\u67d3\u751f\u6210\uff0c\u7528\u4e8e\u4eba\u7c7b\u8bc4\u5ba1\u4e0e\u5de5\u7a0b\u4ea4\u63a5\u3002",
                 "",
                 "---",
                 "",
-                "## What（做什么）",
+                "## What\uff08\u505a\u4ec0\u4e48\uff09",
                 "",
-                f"**核心产品定位**：{five_w.get('what', '')}",
+                f"**\u6838\u5fc3\u4ea7\u54c1\u5b9a\u4f4d**\uff1a{five_w.get('what', '')}",
                 "",
-                "### 1. 核心业务目标 (Goals)",
+                "### 1. \u6838\u5fc3\u4e1a\u52a1\u76ee\u6807 (Goals)",
                 "",
-                "| 目标编号 | 核心陈述 | 量化衡量指标 (Success Metric) |",
+                "| \u76ee\u6807\u7f16\u53f7 | \u6838\u5fc3\u9648\u8ff0 | \u91cf\u5316\u8861\u91cf\u6307\u6807 (Success Metric) |",
                 "| :--- | :--- | :--- |",
             ]
             for g in goals:
@@ -202,9 +202,9 @@ class AuraklMarkdownRenderer:
 
             lines.extend([
                 "",
-                "### 2. 显性业务需求清单 (Explicit Requirements)",
+                "### 2. \u663e\u6027\u4e1a\u52a1\u9700\u6c42\u6e05\u5355 (Explicit Requirements)",
                 "",
-                "| 需求编号 | 需求描述 | 优先级 | 支撑目标 | 原文锚点出处 (Source Quote) |",
+                "| \u9700\u6c42\u7f16\u53f7 | \u9700\u6c42\u63cf\u8ff0 | \u4f18\u5148\u7ea7 | \u652f\u6491\u76ee\u6807 | \u539f\u6587\u951a\u70b9\u51fa\u5904 (Source Quote) |",
                 "| :--- | :--- | :---: | :---: | :--- |",
             ])
             for req in explicit_reqs:
@@ -216,40 +216,40 @@ class AuraklMarkdownRenderer:
                 "",
                 "---",
                 "",
-                "## Why（为什么）",
+                "## Why\uff08\u4e3a\u4ec0\u4e48\uff09",
                 "",
-                f"**本质原因与市场驱动**：{five_w.get('why', '')}",
+                f"**\u672c\u8d28\u539f\u56e0\u4e0e\u5e02\u573a\u9a71\u52a8**\uff1a{five_w.get('why', '')}",
                 "",
-                "### 需求真伪证伪评估 (Demand Validation)",
+                "### \u9700\u6c42\u771f\u4f2a\u8bc1\u4f2a\u8bc4\u4f30 (Demand Validation)",
                 "",
-                f"- **痛点属性评级**：`{dv.get('problem_nature', '').upper()}`（刚需止痛药）",
-                f"- **付费意愿与痛苦度**：{dv.get('willingness_to_pay_or_suffer', '')}",
+                f"- **\u75db\u70b9\u5c5e\u6027\u8bc4\u7ea7**\uff1a`{dv.get('problem_nature', '').upper()}`\uff08\u521a\u9700\u6b62\u75db\u836f\uff09",
+                f"- **\u4ed8\u8d39\u610f\u613f\u4e0e\u75db\u82e6\u5ea6**\uff1a{dv.get('willingness_to_pay_or_suffer', '')}",
                 "",
-                "#### 当前低效妥协方案 (Current Workarounds)",
+                "#### \u5f53\u524d\u4f4e\u6548\u59a5\u534f\u65b9\u6848 (Current Workarounds)",
             ])
             for wa in dv.get("current_workarounds", []):
                 lines.append(f"- ⚠️ {wa}")
 
             lines.extend([
                 "",
-                "#### 核心证伪假设 (Falsification Hypotheses)",
+                "#### \u6838\u5fc3\u8bc1\u4f2a\u5047\u8bbe (Falsification Hypotheses)",
             ])
             for fh in dv.get("falsification_hypotheses", []):
-                lines.append(f"- 🔍 **证伪条件**：{fh}")
+                lines.append(f"- 🔍 **\u8bc1\u4f2a\u6761\u4ef6**\uff1a{fh}")
 
             lines.extend([
                 "",
-                f"**低成本验证实验 (Validation Experiment)**：{dv.get('validation_experiment', '')}",
+                f"**\u4f4e\u6210\u672c\u9a8c\u8bc1\u5b9e\u9a8c (Validation Experiment)**\uff1a{dv.get('validation_experiment', '')}",
                 "",
                 "---",
                 "",
-                "## Who（给谁用）",
+                "## Who\uff08\u7ed9\u8c01\u7528\uff09",
                 "",
-                f"**目标群体界定**：{five_w.get('who', '')}",
+                f"**\u76ee\u6807\u7fa4\u4f53\u754c\u5b9a**\uff1a{five_w.get('who', '')}",
                 "",
-                "### 干系人全景矩阵 (Stakeholder Matrix)",
+                "### \u5e72\u7cfb\u4eba\u5168\u666f\u77e9\u9635 (Stakeholder Matrix)",
                 "",
-                "| 角色定义 | 干系人类型 | 核心关注点与利益诉求 |",
+                "| \u89d2\u8272\u5b9a\u4e49 | \u5e72\u7cfb\u4eba\u7c7b\u578b | \u6838\u5fc3\u5173\u6ce8\u70b9\u4e0e\u5229\u76ca\u8bc9\u6c42 |",
                 "| :--- | :---: | :--- |",
             ])
             for sh in stakeholders:
@@ -261,17 +261,17 @@ class AuraklMarkdownRenderer:
                 "",
                 "## When / Where / How",
                 "",
-                "| 维度 | 详细规约 |",
+                "| \u7ef4\u5ea6 | \u8be6\u7ec6\u89c4\u7ea6 |",
                 "| :--- | :--- |",
-                f"| **When（触发时机与频次）** | {five_w.get('when', '')} |",
-                f"| **Where（运行环境与网络边界）** | {five_w.get('where', '')} |",
-                f"| **How（业务路径与流转机制）** | {five_w.get('how', '')} |",
+                f"| **When\uff08\u89e6\u53d1\u65f6\u673a\u4e0e\u9891\u6b21\uff09** | {five_w.get('when', '')} |",
+                f"| **Where\uff08\u8fd0\u884c\u73af\u5883\u4e0e\u7f51\u7edc\u8fb9\u754c\uff09** | {five_w.get('where', '')} |",
+                f"| **How\uff08\u4e1a\u52a1\u8def\u5f84\u4e0e\u6d41\u8f6c\u673a\u5236\uff09** | {five_w.get('how', '')} |",
                 "",
                 "---",
                 "",
-                "## 隐性需求挖掘",
+                "## \u9690\u6027\u9700\u6c42\u6316\u6398",
                 "",
-                "| 需求编号 | 挖掘维度 | 需求描述 | 发现技法 | 优先级 | 纳入决策 | 决策理由 |",
+                "| \u9700\u6c42\u7f16\u53f7 | \u6316\u6398\u7ef4\u5ea6 | \u9700\u6c42\u63cf\u8ff0 | \u53d1\u73b0\u6280\u6cd5 | \u4f18\u5148\u7ea7 | \u7eb3\u5165\u51b3\u7b56 | \u51b3\u7b56\u7406\u7531 |",
                 "| :--- | :---: | :--- | :---: | :---: | :---: | :--- |",
             ])
             for ir in implicit_reqs:
@@ -285,9 +285,9 @@ class AuraklMarkdownRenderer:
                 "",
                 "## Non-goals",
                 "",
-                "> 明确划定本产品的绝对边界与防线，防止需求蔓延（Scope Creep）。",
+                "> \u660e\u786e\u5212\u5b9a\u672c\u4ea7\u54c1\u7684\u7edd\u5bf9\u8fb9\u754c\u4e0e\u9632\u7ebf\uff0c\u9632\u6b62\u9700\u6c42\u8513\u5ef6\uff08Scope Creep\uff09\u3002",
                 "",
-                "| 明确不做的事项 (Non-goal) | 划界原因与边界考量 |",
+                "| \u660e\u786e\u4e0d\u505a\u7684\u4e8b\u9879 (Non-goal) | \u5212\u754c\u539f\u56e0\u4e0e\u8fb9\u754c\u8003\u91cf |",
                 "| :--- | :--- |",
             ])
             for ng in non_goals:
@@ -297,34 +297,34 @@ class AuraklMarkdownRenderer:
                 "",
                 "---",
                 "",
-                "## 核心功能优先级",
+                "## \u6838\u5fc3\u529f\u80fd\u4f18\u5148\u7ea7",
                 "",
-                "| 优先级等级 | 包含需求条目 | 占比说明与管控要求 |",
+                "| \u4f18\u5148\u7ea7\u7b49\u7ea7 | \u5305\u542b\u9700\u6c42\u6761\u76ee | \u5360\u6bd4\u8bf4\u660e\u4e0e\u7ba1\u63a7\u8981\u6c42 |",
                 "| :---: | :--- | :--- |",
-                f"| **P0 (核心发布阻断)** | {', '.join(r.get('id') for r in explicit_reqs if r.get('priority') == 'P0')} | 核心闭环主路径，严禁超过总需求 30% |",
-                f"| **P1 (重要增强)** | {', '.join(r.get('id') for r in explicit_reqs if r.get('priority') == 'P1') or '无'} | 提升流转效能与容错韧性 |",
-                f"| **P2 (后续迭代)** | {', '.join(r.get('id') for r in explicit_reqs if r.get('priority') == 'P2') or '无'} | 长期优化与高级工具拓展 |",
+                f"| **P0 (\u6838\u5fc3\u53d1\u5e03\u963b\u65ad)** | {', '.join(r.get('id') for r in explicit_reqs if r.get('priority') == 'P0')} | \u6838\u5fc3\u95ed\u73af\u4e3b\u8def\u5f84\uff0c\u4e25\u7981\u8d85\u8fc7\u603b\u9700\u6c42 30% |",
+                f"| **P1 (\u91cd\u8981\u589e\u5f3a)** | {', '.join(r.get('id') for r in explicit_reqs if r.get('priority') == 'P1') or '\u65e0'} | \u63d0\u5347\u6d41\u8f6c\u6548\u80fd\u4e0e\u5bb9\u9519\u97e7\u6027 |",
+                f"| **P2 (\u540e\u7eed\u8fed\u4ee3)** | {', '.join(r.get('id') for r in explicit_reqs if r.get('priority') == 'P2') or '\u65e0'} | \u957f\u671f\u4f18\u5316\u4e0e\u9ad8\u7ea7\u5de5\u5177\u62d3\u5c55 |",
                 "",
                 "---",
                 "",
-                "## 产品类型判断",
+                "## \u4ea7\u54c1\u7c7b\u578b\u5224\u65ad",
                 "",
-                f"**判决类型**：`{product_type}`",
+                f"**\u5224\u51b3\u7c7b\u578b**\uff1a`{product_type}`",
                 "",
-                "**下游分流指导**：根据判定结果，下游 PRD 规范将严格绑定并应用 `pm-tpl-prd-cloud-platform` 模板执行深化规约。",
+                "**\u4e0b\u6e38\u5206\u6d41\u6307\u5bfc**\uff1a\u6839\u636e\u5224\u5b9a\u7ed3\u679c\uff0c\u4e0b\u6e38 PRD \u89c4\u8303\u5c06\u4e25\u683c\u7ed1\u5b9a\u5e76\u5e94\u7528 `pm-tpl-prd-cloud-platform` \u6a21\u677f\u6267\u884c\u6df1\u5316\u89c4\u7ea6\u3002",
                 "",
                 "---",
                 "",
-                "## 未决问题",
+                "## \u672a\u51b3\u95ee\u9898",
                 "",
             ])
             if open_questions:
                 for oq in open_questions:
                     lines.append(f"- ❓ {oq}")
             else:
-                lines.append("> ✅ **无未决问题**：所有 5W1H 要素、范围边界与核心技术假设均已在前期需求澄清中收敛闭环。")
+                lines.append("> ✅ **\u65e0\u672a\u51b3\u95ee\u9898**\uff1a\u6240\u6709 5W1H \u8981\u7d20\u3001\u8303\u56f4\u8fb9\u754c\u4e0e\u6838\u5fc3\u6280\u672f\u5047\u8bbe\u5747\u5df2\u5728\u524d\u671f\u9700\u6c42\u6f84\u6e05\u4e2d\u6536\u655b\u95ed\u73af\u3002")
 
-            lines.extend(["", "---", "", f"**总结**：{data.get('summary', '')}", ""])
+            lines.extend(["", "---", "", f"**\u603b\u7ed3**\uff1a{data.get('summary', '')}", ""])
             return "\n".join(lines)
 
         else:
@@ -498,7 +498,7 @@ class AuraklMarkdownRenderer:
 
         if lang == "zh":
             lines = [
-                f"# {data.get('product_name', 'Product')} 市场调研与竞品分析报告",
+                f"# {data.get('product_name', 'Product')} \u5e02\u573a\u8c03\u7814\u4e0e\u7ade\u54c1\u5206\u6790\u62a5\u544a",
                 "",
                 "```yaml",
                 "metadata:",
@@ -507,25 +507,25 @@ class AuraklMarkdownRenderer:
                 '  schema_version: "competitive-analysis/v2"',
                 "```",
                 "",
-                "> 本文档严格按照 Aurakl `pm-tpl-competitive-analysis` 规范渲染生成。",
+                "> \u672c\u6587\u6863\u4e25\u683c\u6309\u7167 Aurakl `pm-tpl-competitive-analysis` \u89c4\u8303\u6e32\u67d3\u751f\u6210\u3002",
                 "",
                 "---",
                 "",
-                "## 市场宏观与窗口期",
+                "## \u5e02\u573a\u5b8f\u89c2\u4e0e\u7a97\u53e3\u671f",
                 "",
-                f"**目标细分行业与赛道**：{mo.get('target_industry', '')}",
+                f"**\u76ee\u6807\u7ec6\u5206\u884c\u4e1a\u4e0e\u8d5b\u9053**\uff1a{mo.get('target_industry', '')}",
                 "",
-                f"**市场时机与窗口期分析**：{mo.get('market_timing', '')}",
+                f"**\u5e02\u573a\u65f6\u673a\u4e0e\u7a97\u53e3\u671f\u5206\u6790**\uff1a{mo.get('market_timing', '')}",
                 "",
-                "### 市场规模估算 (TAM / SAM / SOM)",
+                "### \u5e02\u573a\u89c4\u6a21\u4f30\u7b97 (TAM / SAM / SOM)",
                 "",
-                "| 市场层级 | 规模估算描述 |",
+                "| \u5e02\u573a\u5c42\u7ea7 | \u89c4\u6a21\u4f30\u7b97\u63cf\u8ff0 |",
                 "| :--- | :--- |",
-                f"| **TAM (潜在市场总量)** | {mo.get('market_size_estimation', {}).get('tam', '')} |",
-                f"| **SAM (可服务市场总量)** | {mo.get('market_size_estimation', {}).get('sam', '')} |",
-                f"| **SOM (可获得市场总量)** | {mo.get('market_size_estimation', {}).get('som', '')} |",
+                f"| **TAM (\u6f5c\u5728\u5e02\u573a\u603b\u91cf)** | {mo.get('market_size_estimation', {}).get('tam', '')} |",
+                f"| **SAM (\u53ef\u670d\u52a1\u5e02\u573a\u603b\u91cf)** | {mo.get('market_size_estimation', {}).get('sam', '')} |",
+                f"| **SOM (\u53ef\u83b7\u5f97\u5e02\u573a\u603b\u91cf)** | {mo.get('market_size_estimation', {}).get('som', '')} |",
                 "",
-                "### 关键行业趋势",
+                "### \u5173\u952e\u884c\u4e1a\u8d8b\u52bf",
             ]
             for t in mo.get("key_industry_trends", []):
                 lines.append(f"- 📈 {t}")
@@ -534,43 +534,43 @@ class AuraklMarkdownRenderer:
                 "",
                 "---",
                 "",
-                "## 主流竞品剖析矩阵",
+                "## \u4e3b\u6d41\u7ade\u54c1\u5256\u6790\u77e9\u9635",
                 "",
             ])
             for c in comps:
                 lines.extend([
-                    f"### 竞品：{c.get('name')} (`{c.get('category')}`)",
+                    f"### \u7ade\u54c1\uff1a{c.get('name')} (`{c.get('category')}`)",
                     "",
-                    f"- **参考来源**：[{c.get('reference_url', '官网链接')}]({c.get('reference_url', '#')})",
-                    f"- **商业模式与定价**：{c.get('pricing_model', '')}",
+                    f"- **\u53c2\u8003\u6765\u6e90**\uff1a[{c.get('reference_url', '\u5b98\u7f51\u94fe\u63a5')}]({c.get('reference_url', '#')})",
+                    f"- **\u5546\u4e1a\u6a21\u5f0f\u4e0e\u5b9a\u4ef7**\uff1a{c.get('pricing_model', '')}",
                     "",
-                    "**核心功能集**：",
+                    "**\u6838\u5fc3\u529f\u80fd\u96c6**\uff1a",
                 ])
                 for f in c.get("core_features", []):
                     lines.append(f"  - {f}")
                 lines.append("")
-                lines.append("**核心优势 (Strengths)**：")
+                lines.append("**\u6838\u5fc3\u4f18\u52bf (Strengths)**\uff1a")
                 for s in c.get("strengths", []):
                     lines.append(f"  - ✅ {s}")
                 lines.append("")
-                lines.append("**主要劣势与短板 (Weaknesses)**：")
+                lines.append("**\u4e3b\u8981\u52a3\u52bf\u4e0e\u77ed\u677f (Weaknesses)**\uff1a")
                 for w in c.get("weaknesses", []):
                     lines.append(f"  - ❌ {w}")
                 lines.append("")
 
             lines.extend([
-                "### 市场未满足需求差距分析 (Gap Analysis)",
+                "### \u5e02\u573a\u672a\u6ee1\u8db3\u9700\u6c42\u5dee\u8ddd\u5206\u6790 (Gap Analysis)",
                 "",
-                "**未满足客户痛点**：",
+                "**\u672a\u6ee1\u8db3\u5ba2\u6237\u75db\u70b9**\uff1a",
             ])
             for un in gap.get("unmet_customer_needs", []):
                 lines.append(f"- 🎯 {un}")
             lines.append("")
-            lines.append("**功能对齐差距**：")
+            lines.append("**\u529f\u80fd\u5bf9\u9f50\u5dee\u8ddd**\uff1a")
             for fg in gap.get("feature_parity_gaps", []):
                 lines.append(f"- ⚖️ {fg}")
             lines.append("")
-            lines.append("**用户体验摩擦**：")
+            lines.append("**\u7528\u6237\u4f53\u9a8c\u6469\u64e6**\uff1a")
             for uf in gap.get("user_experience_frictions", []):
                 lines.append(f"- 🚧 {uf}")
 
@@ -578,44 +578,44 @@ class AuraklMarkdownRenderer:
                 "",
                 "---",
                 "",
-                "## 差异化切入点（滩头阵地）",
+                "## \u5dee\u5f02\u5316\u5207\u5165\u70b9\uff08\u6ee9\u5934\u9635\u5730\uff09",
                 "",
-                f"**首期聚焦利基客群 (Target Niche)**：{bh.get('target_niche', '')}",
+                f"**\u9996\u671f\u805a\u7126\u5229\u57fa\u5ba2\u7fa4 (Target Niche)**\uff1a{bh.get('target_niche', '')}",
                 "",
-                f"**杀手级切入功能 (Entry Point Feature)**：{bh.get('entry_point_feature', '')}",
+                f"**\u6740\u624b\u7ea7\u5207\u5165\u529f\u80fd (Entry Point Feature)**\uff1a{bh.get('entry_point_feature', '')}",
                 "",
-                f"**价值曲线重构 (Value Curve Differentiation)**：{bh.get('value_curve_differentiation', '')}",
+                f"**\u4ef7\u503c\u66f2\u7ebf\u91cd\u6784 (Value Curve Differentiation)**\uff1a{bh.get('value_curve_differentiation', '')}",
                 "",
                 "---",
                 "",
-                "## 长期护城河评估",
+                "## \u957f\u671f\u62a4\u57ce\u6cb3\u8bc4\u4f30",
                 "",
-                "| 护城河维度 | 壁垒深度与防御机制 |",
+                "| \u62a4\u57ce\u6cb3\u7ef4\u5ea6 | \u58c1\u5792\u6df1\u5ea6\u4e0e\u9632\u5fa1\u673a\u5236 |",
                 "| :--- | :--- |",
-                f"| **成本优势 (Cost Advantage)** | {moat.get('cost_advantage', '')} |",
-                f"| **网络效应 (Network Effects)** | {moat.get('network_effects', '')} |",
-                f"| **转换成本 (Switching Costs)** | {moat.get('switching_costs', '')} |",
-                f"| **技术/数据壁垒 (Tech & Data Moat)** | {moat.get('technology_or_data_moat', '')} |",
+                f"| **\u6210\u672c\u4f18\u52bf (Cost Advantage)** | {moat.get('cost_advantage', '')} |",
+                f"| **\u7f51\u7edc\u6548\u5e94 (Network Effects)** | {moat.get('network_effects', '')} |",
+                f"| **\u8f6c\u6362\u6210\u672c (Switching Costs)** | {moat.get('switching_costs', '')} |",
+                f"| **\u6280\u672f/\u6570\u636e\u58c1\u5792 (Tech & Data Moat)** | {moat.get('technology_or_data_moat', '')} |",
                 "",
                 "---",
                 "",
-                "## 胜率论证（Why We Win）",
+                "## \u80dc\u7387\u8bba\u8bc1\uff08Why We Win\uff09",
                 "",
-                "### 核心竞争优势 (Core Advantages)",
+                "### \u6838\u5fc3\u7ade\u4e89\u4f18\u52bf (Core Advantages)",
             ])
             for ca in win.get("core_competitive_advantages", []):
                 lines.append(f"- 🚀 **{ca}**")
 
             lines.extend([
                 "",
-                f"### 竞品防御性分析 (Defensibility Arguments)\n\n{win.get('defensibility_arguments', '')}",
+                f"### \u7ade\u54c1\u9632\u5fa1\u6027\u5206\u6790 (Defensibility Arguments)\n\n{win.get('defensibility_arguments', '')}",
                 "",
-                "### 潜在战略风险与应对 (Strategic Risks)",
+                "### \u6f5c\u5728\u6218\u7565\u98ce\u9669\u4e0e\u5e94\u5bf9 (Strategic Risks)",
             ])
             for sr in win.get("strategic_risks", []):
                 lines.append(f"- ⚠️ {sr}")
 
-            lines.extend(["", "---", "", f"**总结**：{data.get('summary', '')}", ""])
+            lines.extend(["", "---", "", f"**\u603b\u7ed3**\uff1a{data.get('summary', '')}", ""])
             return "\n".join(lines)
 
         else:
@@ -759,7 +759,7 @@ class AuraklMarkdownRenderer:
         implements_list = "\n".join(f"  - {imp}" for imp in meta.get("implements", []))
         tags_str = ", ".join(meta.get("tags", []))
 
-        default_title = "用户故事" if lang == "zh" else "User Stories"
+        default_title = "\u7528\u6237\u6545\u4e8b" if lang == "zh" else "User Stories"
         lines = [
             "---",
             f"id: {meta.get('id', 'story-module-v1')}",
@@ -786,13 +786,13 @@ class AuraklMarkdownRenderer:
         if meta.get("implements"):
             imp_joined = ', '.join(meta.get('implements', []))
             if lang == "zh":
-                lines.extend([f"> **说明**: 本用户故事集**实现了** {imp_joined}。", ""])
+                lines.extend([f"> **\u8bf4\u660e**: \u672c\u7528\u6237\u6545\u4e8b\u96c6**\u5b9e\u73b0\u4e86** {imp_joined}\u3002", ""])
             else:
                 lines.extend([f"> **Note**: This user story set **implements** {imp_joined}.", ""])
 
-        h_overview = "## 概述 {#overview}" if lang == "zh" else "## Overview {#overview}"
+        h_overview = "## \u6982\u8ff0 {#overview}" if lang == "zh" else "## Overview {#overview}"
         h_epics = "## Epic {#epics}" if lang == "zh" else "## Epics {#epics}"
-        h_stories = "## 用户故事列表 {#user-stories}" if lang == "zh" else "## User Stories {#user-stories}"
+        h_stories = "## \u7528\u6237\u6545\u4e8b\u5217\u8868 {#user-stories}" if lang == "zh" else "## User Stories {#user-stories}"
 
         lines.extend([h_overview, "", f"{data.get('overview', '')}", "", "---", "", h_epics, ""])
 
@@ -804,17 +804,17 @@ class AuraklMarkdownRenderer:
                     "",
                     f"### {ep.get('id')}: {ep.get('name')}",
                     "",
-                    f"**目标**: {ep.get('goal')}",
+                    f"**\u76ee\u6807**: {ep.get('goal')}",
                     "",
-                    f"**业务价值**: {ep.get('business_value')}",
+                    f"**\u4e1a\u52a1\u4ef7\u503c**: {ep.get('business_value')}",
                     "",
-                    f"**包含的用户故事**: {contained}",
+                    f"**\u5305\u542b\u7684\u7528\u6237\u6545\u4e8b**: {contained}",
                     "",
-                    f"**优先级**: {ep.get('priority')}",
+                    f"**\u4f18\u5148\u7ea7**: {ep.get('priority')}",
                     "",
-                    f"**预估工作量**: {ep.get('estimated_effort')}",
+                    f"**\u9884\u4f30\u5de5\u4f5c\u91cf**: {ep.get('estimated_effort')}",
                     "",
-                    "此 Epic 将被分解为以下用户故事。",
+                    "\u6b64 Epic \u5c06\u88ab\u5206\u89e3\u4e3a\u4ee5\u4e0b\u7528\u6237\u6545\u4e8b\u3002",
                     "",
                     "<!-- /block -->",
                     "",
@@ -848,7 +848,7 @@ class AuraklMarkdownRenderer:
         lines.extend([h_stories, ""])
 
         for st in stories:
-            deps_str = ", ".join(st.get("depends_on", [])) if st.get("depends_on") else ("无依赖" if lang == "zh" else "None")
+            deps_str = ", ".join(st.get("depends_on", [])) if st.get("depends_on") else ("\u65e0\u4f9d\u8d56" if lang == "zh" else "None")
             lines.append(f"<!-- block-id: {st.get('id')} -->")
             lines.append(f"<!-- implements: {st.get('implements_epic')} -->")
             if st.get("depends_on"):
@@ -859,18 +859,18 @@ class AuraklMarkdownRenderer:
                     "",
                     f"### {st.get('id')}: {st.get('title')}",
                     "",
-                    f"**作为** {st.get('as_a')}  ",
-                    f"**我想要** {st.get('i_want')}  ",
-                    f"**以便** {st.get('so_that')}",
+                    f"**\u4f5c\u4e3a** {st.get('as_a')}  ",
+                    f"**\u6211\u60f3\u8981** {st.get('i_want')}  ",
+                    f"**\u4ee5\u4fbf** {st.get('so_that')}",
                     "",
-                    f"**优先级**: {st.get('priority')}  ",
-                    f"**预估工作量**: {st.get('estimated_effort')}  ",
+                    f"**\u4f18\u5148\u7ea7**: {st.get('priority')}  ",
+                    f"**\u9884\u4f30\u5de5\u4f5c\u91cf**: {st.get('estimated_effort')}  ",
                     f"**Sprint**: {st.get('sprint')}",
                     "",
-                    "**背景说明**:  ",
+                    "**\u80cc\u666f\u8bf4\u660e**:  ",
                     f"{st.get('background')}",
                     "",
-                    "**验收标准**:",
+                    "**\u9a8c\u6536\u6807\u51c6**:",
                 ])
             else:
                 lines.extend([
@@ -900,26 +900,26 @@ class AuraklMarkdownRenderer:
             lines.append("")
 
             if st.get("technical_constraints"):
-                lbl = "**技术约束**:" if lang == "zh" else "**Technical Constraints**:"
+                lbl = "**\u6280\u672f\u7ea6\u675f**:" if lang == "zh" else "**Technical Constraints**:"
                 lines.append(lbl)
                 for tc in st.get("technical_constraints", []):
                     lines.append(f"- {tc}")
                 lines.append("")
 
             if st.get("ui_ux_notes"):
-                lbl = "**UI/UX 注意事项**:" if lang == "zh" else "**UI/UX Notes**:"
+                lbl = "**UI/UX \u6ce8\u610f\u4e8b\u9879**:" if lang == "zh" else "**UI/UX Notes**:"
                 lines.append(lbl)
                 for ux in st.get("ui_ux_notes", []):
                     lines.append(f"- {ux}")
                 lines.append("")
 
             if st.get("success_metrics"):
-                lbl = "**成功指标**:" if lang == "zh" else "**Success Metrics**:"
+                lbl = "**\u6210\u529f\u6307\u6807**:" if lang == "zh" else "**Success Metrics**:"
                 lines.append(f"{lbl} {st.get('success_metrics')}")
                 lines.append("")
 
             if st.get("related_prd"):
-                lbl = "**关联 PRD**:" if lang == "zh" else "**Related PRD**:"
+                lbl = "**\u5173\u8054 PRD**:" if lang == "zh" else "**Related PRD**:"
                 lines.append(f"{lbl} `{st.get('related_prd')}`")
                 lines.append("")
 
@@ -929,7 +929,7 @@ class AuraklMarkdownRenderer:
             lines.append("")
 
         # Personas
-        h_personas = "## 用户角色 {#personas}" if lang == "zh" else "## User Personas {#personas}"
+        h_personas = "## \u7528\u6237\u89d2\u8272 {#personas}" if lang == "zh" else "## User Personas {#personas}"
         lines.extend([h_personas, ""])
         for p in personas:
             demo = p.get("demographics", {})
@@ -937,14 +937,14 @@ class AuraklMarkdownRenderer:
                 lines.extend([
                     f"### {p.get('id')}: {p.get('name')}",
                     "",
-                    f"**描述**: {p.get('description')}",
+                    f"**\u63cf\u8ff0**: {p.get('description')}",
                     "",
-                    f"- 年龄层: {demo.get('age_range', '不限')}",
-                    f"- 职业: {demo.get('occupation', '通用')}",
-                    f"- 技术熟练度: {demo.get('tech_level', '中等')}",
-                    f"- 使用场景: {demo.get('usage_context', '通用平台')}",
+                    f"- \u5e74\u9f84\u5c42: {demo.get('age_range', '\u4e0d\u9650')}",
+                    f"- \u804c\u4e1a: {demo.get('occupation', '\u901a\u7528')}",
+                    f"- \u6280\u672f\u719f\u7ec3\u5ea6: {demo.get('tech_level', '\u4e2d\u7b49')}",
+                    f"- \u4f7f\u7528\u573a\u666f: {demo.get('usage_context', '\u901a\u7528\u5e73\u53f0')}",
                     "",
-                    "**痛点**:",
+                    "**\u75db\u70b9**:",
                 ])
             else:
                 lines.extend([
@@ -962,7 +962,7 @@ class AuraklMarkdownRenderer:
             for pt in p.get("pain_points", []):
                 lines.append(f"- {pt}")
             lines.append("")
-            lbl_goals = "**目标**:" if lang == "zh" else "**Goals**:"
+            lbl_goals = "**\u76ee\u6807**:" if lang == "zh" else "**Goals**:"
             lines.append(lbl_goals)
             for g in p.get("goals", []):
                 lines.append(f"- {g}")
@@ -971,16 +971,16 @@ class AuraklMarkdownRenderer:
             lines.append("")
 
         # Journeys
-        h_journeys = "## 用户旅程 {#user-journeys}" if lang == "zh" else "## User Journeys {#user-journeys}"
+        h_journeys = "## \u7528\u6237\u65c5\u7a0b {#user-journeys}" if lang == "zh" else "## User Journeys {#user-journeys}"
         lines.extend([h_journeys, ""])
         for j in journeys:
             if lang == "zh":
                 lines.extend([
                     f"### {j.get('id')}: {j.get('title')}",
                     "",
-                    f"**角色**: {j.get('persona')}",
+                    f"**\u89d2\u8272**: {j.get('persona')}",
                     "",
-                    "| 阶段 | 用户动作 | 触点 | 痛点 / 机会 |",
+                    "| \u9636\u6bb5 | \u7528\u6237\u52a8\u4f5c | \u89e6\u70b9 | \u75db\u70b9 / \u673a\u4f1a |",
                     "| ---- | -------- | ---- | ----------- |",
                 ])
             else:
@@ -997,7 +997,7 @@ class AuraklMarkdownRenderer:
             lines.append("")
 
         # Priority matrix
-        h_matrix = "## 优先级矩阵 {#priority-matrix}" if lang == "zh" else "## Priority Matrix {#priority-matrix}"
+        h_matrix = "## \u4f18\u5148\u7ea7\u77e9\u9635 {#priority-matrix}" if lang == "zh" else "## Priority Matrix {#priority-matrix}"
         lines.extend(["---", "", h_matrix, ""])
         for level in ["must_have", "should_have", "could_have", "wont_have"]:
             items = p_matrix.get(level, [])
@@ -1007,29 +1007,29 @@ class AuraklMarkdownRenderer:
                     items_clean.append(it.get("story_id") or it.get("title") or str(it))
                 else:
                     items_clean.append(str(it))
-            items_str = ", ".join(items_clean) if items_clean else ("无" if lang == "zh" else "None")
+            items_str = ", ".join(items_clean) if items_clean else ("\u65e0" if lang == "zh" else "None")
             title_case = level.replace("_", " ").title()
             lines.append(f"- **{title_case}**: {items_str}")
 
         # Dependencies
-        h_deps = "## 依赖关系 {#dependencies}" if lang == "zh" else "## Dependencies {#dependencies}"
+        h_deps = "## \u4f9d\u8d56\u5173\u7cfb {#dependencies}" if lang == "zh" else "## Dependencies {#dependencies}"
         lines.extend(["", "---", "", h_deps, ""])
         for up in up_deps:
-            lbl_up = "上游依赖" if lang == "zh" else "Upstream Dependency"
+            lbl_up = "\u4e0a\u6e38\u4f9d\u8d56" if lang == "zh" else "Upstream Dependency"
             if isinstance(up, dict):
                 lines.append(f"- **{lbl_up}**: {up.get('id')} - {up.get('description')}")
             else:
                 lines.append(f"- **{lbl_up}**: {up}")
         for k, v in down_deliv.items():
-            lbl_down = "下游交付物" if lang == "zh" else "Downstream Deliverable"
+            lbl_down = "\u4e0b\u6e38\u4ea4\u4ed8\u7269" if lang == "zh" else "Downstream Deliverable"
             lines.append(f"- **{lbl_down} ({k})**: {v}")
 
         # Version history
-        h_ver = "## 版本历史 {#version-history}" if lang == "zh" else "## Version History {#version-history}"
+        h_ver = "## \u7248\u672c\u5386\u53f2 {#version-history}" if lang == "zh" else "## Version History {#version-history}"
         lines.extend(["", "---", "", h_ver, ""])
         if lang == "zh":
             lines.extend([
-                "| 版本 | 日期 | 修改内容 | 修改人 |",
+                "| \u7248\u672c | \u65e5\u671f | \u4fee\u6539\u5185\u5bb9 | \u4fee\u6539\u4eba |",
                 "| ---- | ---- | -------- | ------ |",
             ])
         else:
@@ -1061,7 +1061,7 @@ class AuraklMarkdownRenderer:
 
         if lang == "zh":
             lines = [
-                f"# {story_data.get('product_name', 'Product')} 用户旅程与 INVEST 用户故事集",
+                f"# {story_data.get('product_name', 'Product')} \u7528\u6237\u65c5\u7a0b\u4e0e INVEST \u7528\u6237\u6545\u4e8b\u96c6",
                 "",
                 "```yaml",
                 "metadata:",
@@ -1070,19 +1070,19 @@ class AuraklMarkdownRenderer:
                 '  schema_version: "user-story-set/v2"',
                 "```",
                 "",
-                "> 本文档严格按照 Aurakl `pm-tpl-user-story-set` 规范渲染生成。",
+                "> \u672c\u6587\u6863\u4e25\u683c\u6309\u7167 Aurakl `pm-tpl-user-story-set` \u89c4\u8303\u6e32\u67d3\u751f\u6210\u3002",
                 "",
                 "---",
                 "",
-                "## 概述",
+                "## \u6982\u8ff0",
                 "",
                 f"{story_data.get('summary', '')}",
                 "",
                 "---",
                 "",
-                "## 用户角色",
+                "## \u7528\u6237\u89d2\u8272",
                 "",
-                "| 角色 ID | 姓名与角色 | 核心诉求与动机 | 关键痛点 | 技术熟练度 | 使用上下文 |",
+                "| \u89d2\u8272 ID | \u59d3\u540d\u4e0e\u89d2\u8272 | \u6838\u5fc3\u8bc9\u6c42\u4e0e\u52a8\u673a | \u5173\u952e\u75db\u70b9 | \u6280\u672f\u719f\u7ec3\u5ea6 | \u4f7f\u7528\u4e0a\u4e0b\u6587 |",
                 "| :--- | :--- | :--- | :--- | :---: | :--- |",
             ]
             for p in personas:
@@ -1095,9 +1095,9 @@ class AuraklMarkdownRenderer:
                 "",
                 "---",
                 "",
-                "## 角色专属用户旅程全景 (Per-Persona User Journey Maps)",
+                "## \u89d2\u8272\u4e13\u5c5e\u7528\u6237\u65c5\u7a0b\u5168\u666f (Per-Persona User Journey Maps)",
                 "",
-                "> 针对系统的不同参与角色，构建端到端闭环旅程。每个角色均有独立的生命周期阶段、业务目标、触点操作与痛点破局机会。",
+                "> \u9488\u5bf9\u7cfb\u7edf\u7684\u4e0d\u540c\u53c2\u4e0e\u89d2\u8272\uff0c\u6784\u5efa\u7aef\u5230\u7aef\u95ed\u73af\u65c5\u7a0b\u3002\u6bcf\u4e2a\u89d2\u8272\u5747\u6709\u72ec\u7acb\u7684\u751f\u547d\u5468\u671f\u9636\u6bb5\u3001\u4e1a\u52a1\u76ee\u6807\u3001\u89e6\u70b9\u64cd\u4f5c\u4e0e\u75db\u70b9\u7834\u5c40\u673a\u4f1a\u3002",
                 "",
             ])
             epic_map = {ep.get("id"): ep.get("name") for ep in epics}
@@ -1106,62 +1106,62 @@ class AuraklMarkdownRenderer:
                 p_name = p.get("name")
                 p_role = p.get("role")
                 lines.extend([
-                    f"### 3.{p_idx} {p_role}旅程",
+                    f"### 3.{p_idx} {p_role}\u65c5\u7a0b",
                     "",
-                    f"- **角色编号**：`{pid}`",
-                    f"- **代表人物**：{p_name}",
-                    f"- **业务角色**：{p_role}",
-                    f"- **核心诉求**：{p.get('core_motivation')}",
+                    f"- **\u89d2\u8272\u7f16\u53f7**\uff1a`{pid}`",
+                    f"- **\u4ee3\u8868\u4eba\u7269**\uff1a{p_name}",
+                    f"- **\u4e1a\u52a1\u89d2\u8272**\uff1a{p_role}",
+                    f"- **\u6838\u5fc3\u8bc9\u6c42**\uff1a{p.get('core_motivation')}",
                     "",
-                    "| 阶段 ID | 阶段名称 | 业务目标 | 触点 ID | 渠道/载体 | 角色动作 | 痛点摩擦与破局机会 |",
+                    "| \u9636\u6bb5 ID | \u9636\u6bb5\u540d\u79f0 | \u4e1a\u52a1\u76ee\u6807 | \u89e6\u70b9 ID | \u6e20\u9053/\u8f7d\u4f53 | \u89d2\u8272\u52a8\u4f5c | \u75db\u70b9\u6469\u64e6\u4e0e\u7834\u5c40\u673a\u4f1a |",
                     "| :--- | :--- | :--- | :--- | :--- | :--- | :--- |",
                 ])
                 for stg in stages:
                     p_tps = [tp for tp in stg.get('touchpoints', []) if tp.get('actor_persona_id') == pid]
                     for tp in p_tps:
                         lines.append(
-                            f"| **{stg.get('stage_id')}** | {stg.get('stage_name')} | {stg.get('user_goal')} | **{tp.get('touchpoint_id')}** | `{tp.get('channel')}` | {tp.get('user_action')} | **痛点**：{tp.get('friction_or_pain')}<br/>**机会**：{tp.get('opportunity')} |"
+                            f"| **{stg.get('stage_id')}** | {stg.get('stage_name')} | {stg.get('user_goal')} | **{tp.get('touchpoint_id')}** | `{tp.get('channel')}` | {tp.get('user_action')} | **\u75db\u70b9**\uff1a{tp.get('friction_or_pain')}<br/>**\u673a\u4f1a**\uff1a{tp.get('opportunity')} |"
                         )
                 lines.append("")
 
             lines.extend([
                 "---",
                 "",
-                "## 4. 典型业务场景矩阵 (Operational Scenarios Matrix)",
+                "## 4. \u5178\u578b\u4e1a\u52a1\u573a\u666f\u77e9\u9635 (Operational Scenarios Matrix)",
                 "",
-                "> 覆盖每个角色的核心主干流（Happy Path）与防御流，确保各角色交互体验闭环无死角。",
+                "> \u8986\u76d6\u6bcf\u4e2a\u89d2\u8272\u7684\u6838\u5fc3\u4e3b\u5e72\u6d41\uff08Happy Path\uff09\u4e0e\u9632\u5fa1\u6d41\uff0c\u786e\u4fdd\u5404\u89d2\u8272\u4ea4\u4e92\u4f53\u9a8c\u95ed\u73af\u65e0\u6b7b\u89d2\u3002",
                 "",
             ])
             for p_idx, p in enumerate(personas, start=1):
                 pid = p.get("id")
                 p_scns = [sc for sc in scenarios if sc.get("persona_id") == pid]
                 lines.extend([
-                    f"### 4.{p_idx} {p.get('role')}业务场景",
+                    f"### 4.{p_idx} {p.get('role')}\u4e1a\u52a1\u573a\u666f",
                     "",
-                    f"- **对应角色**：`{pid}` ({p.get('name')} - {p.get('role')})",
-                    f"- **场景数量**：{len(p_scns)} 个业务场景",
+                    f"- **\u5bf9\u5e94\u89d2\u8272**\uff1a`{pid}` ({p.get('name')} - {p.get('role')})",
+                    f"- **\u573a\u666f\u6570\u91cf**\uff1a{len(p_scns)} \u4e2a\u4e1a\u52a1\u573a\u666f",
                     "",
                 ])
                 for s_idx, sc in enumerate(p_scns, start=1):
                     lines.extend([
                         f"#### 4.{p_idx}.{s_idx} {sc.get('title')}",
-                        f"- **场景编号**：`{sc.get('scenario_id')}`",
-                        f"- **触发角色**：`{sc.get('persona_id')}` ({p.get('name')} - {p.get('role')})",
-                        f"- **触发上下文**：{sc.get('trigger_context')}",
-                        f"- **关联触点**：{', '.join(sc.get('related_touchpoint_ids', []))}",
+                        f"- **\u573a\u666f\u7f16\u53f7**\uff1a`{sc.get('scenario_id')}`",
+                        f"- **\u89e6\u53d1\u89d2\u8272**\uff1a`{sc.get('persona_id')}` ({p.get('name')} - {p.get('role')})",
+                        f"- **\u89e6\u53d1\u4e0a\u4e0b\u6587**\uff1a{sc.get('trigger_context')}",
+                        f"- **\u5173\u8054\u89e6\u70b9**\uff1a{', '.join(sc.get('related_touchpoint_ids', []))}",
                         "",
-                        "**Happy Path 业务步骤**：",
+                        "**Happy Path \u4e1a\u52a1\u6b65\u9aa4**\uff1a",
                     ])
                     for step in sc.get("happy_path_steps", []):
-                        lines.append(f"{step.get('step_number')}. **动作**：{step.get('user_action')} ➔ **预期反馈**：*{step.get('expected_experience')}*")
+                        lines.append(f"{step.get('step_number')}. **\u52a8\u4f5c**\uff1a{step.get('user_action')} ➔ **\u9884\u671f\u53cd\u9988**\uff1a*{step.get('expected_experience')}*")
                     lines.append("")
 
             lines.extend([
                 "---",
                 "",
-                "## 5. Epic 史诗规划",
+                "## 5. Epic \u53f2\u8bd7\u89c4\u5212",
                 "",
-                "| Epic ID | 史诗名称 | 核心业务价值主张 | 关联旅程阶段 | 优先级 |",
+                "| Epic ID | \u53f2\u8bd7\u540d\u79f0 | \u6838\u5fc3\u4e1a\u52a1\u4ef7\u503c\u4e3b\u5f20 | \u5173\u8054\u65c5\u7a0b\u9636\u6bb5 | \u4f18\u5148\u7ea7 |",
                 "| :--- | :--- | :--- | :---: | :---: |",
             ])
             for ep in epics:
@@ -1171,9 +1171,9 @@ class AuraklMarkdownRenderer:
                 "",
                 "---",
                 "",
-                "## 6. 用户故事列表 (User Stories Grouped by Persona)",
+                "## 6. \u7528\u6237\u6545\u4e8b\u5217\u8868 (User Stories Grouped by Persona)",
                 "",
-                "> 按业务角色分组组织 INVEST 故事，明确每个参与者的诉求、故事点数与验收准则。",
+                "> \u6309\u4e1a\u52a1\u89d2\u8272\u5206\u7ec4\u7ec4\u7ec7 INVEST \u6545\u4e8b\uff0c\u660e\u786e\u6bcf\u4e2a\u53c2\u4e0e\u8005\u7684\u8bc9\u6c42\u3001\u6545\u4e8b\u70b9\u6570\u4e0e\u9a8c\u6536\u51c6\u5219\u3002",
                 "",
             ])
             for p_idx, p in enumerate(personas, start=1):
@@ -1181,10 +1181,10 @@ class AuraklMarkdownRenderer:
                 p_stories = [st for st in stories if st.get("persona_id") == pid]
                 total_sp = sum(s.get('estimate_story_points', 0) for s in p_stories)
                 lines.extend([
-                    f"### 6.{p_idx} {p.get('role')}故事集",
+                    f"### 6.{p_idx} {p.get('role')}\u6545\u4e8b\u96c6",
                     "",
-                    f"- **所属角色**：`{pid}` ({p.get('name')} - {p.get('role')})",
-                    f"- **故事规模**：{len(p_stories)} 条故事 / 共 {total_sp} SP",
+                    f"- **\u6240\u5c5e\u89d2\u8272**\uff1a`{pid}` ({p.get('name')} - {p.get('role')})",
+                    f"- **\u6545\u4e8b\u89c4\u6a21**\uff1a{len(p_stories)} \u6761\u6545\u4e8b / \u5171 {total_sp} SP",
                     "",
                 ])
                 for st_idx, st in enumerate(p_stories, start=1):
@@ -1193,41 +1193,41 @@ class AuraklMarkdownRenderer:
                     st_title = st.get('title') or st.get('id')
                     lines.extend([
                         f"#### 6.{p_idx}.{st_idx} {st_title}",
-                        f"- **故事编号**：`{st.get('id')}`",
-                        f"- **所属史诗**：`{st.get('parent_epic')}` ({epic_name})",
-                        f"- **发版优先级**：`{st.get('priority')}`",
-                        f"- **估算点数**：`{st.get('estimate_story_points')} SP`",
-                        f"- **映射触点**：`{st.get('related_touchpoint_id')}`",
-                        f"- **实现需求**：`{', '.join(st.get('implements_requirement_ids', []))}`",
-                        f"- **用户故事 (INVEST)**：",
-                        f"  > 作为 **{st.get('as_a')}**，我想要 **{st.get('i_want')}**，以便于 **{st.get('so_that')}**。",
+                        f"- **\u6545\u4e8b\u7f16\u53f7**\uff1a`{st.get('id')}`",
+                        f"- **\u6240\u5c5e\u53f2\u8bd7**\uff1a`{st.get('parent_epic')}` ({epic_name})",
+                        f"- **\u53d1\u7248\u4f18\u5148\u7ea7**\uff1a`{st.get('priority')}`",
+                        f"- **\u4f30\u7b97\u70b9\u6570**\uff1a`{st.get('estimate_story_points')} SP`",
+                        f"- **\u6620\u5c04\u89e6\u70b9**\uff1a`{st.get('related_touchpoint_id')}`",
+                        f"- **\u5b9e\u73b0\u9700\u6c42**\uff1a`{', '.join(st.get('implements_requirement_ids', []))}`",
+                        f"- **\u7528\u6237\u6545\u4e8b (INVEST)**\uff1a",
+                        f"  > \u4f5c\u4e3a **{st.get('as_a')}**\uff0c\u6211\u60f3\u8981 **{st.get('i_want')}**\uff0c\u4ee5\u4fbf\u4e8e **{st.get('so_that')}**\u3002",
                         "",
-                        "**价值验收要点 (Value Criteria)**：",
+                        "**\u4ef7\u503c\u9a8c\u6536\u8981\u70b9 (Value Criteria)**\uff1a",
                         crit_lines,
                         "",
                     ])
             lines.extend([
                 "---",
                 "",
-                "## 优先级矩阵",
+                "## \u4f18\u5148\u7ea7\u77e9\u9635",
                 "",
-                f"- **P0 核心故事数**：{sum(1 for s in stories if s.get('priority') == 'P0')} 条（总计 {len(stories)} 条，占比严格受控）",
-                f"- **总故事点数 (Total SP)**：{sum(s.get('estimate_story_points', 0) for s in stories)} 点",
-                "",
-                "---",
-                "",
-                "## 依赖关系",
-                "",
-                "- **数据依赖**：底层垂直系统须开通 CDC 增量捕获 -> Flink 流式消费 -> 本体实体拓扑依赖前置数据管道就绪",
-                "- **执行依赖**：Action Gateway 依赖本体契约已固化发布，DB Gateway 依赖异构物理库连接池配置就绪",
+                f"- **P0 \u6838\u5fc3\u6545\u4e8b\u6570**\uff1a{sum(1 for s in stories if s.get('priority') == 'P0')} \u6761\uff08\u603b\u8ba1 {len(stories)} \u6761\uff0c\u5360\u6bd4\u4e25\u683c\u53d7\u63a7\uff09",
+                f"- **\u603b\u6545\u4e8b\u70b9\u6570 (Total SP)**\uff1a{sum(s.get('estimate_story_points', 0) for s in stories)} \u70b9",
                 "",
                 "---",
                 "",
-                "## 版本历史",
+                "## \u4f9d\u8d56\u5173\u7cfb",
                 "",
-                "| 版本号 | 变更日期 | 修订人 | 变更说明 |",
+                "- **\u6570\u636e\u4f9d\u8d56**\uff1a\u5e95\u5c42\u5782\u76f4\u7cfb\u7edf\u987b\u5f00\u901a CDC \u589e\u91cf\u6355\u83b7 -> Flink \u6d41\u5f0f\u6d88\u8d39 -> \u672c\u4f53\u5b9e\u4f53\u62d3\u6251\u4f9d\u8d56\u524d\u7f6e\u6570\u636e\u7ba1\u9053\u5c31\u7eea",
+                "- **\u6267\u884c\u4f9d\u8d56**\uff1aAction Gateway \u4f9d\u8d56\u672c\u4f53\u5951\u7ea6\u5df2\u56fa\u5316\u53d1\u5e03\uff0cDB Gateway \u4f9d\u8d56\u5f02\u6784\u7269\u7406\u5e93\u8fde\u63a5\u6c60\u914d\u7f6e\u5c31\u7eea",
+                "",
+                "---",
+                "",
+                "## \u7248\u672c\u5386\u53f2",
+                "",
+                "| \u7248\u672c\u53f7 | \u53d8\u66f4\u65e5\u671f | \u4fee\u8ba2\u4eba | \u53d8\u66f4\u8bf4\u660e |",
                 "| :---: | :---: | :---: | :--- |",
-                "| v1.0.0 | 2026-09-17 | Aurakl PM Agent | 基于架构图全量推导用户旅程触点与 8 大 INVEST 用户故事 |",
+                "| v1.0.0 | 2026-09-17 | Aurakl PM Agent | \u57fa\u4e8e\u67b6\u6784\u56fe\u5168\u91cf\u63a8\u5bfc\u7528\u6237\u65c5\u7a0b\u89e6\u70b9\u4e0e 8 \u5927 INVEST \u7528\u6237\u6545\u4e8b |",
                 "",
             ])
             return "\n".join(lines)
@@ -1370,7 +1370,7 @@ class AuraklMarkdownRenderer:
 
         implements_list = "\n".join(f"  - {imp}" for imp in meta.get("implements", []))
         tags_str = ", ".join(meta.get("tags", []))
-        default_title = "产品需求文档" if lang == "zh" else "Product Requirement Document"
+        default_title = "\u4ea7\u54c1\u9700\u6c42\u6587\u6863" if lang == "zh" else "Product Requirement Document"
 
         lines = [
             "---",
@@ -1398,11 +1398,11 @@ class AuraklMarkdownRenderer:
         if meta.get("implements"):
             imp_joined = ', '.join(meta.get('implements', []))
             if lang == "zh":
-                lines.extend([f"> **说明**: 本 PRD **实现了** {imp_joined}。", ""])
+                lines.extend([f"> **\u8bf4\u660e**: \u672c PRD **\u5b9e\u73b0\u4e86** {imp_joined}\u3002", ""])
             else:
                 lines.extend([f"> **Note**: This PRD **implements** {imp_joined}.", ""])
 
-        h_overview = "## 概述 {#overview}" if lang == "zh" else "## Overview {#overview}"
+        h_overview = "## \u6982\u8ff0 {#overview}" if lang == "zh" else "## Overview {#overview}"
         ov_text = ""
         ov_raw = data.get("overview", "")
         if isinstance(ov_raw, dict):
@@ -1415,7 +1415,7 @@ class AuraklMarkdownRenderer:
         lines.extend([h_overview, "", ov_text, "", "---", ""])
 
         # Functional requirements
-        h_func = "## 功能需求 {#functional-requirements}" if lang == "zh" else "## Functional Requirements {#functional-requirements}"
+        h_func = "## \u529f\u80fd\u9700\u6c42 {#functional-requirements}" if lang == "zh" else "## Functional Requirements {#functional-requirements}"
         lines.extend([h_func, ""])
 
         for feat in features:
@@ -1431,9 +1431,9 @@ class AuraklMarkdownRenderer:
                     "",
                     f"### {bid}: {f_title}",
                     "",
-                    f"**优先级**: {feat.get('priority', 'Must Have')}",
+                    f"**\u4f18\u5148\u7ea7**: {feat.get('priority', 'Must Have')}",
                     "",
-                    f"**业务价值**: {feat.get('business_value', feat.get('description', ''))}",
+                    f"**\u4e1a\u52a1\u4ef7\u503c**: {feat.get('business_value', feat.get('description', ''))}",
                     "",
                 ])
             else:
@@ -1449,10 +1449,10 @@ class AuraklMarkdownRenderer:
 
             inputs = feat.get("inputs", []) or feat.get("data_table", [])
             if inputs:
-                th_dt = "| 字段 | 类型 | 必需 | 说明 |" if lang == "zh" else "| Field | Type | Required | Description |"
+                th_dt = "| \u5b57\u6bb5 | \u7c7b\u578b | \u5fc5\u9700 | \u8bf4\u660e |" if lang == "zh" else "| Field | Type | Required | Description |"
                 lines.extend([th_dt, "| ---- | ---- | ---- | ---- |"])
                 for item in inputs:
-                    req_val = "是" if item.get('required') else "否"
+                    req_val = "\u662f" if item.get('required') else "\u5426"
                     if lang != "zh":
                         req_val = "Yes" if item.get('required') else "No"
                     lines.append(f"| {item.get('field')} | {item.get('type')} | {req_val} | {item.get('description')} |")
@@ -1460,7 +1460,7 @@ class AuraklMarkdownRenderer:
 
             eh = feat.get("error_handling", []) or feat.get("exception_handling", [])
             if eh:
-                th_eh = "| 错误码 | 场景 | 用户提示 | 处理建议 |" if lang == "zh" else "| Error Code | Scenario | User Message | Handling Suggestion |"
+                th_eh = "| \u9519\u8bef\u7801 | \u573a\u666f | \u7528\u6237\u63d0\u793a | \u5904\u7406\u5efa\u8bae |" if lang == "zh" else "| Error Code | Scenario | User Message | Handling Suggestion |"
                 lines.extend([th_eh, "| ------ | ---- | -------- | -------- |"])
                 for err in eh:
                     action = err.get("suggestion") or err.get("handling") or err.get("action", "")
@@ -1469,7 +1469,7 @@ class AuraklMarkdownRenderer:
 
             acs = feat.get("acceptance_criteria", [])
             if acs:
-                lbl_ac = "**验收标准**:" if lang == "zh" else "**Acceptance Criteria**:"
+                lbl_ac = "**\u9a8c\u6536\u6807\u51c6**:" if lang == "zh" else "**Acceptance Criteria**:"
                 lines.extend([lbl_ac, ""])
                 for ac in acs:
                     ac_id = ac.get("ac_id") or ac.get("id", "AC-001")
@@ -1486,7 +1486,7 @@ class AuraklMarkdownRenderer:
             lines.append("")
 
         # Non-functional requirements
-        h_nfr = "## 非功能需求 {#non-functional-requirements}" if lang == "zh" else "## Non-Functional Requirements {#non-functional-requirements}"
+        h_nfr = "## \u975e\u529f\u80fd\u9700\u6c42 {#non-functional-requirements}" if lang == "zh" else "## Non-Functional Requirements {#non-functional-requirements}"
         lines.extend([h_nfr, ""])
         nf_idx = 1
         for category in ["performance", "security", "compatibility"]:
@@ -1500,51 +1500,51 @@ class AuraklMarkdownRenderer:
                     lines.append(f"<!-- block-id: {block_id} -->")
                     if "metric" in item:
                         if lang == "zh":
-                            lines.append(f"- **{item.get('metric')}**: 目标值 `{item.get('target', item.get('metric'))}`")
+                            lines.append(f"- **{item.get('metric')}**: \u76ee\u6807\u503c `{item.get('target', item.get('metric'))}`")
                         else:
                             lines.append(f"- **{item.get('metric')}**: Target `{item.get('target', item.get('metric'))}`")
                     elif "dimension" in item:
-                        lines.append(f"- **{item.get('dimension')}**: {item.get('requirement')} (措施: {item.get('measure')})")
+                        lines.append(f"- **{item.get('dimension')}**: {item.get('requirement')} (\u63aa\u65bd: {item.get('measure')})")
                     elif "platform" in item:
-                        lines.append(f"- **{item.get('platform')}**: 支持版本 {item.get('supported_versions')}")
+                        lines.append(f"- **{item.get('platform')}**: \u652f\u6301\u7248\u672c {item.get('supported_versions')}")
                     lines.append("<!-- /block -->")
                 lines.append("")
 
         # Dependencies & constraints
-        h_dc = "## 依赖与约束 {#dependencies-constraints}" if lang == "zh" else "## Dependencies & Constraints {#dependencies-constraints}"
+        h_dc = "## \u4f9d\u8d56\u4e0e\u7ea6\u675f {#dependencies-constraints}" if lang == "zh" else "## Dependencies & Constraints {#dependencies-constraints}"
         lines.extend(["---", "", h_dc, ""])
         deps = deps_and_const.get("dependencies", [])
         if deps:
-            lbl = "### 依赖" if lang == "zh" else "### Dependencies"
+            lbl = "### \u4f9d\u8d56" if lang == "zh" else "### Dependencies"
             lines.extend([lbl, ""])
             for d in deps:
                 lines.append(f"- **{d.get('target')}**: {d.get('description')}")
             lines.append("")
         const = deps_and_const.get("constraints", {})
         if const:
-            lbl = "### 约束" if lang == "zh" else "### Constraints"
+            lbl = "### \u7ea6\u675f" if lang == "zh" else "### Constraints"
             lines.extend([lbl, ""])
             for excl in const.get("mvp_excludes", []):
-                lbl_ex = "MVP 明确排除" if lang == "zh" else "MVP Excluded"
+                lbl_ex = "MVP \u660e\u786e\u6392\u9664" if lang == "zh" else "MVP Excluded"
                 lines.append(f"- **{lbl_ex}**: {excl}")
             for tc in const.get("technical_constraints", []):
-                lbl_tc = "技术约束" if lang == "zh" else "Technical Constraint"
+                lbl_tc = "\u6280\u672f\u7ea6\u675f" if lang == "zh" else "Technical Constraint"
                 lines.append(f"- **{lbl_tc}**: {tc}")
             lines.append("")
 
         # Risks & assumptions
-        h_ra = "## 风险与假设 {#risks-assumptions}" if lang == "zh" else "## Risks & Assumptions {#risks-assumptions}"
+        h_ra = "## \u98ce\u9669\u4e0e\u5047\u8bbe {#risks-assumptions}" if lang == "zh" else "## Risks & Assumptions {#risks-assumptions}"
         lines.extend(["---", "", h_ra, ""])
         risks = risks_assumptions.get("risks", [])
         if risks:
-            lbl = "### 风险" if lang == "zh" else "### Risks"
+            lbl = "### \u98ce\u9669" if lang == "zh" else "### Risks"
             lines.extend([lbl, ""])
             for r in risks:
                 if lang == "zh":
                     lines.extend([
                         f"- **[{r.get('category')}] {r.get('description')}**",
-                        f"  - 可能性：`{r.get('likelihood')}` | 影响度：`{r.get('impact')}`",
-                        f"  - 缓解策略：{r.get('mitigation')}",
+                        f"  - \u53ef\u80fd\u6027\uff1a`{r.get('likelihood')}` | \u5f71\u54cd\u5ea6\uff1a`{r.get('impact')}`",
+                        f"  - \u7f13\u89e3\u7b56\u7565\uff1a{r.get('mitigation')}",
                     ])
                 else:
                     lines.extend([
@@ -1555,14 +1555,14 @@ class AuraklMarkdownRenderer:
             lines.append("")
         assumptions = risks_assumptions.get("assumptions", [])
         if assumptions:
-            lbl = "### 假设" if lang == "zh" else "### Assumptions"
+            lbl = "### \u5047\u8bbe" if lang == "zh" else "### Assumptions"
             lines.extend([lbl, ""])
             for a in assumptions:
                 if lang == "zh":
                     lines.extend([
-                        f"- **假设**: {a.get('assumption')}",
-                        f"  - 验证方式：{a.get('validation_method')}",
-                        f"  - 如假设被推翻：{a.get('fallback')}",
+                        f"- **\u5047\u8bbe**: {a.get('assumption')}",
+                        f"  - \u9a8c\u8bc1\u65b9\u5f0f\uff1a{a.get('validation_method')}",
+                        f"  - \u5982\u5047\u8bbe\u88ab\u63a8\u7ffb\uff1a{a.get('fallback')}",
                     ])
                 else:
                     lines.extend([
@@ -1573,11 +1573,11 @@ class AuraklMarkdownRenderer:
             lines.append("")
 
         # Version history
-        h_vh = "## 版本历史 {#version-history}" if lang == "zh" else "## Version History {#version-history}"
+        h_vh = "## \u7248\u672c\u5386\u53f2 {#version-history}" if lang == "zh" else "## Version History {#version-history}"
         lines.extend(["---", "", h_vh, ""])
         if lang == "zh":
             lines.extend([
-                "| 版本 | 日期 | 修改内容 | 修改人 |",
+                "| \u7248\u672c | \u65e5\u671f | \u4fee\u6539\u5185\u5bb9 | \u4fee\u6539\u4eba |",
                 "| ---- | ---- | -------- | ------ |",
             ])
         else:
@@ -1609,7 +1609,7 @@ class AuraklMarkdownRenderer:
 
         if lang == "zh":
             lines = [
-                f"# {data.get('product_name', 'Product')} 详细产品需求规约 (PRD)",
+                f"# {data.get('product_name', 'Product')} \u8be6\u7ec6\u4ea7\u54c1\u9700\u6c42\u89c4\u7ea6 (PRD)",
                 "",
                 "```yaml",
                 "metadata:",
@@ -1619,36 +1619,36 @@ class AuraklMarkdownRenderer:
                 '  product_type: "production_system"',
                 "```",
                 "",
-                "> 本文档严格按照 Aurakl 需求工程规约渲染生成，涵盖商业目标、信息架构、功能规格、状态机、容灾风控、全链路埋点与验收指标。",
+                "> \u672c\u6587\u6863\u4e25\u683c\u6309\u7167 Aurakl \u9700\u6c42\u5de5\u7a0b\u89c4\u7ea6\u6e32\u67d3\u751f\u6210\uff0c\u6db5\u76d6\u5546\u4e1a\u76ee\u6807\u3001\u4fe1\u606f\u67b6\u6784\u3001\u529f\u80fd\u89c4\u683c\u3001\u72b6\u6001\u673a\u3001\u5bb9\u707e\u98ce\u63a7\u3001\u5168\u94fe\u8def\u57cb\u70b9\u4e0e\u9a8c\u6536\u6307\u6807\u3002",
                 "",
                 "---",
                 "",
-                "## 1. 业务目标与系统职责边界",
+                "## 1. \u4e1a\u52a1\u76ee\u6807\u4e0e\u7cfb\u7edf\u804c\u8d23\u8fb9\u754c",
                 "",
-                "### 1.1 背景与商业使命",
+                "### 1.1 \u80cc\u666f\u4e0e\u5546\u4e1a\u4f7f\u547d",
                 "",
                 f"{data.get('background', '')}",
                 "",
-                "### 1.2 核心业务目标 (Goals)",
+                "### 1.2 \u6838\u5fc3\u4e1a\u52a1\u76ee\u6807 (Goals)",
             ]
             for g in data.get("goals", []):
                 lines.append(f"- 🎯 **{g}**")
 
             lines.extend([
                 "",
-                "### 1.3 系统非目标边界 (Non-goals)",
+                "### 1.3 \u7cfb\u7edf\u975e\u76ee\u6807\u8fb9\u754c (Non-goals)",
             ])
             for ng in data.get("non_goals", []):
                 stmt = ng.get('statement') if isinstance(ng, dict) else str(ng)
-                reason = f"（原因：{ng.get('reason')}）" if isinstance(ng, dict) and ng.get('reason') else ""
+                reason = f"\uff08\u539f\u56e0\uff1a{ng.get('reason')}\uff09" if isinstance(ng, dict) and ng.get('reason') else ""
                 lines.append(f"- ❌ **{stmt}** {reason}")
 
             if target_users:
                 lines.extend([
                     "",
-                    "### 1.4 目标用户与核心诉求",
+                    "### 1.4 \u76ee\u6807\u7528\u6237\u4e0e\u6838\u5fc3\u8bc9\u6c42",
                     "",
-                    "| 角色定义 | 核心职责与操作目标 |",
+                    "| \u89d2\u8272\u5b9a\u4e49 | \u6838\u5fc3\u804c\u8d23\u4e0e\u64cd\u4f5c\u76ee\u6807 |",
                     "| :--- | :--- |",
                 ])
                 for u in target_users:
@@ -1658,20 +1658,20 @@ class AuraklMarkdownRenderer:
             dspecs = data.get("domain_specific_specifications", {})
             if dp:
                 dp_title_map = {
-                    "mobile": "移动端 (Mobile Native / H5 / 小程序)",
-                    "desktop": "桌面端 (Desktop Web / Electron)",
-                    "backend": "纯后端服务与中台 (Backend / Microservices)",
-                    "iot_hardware": "智能硬件与物联网 (IoT / Embedded Hardware)",
-                    "hybrid": "全端混合架构 (Hybrid Multi-Tier Architecture)"
+                    "mobile": "\u79fb\u52a8\u7aef (Mobile Native / H5 / \u5c0f\u7a0b\u5e8f)",
+                    "desktop": "\u684c\u9762\u7aef (Desktop Web / Electron)",
+                    "backend": "\u7eaf\u540e\u7aef\u670d\u52a1\u4e0e\u4e2d\u53f0 (Backend / Microservices)",
+                    "iot_hardware": "\u667a\u80fd\u786c\u4ef6\u4e0e\u7269\u8054\u7f51 (IoT / Embedded Hardware)",
+                    "hybrid": "\u5168\u7aef\u6df7\u5408\u67b6\u6784 (Hybrid Multi-Tier Architecture)"
                 }
                 lines.extend([
                     "",
-                    "### 1.5 领域工程画像与专有约束 (Domain Engineering Profile)",
+                    "### 1.5 \u9886\u57df\u5de5\u7a0b\u753b\u50cf\u4e0e\u4e13\u6709\u7ea6\u675f (Domain Engineering Profile)",
                     "",
-                    f"- **系统所属领域架构**：`{dp.upper()}` —— {dp_title_map.get(dp, dp)}",
-                    "- **需求规约语言标准**：严格遵循 **IETF RFC 2119** 规范（MUST, MUST NOT, REQUIRED, SHALL, SHOULD, MAY），严禁含糊表述。",
+                    f"- **\u7cfb\u7edf\u6240\u5c5e\u9886\u57df\u67b6\u6784**\uff1a`{dp.upper()}` —— {dp_title_map.get(dp, dp)}",
+                    "- **\u9700\u6c42\u89c4\u7ea6\u8bed\u8a00\u6807\u51c6**\uff1a\u4e25\u683c\u9075\u5faa **IETF RFC 2119** \u89c4\u8303\uff08MUST, MUST NOT, REQUIRED, SHALL, SHOULD, MAY\uff09\uff0c\u4e25\u7981\u542b\u7cca\u8868\u8ff0\u3002",
                     "",
-                    "| 领域维度 | 工程规约要求与保障策略 |",
+                    "| \u9886\u57df\u7ef4\u5ea6 | \u5de5\u7a0b\u89c4\u7ea6\u8981\u6c42\u4e0e\u4fdd\u969c\u7b56\u7565 |",
                     "| :--- | :--- |",
                 ])
                 for profile_key, specs in dspecs.items():
@@ -1684,9 +1684,9 @@ class AuraklMarkdownRenderer:
                 "",
                 "---",
                 "",
-                "## 2. 信息架构与服务模块清单",
+                "## 2. \u4fe1\u606f\u67b6\u6784\u4e0e\u670d\u52a1\u6a21\u5757\u6e05\u5355",
                 "",
-                "| 模块编号 | 模块名称 | 英文标识 | 层级 | 职责范围与业务边界 |",
+                "| \u6a21\u5757\u7f16\u53f7 | \u6a21\u5757\u540d\u79f0 | \u82f1\u6587\u6807\u8bc6 | \u5c42\u7ea7 | \u804c\u8d23\u8303\u56f4\u4e0e\u4e1a\u52a1\u8fb9\u754c |",
                 "| :---: | :--- | :--- | :---: | :--- |",
             ])
             for m in raw_modules:
@@ -1700,29 +1700,29 @@ class AuraklMarkdownRenderer:
             # P0/P1/P2 Release Priority Matrix
             lines.extend([
                 "",
-                "### 2.2 功能优先级与发版矩阵 (Release Priority Matrix)",
+                "### 2.2 \u529f\u80fd\u4f18\u5148\u7ea7\u4e0e\u53d1\u7248\u77e9\u9635 (Release Priority Matrix)",
                 "",
-                "根据 Google PRD 标准分级定义：",
-                "- 🔴 **P0 (Launch Blocker)**：核心主线闭环与发版阻塞项，MVP 必须 100% 交付；",
-                "- 🟡 **P1 (High-Value Fast-Follow)**：高价值扩展特性，首期公测或次级迭代必须跟进；",
-                "- 🟢 **P2 (Nice-to-Have)**：体验优化与远期设想，不影响当前版本上线发版。",
+                "\u6839\u636e Google PRD \u6807\u51c6\u5206\u7ea7\u5b9a\u4e49\uff1a",
+                "- 🔴 **P0 (Launch Blocker)**\uff1a\u6838\u5fc3\u4e3b\u7ebf\u95ed\u73af\u4e0e\u53d1\u7248\u963b\u585e\u9879\uff0cMVP \u5fc5\u987b 100% \u4ea4\u4ed8\uff1b",
+                "- 🟡 **P1 (High-Value Fast-Follow)**\uff1a\u9ad8\u4ef7\u503c\u6269\u5c55\u7279\u6027\uff0c\u9996\u671f\u516c\u6d4b\u6216\u6b21\u7ea7\u8fed\u4ee3\u5fc5\u987b\u8ddf\u8fdb\uff1b",
+                "- 🟢 **P2 (Nice-to-Have)**\uff1a\u4f53\u9a8c\u4f18\u5316\u4e0e\u8fdc\u671f\u8bbe\u60f3\uff0c\u4e0d\u5f71\u54cd\u5f53\u524d\u7248\u672c\u4e0a\u7ebf\u53d1\u7248\u3002",
                 "",
-                "| 优先级 | 功能数量 | 涵盖功能编号清单 | 交付承诺与发版影响 |",
+                "| \u4f18\u5148\u7ea7 | \u529f\u80fd\u6570\u91cf | \u6db5\u76d6\u529f\u80fd\u7f16\u53f7\u6e05\u5355 | \u4ea4\u4ed8\u627f\u8bfa\u4e0e\u53d1\u7248\u5f71\u54cd |",
                 "| :---: | :---: | :--- | :--- |",
             ])
             p0_feats = [f.get("feature_id") for f in features if f.get("priority") == "P0"]
             p1_feats = [f.get("feature_id") for f in features if f.get("priority") == "P1"]
             p2_feats = [f.get("feature_id") for f in features if f.get("priority") == "P2"]
 
-            lines.append(f"| 🔴 **P0** | **{len(p0_feats)}** | {', '.join(f'`{x}`' for x in p0_feats)} | **发版刚性门禁**：未完成或有阻塞缺陷严禁出库上线 |")
-            lines.append(f"| 🟡 **P1** | **{len(p1_feats)}** | {', '.join(f'`{x}`' for x in p1_feats)} | **高优交付**：主线闭环后立即启动公测验证 |")
-            lines.append(f"| 🟢 **P2** | **{len(p2_feats)}** | {', '.join(f'`{x}`' for x in p2_feats) if p2_feats else '暂无'} | **次级储备**：根据业务运营反馈动态调整排期 |")
+            lines.append(f"| 🔴 **P0** | **{len(p0_feats)}** | {', '.join(f'`{x}`' for x in p0_feats)} | **\u53d1\u7248\u521a\u6027\u95e8\u7981**\uff1a\u672a\u5b8c\u6210\u6216\u6709\u963b\u585e\u7f3a\u9677\u4e25\u7981\u51fa\u5e93\u4e0a\u7ebf |")
+            lines.append(f"| 🟡 **P1** | **{len(p1_feats)}** | {', '.join(f'`{x}`' for x in p1_feats)} | **\u9ad8\u4f18\u4ea4\u4ed8**\uff1a\u4e3b\u7ebf\u95ed\u73af\u540e\u7acb\u5373\u542f\u52a8\u516c\u6d4b\u9a8c\u8bc1 |")
+            lines.append(f"| 🟢 **P2** | **{len(p2_feats)}** | {', '.join(f'`{x}`' for x in p2_feats) if p2_feats else '\u6682\u65e0'} | **\u6b21\u7ea7\u50a8\u5907**\uff1a\u6839\u636e\u4e1a\u52a1\u8fd0\u8425\u53cd\u9988\u52a8\u6001\u8c03\u6574\u6392\u671f |")
 
             lines.extend([
                 "",
                 "---",
                 "",
-                "## 3. 核心功能特性规格清单 (Feature Specifications)",
+                "## 3. \u6838\u5fc3\u529f\u80fd\u7279\u6027\u89c4\u683c\u6e05\u5355 (Feature Specifications)",
                 "",
             ])
             processed_features = set()
@@ -1734,55 +1734,55 @@ class AuraklMarkdownRenderer:
                 m_feats = [f for f in features if f.get("module_id") == m_id]
                 if not m_feats:
                     continue
-                # 单一职责：模块标题仅包含纯净业务名称，编号与英文下沉到元数据
+                # Single Responsibility: Module heading contains clean business name only; ID sinks to metadata
                 lines.extend([
                     f"### 3.{idx} {m_name}",
                     "",
-                    f"- **模块编号**：`{m_id}`",
+                    f"- **\u6a21\u5757\u7f16\u53f7**\uff1a`{m_id}`",
                 ])
                 if m_code:
-                    lines.append(f"- **英文代号**：`{m_code}`")
+                    lines.append(f"- **\u82f1\u6587\u4ee3\u53f7**\uff1a`{m_code}`")
                 if m_desc:
-                    lines.append(f"- **模块职责**：{m_desc}")
+                    lines.append(f"- **\u6a21\u5757\u804c\u8d23**\uff1a{m_desc}")
                 lines.append("")
 
                 for f_idx, f in enumerate(m_feats, 1):
                     f_id = f.get("feature_id") or f.get("id")
                     processed_features.add(f_id)
                     prio = f.get('priority', 'P0')
-                    prio_desc = "🔴 P0 (核心发版阻塞项 / Launch Blocker)" if prio == "P0" else ("🟡 P1 (高价值跟进 / Fast-Follow)" if prio == "P1" else "🟢 P2 (次级体验增强 / Nice-to-Have)")
+                    prio_desc = "🔴 P0 (\u6838\u5fc3\u53d1\u7248\u963b\u585e\u9879 / Launch Blocker)" if prio == "P0" else ("🟡 P1 (\u9ad8\u4ef7\u503c\u8ddf\u8fdb / Fast-Follow)" if prio == "P1" else "🟢 P2 (\u6b21\u7ea7\u4f53\u9a8c\u589e\u5f3a / Nice-to-Have)")
                     
-                    # 单一职责：功能标题仅展示章节编号与纯净中文功能名
+                    # Single Responsibility: Feature heading displays section number and clean business name only
                     lines.extend([
                         f"#### 3.{idx}.{f_idx} {f.get('name')}",
                         "",
                     ])
-                    lines.append(f"- **功能编号**：`{f_id}`")
+                    lines.append(f"- **\u529f\u80fd\u7f16\u53f7**\uff1a`{f_id}`")
                     if f.get("target_runtime"):
-                        lines.append(f"- **运行终端**：{f.get('target_runtime')}")
-                    lines.append(f"- **发版优先级**：**`{prio}`** —— {prio_desc}")
+                        lines.append(f"- **\u8fd0\u884c\u7ec8\u7aef**\uff1a{f.get('target_runtime')}")
+                    lines.append(f"- **\u53d1\u7248\u4f18\u5148\u7ea7**\uff1a**`{prio}`** —— {prio_desc}")
                     if f.get("description"):
-                        lines.append(f"- **功能概述**：{f.get('description')}")
+                        lines.append(f"- **\u529f\u80fd\u6982\u8ff0**\uff1a{f.get('description')}")
                     stories = f.get("derived_from_user_stories", [])
                     if stories:
-                        lines.append(f"- **关联用户故事**：{', '.join(f'`{s}`' for s in stories)}")
+                        lines.append(f"- **\u5173\u8054\u7528\u6237\u6545\u4e8b**\uff1a{', '.join(f'`{s}`' for s in stories)}")
                     if f.get("target_persona"):
-                        lines.append(f"- **面向角色**：`{f.get('target_persona')}`")
+                        lines.append(f"- **\u9762\u5411\u89d2\u8272**\uff1a`{f.get('target_persona')}`")
                     if f.get("state_machine_id"):
-                        lines.append(f"- **关联状态机**：`{f.get('state_machine_id')}`")
+                        lines.append(f"- **\u5173\u8054\u72b6\u6001\u673a**\uff1a`{f.get('state_machine_id')}`")
 
                     pre = f.get("preconditions", [])
                     if pre:
                         p_str = '; '.join(pre) if isinstance(pre, list) else str(pre)
-                        lines.append(f"- **前置条件**：{p_str}")
+                        lines.append(f"- **\u524d\u7f6e\u6761\u4ef6**\uff1a{p_str}")
                     post = f.get("postconditions", [])
                     if post:
                         post_str = '; '.join(post) if isinstance(post, list) else str(post)
-                        lines.append(f"- **后置条件**：{post_str}")
+                        lines.append(f"- **\u540e\u7f6e\u6761\u4ef6**\uff1a{post_str}")
 
                     rules = f.get("business_rules", [])
                     if rules:
-                        lines.extend(["", "**核心业务规则**："])
+                        lines.extend(["", "**\u6838\u5fc3\u4e1a\u52a1\u89c4\u5219**\uff1a"])
                         if isinstance(rules, list):
                             for r in rules:
                                 lines.append(f"  1. {r}")
@@ -1793,13 +1793,13 @@ class AuraklMarkdownRenderer:
                     if inputs:
                         lines.extend([
                             "",
-                            "**输入参数规约**：",
+                            "**\u8f93\u5165\u53c2\u6570\u89c4\u7ea6**\uff1a",
                             "",
-                            "| 参数名 | 类型 | 必填 | 格式与业务约束 |",
+                            "| \u53c2\u6570\u540d | \u7c7b\u578b | \u5fc5\u586b | \u683c\u5f0f\u4e0e\u4e1a\u52a1\u7ea6\u675f |",
                             "| :--- | :---: | :---: | :--- |",
                         ])
                         for inp in inputs:
-                            req_label = "必填" if inp.get('required') else "选填"
+                            req_label = "\u5fc5\u586b" if inp.get('required') else "\u9009\u586b"
                             rule_label = inp.get('validation_rule') or inp.get('description', '-')
                             lines.append(f"| `{inp.get('name', inp.get('field'))}` | `{inp.get('type')}` | `{req_label}` | {rule_label} |")
 
@@ -1807,9 +1807,9 @@ class AuraklMarkdownRenderer:
                     if outputs:
                         lines.extend([
                             "",
-                            "**输出响应规约**：",
+                            "**\u8f93\u51fa\u54cd\u5e94\u89c4\u7ea6**\uff1a",
                             "",
-                            "| 字段名 | 类型 | 业务含义 |",
+                            "| \u5b57\u6bb5\u540d | \u7c7b\u578b | \u4e1a\u52a1\u542b\u4e49 |",
                             "| :--- | :---: | :--- |",
                         ])
                         for out in outputs:
@@ -1819,9 +1819,9 @@ class AuraklMarkdownRenderer:
                     if errs:
                         lines.extend([
                             "",
-                            "**异常分支与错误处理规约**：",
+                            "**\u5f02\u5e38\u5206\u652f\u4e0e\u9519\u8bef\u5904\u7406\u89c4\u7ea6**\uff1a",
                             "",
-                            "| 错误代码 | 触发条件 | 用户感知文案 | 恢复与降级动作 |",
+                            "| \u9519\u8bef\u4ee3\u7801 | \u89e6\u53d1\u6761\u4ef6 | \u7528\u6237\u611f\u77e5\u6587\u6848 | \u6062\u590d\u4e0e\u964d\u7ea7\u52a8\u4f5c |",
                             "| :--- | :--- | :--- | :--- |",
                         ])
                         for ec in errs:
@@ -1831,17 +1831,17 @@ class AuraklMarkdownRenderer:
                     if deps:
                         lines.extend([
                             "",
-                            "**前置数据依赖与溯源规约 (Data Dependencies & Sourcing)**：",
+                            "**\u524d\u7f6e\u6570\u636e\u4f9d\u8d56\u4e0e\u6eaf\u6e90\u89c4\u7ea6 (Data Dependencies & Sourcing)**\uff1a",
                             "",
-                            "| 依赖数据项 | 来源类型 | 生产方/提供方引用 | 业务保障与冷启动机制 |",
+                            "| \u4f9d\u8d56\u6570\u636e\u9879 | \u6765\u6e90\u7c7b\u578b | \u751f\u4ea7\u65b9/\u63d0\u4f9b\u65b9\u5f15\u7528 | \u4e1a\u52a1\u4fdd\u969c\u4e0e\u51b7\u542f\u52a8\u673a\u5236 |",
                             "| :--- | :---: | :--- | :--- |",
                         ])
                         for d in deps:
                             stype_map = {
-                                "INTERNAL_FEATURE": "内部功能生产",
-                                "COLD_START_SEED": "冷启动种子数据",
-                                "EXTERNAL_API": "外部接口/第三方",
-                                "USER_INPUT": "当前用户交互输入"
+                                "INTERNAL_FEATURE": "\u5185\u90e8\u529f\u80fd\u751f\u4ea7",
+                                "COLD_START_SEED": "\u51b7\u542f\u52a8\u79cd\u5b50\u6570\u636e",
+                                "EXTERNAL_API": "\u5916\u90e8\u63a5\u53e3/\u7b2c\u4e09\u65b9",
+                                "USER_INPUT": "\u5f53\u524d\u7528\u6237\u4ea4\u4e92\u8f93\u5165"
                             }
                             stype_label = stype_map.get(d.get("source_type"), d.get("source_type"))
                             lines.append(f"| **{d.get('data_entity')}** | `{stype_label}` | `{d.get('producer_reference')}` | {d.get('description', '-')} |")
@@ -1850,45 +1850,45 @@ class AuraklMarkdownRenderer:
 
             orphan_feats = [f for f in features if (f.get("feature_id") or f.get("id")) not in processed_features]
             if orphan_feats:
-                lines.extend(["### 3.X 通用与跨模块功能特性", ""])
+                lines.extend(["### 3.X \u901a\u7528\u4e0e\u8de8\u6a21\u5757\u529f\u80fd\u7279\u6027", ""])
                 for f in orphan_feats:
                     f_id = f.get("feature_id") or f.get("id")
                     lines.extend([
-                        f"#### 【{f_id}】 {f.get('name')}",
-                        f"- **前置条件**：{f.get('preconditions')}",
-                        f"- **后置条件**：{f.get('postconditions')}",
-                        f"- **业务规则**：{f.get('business_rules')}",
+                        f"#### \u3010{f_id}\u3011 {f.get('name')}",
+                        f"- **\u524d\u7f6e\u6761\u4ef6**\uff1a{f.get('preconditions')}",
+                        f"- **\u540e\u7f6e\u6761\u4ef6**\uff1a{f.get('postconditions')}",
+                        f"- **\u4e1a\u52a1\u89c4\u5219**\uff1a{f.get('business_rules')}",
                         "",
                     ])
 
             # State Machines
             if state_machines:
                 lines.extend([
-                    "## 4. 核心状态机与生命周期规约 (State Machines)",
+                    "## 4. \u6838\u5fc3\u72b6\u6001\u673a\u4e0e\u751f\u547d\u5468\u671f\u89c4\u7ea6 (State Machines)",
                     "",
                 ])
                 for sm_idx, sm in enumerate(state_machines, 1):
                     entity = sm.get("entity_name", "OrderLifecycle")
                     lines.extend([
-                        f"### 4.{sm_idx} 实体状态机：`{entity}`",
+                        f"### 4.{sm_idx} \u5b9e\u4f53\u72b6\u6001\u673a\uff1a`{entity}`",
                         "",
-                        "#### 状态清单",
+                        "#### \u72b6\u6001\u6e05\u5355",
                         "",
-                        "| 状态代码 | 状态名称 | 初始状态 | 终态 |",
+                        "| \u72b6\u6001\u4ee3\u7801 | \u72b6\u6001\u540d\u79f0 | \u521d\u59cb\u72b6\u6001 | \u7ec8\u6001 |",
                         "| :--- | :--- | :---: | :---: |",
                     ])
                     for st in sm.get("states", []):
-                        init_icon = "✅ 是" if st.get("is_initial") else "否"
-                        term_icon = "🛑 终态" if st.get("is_terminal") else "流转态"
+                        init_icon = "✅ \u662f" if st.get("is_initial") else "\u5426"
+                        term_icon = "🛑 \u7ec8\u6001" if st.get("is_terminal") else "\u6d41\u8f6c\u6001"
                         lines.append(f"| **`{st.get('state_id')}`** | {st.get('state_name')} | {init_icon} | {term_icon} |")
 
                     transitions = sm.get("transitions", [])
                     if transitions:
                         lines.extend([
                             "",
-                            "#### 状态迁移与守卫条件矩阵",
+                            "#### \u72b6\u6001\u8fc1\u79fb\u4e0e\u5b88\u536b\u6761\u4ef6\u77e9\u9635",
                             "",
-                            "| 起始状态 | 触发事件 (Event) | 目标状态 | 门禁前置条件 (Guard) | 触发动作 (Action) |",
+                            "| \u8d77\u59cb\u72b6\u6001 | \u89e6\u53d1\u4e8b\u4ef6 (Event) | \u76ee\u6807\u72b6\u6001 | \u95e8\u7981\u524d\u7f6e\u6761\u4ef6 (Guard) | \u89e6\u53d1\u52a8\u4f5c (Action) |",
                             "| :--- | :--- | :--- | :--- | :--- |",
                         ])
                         for tr in transitions:
@@ -1917,16 +1917,16 @@ class AuraklMarkdownRenderer:
             # Error Handling & Recovery
             if eh:
                 lines.extend([
-                    "## 5. 异常处理与容灾恢复机制 (Error Handling & Recovery)",
+                    "## 5. \u5f02\u5e38\u5904\u7406\u4e0e\u5bb9\u707e\u6062\u590d\u673a\u5236 (Error Handling & Recovery)",
                     "",
                 ])
                 if isinstance(eh, dict):
                     sys_errs = eh.get("system_errors", [])
                     if sys_errs:
                         lines.extend([
-                            "### 5.1 系统级异常与重试降级策略",
+                            "### 5.1 \u7cfb\u7edf\u7ea7\u5f02\u5e38\u4e0e\u91cd\u8bd5\u964d\u7ea7\u7b56\u7565",
                             "",
-                            "| 错误代码 | 触发场景 | 重试策略 | 兜底降级方案 |",
+                            "| \u9519\u8bef\u4ee3\u7801 | \u89e6\u53d1\u573a\u666f | \u91cd\u8bd5\u7b56\u7565 | \u515c\u5e95\u964d\u7ea7\u65b9\u6848 |",
                             "| :--- | :--- | :--- | :--- |",
                         ])
                         for se in sys_errs:
@@ -1936,9 +1936,9 @@ class AuraklMarkdownRenderer:
                     biz_errs = eh.get("business_exceptions", [])
                     if biz_errs:
                         lines.extend([
-                            "### 5.2 业务风控阻断与平替恢复",
+                            "### 5.2 \u4e1a\u52a1\u98ce\u63a7\u963b\u65ad\u4e0e\u5e73\u66ff\u6062\u590d",
                             "",
-                            "| 异常代码 | 触发条件 | 用户感知文案 | 业务恢复动作 |",
+                            "| \u5f02\u5e38\u4ee3\u7801 | \u89e6\u53d1\u6761\u4ef6 | \u7528\u6237\u611f\u77e5\u6587\u6848 | \u4e1a\u52a1\u6062\u590d\u52a8\u4f5c |",
                             "| :--- | :--- | :--- | :--- |",
                         ])
                         for be in biz_errs:
@@ -1948,16 +1948,16 @@ class AuraklMarkdownRenderer:
                     inter = eh.get("interruption_and_recovery", {})
                     if inter:
                         lines.extend([
-                            "### 5.3 会话中断与弱网恢复保障",
+                            "### 5.3 \u4f1a\u8bdd\u4e2d\u65ad\u4e0e\u5f31\u7f51\u6062\u590d\u4fdd\u969c",
                             "",
-                            f"- **草稿持久化机制**：{inter.get('draft_persistence_strategy', '-')}",
-                            f"- **会话恢复协议**：{inter.get('session_resume_protocol', '-')}",
-                            f"- **幂等防重保证**：{inter.get('idempotency_guarantees', '-')}",
+                            f"- **\u8349\u7a3f\u6301\u4e45\u5316\u673a\u5236**\uff1a{inter.get('draft_persistence_strategy', '-')}",
+                            f"- **\u4f1a\u8bdd\u6062\u590d\u534f\u8bae**\uff1a{inter.get('session_resume_protocol', '-')}",
+                            f"- **\u5e42\u7b49\u9632\u91cd\u4fdd\u8bc1**\uff1a{inter.get('idempotency_guarantees', '-')}",
                             "",
                         ])
                 elif isinstance(eh, list):
                     lines.extend([
-                        "| 异常场景 | 容灾策略与系统动作 | 用户端引导与交互反馈 |",
+                        "| \u5f02\u5e38\u573a\u666f | \u5bb9\u707e\u7b56\u7565\u4e0e\u7cfb\u7edf\u52a8\u4f5c | \u7528\u6237\u7aef\u5f15\u5bfc\u4e0e\u4ea4\u4e92\u53cd\u9988 |",
                         "| :--- | :--- | :--- |",
                     ])
                     for err in eh:
@@ -1972,26 +1972,26 @@ class AuraklMarkdownRenderer:
             # Tracking Plan
             if tp:
                 lines.extend([
-                    "## 6. 全链路数据埋点与业务可观测性指标 (Tracking Plan)",
+                    "## 6. \u5168\u94fe\u8def\u6570\u636e\u57cb\u70b9\u4e0e\u4e1a\u52a1\u53ef\u89c2\u6d4b\u6027\u6307\u6807 (Tracking Plan)",
                     "",
                 ])
                 if isinstance(tp, dict):
                     ns = tp.get("north_star_metric", {})
                     if ns:
                         lines.extend([
-                            "### 6.1 北极星指标 (North Star Metric)",
+                            "### 6.1 \u5317\u6781\u661f\u6307\u6807 (North Star Metric)",
                             "",
-                            f"- **指标名称**：🎯 **{ns.get('metric_name')}**",
-                            f"- **量化定义公式**：`{ns.get('target_definition')}`",
-                            f"- **商业价值影响**：{ns.get('business_impact')}",
+                            f"- **\u6307\u6807\u540d\u79f0**\uff1a🎯 **{ns.get('metric_name')}**",
+                            f"- **\u91cf\u5316\u5b9a\u4e49\u516c\u5f0f**\uff1a`{ns.get('target_definition')}`",
+                            f"- **\u5546\u4e1a\u4ef7\u503c\u5f71\u54cd**\uff1a{ns.get('business_impact')}",
                             "",
                         ])
                     funnels = tp.get("funnel_metrics", [])
                     if funnels:
                         lines.extend([
-                            "### 6.2 核心漏斗转化率基准 (Funnel Metrics)",
+                            "### 6.2 \u6838\u5fc3\u6f0f\u6597\u8f6c\u5316\u7387\u57fa\u51c6 (Funnel Metrics)",
                             "",
-                            "| 漏斗节点 | 转化率计算公式 | 目标基准值 |",
+                            "| \u6f0f\u6597\u8282\u70b9 | \u8f6c\u5316\u7387\u8ba1\u7b97\u516c\u5f0f | \u76ee\u6807\u57fa\u51c6\u503c |",
                             "| :--- | :--- | :---: |",
                         ])
                         for fn in funnels:
@@ -2001,9 +2001,9 @@ class AuraklMarkdownRenderer:
                     events = tp.get("event_dictionary", [])
                     if events:
                         lines.extend([
-                            "### 6.3 关键业务事件埋点字典 (Event Dictionary)",
+                            "### 6.3 \u5173\u952e\u4e1a\u52a1\u4e8b\u4ef6\u57cb\u70b9\u5b57\u5178 (Event Dictionary)",
                             "",
-                            "| 事件名称 | 触发条件 | 事件载荷字段 | 用户属性字段 |",
+                            "| \u4e8b\u4ef6\u540d\u79f0 | \u89e6\u53d1\u6761\u4ef6 | \u4e8b\u4ef6\u8f7d\u8377\u5b57\u6bb5 | \u7528\u6237\u5c5e\u6027\u5b57\u6bb5 |",
                             "| :--- | :--- | :--- | :--- |",
                         ])
                         for ev in events:
@@ -2015,9 +2015,9 @@ class AuraklMarkdownRenderer:
                     telemetry = tp.get("quality_telemetry", [])
                     if telemetry:
                         lines.extend([
-                            "### 6.4 质量与 SLA 监控度量 (Quality Telemetry)",
+                            "### 6.4 \u8d28\u91cf\u4e0e SLA \u76d1\u63a7\u5ea6\u91cf (Quality Telemetry)",
                             "",
-                            "| 度量项名称 | 告警阈值 | 核心 SLA 目标 |",
+                            "| \u5ea6\u91cf\u9879\u540d\u79f0 | \u544a\u8b66\u9608\u503c | \u6838\u5fc3 SLA \u76ee\u6807 |",
                             "| :--- | :--- | :---: |",
                         ])
                         for tm in telemetry:
@@ -2025,7 +2025,7 @@ class AuraklMarkdownRenderer:
                         lines.append("")
                 elif isinstance(tp, list):
                     lines.extend([
-                        "| 埋点事件名 | 触发时机 | 核心上报载荷 |",
+                        "| \u57cb\u70b9\u4e8b\u4ef6\u540d | \u89e6\u53d1\u65f6\u673a | \u6838\u5fc3\u4e0a\u62a5\u8f7d\u8377 |",
                         "| :--- | :--- | :--- |",
                     ])
                     for item in tp:
@@ -2038,16 +2038,16 @@ class AuraklMarkdownRenderer:
 
             # Non-Functional Requirements
             lines.extend([
-                "## 7. 非功能性质量需求 (Non-Functional Requirements)",
+                "## 7. \u975e\u529f\u80fd\u6027\u8d28\u91cf\u9700\u6c42 (Non-Functional Requirements)",
                 "",
             ])
             nfr_items = [
-                ("performance", "性能指标 (Performance)"),
-                ("security", "安全与商业机密隔离 (Security)"),
-                ("reliability", "可靠性与高可用 (Reliability)"),
-                ("availability", "可用性目标 (Availability)"),
-                ("privacy", "数据合规与隐私保护 (Privacy)"),
-                ("compliance", "法规遵从 (Compliance)"),
+                ("performance", "\u6027\u80fd\u6307\u6807 (Performance)"),
+                ("security", "\u5b89\u5168\u4e0e\u5546\u4e1a\u673a\u5bc6\u9694\u79bb (Security)"),
+                ("reliability", "\u53ef\u9760\u6027\u4e0e\u9ad8\u53ef\u7528 (Reliability)"),
+                ("availability", "\u53ef\u7528\u6027\u76ee\u6807 (Availability)"),
+                ("privacy", "\u6570\u636e\u5408\u89c4\u4e0e\u9690\u79c1\u4fdd\u62a4 (Privacy)"),
+                ("compliance", "\u6cd5\u89c4\u9075\u4ece (Compliance)"),
             ]
             for nfr_key, nfr_title in nfr_items:
                 val = nfr.get(nfr_key)
@@ -2055,11 +2055,11 @@ class AuraklMarkdownRenderer:
                     lines.append(f"### 7.{nfr_items.index((nfr_key, nfr_title)) + 1} {nfr_title}")
                     if isinstance(val, dict):
                         for sub_k, sub_v in val.items():
-                            lines.append(f"- **{sub_k}**：`{sub_v}`")
+                            lines.append(f"- **{sub_k}**\uff1a`{sub_v}`")
                     elif isinstance(val, list):
                         for item in val:
                             if isinstance(item, dict):
-                                lines.append(f"- **{item.get('metric', item.get('id', 'Rule'))}**：`{item.get('target', item.get('description', ''))}`")
+                                lines.append(f"- **{item.get('metric', item.get('id', 'Rule'))}**\uff1a`{item.get('target', item.get('description', ''))}`")
                             else:
                                 lines.append(f"- {item}")
                     else:
@@ -2071,13 +2071,13 @@ class AuraklMarkdownRenderer:
                 lines.extend([
                     "---",
                     "",
-                    "## 8. 系统核心依赖与风险应对清单 (Dependencies & Risks)",
+                    "## 8. \u7cfb\u7edf\u6838\u5fc3\u4f9d\u8d56\u4e0e\u98ce\u9669\u5e94\u5bf9\u6e05\u5355 (Dependencies & Risks)",
                     "",
-                    "| 依赖类型 / 名称 | 故障影响与风险描述 | 缓解策略与降级方案 |",
+                    "| \u4f9d\u8d56\u7c7b\u578b / \u540d\u79f0 | \u6545\u969c\u5f71\u54cd\u4e0e\u98ce\u9669\u63cf\u8ff0 | \u7f13\u89e3\u7b56\u7565\u4e0e\u964d\u7ea7\u65b9\u6848 |",
                     "| :--- | :--- | :--- |",
                 ])
                 for dep in dr:
-                    dep_name = dep.get("dependency") or dep.get("name") or dep.get("type", "系统依赖")
+                    dep_name = dep.get("dependency") or dep.get("name") or dep.get("type", "\u7cfb\u7edf\u4f9d\u8d56")
                     dep_type = f"`{dep.get('type')}` " if dep.get("type") and dep_name != dep.get("type") else ""
                     dep_risk = dep.get("risk_if_failed") or dep.get("description", "-")
                     dep_mit = dep.get("mitigation_plan") or dep.get("mitigation", "-")
@@ -2087,9 +2087,9 @@ class AuraklMarkdownRenderer:
             # Milestones
             if milestones:
                 lines.extend([
-                    "## 9. 交付里程碑与演进规划 (Milestones)",
+                    "## 9. \u4ea4\u4ed8\u91cc\u7a0b\u7891\u4e0e\u6f14\u8fdb\u89c4\u5212 (Milestones)",
                     "",
-                    "| 里程碑阶段 | 核心目标交付物 | 预估交付周期 |",
+                    "| \u91cc\u7a0b\u7891\u9636\u6bb5 | \u6838\u5fc3\u76ee\u6807\u4ea4\u4ed8\u7269 | \u9884\u4f30\u4ea4\u4ed8\u5468\u671f |",
                     "| :--- | :--- | :---: |",
                 ])
                 for ms in milestones:
@@ -2100,8 +2100,8 @@ class AuraklMarkdownRenderer:
                     lines.append(f"| **{m_title}** | {d_str} | `{t_str}` |")
                 lines.extend(["", "---", ""])
 
-            summary_text = data.get('summary', '本项目PRD为端到端商业闭环系统规约，全生命周期贯通业务、架构与验收测试。')
-            lines.extend([f"**架构总括**：{summary_text}", ""])
+            summary_text = data.get('summary', '\u672c\u9879\u76eePRD\u4e3a\u7aef\u5230\u7aef\u5546\u4e1a\u95ed\u73af\u7cfb\u7edf\u89c4\u7ea6\uff0c\u5168\u751f\u547d\u5468\u671f\u8d2f\u901a\u4e1a\u52a1\u3001\u67b6\u6784\u4e0e\u9a8c\u6536\u6d4b\u8bd5\u3002')
+            lines.extend([f"**\u67b6\u6784\u603b\u62ec**\uff1a{summary_text}", ""])
             return "\n".join(lines)
 
         else:
@@ -2266,7 +2266,7 @@ class AuraklMarkdownRenderer:
 
         if lang == "zh":
             lines = [
-                f"# {data.get('product_name', 'Product')} 核心产品不变量形式化规约 (8 大真理)",
+                f"# {data.get('product_name', 'Product')} \u6838\u5fc3\u4ea7\u54c1\u4e0d\u53d8\u91cf\u5f62\u5f0f\u5316\u89c4\u7ea6 (8 \u5927\u771f\u7406)",
                 "",
                 "```yaml",
                 "metadata:",
@@ -2275,13 +2275,13 @@ class AuraklMarkdownRenderer:
                 '  schema_version: "product-invariants/v1"',
                 "```",
                 "",
-                "> 本文档严格按照 Aurakl `pm-tpl-product-invariants` 规范渲染生成，定义系统不可跨越的工程防御红线。",
+                "> \u672c\u6587\u6863\u4e25\u683c\u6309\u7167 Aurakl `pm-tpl-product-invariants` \u89c4\u8303\u6e32\u67d3\u751f\u6210\uff0c\u5b9a\u4e49\u7cfb\u7edf\u4e0d\u53ef\u8de8\u8d8a\u7684\u5de5\u7a0b\u9632\u5fa1\u7ea2\u7ebf\u3002",
                 "",
                 "---",
                 "",
-                "## 状态机不变量",
+                "## \u72b6\u6001\u673a\u4e0d\u53d8\u91cf",
                 "",
-                "| 不变量编号 | 目标业务实体 | 形式化单向性流转规则 | 严重级别 | 违规灾难后果 |",
+                "| \u4e0d\u53d8\u91cf\u7f16\u53f7 | \u76ee\u6807\u4e1a\u52a1\u5b9e\u4f53 | \u5f62\u5f0f\u5316\u5355\u5411\u6027\u6d41\u8f6c\u89c4\u5219 | \u4e25\u91cd\u7ea7\u522b | \u8fdd\u89c4\u707e\u96be\u540e\u679c |",
                 "| :--- | :--- | :--- | :---: | :--- |",
             ]
             for s in sta:
@@ -2291,9 +2291,9 @@ class AuraklMarkdownRenderer:
                 "",
                 "---",
                 "",
-                "## 数据一致性与守恒不变量",
+                "## \u6570\u636e\u4e00\u81f4\u6027\u4e0e\u5b88\u6052\u4e0d\u53d8\u91cf",
                 "",
-                "| 不变量编号 | 目标数据模型 | 守恒与原子性规则 | 严重级别 | 违规灾难后果 |",
+                "| \u4e0d\u53d8\u91cf\u7f16\u53f7 | \u76ee\u6807\u6570\u636e\u6a21\u578b | \u5b88\u6052\u4e0e\u539f\u5b50\u6027\u89c4\u5219 | \u4e25\u91cd\u7ea7\u522b | \u8fdd\u89c4\u707e\u96be\u540e\u679c |",
                 "| :--- | :--- | :--- | :---: | :--- |",
             ])
             for d in dat:
@@ -2303,9 +2303,9 @@ class AuraklMarkdownRenderer:
                 "",
                 "---",
                 "",
-                "## 权限与租户隔离不变量",
+                "## \u6743\u9650\u4e0e\u79df\u6237\u9694\u79bb\u4e0d\u53d8\u91cf",
                 "",
-                "| 不变量编号 | 作用域与防线 | 隔离与鉴权规则 | 严重级别 | 违规灾难后果 |",
+                "| \u4e0d\u53d8\u91cf\u7f16\u53f7 | \u4f5c\u7528\u57df\u4e0e\u9632\u7ebf | \u9694\u79bb\u4e0e\u9274\u6743\u89c4\u5219 | \u4e25\u91cd\u7ea7\u522b | \u8fdd\u89c4\u707e\u96be\u540e\u679c |",
                 "| :--- | :--- | :--- | :---: | :--- |",
             ])
             for sc in sec:
@@ -2315,15 +2315,15 @@ class AuraklMarkdownRenderer:
                 "",
                 "---",
                 "",
-                "## 交互体验安全不变量",
+                "## \u4ea4\u4e92\u4f53\u9a8c\u5b89\u5168\u4e0d\u53d8\u91cf",
                 "",
-                "| 不变量编号 | 交互范围 | 体验安全与隔离规则 | 严重级别 | 违规灾难后果 |",
+                "| \u4e0d\u53d8\u91cf\u7f16\u53f7 | \u4ea4\u4e92\u8303\u56f4 | \u4f53\u9a8c\u5b89\u5168\u4e0e\u9694\u79bb\u89c4\u5219 | \u4e25\u91cd\u7ea7\u522b | \u8fdd\u89c4\u707e\u96be\u540e\u679c |",
                 "| :--- | :--- | :--- | :---: | :--- |",
             ])
             for u in uxs:
                 lines.append(f"| **{u.get('invariant_id')}** | `{u.get('interaction_scope')}` | **{u.get('safety_rule')}** | `{u.get('severity')}` | ⚠️ {u.get('violation_consequence')} |")
 
-            lines.extend(["", "---", "", f"**总结**：{data.get('summary', '')}", ""])
+            lines.extend(["", "---", "", f"**\u603b\u7ed3**\uff1a{data.get('summary', '')}", ""])
             return "\n".join(lines)
 
         else:
@@ -2402,7 +2402,7 @@ class AuraklMarkdownRenderer:
 
         if lang == "zh":
             lines = [
-                f"# {data.get('product_name', 'Product')} 实例化验收准则与门禁规约",
+                f"# {data.get('product_name', 'Product')} \u5b9e\u4f8b\u5316\u9a8c\u6536\u51c6\u5219\u4e0e\u95e8\u7981\u89c4\u7ea6",
                 "",
                 "```yaml",
                 "metadata:",
@@ -2411,25 +2411,25 @@ class AuraklMarkdownRenderer:
                 '  schema_version: "acceptance-criteria/v2"',
                 "```",
                 "",
-                "> 本文档严格按照 Aurakl `pm-tpl-acceptance-criteria` 规范渲染生成，采用 Gherkin 实例化规格。",
+                "> \u672c\u6587\u6863\u4e25\u683c\u6309\u7167 Aurakl `pm-tpl-acceptance-criteria` \u89c4\u8303\u6e32\u67d3\u751f\u6210\uff0c\u91c7\u7528 Gherkin \u5b9e\u4f8b\u5316\u89c4\u683c\u3002",
                 "",
                 "---",
                 "",
-                "## 概述",
+                "## \u6982\u8ff0",
                 "",
                 f"{data.get('summary', '')}",
                 "",
                 "---",
                 "",
-                "## 功能需求验收标准",
+                "## \u529f\u80fd\u9700\u6c42\u9a8c\u6536\u6807\u51c6",
                 "",
             ]
             for sc in scenarios:
                 lines.extend([
-                    f"### 【{sc.get('criterion_id')}】 {sc.get('scenario_title')}",
-                    f"- **关联用户故事**：`{sc.get('story_id')}`",
-                    f"- **场景类型**：`{sc.get('scenario_type')}`",
-                    f"- **验证产品不变量**：**`{sc.get('verifies_invariant_id')}`**",
+                    f"### \u3010{sc.get('criterion_id')}\u3011 {sc.get('scenario_title')}",
+                    f"- **\u5173\u8054\u7528\u6237\u6545\u4e8b**\uff1a`{sc.get('story_id')}`",
+                    f"- **\u573a\u666f\u7c7b\u578b**\uff1a`{sc.get('scenario_type')}`",
+                    f"- **\u9a8c\u8bc1\u4ea7\u54c1\u4e0d\u53d8\u91cf**\uff1a**`{sc.get('verifies_invariant_id')}`**",
                     "",
                     "```gherkin",
                     f"Given {sc.get('given')}",
@@ -2442,38 +2442,38 @@ class AuraklMarkdownRenderer:
             lines.extend([
                 "---",
                 "",
-                "## 非功能需求验收标准",
+                "## \u975e\u529f\u80fd\u9700\u6c42\u9a8c\u6536\u6807\u51c6",
                 "",
-                "- **P95 跨库事务写回时延**：经 DB Gateway 2PC/Saga 跨库写入 P95 时延不超过 800ms；",
-                "- **P99 CDC 增量同步延迟**：Flink 流式消费延迟持续 P99 低于 500ms；",
-                "- **高并发吞吐**：单集群支持每秒 2,000+ 笔 Action 预演与执行调度。",
-                "",
-                "---",
-                "",
-                "## 集成测试验收标准",
-                "",
-                "- **异构跨库事务全原子性**：ERP、CRM 异构库同时写入，单节点注入断网时 100% 触发 Saga 逆向补偿并全量回滚；",
-                "- **10 分钟幂等防重拦截**：相同 idempotency_key 连续提交只产生 1 次物理写日志并返回一致缓存凭证。",
+                "- **P95 \u8de8\u5e93\u4e8b\u52a1\u5199\u56de\u65f6\u5ef6**\uff1a\u7ecf DB Gateway 2PC/Saga \u8de8\u5e93\u5199\u5165 P95 \u65f6\u5ef6\u4e0d\u8d85\u8fc7 800ms\uff1b",
+                "- **P99 CDC \u589e\u91cf\u540c\u6b65\u5ef6\u8fdf**\uff1aFlink \u6d41\u5f0f\u6d88\u8d39\u5ef6\u8fdf\u6301\u7eed P99 \u4f4e\u4e8e 500ms\uff1b",
+                "- **\u9ad8\u5e76\u53d1\u541e\u5410**\uff1a\u5355\u96c6\u7fa4\u652f\u6301\u6bcf\u79d2 2,000+ \u7b14 Action \u9884\u6f14\u4e0e\u6267\u884c\u8c03\u5ea6\u3002",
                 "",
                 "---",
                 "",
-                "## 测试数据要求",
+                "## \u96c6\u6210\u6d4b\u8bd5\u9a8c\u6536\u6807\u51c6",
                 "",
-                "- **边界值覆盖**：单笔写操作金额包含 [0元, 99,999元, 100,000元, 100,001元, 1,000,000元]；",
-                "- **Chaos 故障集**：包含网络 100% 丢包、连接超时 3000ms、数据库主备热切与死锁争抢用例。",
+                "- **\u5f02\u6784\u8de8\u5e93\u4e8b\u52a1\u5168\u539f\u5b50\u6027**\uff1aERP\u3001CRM \u5f02\u6784\u5e93\u540c\u65f6\u5199\u5165\uff0c\u5355\u8282\u70b9\u6ce8\u5165\u65ad\u7f51\u65f6 100% \u89e6\u53d1 Saga \u9006\u5411\u8865\u507f\u5e76\u5168\u91cf\u56de\u6eda\uff1b",
+                "- **10 \u5206\u949f\u5e42\u7b49\u9632\u91cd\u62e6\u622a**\uff1a\u76f8\u540c idempotency_key \u8fde\u7eed\u63d0\u4ea4\u53ea\u4ea7\u751f 1 \u6b21\u7269\u7406\u5199\u65e5\u5fd7\u5e76\u8fd4\u56de\u4e00\u81f4\u7f13\u5b58\u51ed\u8bc1\u3002",
                 "",
                 "---",
                 "",
-                "## 缺陷分级与发布门槛",
+                "## \u6d4b\u8bd5\u6570\u636e\u8981\u6c42",
                 "",
-                "### 阻塞性发布门禁 (Blocking Release Gates)",
+                "- **\u8fb9\u754c\u503c\u8986\u76d6**\uff1a\u5355\u7b14\u5199\u64cd\u4f5c\u91d1\u989d\u5305\u542b [0\u5143, 99,999\u5143, 100,000\u5143, 100,001\u5143, 1,000,000\u5143]\uff1b",
+                "- **Chaos \u6545\u969c\u96c6**\uff1a\u5305\u542b\u7f51\u7edc 100% \u4e22\u5305\u3001\u8fde\u63a5\u8d85\u65f6 3000ms\u3001\u6570\u636e\u5e93\u4e3b\u5907\u70ed\u5207\u4e0e\u6b7b\u9501\u4e89\u62a2\u7528\u4f8b\u3002",
+                "",
+                "---",
+                "",
+                "## \u7f3a\u9677\u5206\u7ea7\u4e0e\u53d1\u5e03\u95e8\u69db",
+                "",
+                "### \u963b\u585e\u6027\u53d1\u5e03\u95e8\u7981 (Blocking Release Gates)",
             ])
             for bg in dod.get("blocking_release_gates", []):
                 lines.append(f"- ⛔ **{bg}**")
 
             lines.extend([
                 "",
-                "### 建议性质量检查 (Advisory Checks)",
+                "### \u5efa\u8bae\u6027\u8d28\u91cf\u68c0\u67e5 (Advisory Checks)",
             ])
             for ac in dod.get("advisory_quality_checks", []):
                 lines.append(f"- 💡 {ac}")
@@ -2482,20 +2482,20 @@ class AuraklMarkdownRenderer:
                 "",
                 "---",
                 "",
-                "## 验收标准优先级",
+                "## \u9a8c\u6536\u6807\u51c6\u4f18\u5148\u7ea7",
                 "",
-                "| 度量维度 | 门禁要求 | 实际度量值 | 判定结果 |",
+                "| \u5ea6\u91cf\u7ef4\u5ea6 | \u95e8\u7981\u8981\u6c42 | \u5b9e\u9645\u5ea6\u91cf\u503c | \u5224\u5b9a\u7ed3\u679c |",
                 "| :--- | :---: | :---: | :---: |",
-                f"| **不变量覆盖率** | 100% (10000 bp) | **{matrix.get('coverage_ratio_basis_points', 0) / 100}% ({matrix.get('covered_invariants_count')}/{matrix.get('total_invariants_count')})** | ✅ **达标** |",
-                f"| **负向防御与容灾场景占比** | >= 30.0% | **{neg.get('negative_percentage')}% ({neg.get('negative_defense_scenarios_count')}/{neg.get('total_scenarios_count')})** | ✅ **达标** |",
+                f"| **\u4e0d\u53d8\u91cf\u8986\u76d6\u7387** | 100% (10000 bp) | **{matrix.get('coverage_ratio_basis_points', 0) / 100}% ({matrix.get('covered_invariants_count')}/{matrix.get('total_invariants_count')})** | ✅ **\u8fbe\u6807** |",
+                f"| **\u8d1f\u5411\u9632\u5fa1\u4e0e\u5bb9\u707e\u573a\u666f\u5360\u6bd4** | >= 30.0% | **{neg.get('negative_percentage')}% ({neg.get('negative_defense_scenarios_count')}/{neg.get('total_scenarios_count')})** | ✅ **\u8fbe\u6807** |",
                 "",
                 "---",
                 "",
-                "## 版本历史",
+                "## \u7248\u672c\u5386\u53f2",
                 "",
-                "| 版本号 | 变更日期 | 修订人 | 说明 |",
+                "| \u7248\u672c\u53f7 | \u53d8\u66f4\u65e5\u671f | \u4fee\u8ba2\u4eba | \u8bf4\u660e |",
                 "| :---: | :---: | :---: | :--- |",
-                "| v1.0.0 | 2026-09-17 | Aurakl PM Agent | 10 大 Gherkin 实例化场景，100% 覆盖 8 大不变量 |",
+                "| v1.0.0 | 2026-09-17 | Aurakl PM Agent | 10 \u5927 Gherkin \u5b9e\u4f8b\u5316\u573a\u666f\uff0c100% \u8986\u76d6 8 \u5927\u4e0d\u53d8\u91cf |",
                 "",
             ])
             return "\n".join(lines)
@@ -2614,7 +2614,7 @@ class AuraklMarkdownRenderer:
 
         if lang == "zh":
             lines = [
-                f"# {data.get('product_name', 'Product')} 交付物全面审计与准入评审报告",
+                f"# {data.get('product_name', 'Product')} \u4ea4\u4ed8\u7269\u5168\u9762\u5ba1\u8ba1\u4e0e\u51c6\u5165\u8bc4\u5ba1\u62a5\u544a",
                 "",
                 "```yaml",
                 "metadata:",
@@ -2623,65 +2623,65 @@ class AuraklMarkdownRenderer:
                 '  schema_version: "review-report/v2"',
                 "```",
                 "",
-                "> 本文档严格按照 Aurakl `pm-tpl-review-report` 规范渲染生成，基于双向全链路血缘与确定性 Oracle 审计产出。",
+                "> \u672c\u6587\u6863\u4e25\u683c\u6309\u7167 Aurakl `pm-tpl-review-report` \u89c4\u8303\u6e32\u67d3\u751f\u6210\uff0c\u57fa\u4e8e\u53cc\u5411\u5168\u94fe\u8def\u8840\u7f18\u4e0e\u786e\u5b9a\u6027 Oracle \u5ba1\u8ba1\u4ea7\u51fa\u3002",
                 "",
                 "---",
                 "",
-                "## 评审概述与就绪裁定",
+                "## \u8bc4\u5ba1\u6982\u8ff0\u4e0e\u5c31\u7eea\u88c1\u5b9a",
                 "",
-                f"- **产品名称**：{data.get('product_name')}",
-                f"- **综合就绪评分**：`{data.get('overall_readiness_score')} / 100.0`",
-                f"- **最终研发准入裁定**：**`{data.get('readiness_status')}`** (准予进入研发开发阶段)",
+                f"- **\u4ea7\u54c1\u540d\u79f0**\uff1a{data.get('product_name')}",
+                f"- **\u7efc\u5408\u5c31\u7eea\u8bc4\u5206**\uff1a`{data.get('overall_readiness_score')} / 100.0`",
+                f"- **\u6700\u7ec8\u7814\u53d1\u51c6\u5165\u88c1\u5b9a**\uff1a**`{data.get('readiness_status')}`** (\u51c6\u4e88\u8fdb\u5165\u7814\u53d1\u5f00\u53d1\u9636\u6bb5)",
                 "",
-                f"**审查执行概述**：{data.get('summary', '')}",
+                f"**\u5ba1\u67e5\u6267\u884c\u6982\u8ff0**\uff1a{data.get('summary', '')}",
                 "",
                 "---",
                 "",
-                "## 全链路双向血缘审计",
+                "## \u5168\u94fe\u8def\u53cc\u5411\u8840\u7f18\u5ba1\u8ba1",
                 "",
-                "| 血缘链条 | 门禁要求 | 实际审计覆盖率 | 审计结论 |",
+                "| \u8840\u7f18\u94fe\u6761 | \u95e8\u7981\u8981\u6c42 | \u5b9e\u9645\u5ba1\u8ba1\u8986\u76d6\u7387 | \u5ba1\u8ba1\u7ed3\u8bba |",
                 "| :--- | :---: | :---: | :---: |",
-                f"| **需求 -> 用户故事 (Req to Stories)** | 100.0% | `{trace.get('requirements_to_stories_coverage_pct')}%` | ✅ 完整闭环 |",
-                f"| **故事 -> PRD 功能特性 (Stories to Feats)** | 100.0% | `{trace.get('stories_to_features_coverage_pct')}%` | ✅ 完整闭环 |",
-                f"| **不变量 -> 验收用例 (Invariants to Criteria)** | 100.0% | `{trace.get('invariants_to_criteria_coverage_pct')}%` | ✅ 完整闭环 |",
-                f"| **悬挂或断链引用 (Broken References)** | 0 项 | `{trace.get('broken_reference_count')}` 项 | ✅ 零断链 |",
+                f"| **\u9700\u6c42 -> \u7528\u6237\u6545\u4e8b (Req to Stories)** | 100.0% | `{trace.get('requirements_to_stories_coverage_pct')}%` | ✅ \u5b8c\u6574\u95ed\u73af |",
+                f"| **\u6545\u4e8b -> PRD \u529f\u80fd\u7279\u6027 (Stories to Feats)** | 100.0% | `{trace.get('stories_to_features_coverage_pct')}%` | ✅ \u5b8c\u6574\u95ed\u73af |",
+                f"| **\u4e0d\u53d8\u91cf -> \u9a8c\u6536\u7528\u4f8b (Invariants to Criteria)** | 100.0% | `{trace.get('invariants_to_criteria_coverage_pct')}%` | ✅ \u5b8c\u6574\u95ed\u73af |",
+                f"| **\u60ac\u6302\u6216\u65ad\u94fe\u5f15\u7528 (Broken References)** | 0 \u9879 | `{trace.get('broken_reference_count')}` \u9879 | ✅ \u96f6\u65ad\u94fe |",
                 "",
                 "---",
                 "",
-                "## 产品不变量防御审计",
+                "## \u4ea7\u54c1\u4e0d\u53d8\u91cf\u9632\u5fa1\u5ba1\u8ba1",
                 "",
-                f"- **总声明不变量数**：`{inv_audit.get('total_invariants')}` 项",
-                f"- **严苛防御覆盖数**：`{inv_audit.get('critically_enforced_count')}` 项",
-                f"- **是否存在无防御不变量**：`{inv_audit.get('has_unprotected_invariants')}` (✅ 全部已严密布控)",
+                f"- **\u603b\u58f0\u660e\u4e0d\u53d8\u91cf\u6570**\uff1a`{inv_audit.get('total_invariants')}` \u9879",
+                f"- **\u4e25\u82db\u9632\u5fa1\u8986\u76d6\u6570**\uff1a`{inv_audit.get('critically_enforced_count')}` \u9879",
+                f"- **\u662f\u5426\u5b58\u5728\u65e0\u9632\u5fa1\u4e0d\u53d8\u91cf**\uff1a`{inv_audit.get('has_unprotected_invariants')}` (✅ \u5168\u90e8\u5df2\u4e25\u5bc6\u5e03\u63a7)",
                 "",
                 "---",
                 "",
-                "## 阻塞性缺陷清单",
+                "## \u963b\u585e\u6027\u7f3a\u9677\u6e05\u5355",
                 "",
             ]
             if blocking:
                 for b in blocking:
                     lines.append(f"- ⛔ **[{b.get('id')}]** {b.get('target_artifact')}: {b.get('description')} -> *{b.get('required_fix')}*")
             else:
-                lines.append("> ✅ **零阻塞性缺陷 (0 Blocking Findings)**：经形式化验证与确定性 Oracle 复算，无任何阻断研发启动的缺陷。")
+                lines.append("> ✅ **\u96f6\u963b\u585e\u6027\u7f3a\u9677 (0 Blocking Findings)**\uff1a\u7ecf\u5f62\u5f0f\u5316\u9a8c\u8bc1\u4e0e\u786e\u5b9a\u6027 Oracle \u590d\u7b97\uff0c\u65e0\u4efb\u4f55\u963b\u65ad\u7814\u53d1\u542f\u52a8\u7684\u7f3a\u9677\u3002")
 
             lines.extend([
                 "",
                 "---",
                 "",
-                "## 建议性优化清单",
+                "## \u5efa\u8bae\u6027\u4f18\u5316\u6e05\u5355",
                 "",
             ])
             for adv in advisory:
                 lines.append(
-                    f"- 💡 **[{adv.get('id')}]** `{adv.get('target_artifact')}`: {adv.get('description')}<br/>  👉 **改进建议**：{adv.get('recommendation')}"
+                    f"- 💡 **[{adv.get('id')}]** `{adv.get('target_artifact')}`: {adv.get('description')}<br/>  👉 **\u6539\u8fdb\u5efa\u8bae**\uff1a{adv.get('recommendation')}"
                 )
 
             lines.extend([
                 "",
                 "---",
                 "",
-                "## 准入裁定决策依据",
+                "## \u51c6\u5165\u88c1\u5b9a\u51b3\u7b56\u4f9d\u636e",
                 "",
                 f"{data.get('decision_rationale', '')}",
                 "",
@@ -2849,7 +2849,3 @@ if __name__ == "__main__":
     print(f"Rendered {len(res)} Markdown documents into {out}")
     for k, v in res.items():
         print(f"  - {k}: {v}")
-
-
-# Backward compatibility alias
-LumenMarkdownRenderer = AuraklMarkdownRenderer

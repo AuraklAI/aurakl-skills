@@ -1,5 +1,7 @@
 # Aurakl Skills: Agent Skills Suite
 
+[English](./README.md) | [Chinese Version](./README-ZH.md)
+
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](./plugin.json)
 [![Python](https://img.shields.io/badge/python-3.9+-brightgreen.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-Apache--2.0-orange.svg)](./LICENSE)

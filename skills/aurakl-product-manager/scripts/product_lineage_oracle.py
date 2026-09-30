@@ -104,7 +104,7 @@ def run_pipeline(data: dict) -> dict:
     personas = journey.get("personas", [])
     if personas:
         persona_roles = " ".join(p.get("role", "") for p in personas).lower()
-        has_admin = any(any(kw in p.get("role", "").lower() for kw in ["admin", "operator", "dispatcher", "计调", "管理", "运营", "主管", "财务"]) for p in personas)
+        has_admin = any(any(kw in p.get("role", "").lower() for kw in ["admin", "operator", "dispatcher", "manager", "operations", "supervisor", "finance", "\u8ba1\u8c03", "\u7ba1\u7406", "\u8fd0\u8425", "\u4e3b\u7ba1", "\u8d22\u52a1"]) for p in personas)
         if not has_admin:
             mismatches.append("missing_admin_or_operational_persona")
         if len(personas) < 3:

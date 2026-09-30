@@ -59,7 +59,7 @@ except ImportError:
     HAS_JSONSCHEMA = False
 
 PLACEHOLDER_REGEX = re.compile(
-    r"\b(TBD|TODO|UNVERIFIED|待确认|待定|暂无|后续补充|待商榷)\b", re.IGNORECASE
+    r"\b(TBD|TODO|UNVERIFIED|\u5f85\u786e\u8ba4|\u5f85\u5b9a|\u6682\u65e0|\u540e\u7eed\u8865\u5145|\u5f85\u5546\u69b7)\b", re.IGNORECASE
 )
 
 FORBIDDEN_NON_GOAL_TERMS = [
@@ -69,12 +69,12 @@ FORBIDDEN_NON_GOAL_TERMS = [
     "exclusively supports",
     "is not unsupported",
     "rephrase to",
-    "正面陈述",
-    "不是一句「不支持",
-    "而不是「不支持",
-    "改写成「系统仅",
-    "系统仅支持",
-    "仅支持",
+    "\u6b63\u9762\u9648\u8ff0",
+    "\u4e0d\u662f\u4e00\u53e5\u300c\u4e0d\u652f\u6301",
+    "\u800c\u4e0d\u662f\u300c\u4e0d\u652f\u6301",
+    "\u6539\u5199\u6210\u300c\u7cfb\u7edf\u4ec5",
+    "\u7cfb\u7edf\u4ec5\u652f\u6301",
+    "\u4ec5\u652f\u6301",
 ]
 
 CORE_STAGE_ALIASES = {
@@ -537,7 +537,7 @@ class AuraklValidator:
             elif rid in ("us.multi_role_admin_coverage", "admin_and_operational_personas_covered"):
                 personas = artifact.get("personas", [])
                 if personas:
-                    admin_keywords = ["admin", "administrator", "operator", "dispatcher", "manager", "finance", "compliance", "计调", "管理", "运营", "主管", "财务", "审核", "风控"]
+                    admin_keywords = ["admin", "administrator", "operator", "dispatcher", "manager", "finance", "compliance", "\u8ba1\u8c03", "\u7ba1\u7406", "\u8fd0\u8425", "\u4e3b\u7ba1", "\u8d22\u52a1", "\u5ba1\u6838", "\u98ce\u63a7"]
                     has_admin = any(any(kw in (p.get("role", "") + p.get("name", "")).lower() for kw in admin_keywords) for p in personas)
                     if not has_admin:
                         issues.append(ValidationIssue("coverage", f"standard_violation:{rid}", f"Standard rule '{rid}' violated: Multi-tier systems must model operational/admin personas, found: {[p.get('role') for p in personas]}"))
@@ -581,7 +581,7 @@ class AuraklValidator:
                 stories = artifact.get("stories", [])
                 for idx, st in enumerate(stories):
                     as_a = st.get("as_a", "").strip()
-                    if not as_a or as_a.lower() in ("system", "系统", "用户", "user"):
+                    if not as_a or as_a.lower() in ("system", "\u7cfb\u7edf", "\u7528\u6237", "user"):
                         issues.append(ValidationIssue("conformance", f"standard_violation:{rid}", f"Standard rule '{rid}' violated: story {st.get('id', idx)} uses generic/invalid persona '{as_a}'"))
             elif rid in ("us.id_conformance_and_continuity", "journey_and_story_ids_valid_and_continuous"):
                 stages = artifact.get("journey_stages", [])
@@ -790,8 +790,8 @@ class AuraklValidator:
                         issues.append(ValidationIssue("conformance", f"standard_violation:{rid}", f"Standard rule '{rid}' violated: domain_profile is 'backend' but missing backend_profile specifications"))
             elif rid == "prd.rfc2119_normative_language":
                 feats = artifact.get("features", [])
-                vague_terms = ["酌情", "视情况", "大概", "可能可以", "适度"]
-                rfc_terms = ["must", "shall", "should", "必须", "严禁", "应当", "强制", "确保"]
+                vague_terms = ["\u914c\u60c5", "\u89c6\u60c5\u51b5", "\u5927\u6982", "\u53ef\u80fd\u53ef\u4ee5", "\u9002\u5ea6"]
+                rfc_terms = ["must", "shall", "should", "\u5fc5\u987b", "\u4e25\u7981", "\u5e94\u5f53", "\u5f3a\u5236", "\u786e\u4fdd"]
                 for f_idx, f in enumerate(feats):
                     fid = f.get("feature_id", f"FEAT-{f_idx}")
                     for r_idx, rule in enumerate(f.get("business_rules", [])):
@@ -799,7 +799,7 @@ class AuraklValidator:
                             issues.append(ValidationIssue("grounding", f"standard_violation:{rid}", f"Standard rule '{rid}' violated: feature '{fid}' rule [{r_idx}] contains vague colloquial language"))
                         has_normative = any(rt in rule.lower() for rt in rfc_terms)
                         if not has_normative:
-                            issues.append(ValidationIssue("grounding", f"standard_violation:{rid}", f"Standard rule '{rid}' violated: feature '{fid}' rule [{r_idx}] lacks RFC 2119 normative keywords (MUST/SHALL/SHOULD/必须/严禁/确保)"))
+                            issues.append(ValidationIssue("grounding", f"standard_violation:{rid}", f"Standard rule '{rid}' violated: feature '{fid}' rule [{r_idx}] lacks RFC 2119 normative keywords (MUST/SHALL/SHOULD)"))
             elif rid == "prd.upstream_stages_presence":
                 feats = artifact.get("features", [])
                 all_derived = [s for f in feats for s in f.get("derived_from_user_stories", [])]
@@ -873,13 +873,13 @@ class AuraklValidator:
                 for m in modules:
                     mname = m.get("name", "")
                     if _re.search(rf"{cjk}{latin}|{latin}{cjk}", mname):
-                        issues.append(ValidationIssue("conformance", f"standard_violation:{rid}", f"Standard rule '{rid}' violated: Module '{m.get('module_id')}' name '{mname}' violates CJK-Latin typography spacing (盘古之白)"))
+                        issues.append(ValidationIssue("conformance", f"standard_violation:{rid}", f"Standard rule '{rid}' violated: Module '{m.get('module_id')}' name '{mname}' violates typography spacing standards"))
                 feats = artifact.get("features", [])
                 for f_idx, f in enumerate(feats):
                     fid = f.get("feature_id", f"FEAT-{f_idx}")
                     fname = f.get("name", "")
                     if _re.search(rf"{cjk}{latin}|{latin}{cjk}", fname):
-                        issues.append(ValidationIssue("conformance", f"standard_violation:{rid}", f"Standard rule '{rid}' violated: Feature '{fid}' name '{fname}' violates CJK-Latin typography spacing (盘古之白)"))
+                        issues.append(ValidationIssue("conformance", f"standard_violation:{rid}", f"Standard rule '{rid}' violated: Feature '{fid}' name '{fname}' violates typography spacing standards"))
             elif rid == "rev.blocking_findings_veto_ready":
                 bf = artifact.get("blocking_findings", [])
                 if bf and artifact.get("readiness_status") == "READY_FOR_DEV":
@@ -1220,7 +1220,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-
-
-# Backward compatibility alias
-LumenValidator = AuraklValidator

@@ -472,23 +472,23 @@ class CartesianCoverageEngine:
                 fc["id"].lower(),
             ]
             if fc["name"] == "SuddenPowerLossCrash":
-                keywords.extend(["掉电", "崩溃", "crash", "power loss", "savepoint", "恢复断点"])
+                keywords.extend(["\u6389\u7535", "\u5d29\u6e83", "crash", "power loss", "savepoint", "\u6062\u590d\u65ad\u70b9"])
             elif fc["name"] == "DiskExhaustionWriteFailure":
-                keywords.extend(["磁盘", "存储空间", "disk full", "写入失败", "oom"])
+                keywords.extend(["\u78c1\u76d8", "\u5b58\u50a8\u7a7a\u95f4", "disk full", "\u5199\u5165\u5931\u8d25", "oom"])
             elif fc["name"] == "TimeoutAndOutcomeUnknown":
-                keywords.extend(["超时", "timeout", "挂起", "重试", "retry", "结果未知"])
+                keywords.extend(["\u8d85\u65f6", "timeout", "\u6302\u8d77", "\u91cd\u8bd5", "retry", "\u7ed3\u679c\u672a\u77e5"])
             elif fc["name"] == "DuplicateAndReordering":
-                keywords.extend(["乱序", "重复", "幂等", "duplicate", "idempotent", "reorder"])
+                keywords.extend(["\u4e71\u5e8f", "\u91cd\u590d", "\u5e42\u7b49", "duplicate", "idempotent", "reorder"])
             elif fc["name"] == "ConcurrencySplitBrain":
-                keywords.extend(["并发", "脑裂", "cas", "冲突", "concurrency", "争抢", "锁"])
+                keywords.extend(["\u5e76\u53d1", "\u8111\u88c2", "cas", "\u51b2\u7a81", "concurrency", "\u4e89\u62a2", "\u9501"])
             elif fc["name"] == "PrivilegeRevocation":
-                keywords.extend(["权限", "鉴权", "unauthorized", "越权", "token", "forbidden"])
+                keywords.extend(["\u6743\u9650", "\u9274\u6743", "unauthorized", "\u8d8a\u6743", "token", "forbidden"])
             elif fc["name"] == "InputPoisoningSchemaDrift":
-                keywords.extend(["schema", "投毒", "畸形", "校验", "validation", "invalid input"])
+                keywords.extend(["schema", "\u6295\u6bd2", "\u7578\u5f62", "\u6821\u9a8c", "validation", "invalid input"])
             elif fc["name"] == "PromptInjectionJailbreak":
-                keywords.extend(["注入", "越狱", "prompt injection", "hitl", "隔离", "人工审批"])
+                keywords.extend(["\u6ce8\u5165", "\u8d8a\u72f1", "prompt injection", "hitl", "\u9694\u79bb", "\u4eba\u5de5\u5ba1\u6279"])
             elif fc["name"] == "BudgetExhaustionLeak":
-                keywords.extend(["预算", "token", "耗尽", "熔断", "限流", "quota", "rate limit"])
+                keywords.extend(["\u9884\u7b97", "token", "\u8017\u5c3d", "\u7194\u65ad", "\u9650\u6d41", "quota", "rate limit"])
 
             matched = any(kw in combined_text.lower() for kw in keywords)
             if matched:
@@ -518,10 +518,10 @@ class CartesianCoverageEngine:
                 or "recovery" in stype
                 or "defense" in stype
                 or "error" in stype
-                or "异常" in title
-                or "容灾" in title
-                or "防御" in title
-                or "边界" in title
+                or "\u5f02\u5e38" in title
+                or "\u5bb9\u707e" in title
+                or "\u9632\u5fa1" in title
+                or "\u8fb9\u754c" in title
             ):
                 negative_scenarios += 1
 
