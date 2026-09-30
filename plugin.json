@@ -19,7 +19,7 @@
     "system-design",
     "invariants",
     "cartesian-audit",
-    "zero-hallucination"
+    "schema-validation"
   ],
   "engines": {
     "python": ">=3.9"

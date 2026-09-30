@@ -12,13 +12,13 @@
 
 ---
 
-## 🌟 Key Highlights
+## 🌟 Core Capabilities
 
-- **Dual-Layer SOP & Formal Verification**: Moves beyond LLM text generation to strict engineering deliverables audited by deterministic Python oracles.
-- **Dynamic Language Matching**: Automatically detects and mirrors the user's natural language (100% pure Chinese or 100% pure English), forbidding mixed-language artifacts while preserving canonical technical identifiers.
-- **Zero Hallucination & Zero Placeholder**: Enforces strict anti-placeholder policies (`TODO`, `TBD`, placeholders, and empty stubs are rejected at the validator gate).
-- **Closed-World Data Closure**: Preconditions and input parameters must trace to explicit upstream sources (user input, DB entity, or third-party service).
-- **Zero External Dependencies**: All validation, rendering, and calculation engines run on Python 3.9+ standard library (`json`, `argparse`, `pathlib`, `re`, `unittest`). No `pip install` required.
+- **Automated Schema Validation & CLI Gatekeeping**: Validates intermediate stage JSON deliverables against defined schemas using Python CLI tools (`aurakl pm validate`, `arch_validator.py`).
+- **Dynamic Language Alignment**: Supports output generation in either English or Chinese, keeping standard technical tokens (`REQ-*`, `INV-*`, HTTP status codes) canonical.
+- **Placeholder Interception**: Scans deliverables for placeholder tokens (`TODO`, `TBD`, empty stub structures) and flags them during validation.
+- **Closed-World Data Closure Audits**: Verifies that required input parameters and prerequisites trace back to defined upstream entities, user inputs, or external services.
+- **Zero Third-Party Dependencies**: All validation scripts, schema checks, and Markdown rendering run on the standard library of Python 3.9+ (`json`, `argparse`, `pathlib`, `re`, `unittest`) with no `pip install` required.
 
 ---
 
