@@ -63,14 +63,14 @@ Install seamlessly into **Antigravity, Claude Code, Cursor, Codex, Cline, Amp**,
 
 ```bash
 # 1. Install all skills into your current project workspace (.agents/skills/):
-npx skills add aurakl/aurakl-skills
+npx skills add AuraklAI/aurakl-skills
 
 # 2. Or install a specific skill:
-npx skills add aurakl/aurakl-skills -s aurakl-product-manager
-npx skills add aurakl/aurakl-skills -s aurakl-software-architect
+npx skills add AuraklAI/aurakl-skills -s aurakl-product-manager
+npx skills add AuraklAI/aurakl-skills -s aurakl-software-architect
 
 # 3. Install globally across all projects on your machine:
-npx skills add aurakl/aurakl-skills -g
+npx skills add AuraklAI/aurakl-skills -g
 
 # 4. Instant local workspace test (if already in this repository):
 npx skills add . -y
@@ -81,11 +81,11 @@ If you are using Google Antigravity and wish to bundle both the skills and `rule
 ```bash
 # Workspace level (in your project root):
 mkdir -p .agents/plugins
-git clone https://github.com/aurakl/aurakl-skills.git .agents/plugins/aurakl-skills
+git clone https://github.com/AuraklAI/aurakl-skills.git .agents/plugins/aurakl-skills
 
 # Global level (across all projects):
 mkdir -p ~/.gemini/config/plugins
-git clone https://github.com/aurakl/aurakl-skills.git ~/.gemini/config/plugins/aurakl-skills
+git clone https://github.com/AuraklAI/aurakl-skills.git ~/.gemini/config/plugins/aurakl-skills
 ```
 
 ### Method 3: Python CLI & CI/CD Pipeline Automation (`pip`)

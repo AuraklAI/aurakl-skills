@@ -65,14 +65,14 @@ aurakl-skills/
 
 ```bash
 # 1. 项目级一键安装（推荐，为当前项目注入全部技能，写入 .agents/skills/）：
-npx skills add aurakl/aurakl-skills
+npx skills add AuraklAI/aurakl-skills
 
 # 2. 或仅安装单个技能：
-npx skills add aurakl/aurakl-skills -s aurakl-product-manager
-npx skills add aurakl/aurakl-skills -s aurakl-software-architect
+npx skills add AuraklAI/aurakl-skills -s aurakl-product-manager
+npx skills add AuraklAI/aurakl-skills -s aurakl-software-architect
 
 # 3. 跨项目全局安装（所有项目通用）：
-npx skills add aurakl/aurakl-skills -g
+npx skills add AuraklAI/aurakl-skills -g
 
 # 4. 本地工作区极速体验（如果你已处于本仓库目录中）：
 npx skills add . -y
@@ -83,11 +83,11 @@ npx skills add . -y
 ```bash
 # 项目工程级（团队共享，直接提交至项目 Git）：
 mkdir -p .agents/plugins
-git clone https://github.com/aurakl/aurakl-skills.git .agents/plugins/aurakl-skills
+git clone https://github.com/AuraklAI/aurakl-skills.git .agents/plugins/aurakl-skills
 
 # 个人机器全局生效：
 mkdir -p ~/.gemini/config/plugins
-git clone https://github.com/aurakl/aurakl-skills.git ~/.gemini/config/plugins/aurakl-skills
+git clone https://github.com/AuraklAI/aurakl-skills.git ~/.gemini/config/plugins/aurakl-skills
 ```
 
 ### 方式 3：Python 命令行与 CI/CD 自动化集成 (`pip`)
