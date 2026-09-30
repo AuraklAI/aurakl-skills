@@ -673,8 +673,6 @@ def main() -> int:
 
     engine = ElicitationEngine()
     state_path = Path(args.state_file)
-    if not state_path.exists() and Path(".lumen_pm_state.json").exists():
-        state_path = Path(".lumen_pm_state.json")
 
     if state_path.exists():
         try:

@@ -7,7 +7,7 @@
     "parent": null,
     "content_hash": "sha256:jcs-v1:c6e222e9d682038042d3fc7839b5d9f8ee7ec64c01d23d09452fd373e148ecd6",
     "created_at": 1764000000000,
-    "created_by": "lumen",
+    "created_by": "aurakl",
     "change_reason": "Acceptance criteria and test specification quality standard, enforcing 100% product invariant coverage and >= 30% defensive negative scenarios",
     "labels": {
       "owner": "product",

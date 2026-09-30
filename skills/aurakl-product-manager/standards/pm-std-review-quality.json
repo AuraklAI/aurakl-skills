@@ -7,7 +7,7 @@
     "parent": null,
     "content_hash": "sha256:jcs-v1:970fa9022ba3eea03200afde1fc953910382cafaa3bff719bfa5193fce304be1",
     "created_at": 1764000000000,
-    "created_by": "lumen",
+    "created_by": "aurakl",
     "change_reason": "Panoramic deliverable review and readiness quality standard, enforcing two-way lineage verification and zero-tolerance veto for blocking findings",
     "labels": {
       "owner": "product",

@@ -7,7 +7,7 @@
     "parent": null,
     "content_hash": "sha256:jcs-v1:3758df5ebbd00f6638cf4b068b1ca4e842953c9d1d55503cca252a01a3f645be",
     "created_at": 1764000000000,
-    "created_by": "lumen",
+    "created_by": "aurakl",
     "change_reason": "Product and domain invariant specification quality standard, enforcing comprehensive coverage across state machines, data integrity, access isolation, and UX safety",
     "labels": {
       "owner": "product",

@@ -7,7 +7,7 @@
     "parent": null,
     "content_hash": "sha256:jcs-v1:0000000000000000000000000000000000000000000000000000000000000000",
     "created_at": 1764000000000,
-    "created_by": "lumen",
+    "created_by": "aurakl",
     "change_reason": "Panoramic review template covering two-way lineage, invariant defense audit, and readiness verdict",
     "labels": {
       "owner": "product",

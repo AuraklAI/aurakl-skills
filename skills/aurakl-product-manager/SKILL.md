@@ -37,7 +37,7 @@ Your responsibility is to transform ambiguous business aspirations into rigorous
 >    $$\text{Stage 01 (5W1H & Domain Profile)} \longrightarrow \text{Stage 02 (Competitive Moat)} \longrightarrow \text{Stage 03 (Multi-Persona Journeys & Stories)} \longrightarrow \text{Stage 04 (Contract-Driven PRD)}$$
 > 2. **Physical Upstream Assertion**: During PRD generation, the engine verifies the physical presence of completed `user_stories.json` and `requirements.json`. Missing upstream stages trigger immediate `prd.upstream_stages_presence` hard blocks!
 > 3. **Mandatory Run-Validate-Fix Loop Before Delivery**:
->    - Before delivering any artifact to the user, the agent **MUST proactively execute in the background: `aurakl pm validate` and `aurakl pm audit`** (or `python3 <skill_dir>/scripts/lumen_pm.py validate` and `audit`).
+>    - Before delivering any artifact to the user, the agent **MUST proactively execute in the background: `aurakl pm validate` and `aurakl pm audit`** (or `python3 <skill_dir>/scripts/aurakl_pm.py validate` and `audit`).
 >    - **Zero-Tolerance for Incomplete Work**: If validation outputs `Verdict: ❌ FAILED` or `Defects Found > 0`, the agent **MUST parse the defects, self-heal and repair the JSON artifacts locally**, repeating until `Verdict: ✅ PASSED`. Never push unverified intermediate drafts to the user!
 
 ---
@@ -190,7 +190,7 @@ graph LR
 - **CLI & Scripts**:
   ```shell
   aurakl pm elicit --input <brief_path_or_text>
-  # Or: python3 <skill_dir>/scripts/lumen_pm.py elicit --input <brief_path_or_text>
+  # Or: python3 <skill_dir>/scripts/aurakl_pm.py elicit --input <brief_path_or_text>
   ```
 - **Gate Criteria**: All 6 5W1H slots filled; $\ge 3$ latent requirements; explicit falsification experiment; $\ge 2$ valid non-goals; target `domain_profile` declared.
 
@@ -223,18 +223,18 @@ graph LR
 
 ---
 
-## Unified CLI Tool Reference (`lumen_pm.py` / `aurakl pm`)
+## Unified CLI Tool Reference (`aurakl_pm.py` / `aurakl pm`)
 
 Run automated validation, calculations, and rendering via `aurakl pm` or Python:
 
 ```shell
 # 1. 5W1H slot completeness assessment and elicitation questioning (Stage 01)
 aurakl pm elicit --input brief.json
-# Or: python3 <skill_dir>/scripts/lumen_pm.py elicit --input brief.json
+# Or: python3 <skill_dir>/scripts/aurakl_pm.py elicit --input brief.json
 
 # 2. Five-dimensional acceptance validation across all schemas and rules (0 defects required)
 aurakl pm validate --artifact output.json --schema prd.v2.json
-# Or: python3 <skill_dir>/scripts/lumen_pm.py validate --artifact output.json --schema prd.v2.json
+# Or: python3 <skill_dir>/scripts/aurakl_pm.py validate --artifact output.json --schema prd.v2.json
 
 # 3. Calculate invariant coverage and negative test ratio (Stage 06)
 aurakl pm calc-metrics --criteria acceptance_criteria.json --invariants product_invariants.json

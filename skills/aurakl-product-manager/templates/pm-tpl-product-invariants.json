@@ -7,7 +7,7 @@
     "parent": null,
     "content_hash": "sha256:jcs-v1:2b2f8a00132eb35e5f76819dc5466531522c30e86e22b80b8d6080f6d16316cd",
     "created_at": 1764000000000,
-    "created_by": "lumen",
+    "created_by": "aurakl",
     "change_reason": "Product invariants specification template covering state, data integrity, access security, and UX safety",
     "labels": {
       "owner": "product",

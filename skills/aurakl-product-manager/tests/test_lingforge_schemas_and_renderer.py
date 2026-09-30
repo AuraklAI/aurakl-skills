@@ -14,15 +14,15 @@ import unittest
 SKILL_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(SKILL_ROOT / "scripts"))
 
-from lumen_validator import LumenValidator
-from lumen_renderer import LumenMarkdownRenderer
+from aurakl_validator import AuraklValidator, LumenValidator
+from aurakl_renderer import AuraklMarkdownRenderer, LumenMarkdownRenderer
 
 
 class TestLingforgeSchemasAndRenderer(unittest.TestCase):
 
     def setUp(self):
-        self.validator = LumenValidator()
-        self.renderer = LumenMarkdownRenderer()
+        self.validator = AuraklValidator()
+        self.renderer = AuraklMarkdownRenderer()
 
     def test_schemas_resolvable(self):
         resolved_story = self.validator.resolve_schema("user-story-lingforge.v1.json")

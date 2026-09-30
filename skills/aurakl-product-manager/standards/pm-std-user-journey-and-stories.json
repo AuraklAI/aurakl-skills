@@ -7,7 +7,7 @@
     "parent": null,
     "content_hash": "sha256:jcs-v1:f45c6e951e052a066d66f61e2e9f481ea2760b10686e5114a6bfd210525207c9",
     "created_at": 1764000000000,
-    "created_by": "lumen",
+    "created_by": "aurakl",
     "change_reason": "User journey and story suite standard, enforcing 100% touchpoint coverage, INVEST value flow principles, and zero system-exception pollution",
     "labels": {
       "owner": "product",

@@ -19,8 +19,6 @@ from typing import List
 
 PLUGIN_ROOT = Path(__file__).resolve().parent
 PM_SCRIPT = PLUGIN_ROOT / "skills" / "aurakl-product-manager" / "scripts" / "aurakl_pm.py"
-if not PM_SCRIPT.exists():
-    PM_SCRIPT = PLUGIN_ROOT / "skills" / "aurakl-product-manager" / "scripts" / "lumen_pm.py"
 ARCH_SCRIPT = PLUGIN_ROOT / "skills" / "aurakl-software-architect" / "scripts" / "aurakl_arch.py"
 
 

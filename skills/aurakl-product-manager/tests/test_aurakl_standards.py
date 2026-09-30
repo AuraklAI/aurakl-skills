@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Unit tests for Lumen Quality Standards Integration.
+Unit tests for Aurakl Quality Standards Integration.
 """
 
 import json
@@ -12,15 +12,15 @@ TEST_DIR = Path(__file__).resolve().parent
 SCRIPTS_DIR = TEST_DIR.parent / "scripts"
 sys.path.insert(0, str(SCRIPTS_DIR))
 
-from lumen_validator import LumenValidator, STANDARDS_DIR
+from aurakl_validator import AuraklValidator, LumenValidator, STANDARDS_DIR
 
 SKILL_ROOT = TEST_DIR.parent
 FIXTURES_DIR = SKILL_ROOT / "fixtures"
 
 
-class TestLumenStandards(unittest.TestCase):
+class TestAuraklStandards(unittest.TestCase):
     def setUp(self):
-        self.validator = LumenValidator()
+        self.validator = AuraklValidator()
         golden_suite_path = FIXTURES_DIR / "golden_product_suite.json"
         self.golden_suite = json.loads(golden_suite_path.read_text(encoding="utf-8"))
 

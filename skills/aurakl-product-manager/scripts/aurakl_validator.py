@@ -29,7 +29,7 @@ ORACLE_SCRIPT = SKILL_ROOT / "validators/product_lineage_oracle.py"
 if not ORACLE_SCRIPT.exists():
     ORACLE_SCRIPT = SCRIPT_DIR / "product_lineage_oracle.py"
 
-# Optional fallback to repository definition if running inside lumen repo and local schemas missing
+# Optional fallback to repository definition if running inside aurakl repo and local schemas missing
 if not SCHEMAS_DIR.exists():
     _repo_schemas = SCRIPT_DIR.parents[3] / "definitions/product-management/source/schemas"
     if _repo_schemas.exists():
@@ -256,7 +256,7 @@ class PurePythonSchemaValidator:
         return issues
 
 
-class LumenValidator:
+class AuraklValidator:
     """Core five-dimensional validator supporting all 31 Aurakl schemas."""
 
     def __init__(self, schemas_path: Optional[Path] = None):
@@ -1134,7 +1134,7 @@ def main() -> int:
     parser.add_argument("--json", action="store_true", help="Output machine-readable JSON")
     args = parser.parse_args()
 
-    validator = LumenValidator()
+    validator = AuraklValidator()
 
     if args.list_schemas:
         schemas = validator.list_all_schemas()
@@ -1222,5 +1222,5 @@ if __name__ == "__main__":
     sys.exit(main())
 
 
-# Backward and forward compatibility alias
-AuraklValidator = LumenValidator
+# Backward compatibility alias
+LumenValidator = AuraklValidator

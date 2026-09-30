@@ -7,7 +7,7 @@
     "parent": null,
     "content_hash": "sha256:jcs-v1:eb0eba53555d7704ca7b4b8548b8b0eb81dfcbfc78cc3a85f1660f262c2cdf6e",
     "created_at": 1764000000000,
-    "created_by": "lumen",
+    "created_by": "aurakl",
     "change_reason": "Add mandatory release priority grading rule (P0/P1/P2) following Big Tech (Google) PRD standards.",
     "labels": {
       "owner": "product",

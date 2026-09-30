@@ -7,7 +7,7 @@
     "parent": null,
     "content_hash": "sha256:jcs-v1:92e58a680345586a21a8da5078e7ed17097990e2fac27776bf0ca6a97b2b0b82",
     "created_at": 1764000000000,
-    "created_by": "lumen",
+    "created_by": "aurakl",
     "change_reason": "Requirement analysis and demand falsification standard, covering 5W1H, workaround verification, painkiller rating, and non-goals",
     "labels": {
       "owner": "product",

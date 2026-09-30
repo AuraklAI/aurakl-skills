@@ -137,7 +137,7 @@ class PanguTypographyEngine:
         return text.strip() + "\n"
 
 
-class LumenMarkdownRenderer:
+class AuraklMarkdownRenderer:
     """Renderer converting stage JSON artifacts to template-conforming Markdown."""
 
     def __init__(self, templates_dir: Optional[Path] = None):
@@ -2768,7 +2768,7 @@ class LumenMarkdownRenderer:
 
 def render_all_artifacts(source_dir: Path, output_dir: Path, lang: Optional[str] = None) -> Dict[str, str]:
     """Render all stage artifacts in source_dir into template-conforming Markdown in output_dir."""
-    renderer = LumenMarkdownRenderer()
+    renderer = AuraklMarkdownRenderer()
     output_dir.mkdir(parents=True, exist_ok=True)
     generated = {}
 
@@ -2840,7 +2840,7 @@ def render_all_artifacts(source_dir: Path, output_dir: Path, lang: Optional[str]
 if __name__ == "__main__":
     import sys
     if len(sys.argv) < 3:
-        print("Usage: python3 lumen_renderer.py <source_dir> <output_dir> [lang]")
+        print("Usage: python3 aurakl_renderer.py <source_dir> <output_dir> [lang]")
         sys.exit(1)
     src = Path(sys.argv[1])
     out = Path(sys.argv[2])
@@ -2851,5 +2851,5 @@ if __name__ == "__main__":
         print(f"  - {k}: {v}")
 
 
-# Backward and forward compatibility aliases
-AuraklMarkdownRenderer = LumenMarkdownRenderer
+# Backward compatibility alias
+LumenMarkdownRenderer = AuraklMarkdownRenderer

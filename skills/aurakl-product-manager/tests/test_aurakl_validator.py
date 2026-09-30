@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Contract and mutation tests for the Lumen five-dimensional validator."""
+"""Contract and mutation tests for the Aurakl five-dimensional validator."""
 
 import copy
 import json
@@ -11,18 +11,18 @@ TEST_DIR = Path(__file__).resolve().parent
 SCRIPTS_DIR = TEST_DIR.parent / "scripts"
 sys.path.insert(0, str(SCRIPTS_DIR))
 
-from lumen_validator import LumenValidator, PurePythonSchemaValidator
+from aurakl_validator import AuraklValidator, LumenValidator, PurePythonSchemaValidator
 SKILL_ROOT = TEST_DIR.parent
 FIXTURES_DIR = SKILL_ROOT / "fixtures"
 if not FIXTURES_DIR.exists():
     FIXTURES_DIR = SKILL_ROOT.parents[2] / "definitions/product-management/fixtures"
 
 
-class TestLumenValidator(unittest.TestCase):
+class TestAuraklValidator(unittest.TestCase):
     def setUp(self):
         self.golden_file = FIXTURES_DIR / "golden_product_suite.json"
         self.golden_suite = json.loads(self.golden_file.read_text(encoding="utf-8"))
-        self.validator = LumenValidator()
+        self.validator = AuraklValidator()
 
     def test_golden_suite_passes_all_gates(self):
         verdict = self.validator.validate_suite_oracle(self.golden_suite)

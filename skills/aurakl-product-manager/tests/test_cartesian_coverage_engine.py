@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Unit tests for CartesianCoverageEngine and lumen_pm cartesian CLI command.
+Unit tests for CartesianCoverageEngine and aurakl_pm cartesian CLI command.
 """
 
 import json

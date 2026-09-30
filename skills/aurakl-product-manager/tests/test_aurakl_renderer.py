@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Unit tests for AuraklMarkdownRenderer / LumenMarkdownRenderer (Template Conformance Engine).
+Unit tests for AuraklMarkdownRenderer (Template Conformance Engine).
 
 Tests English template generation (default for English fixtures) and dynamic
 language matching (switching to Chinese headers and labels when Chinese input is provided).
@@ -15,15 +15,15 @@ TEST_DIR = Path(__file__).resolve().parent
 SCRIPTS_DIR = TEST_DIR.parent / "scripts"
 sys.path.insert(0, str(SCRIPTS_DIR))
 
-from lumen_renderer import LumenMarkdownRenderer, AuraklMarkdownRenderer, render_all_artifacts
+from aurakl_renderer import AuraklMarkdownRenderer, LumenMarkdownRenderer, render_all_artifacts
 
 SKILL_ROOT = Path(__file__).resolve().parent.parent
 FIXTURES_DIR = SKILL_ROOT / "fixtures"
 
 
-class TestLumenMarkdownRenderer(unittest.TestCase):
+class TestAuraklMarkdownRenderer(unittest.TestCase):
     def setUp(self):
-        self.renderer = LumenMarkdownRenderer()
+        self.renderer = AuraklMarkdownRenderer()
         golden_suite_path = FIXTURES_DIR / "golden_product_suite.json"
         self.golden_suite = json.loads(golden_suite_path.read_text(encoding="utf-8"))
 
