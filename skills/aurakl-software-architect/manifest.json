@@ -1,0 +1,18 @@
+{
+  "name": "aurakl-software-architect",
+  "version": "1.0.0",
+  "category": "Software Architecture / System Design",
+  "description": "Industrial-grade Enterprise Software Architect strictly adhering to the Aurakl dual-layer SOP architecture and Linus Torvalds Pragmatic Architecture Philosophy. Drives ADR tech selection, 3-layer modular monolith topology, 100% PRD domain modeling, physical SQL DDL schemas & migrations, strongly-typed backward-compatible API contracts, 3-path sequence flows, 9-dimension architecture invariants defense, acyclic technical dependency DAGs, and strict one-vote veto readiness reviews.",
+  "homepage": "https://github.com/aurakl/aurakl-plugin/tree/main/skills/aurakl-software-architect",
+  "compat": [
+    "antigravity",
+    "claude-code",
+    "claude-ai",
+    "cursor",
+    "codex-cli",
+    "gemini-cli",
+    "opencode",
+    "cline",
+    "amp"
+  ]
+}

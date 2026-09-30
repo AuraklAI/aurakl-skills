@@ -58,38 +58,42 @@ Adheres to the **Linus Torvalds Pragmatic Architecture Philosophy** across a 9-s
 
 ## 🚀 Installation & Usage
 
-### Method 1: Project Workspace Plugin (Team Collaboration, Zero-Friction)
-Clone or place `aurakl-plugin` directly into your repository's `.agents/plugins/` directory:
+### Method 1: Standard Agent Skills Installation (Recommended, Universal)
+Install seamlessly into **Antigravity, Claude Code, Cursor, Codex, Cline, Amp**, and any Agent Skills-compliant environment via `npx skills`:
+
 ```bash
-# In your project root:
+# 1. Install all skills into your current project workspace (.agents/skills/):
+npx skills add aurakl/aurakl-plugin
+
+# 2. Or install a specific skill:
+npx skills add aurakl/aurakl-plugin -s aurakl-product-manager
+npx skills add aurakl/aurakl-plugin -s aurakl-software-architect
+
+# 3. Install globally across all projects on your machine:
+npx skills add aurakl/aurakl-plugin -g
+
+# 4. Instant local workspace test (if already in this repository):
+npx skills add . -y
+```
+
+### Method 2: Native Antigravity Plugin Bundle (Workspace or Global)
+If you are using Google Antigravity and wish to bundle both the skills and `rules/AGENTS.md` quality invariants:
+```bash
+# Workspace level (in your project root):
 mkdir -p .agents/plugins
 git clone https://github.com/aurakl/aurakl-plugin.git .agents/plugins/aurakl-plugin
-```
-*Agents in Antigravity or compatible environments will automatically discover and activate the plugin and rules.*
 
-### Method 2: Global Installation (Developer Cross-Project Availability)
-To make the plugin available across all projects on your machine:
-```bash
-# macOS / Linux
+# Global level (across all projects):
 mkdir -p ~/.gemini/config/plugins
 git clone https://github.com/aurakl/aurakl-plugin.git ~/.gemini/config/plugins/aurakl-plugin
-
-# Windows (PowerShell)
-# New-Item -ItemType Directory -Force -Path "$HOME\.gemini\config\plugins"
-# git clone https://github.com/aurakl/aurakl-plugin.git "$HOME\.gemini\config\plugins\aurakl-plugin"
 ```
 
-### Method 3: Python CLI Installation (`pip`)
-You can install the unified CLI globally or in your virtual environment:
+### Method 3: Python CLI & CI/CD Pipeline Automation (`pip`)
+For continuous integration, pre-commit hooks, or standalone terminal execution of the deterministic validation engines:
 ```bash
 cd aurakl-plugin
 pip install -e .
-```
-Now `aurakl` is available directly in your terminal:
-```bash
 aurakl status
-aurakl pm --help
-aurakl arch --help
 ```
 
 ---

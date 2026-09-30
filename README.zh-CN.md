@@ -60,36 +60,42 @@ aurakl-plugin/
 
 ## 🚀 安装与分发指南
 
-### 方式 1：项目工程内安装（团队共享，免额外配置）
-将 `aurakl-plugin` 直接置于项目的 `.agents/plugins/` 目录下并纳入 Git：
+### 方式 1：标准 Agent Skills 一键安装（推荐，跨平台通用）
+适用于 **Antigravity、Claude Code、Cursor、Codex、Cline、Amp** 等所有支持 Agent Skills 标准的宿主环境，通过 `npx skills` 一行命令搞定：
+
 ```bash
-# 在你的工程根目录下：
+# 1. 项目级一键安装（推荐，为当前项目注入全部技能，写入 .agents/skills/）：
+npx skills add aurakl/aurakl-plugin
+
+# 2. 或仅安装单个技能：
+npx skills add aurakl/aurakl-plugin -s aurakl-product-manager
+npx skills add aurakl/aurakl-plugin -s aurakl-software-architect
+
+# 3. 跨项目全局安装（所有项目通用）：
+npx skills add aurakl/aurakl-plugin -g
+
+# 4. 本地工作区极速体验（如果你已处于本仓库目录中）：
+npx skills add . -y
+```
+
+### 方式 2：Antigravity 专有插件模式（Bundle 规则 + 技能）
+如果你使用 Google Antigravity 并希望同时绑定 `rules/AGENTS.md` 自动化质量门禁与技能包：
+```bash
+# 项目工程级（团队共享，直接提交至项目 Git）：
 mkdir -p .agents/plugins
 git clone https://github.com/aurakl/aurakl-plugin.git .agents/plugins/aurakl-plugin
-```
-*团队成员拉取代码后，Antigravity 等 Agent 将自动识别并激活该插件。*
 
-### 方式 2：个人电脑全局安装（跨所有项目通用）
-```bash
-# macOS / Linux
+# 个人机器全局生效：
 mkdir -p ~/.gemini/config/plugins
 git clone https://github.com/aurakl/aurakl-plugin.git ~/.gemini/config/plugins/aurakl-plugin
-
-# Windows (PowerShell)
-# New-Item -ItemType Directory -Force -Path "$HOME\.gemini\config\plugins"
-# git clone https://github.com/aurakl/aurakl-plugin.git "$HOME\.gemini\config\plugins\aurakl-plugin"
 ```
 
-### 方式 3：通过 Python CLI 本地安装 (`pip`)
+### 方式 3：Python 命令行与 CI/CD 自动化集成 (`pip`)
+若你需要在持续集成流水线、代码提交流程或终端中独立调用确定性不变量验证引擎：
 ```bash
 cd aurakl-plugin
 pip install -e .
-```
-安装后即可在终端全局直接调用：
-```bash
 aurakl status
-aurakl pm --help
-aurakl arch --help
 ```
 
 ---
