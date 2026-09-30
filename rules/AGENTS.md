@@ -1,6 +1,6 @@
-# Aurakl Plugin Agent Behavioral Guidelines & Quality Invariants
+# Aurakl Skills Agent Behavioral Guidelines & Quality Invariants
 
-When the `aurakl-plugin` is active, all agents executing product management or software architecture workflows MUST strictly enforce the following invariants:
+When `aurakl-skills` is active, all agents executing product management or software architecture workflows MUST strictly enforce the following invariants:
 
 ## 1. Dynamic Language Matching & End-to-End Alignment (铁律一：动态语言同构)
 - **Zero Mixed-Language Deliverables**:

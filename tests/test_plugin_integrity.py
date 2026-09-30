@@ -31,7 +31,7 @@ class TestPluginIntegrity(unittest.TestCase):
     def test_plugin_manifest_is_valid(self):
         self.assertTrue(self.manifest_path.exists(), "plugin.json must exist at root")
         content = json.loads(self.manifest_path.read_text(encoding="utf-8"))
-        self.assertEqual(content.get("name"), "aurakl-plugin")
+        self.assertEqual(content.get("name"), "aurakl-skills")
         self.assertTrue(content.get("version"), "version must be present")
         self.assertTrue(content.get("description"), "description must be present")
         self.assertEqual(content.get("license"), "Apache-2.0")
@@ -67,7 +67,7 @@ class TestPluginIntegrity(unittest.TestCase):
         self.assertTrue(cli_py.exists(), "aurakl_cli.py must exist")
         res = subprocess.run([sys.executable, str(cli_py), "status"], capture_output=True, text=True)
         self.assertEqual(res.returncode, 0, f"aurakl status failed: {res.stderr}")
-        self.assertIn("Aurakl Plugin", res.stdout)
+        self.assertIn("Aurakl Skills", res.stdout)
         self.assertIn("aurakl-product-manager", res.stdout)
         self.assertIn("aurakl-software-architect", res.stdout)
 

@@ -1,17 +1,18 @@
 {
-  "name": "aurakl-plugin",
+  "name": "aurakl-skills",
   "version": "1.0.0",
   "description": "Industrial-grade Product Management & Software Architecture Agent Skills with mathematical invariants, Cartesian completeness, closed-world data closure, and pure-Python validation engines.",
   "author": "Aurakl Team",
   "license": "Apache-2.0",
-  "homepage": "https://github.com/aurakl/aurakl-plugin",
+  "homepage": "https://github.com/aurakl/aurakl-skills",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aurakl/aurakl-plugin.git"
+    "url": "https://github.com/aurakl/aurakl-skills.git"
   },
   "keywords": [
     "antigravity",
     "agent-skills",
+    "aurakl-skills",
     "product-management",
     "software-architecture",
     "prd",

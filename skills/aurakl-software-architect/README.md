@@ -6,10 +6,10 @@ Industrial-grade Enterprise Software Architecture Agent Skill strictly adhering 
 
 ```bash
 # Install to current project (Antigravity, Claude Code, Cursor, Codex, etc.)
-npx skills add aurakl/aurakl-plugin -s aurakl-software-architect
+npx skills add aurakl/aurakl-skills -s aurakl-software-architect
 
 # Or install globally across all projects
-npx skills add aurakl/aurakl-plugin -s aurakl-software-architect -g
+npx skills add aurakl/aurakl-skills -s aurakl-software-architect -g
 ```
 
 ## 🌟 Key Capabilities

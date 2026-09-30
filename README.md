@@ -1,12 +1,12 @@
-# Aurakl Plugin: Industrial-Grade Agent Skills Suite
+# Aurakl Skills: Industrial-Grade Agent Skills Suite
 
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](./plugin.json)
 [![Python](https://img.shields.io/badge/python-3.9+-brightgreen.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-Apache--2.0-orange.svg)](./LICENSE)
 [![Dependencies](https://img.shields.io/badge/dependencies-0%20(Pure%20Stdlib)-success.svg)](./requirements.txt)
-[![Tests](https://img.shields.io/badge/tests-65%2F65%20passed-brightgreen.svg)](./tests/)
+[![Tests](https://img.shields.io/badge/tests-71%2F71%20passed-brightgreen.svg)](./tests/)
 
-**Aurakl Plugin** is an enterprise-grade agent customization package designed for AI pair-programming systems (Google Antigravity, Claude Code, Cursor, and Agent Skills specifications). It bundles production-hardened **Product Management** and **Software Architecture** capabilities powered by mathematical invariants, Cartesian completeness audits, and pure-Python validation engines.
+**Aurakl Skills** is an enterprise-grade agent skills suite designed for AI pair-programming systems (Google Antigravity, Claude Code, Cursor, and Agent Skills specifications). It bundles production-hardened **Product Management** and **Software Architecture** capabilities powered by mathematical invariants, Cartesian completeness audits, and pure-Python validation engines.
 
 ---
 
@@ -23,7 +23,7 @@
 ## 📦 Bundled Skills
 
 ```
-aurakl-plugin/
+aurakl-skills/
 ├── plugin.json                    # Plugin manifest
 ├── rules/
 │   └── AGENTS.md                  # Automatic agent quality invariants & behavioral rules
@@ -63,14 +63,14 @@ Install seamlessly into **Antigravity, Claude Code, Cursor, Codex, Cline, Amp**,
 
 ```bash
 # 1. Install all skills into your current project workspace (.agents/skills/):
-npx skills add aurakl/aurakl-plugin
+npx skills add aurakl/aurakl-skills
 
 # 2. Or install a specific skill:
-npx skills add aurakl/aurakl-plugin -s aurakl-product-manager
-npx skills add aurakl/aurakl-plugin -s aurakl-software-architect
+npx skills add aurakl/aurakl-skills -s aurakl-product-manager
+npx skills add aurakl/aurakl-skills -s aurakl-software-architect
 
 # 3. Install globally across all projects on your machine:
-npx skills add aurakl/aurakl-plugin -g
+npx skills add aurakl/aurakl-skills -g
 
 # 4. Instant local workspace test (if already in this repository):
 npx skills add . -y
@@ -81,17 +81,17 @@ If you are using Google Antigravity and wish to bundle both the skills and `rule
 ```bash
 # Workspace level (in your project root):
 mkdir -p .agents/plugins
-git clone https://github.com/aurakl/aurakl-plugin.git .agents/plugins/aurakl-plugin
+git clone https://github.com/aurakl/aurakl-skills.git .agents/plugins/aurakl-skills
 
 # Global level (across all projects):
 mkdir -p ~/.gemini/config/plugins
-git clone https://github.com/aurakl/aurakl-plugin.git ~/.gemini/config/plugins/aurakl-plugin
+git clone https://github.com/aurakl/aurakl-skills.git ~/.gemini/config/plugins/aurakl-skills
 ```
 
 ### Method 3: Python CLI & CI/CD Pipeline Automation (`pip`)
 For continuous integration, pre-commit hooks, or standalone terminal execution of the deterministic validation engines:
 ```bash
-cd aurakl-plugin
+cd aurakl-skills
 pip install -e .
 aurakl status
 ```

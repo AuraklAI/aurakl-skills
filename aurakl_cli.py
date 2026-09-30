@@ -26,9 +26,9 @@ ARCH_SCRIPT = PLUGIN_ROOT / "skills" / "aurakl-software-architect" / "scripts" /
 
 def cmd_status() -> int:
     print("=" * 60)
-    print(" Aurakl Plugin - Industrial-Grade Agent Skills Suite")
+    print(" Aurakl Skills - Industrial-Grade Agent Skills Suite")
     print("=" * 60)
-    print(f"Plugin Root : {PLUGIN_ROOT}")
+    print(f"Skills Root : {PLUGIN_ROOT}")
     print(f"Python Exec : {sys.executable} (v{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro})")
     
     pm_status = "READY" if PM_SCRIPT.exists() else "MISSING"
@@ -41,7 +41,7 @@ def cmd_status() -> int:
 
 
 def cmd_test() -> int:
-    print("Running Aurakl Plugin Test Suites...")
+    print("Running Aurakl Skills Test Suites...")
     test_runner = PLUGIN_ROOT / "tests" / "test_plugin_integrity.py"
     if test_runner.exists():
         return subprocess.run([sys.executable, str(test_runner)], check=False).returncode
@@ -57,9 +57,9 @@ def main(argv: List[str] | None = None) -> int:
         print("\nAvailable subcommands:")
         print("  pm        Product Management engine (elicit, validate, audit, render)")
         print("  arch      Software Architecture engine (validate, render, cartesian, oracle)")
-        print("  status    Inspect plugin status and loaded skills")
+        print("  status    Inspect status and loaded skills")
         print("  test      Run all verification and unit test suites")
-        print("  --version Show plugin version")
+        print("  --version Show suite version")
         return 0
 
     subcommand = argv[0]
@@ -70,9 +70,9 @@ def main(argv: List[str] | None = None) -> int:
         if manifest.exists():
             import json
             data = json.loads(manifest.read_text(encoding="utf-8"))
-            print(f"aurakl-plugin v{data.get('version', 'unknown')}")
+            print(f"aurakl-skills v{data.get('version', 'unknown')}")
         else:
-            print("aurakl-plugin v1.0.0")
+            print("aurakl-skills v1.0.0")
         return 0
 
     if subcommand == "status":

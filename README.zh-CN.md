@@ -1,14 +1,14 @@
-# Aurakl 插件：工业级 Agent 技能套件 (中文文档)
+# Aurakl Skills：工业级 Agent 技能套件 (中文文档)
 
 [![Version](https://img.shields.io/badge/版本-1.0.0-blue.svg)](./plugin.json)
 [![Python](https://img.shields.io/badge/Python-3.9+-brightgreen.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/开源协议-Apache--2.0-orange.svg)](./LICENSE)
 [![Dependencies](https://img.shields.io/badge/第三方依赖-0%20(纯标准库)-success.svg)](./requirements.txt)
-[![Tests](https://img.shields.io/badge/单元测试-65%2F65%20全部通过-brightgreen.svg)](./tests/)
+[![Tests](https://img.shields.io/badge/单元测试-71%2F71%20全部通过-brightgreen.svg)](./tests/)
 
 [English Documentation](./README.md)
 
-**Aurakl Plugin** 是专为 AI 结对编程与自主 Agent（Google Antigravity、Claude Code、Cursor 及 Agent Skills 规范）打造的企业级生产力插件。它打包了经过工业级验证的**产品管理（PM）**与**软件架构师（Architect）**双核心技能，内置数学不变量校验、笛卡尔完备性审计与纯 Python 确定性裁判（Oracle）。
+**Aurakl Skills** 是专为 AI 结对编程与自主 Agent（Google Antigravity、Claude Code、Cursor 及 Agent Skills 规范）打造的企业级生产力技能套件。它打包了经过工业级验证的**产品管理（PM）**与**软件架构师（Architect）**双核心技能，内置数学不变量校验、笛卡尔完备性审计与纯 Python 确定性裁判（Oracle）。
 
 ---
 
@@ -22,10 +22,10 @@
 
 ---
 
-## 📦 插件包含的核心技能
+## 📦 技能套件包含的核心技能
 
 ```text
-aurakl-plugin/
+aurakl-skills/
 ├── plugin.json                    # 插件清单文件
 ├── rules/
 │   └── AGENTS.md                  # 插件级 Agent 铁律（全局质量守恒约束）
@@ -65,14 +65,14 @@ aurakl-plugin/
 
 ```bash
 # 1. 项目级一键安装（推荐，为当前项目注入全部技能，写入 .agents/skills/）：
-npx skills add aurakl/aurakl-plugin
+npx skills add aurakl/aurakl-skills
 
 # 2. 或仅安装单个技能：
-npx skills add aurakl/aurakl-plugin -s aurakl-product-manager
-npx skills add aurakl/aurakl-plugin -s aurakl-software-architect
+npx skills add aurakl/aurakl-skills -s aurakl-product-manager
+npx skills add aurakl/aurakl-skills -s aurakl-software-architect
 
 # 3. 跨项目全局安装（所有项目通用）：
-npx skills add aurakl/aurakl-plugin -g
+npx skills add aurakl/aurakl-skills -g
 
 # 4. 本地工作区极速体验（如果你已处于本仓库目录中）：
 npx skills add . -y
@@ -83,17 +83,17 @@ npx skills add . -y
 ```bash
 # 项目工程级（团队共享，直接提交至项目 Git）：
 mkdir -p .agents/plugins
-git clone https://github.com/aurakl/aurakl-plugin.git .agents/plugins/aurakl-plugin
+git clone https://github.com/aurakl/aurakl-skills.git .agents/plugins/aurakl-skills
 
 # 个人机器全局生效：
 mkdir -p ~/.gemini/config/plugins
-git clone https://github.com/aurakl/aurakl-plugin.git ~/.gemini/config/plugins/aurakl-plugin
+git clone https://github.com/aurakl/aurakl-skills.git ~/.gemini/config/plugins/aurakl-skills
 ```
 
 ### 方式 3：Python 命令行与 CI/CD 自动化集成 (`pip`)
 若你需要在持续集成流水线、代码提交流程或终端中独立调用确定性不变量验证引擎：
 ```bash
-cd aurakl-plugin
+cd aurakl-skills
 pip install -e .
 aurakl status
 ```

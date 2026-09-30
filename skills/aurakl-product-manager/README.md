@@ -6,10 +6,10 @@ Industrial-grade Product Management & Requirements Engineering Agent Skill stric
 
 ```bash
 # Install to current project (Antigravity, Claude Code, Cursor, Codex, etc.)
-npx skills add aurakl/aurakl-plugin -s aurakl-product-manager
+npx skills add aurakl/aurakl-skills -s aurakl-product-manager
 
 # Or install globally across all projects
-npx skills add aurakl/aurakl-plugin -s aurakl-product-manager -g
+npx skills add aurakl/aurakl-skills -s aurakl-product-manager -g
 ```
 
 ## 🌟 Key Capabilities

@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "aurakl-plugin"
+name = "aurakl-skills"
 version = "1.0.0"
 description = "Industrial-grade Product Management & Software Architecture Agent Skills with mathematical invariants, Cartesian completeness, and Python validation engines."
 readme = "README.md"
