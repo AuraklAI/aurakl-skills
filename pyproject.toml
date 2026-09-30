@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "aurakl-skills"
 version = "1.0.0"
-description = "Industrial-grade Product Management & Software Architecture Agent Skills with mathematical invariants, Cartesian completeness, and Python validation engines."
+description = "Enterprise-grade Product Management & Software Architecture Agent Skills with mathematical invariants, Cartesian completeness, and Python validation engines."
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "Apache-2.0" }

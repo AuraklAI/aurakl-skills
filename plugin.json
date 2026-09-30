@@ -1,7 +1,7 @@
 {
   "name": "aurakl-skills",
   "version": "1.0.0",
-  "description": "Industrial-grade Product Management & Software Architecture Agent Skills with mathematical invariants, Cartesian completeness, closed-world data closure, and pure-Python validation engines.",
+  "description": "Enterprise-grade Product Management & Software Architecture Agent Skills with mathematical invariants, Cartesian completeness, closed-world data closure, and pure-Python validation engines.",
   "author": "Aurakl Team",
   "license": "Apache-2.0",
   "homepage": "https://github.com/AuraklAI/aurakl-skills",

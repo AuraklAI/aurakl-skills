@@ -1619,7 +1619,7 @@ class LumenMarkdownRenderer:
                 '  product_type: "production_system"',
                 "```",
                 "",
-                "> 本文档严格按照 Aurakl 工业级需求工程规约渲染生成，涵盖商业目标、信息架构、功能规格、状态机、容灾风控、全链路埋点与验收指标。",
+                "> 本文档严格按照 Aurakl 需求工程规约渲染生成，涵盖商业目标、信息架构、功能规格、状态机、容灾风控、全链路埋点与验收指标。",
                 "",
                 "---",
                 "",
@@ -1671,7 +1671,7 @@ class LumenMarkdownRenderer:
                     f"- **系统所属领域架构**：`{dp.upper()}` —— {dp_title_map.get(dp, dp)}",
                     "- **需求规约语言标准**：严格遵循 **IETF RFC 2119** 规范（MUST, MUST NOT, REQUIRED, SHALL, SHOULD, MAY），严禁含糊表述。",
                     "",
-                    "| 领域维度 | 工业级工程规约要求与保障策略 |",
+                    "| 领域维度 | 工程规约要求与保障策略 |",
                     "| :--- | :--- |",
                 ])
                 for profile_key, specs in dspecs.items():

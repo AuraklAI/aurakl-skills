@@ -1,6 +1,6 @@
 # Aurakl Software Architect Skill (`aurakl-software-architect`)
 
-Industrial-grade Enterprise Software Architecture Agent Skill strictly adhering to the **Linus Torvalds Pragmatic Architecture Philosophy** and the Aurakl dual-layer SOP framework.
+Enterprise Software Architecture Agent Skill strictly adhering to the **Linus Torvalds Pragmatic Architecture Philosophy** and the Aurakl dual-layer SOP framework.
 
 ## 🚀 Quick Install
 

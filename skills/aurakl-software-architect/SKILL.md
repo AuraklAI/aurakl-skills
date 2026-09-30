@@ -153,61 +153,57 @@ To avoid superficial or hand-waving designs, every design artifact must meet the
 
 Architecture deliverables must strictly adhere to the unified Aurakl engineering standards, ensuring that blueprints and specifications are pleasant for humans to review while maintaining 100% deterministic machine parseability:
 
-### 1. Universal Title & Metadata Single Responsibility Principle (标题与元数据单一职责原则)
-- **纲领**：**“标题仅表达架构概念，技术代号与属性一律下沉”**。大纲目录树必须保持纯净、自解释、高概括性，严禁在任何 Markdown 标题（H3/H4）中杂糅拼接编号、SQL DDL、API 路由、请求方式或状态徽章。
-- **模块层级（H3 `###`）**：格式严格为 `### {章号}.{序号} {模块纯中文名}`（例如 `### 2.1 客户定制端`、`### 2.2 计调运营工作台`）。严禁拼接 `[MOD-CLIENT]`、`Client Interactive Experience` 或 `(微信端轻量定制体验)`；模块代号下沉至标题正下方的元数据属性行。
-- **数据表层级（H4 `####`）**：格式严格为 `#### {章号}.{模块序号}.{表序号} {表简明业务名称}`（例如 `#### 4.1.1 意向定制工单主表`）。严禁在标题中塞入 `【DB-T001】`、物理表名 `itinerary_orders` 或 DDL 片段。
-- **API 契约层级（H4 `####`）**：格式严格为 `#### {章号}.{模块序号}.{接口序号} {业务操作简明名称}`（例如 `#### 5.1.1 提交意向定制方案`）。严禁在标题中塞入 `POST /api/v1/orders` 或 HTTP 状态码。
-- **不变量与指南层级（H4 `####`）**：格式严格为 `#### {章号}.{序号} {不变量/指南简明名称}`（例如 `#### 7.1 并发状态与幂等防重守恒`、`#### 8.1 高原低氧自适应排程启发式算法`）。代号 `INV-ARCH-001` 与 `GUIDE-001` 一律下沉至属性行。
+### 1. Universal Title & Metadata Single Responsibility Principle
+- **Core Doctrine**: **"Headings express architectural concepts only; technical codes and attributes strictly sink to metadata."** The table of contents outline must remain clean, self-describing, and high-level. Never mix IDs, SQL DDL, API routes, HTTP verbs, or status badges into any Markdown heading (`###` or `####`).
+- **Module Level (`###`)**: Strict format `### {chapter}.{seq} {ModuleName}` (e.g., `### 2.1 Customer Experience Portal`, `### 2.2 Operational Dispatch Console`). Never append `[MOD-CLIENT]`, raw slugs, or implementation details. Module identifiers must sink to the structured metadata attributes line directly beneath the heading.
+- **Database Table Level (`####`)**: Strict format `#### {chapter}.{module_seq}.{table_seq} {TableBusinessName}` (e.g., `#### 4.1.1 Customization Orders Master Table`). Never embed `[DB-T001]`, physical table names `itinerary_orders`, or DDL snippets into headings.
+- **API Contract Level (`####`)**: Strict format `#### {chapter}.{module_seq}.{api_seq} {OperationBusinessName}` (e.g., `#### 5.1.1 Submit Customization Proposal`). Never embed `POST /api/v1/orders` or HTTP status codes into headings.
+- **Invariants & Guides Level (`####`)**: Strict format `#### {chapter}.{seq} {InvariantOrGuideName}` (e.g., `#### 7.1 Concurrency State & Idempotency Conservation`, `#### 8.1 Adaptive High-Altitude Scheduling Algorithm`). Identifier codes `INV-ARCH-001` and `GUIDE-001` must sink to attribute tables.
 
-### 2. ID Conformance, Namespacing & Monotonic Continuity (ID 规范性与单调连续性铁律)
-- **命名空间强绑定**：
-  - 数据表 ID：`DB-T{SEQ:03d}`（如 `DB-T001` ~ `DB-T012`）；
-  - 数据库索引 ID：`DB-I{SEQ:03d}`；
-  - 数据库迁移 ID：`DB-M{SEQ:03d}`；
-  - API 接口 ID：`API-{MODULE_TAG}-{SEQ:03d}`（如 `API-CLIENT-001`、`API-ERP-001`）；
-  - 架构不变量 ID：`INV-ARCH-{SEQ:03d}`（`INV-ARCH-001` ~ `INV-ARCH-009`）；
-  - 核心技术指南 ID：`GUIDE-{SEQ:03d}`（`GUIDE-001` ~ `GUIDE-003`）；
-  - 数据流时序 ID：`ARCH-FLOW-{SEQ:03d}`。
-- **从 001 开始单调连续递增**：所有命名空间内的数字序号必须从 `001` 开始，连续自增（`001`, `002`, `003`...），严禁跳号、重号，换入新模块后 API 接口序号必须重新从 `001` 开始计算，严禁承接上一个模块的尾号。
+### 2. ID Conformance, Namespacing & Monotonic Continuity
+- **Namespaces Binding**:
+  - Database Tables: `DB-T{SEQ:03d}` (e.g., `DB-T001` ~ `DB-T012`);
+  - Database Indexes: `DB-I{SEQ:03d}`;
+  - Database Migrations: `DB-M{SEQ:03d}`;
+  - API Contracts: `API-{MODULE_TAG}-{SEQ:03d}` (e.g., `API-CLIENT-001`, `API-ERP-001`);
+  - Architecture Invariants: `INV-ARCH-{SEQ:03d}` (`INV-ARCH-001` ~ `INV-ARCH-009`);
+  - Core Implementation Guides: `GUIDE-{SEQ:03d}` (`GUIDE-001` ~ `GUIDE-003`);
+  - Architecture Data Flows: `ARCH-FLOW-{SEQ:03d}`.
+- **Monotonic 1-Based Sequencing**: All identifiers within a namespace must start from `001` and increase continuously (`001`, `002`, `003`...). Zero gaps, zero duplicate IDs. When transitioning to a new module, API contract numbering must reset to `001` within that module's namespace.
 
-### 3. IETF RFC 2119 Normative Vocabulary Standard (RFC 2119 无歧义规范语言标准)
-- 架构断言、技术约束与组件防御机制必须严格遵从 **IETF RFC 2119** 规范词：
-  - **必须 (MUST / SHALL / REQUIRED)**：绝对硬性机制，如“服务入口网关 **必须 (MUST)** 拦截未携带合法租户凭证的请求”；
-  - **严禁 (MUST NOT / SHALL NOT)**：绝对禁止动作，如“只读事务中 **严禁 (MUST NOT)** 触发任何写库或状态变更操作”；
-  - **应当 (SHOULD / RECOMMENDED)**：最佳实践，如“缓存查询 **应当 (SHOULD)** 设置随机抖动过期时间以防范雪崩”；
-  - **可以 (MAY / OPTIONAL)**：架构预留的可选扩展能力。
-- **严禁形式主义“贴标签”**：严禁在小标题或表格中机械括号打标签 `(RFC 2119 MUST)`，必须将规范词自然融入为主谓宾断言句中的谓语助动词。
-- **严禁模糊用语**：严禁出现“酌情处理”、“视情况而定”、“大概”、“原则上”等推脱词汇。
+### 3. IETF RFC 2119 Normative Vocabulary Standard
+- Architectural assertions, technical constraints, and component defense mechanisms must strictly comply with **IETF RFC 2119** keywords:
+  - **MUST / SHALL / REQUIRED**: Absolute mandatory mechanisms, e.g., "The API Gateway **MUST** intercept and reject requests lacking valid tenant credentials."
+  - **MUST NOT / SHALL NOT**: Absolute prohibitions, e.g., "Read-only replica transactions **MUST NOT** trigger any write operations or state transitions."
+  - **SHOULD / RECOMMENDED**: Best practice recommendations with deep justification required for exceptions, e.g., "Cache queries **SHOULD** inject jitter TTL to prevent cache avalanches."
+  - **MAY / OPTIONAL**: Truly optional extensions reserved for future iterations.
+- **Prohibition of Empty Bracketed Labels**: Never mechanically prefix headings or tables with `(RFC 2119 MUST)`. Normative keywords must be woven naturally into the predicate verbs of requirement assertions.
+- **Prohibition of Ambiguous Language**: Vague expressions such as "as appropriate", "roughly", "in principle", or "depending on circumstances" are strictly vetoed.
 
-### 4. Markdown Typography & Visual Ergonomics Standard (Markdown 工业级排版与视觉工效规范)
-- **中英文混合排版（盘古之白，Pangu Spacing）铁律**：
-  - 中文文字与西文（拉丁字母、阿拉伯数字）之间，前后**必须保留一个半角空格**（如 `在 PC 端通过 gRPC 协议调用`、`P99 延迟 < 500 ms`、`并发承载 500+ QPS`）。
-  - 全角标点（`，` `。` `；` `：` `！` `？` `【` `】` `（` `）` `《` `》`）自带全字宽排版间隙，与中英文字符之间**严禁插入空格**。
-  - 西文半角括号与中文字符相接时，外部**必须保留空格**（如 `核心业务目标 (Goals)`）。
-- **工程标识与技术实体反引号隔离 (Inline Code Backticks)**：
-  - 所有的数据库表名（`itinerary_orders`）、字段名（`tenant_id`）、数据类型（`VARCHAR(255)`）、SQL 关键字、API 路由（`/api/v1/orders`）、HTTP 动词（`POST` / `GET`）、Trait/类名、配置参数及状态枚举**必须严格使用反引号包裹**（`` `...` ``），与自然语言陈述形成清晰的视觉对比。
-- **纵向呼吸感与段落隔离 (Vertical Rhythm & Breathing Room)**：
-  - 所有各级标题（`#` 至 `####`）前后**必须各保留一行空行**，严禁与正文或列表粘连。
-  - 多行代码块（` ``` `）、表格（`| ... |`）、提示块（`> ...`）、水平分割线（`---`）前后**必须各保留一行空行**。
-  - 正文连续空行严格归一化为最多 1 行，严禁出现连续 2 行以上的无意义空白。
-- **表格设计与列对齐指示符 (Table Design & Explicit Alignment)**：
-  - 表头分割行必须显式声明对齐指示符：
-    - **左对齐 (`:---`)**：字段描述、中文名称、触发条件、业务约束、URL 路由；
-    - **居中对齐 (`:---:`)**：数据类型、Nullable（`NULL` / `NOT NULL`）、必填标识、HTTP 动词、状态码、优先级徽章；
-    - **右对齐 (`---:`)**：数字大小、行数、存储字节、时延预算（ms）、QPS 指标。
-- **强调预算与视觉疲劳防御 (Emphasis Budgeting & Visual Hierarchy)**：
-  - **加粗克制**：严禁整段或大面积加粗。粗体仅作为视线锚点，赋予核心术语、关键阈值、状态机常量与 RFC 2119 动词。
-  - **标题深度严格封顶于 H4 (`####`)**：严禁使用 H5/H6 细碎标题，深层细节转为有序列表或属性表格。
-  - **代码块语言显式标注**：严禁裸代码块（`` ``` ``），必须显式声明语法高亮语言（`sql`, `rust`, `typescript`, `python`, `json`, `yaml`, `mermaid`, `bash` 等）。
+### 4. Markdown Typography & Visual Ergonomics Standard
+- **Technical Entity Code Backticks**:
+  - All database table names (`itinerary_orders`), column names (`tenant_id`), SQL data types (`VARCHAR(255)`), SQL keywords, API routes (`/api/v1/orders`), HTTP verbs (`POST`, `GET`), trait/interface names, configuration parameters, and status enums MUST be wrapped in backticks (`` `...` ``) to provide clear visual contrast with prose.
+- **Vertical Rhythm & Breathing Room**:
+  - All headings (`#` through `####`) MUST be preceded and followed by a single blank line. Never join headings directly to text or lists.
+  - Multi-line code blocks (`` ``` ``), tables (`| ... |`), callout blocks (`> ...`), and horizontal dividers (`---`) MUST have a blank line before and after.
+  - Successive blank lines are normalized to at most 1 line.
+- **Table Design & Explicit Column Alignment**:
+  - Table header delimiter rows MUST declare explicit column alignments:
+    - **Left-aligned (`:---`)**: Text descriptions, names, trigger conditions, business constraints, URL routes;
+    - **Center-aligned (`:---:`)**: Data types, nullability (`NULL` / `NOT NULL`), required flags, HTTP verbs, status codes, priority badges;
+    - **Right-aligned (`---:`)**: Numbers, counts, byte storage, latency budgets (ms), QPS metrics.
+- **Visual Hierarchy & Emphasis Budgeting**:
+  - **Restrained Bold Usage**: Bold (`**`) serves only as visual anchors for core terminology, thresholds, state machine constants, and RFC 2119 verbs.
+  - **Heading Depth Capped at H4 (`####`)**: Never use H5/H6 headings. Deeper granularity must sink into ordered lists, definition lists, or attribute tables.
+  - **Explicit Code Block Syntax Highlighting**: Never use bare unannotated code blocks (`` ``` ``). Explicitly specify the syntax language (`sql`, `rust`, `typescript`, `python`, `json`, `yaml`, `mermaid`, `bash`).
 
-### 5. Closed-World Precondition Data Closure (闭世界前置数据闭包)
-- 架构设计必须 100% 承接 PRD 中的前置数据闭包。
-- 任何持久化数据表、外键引用（FK）、缓存预热、初始状态及跨服务调用，必须具备已确定的生产方（上游 API）、初始种子迁移脚本（Migration Seed）或第三方网关，严禁出现悬挂外键或依赖未设计的幽灵服务。
+### 5. Closed-World Precondition Data Closure
+- Software architecture must 100% fulfill and absorb the PRD's precondition data closures.
+- Any persistent table, foreign key (FK), cache pre-warming, initial state, or cross-service call must have an established upstream producer (upstream API), initial seed migration script (`Migration Seed`), or third-party gateway. Dangling foreign keys and phantom services are strictly prohibited.
 
-### 6. Release Priority & MVP Backbone Alignment (发版优先级与骨干对齐)
-- 架构设计必须完全透视 PRD 的发版优先级（🔴 P0 / 🟡 P1 / 🟢 P2）。
-- 架构的物理表设计、API 端点与业务流程，必须优先保障 P0 功能（Launch Blocker）能够串联成端到端可执行的 MVP 骨干闭环。
+### 6. Release Priority & MVP Backbone Alignment
+- Architectural designs must fully mirror the PRD release priority tiers (🔴 P0 / 🟡 P1 / 🟢 P2).
+- Physical table schemas, API endpoints, and sequence flows must guarantee that P0 features (Launch Blockers) connect end-to-end into an executable MVP backbone closure.
 
 ---
 
@@ -260,12 +256,12 @@ All scripts and engines are self-contained under the skill's `scripts/` director
 ```shell
 # 1. Five-dimensional acceptance validation (single artifact or full suite with upstream PRD binding)
 aurakl arch validate <path_to_json> --suite --upstream-prd <path_to_prd_or_suite>
-# 或: python3 <skill_dir>/scripts/aurakl_arch.py validate <path_to_json> --suite --upstream-prd <path_to_prd_or_suite>
+# Or: python3 <skill_dir>/scripts/aurakl_arch.py validate <path_to_json> --suite --upstream-prd <path_to_prd_or_suite>
 
 # 2. Template-conforming Markdown rendering with dynamic language matching
 # English Markdown
 aurakl arch render <path_to_json> --lang en -o architecture.md
-# Chinese Markdown
+# Localized Markdown (e.g. Chinese)
 aurakl arch render <path_to_json> --lang zh -o architecture.zh.md
 
 # 3. Mathematical Cartesian completeness and topological closure audit

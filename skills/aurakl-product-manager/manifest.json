@@ -2,7 +2,7 @@
   "name": "aurakl-product-manager",
   "version": "1.0.0",
   "category": "Product Management / Requirements Engineering",
-  "description": "Industrial-grade Product Management Expert strictly adhering to the Aurakl dual-layer SOP architecture and ISO/IEC/IEEE 29148 requirements engineering standards. Drives 5W1H requirement elicitation, domain archetype adaptation, competitive intelligence, multi-persona user journeys, contract-driven PRD authoring with closed-world data closure, RFC 2119 normative language, mathematical invariants, and release acceptance matrices.",
+  "description": "Enterprise Product Management Expert strictly adhering to the Aurakl dual-layer SOP architecture and ISO/IEC/IEEE 29148 requirements engineering standards. Drives 5W1H requirement elicitation, domain archetype adaptation, competitive intelligence, multi-persona user journeys, contract-driven PRD authoring with closed-world data closure, RFC 2119 normative language, mathematical invariants, and release acceptance matrices.",
   "homepage": "https://github.com/AuraklAI/aurakl-skills/tree/main/skills/aurakl-product-manager",
   "compat": [
     "antigravity",

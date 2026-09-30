@@ -98,7 +98,7 @@
       },
       {
         "id": "prd.rfc2119_normative_language",
-        "statement": "PRD business rules must strictly adhere to RFC 2119 normative keywords (MUST, MUST NOT, SHALL, SHOULD, MAY, 必须, 严禁, 应当), eliminating vague expressions like '酌情', '大概', or '视情况而定'.",
+        "statement": "PRD business rules must strictly adhere to RFC 2119 normative keywords (MUST, MUST NOT, SHALL, SHOULD, MAY), eliminating vague expressions like 'as appropriate', 'roughly', or 'depending on circumstances'.",
         "enforceability": "requires_criterion",
         "criterion_hint": "rfc2119_normative_language_rigor"
       },
@@ -128,7 +128,7 @@
       },
       {
         "id": "prd.typography_and_pangu_spacing",
-        "statement": "All human-readable narrative and documentation must enforce CJK-Latin typography standards (盘古之白): inserting spaces between Chinese characters and English words/numbers, wrapping technical identifiers, parameters, and error codes in backticks, and ensuring comfortable Markdown visual hierarchy.",
+        "statement": "All human-readable narrative and documentation must enforce clean typography standards: wrapping technical identifiers, parameters, and error codes in backticks, and ensuring comfortable Markdown visual hierarchy.",
         "enforceability": "requires_criterion",
         "criterion_hint": "typography_and_pangu_spacing_verified"
       }

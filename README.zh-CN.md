@@ -1,4 +1,4 @@
-# Aurakl Skills：工业级 Agent 技能套件 (中文文档)
+# Aurakl Skills：Agent 技能套件 (中文文档)
 
 [![Version](https://img.shields.io/badge/版本-1.0.0-blue.svg)](./plugin.json)
 [![Python](https://img.shields.io/badge/Python-3.9+-brightgreen.svg)](https://www.python.org/)
@@ -8,7 +8,7 @@
 
 [English Documentation](./README.md)
 
-**Aurakl Skills** 是专为 AI 结对编程与自主 Agent（Google Antigravity、Claude Code、Cursor 及 Agent Skills 规范）打造的企业级生产力技能套件。它打包了经过工业级验证的**产品管理（PM）**与**软件架构师（Architect）**双核心技能，内置数学不变量校验、笛卡尔完备性审计与纯 Python 确定性裁判（Oracle）。
+**Aurakl Skills** 是专为 AI 结对编程与自主 Agent（Google Antigravity、Claude Code、Cursor 及 Agent Skills 规范）打造的企业级生产力技能套件。它打包了经过工程实战检验的**产品管理（PM）**与**软件架构师（Architect）**双核心技能，内置数学不变量校验、笛卡尔完备性审计与纯 Python 确定性裁判（Oracle）。
 
 ---
 
@@ -30,11 +30,11 @@ aurakl-skills/
 ├── rules/
 │   └── AGENTS.md                  # 插件级 Agent 铁律（全局质量守恒约束）
 ├── skills/
-│   ├── aurakl-product-manager/    # 工业级产品管理专家技能
-│   └── aurakl-software-architect/ # 工业级软件架构专家技能
+│   ├── aurakl-product-manager/    # 产品需求工程专家技能
+│   └── aurakl-software-architect/ # 软件架构设计专家技能
 ```
 
-### 1. `aurakl-product-manager` (工业级产品管理专家)
+### 1. `aurakl-product-manager` (产品需求工程规约)
 严格遵循 **ISO/IEC/IEEE 29148** 需求工程标准，驱动 7 阶段落地流水线：
 - **Stage 01 需求澄清与证伪**：5W1H 槽位追问、痛点证伪（`painkiller` vs `vitamin`）、四类领域原型适配（移动端/桌面端/纯后端/IoT）。
 - **Stage 02 市场与竞品情报**：多维矩阵量化分析，确立核心防御壁垒（"Why We Win"）。
@@ -44,7 +44,7 @@ aurakl-skills/
 - **Stage 06 验收用例矩阵**：不变量 100% 测试覆盖（10,000 bp），防御性负向用例占比 $\ge 30\%$。
 - **Stage 07 端到端血缘审查与发布**：全链路闭合审计与多维 Markdown 渲染。
 
-### 2. `aurakl-software-architect` (工业级软件架构专家)
+### 2. `aurakl-software-architect` (软件架构设计规约)
 严格践行 **Linus Torvalds 务实架构哲学**，驱动 9 阶段技术蓝图：
 - **Stage 01 技术选型 ADR 决策**：加权打分对比矩阵，严禁选定方案标记放弃。
 - **Stage 02 三层模块化单体拓扑**：清晰物理边界与反腐层，严禁过度微服务化。
@@ -116,7 +116,7 @@ aurakl pm calc-metrics --criteria acceptance_criteria.json --invariants product_
 # 4. 全链路端到端血缘与闭合审计 (Oracle 判定)
 aurakl pm audit --suite suite.json
 
-# 5. 渲染工业级 Markdown 文档
+# 5. 渲染规范 Markdown 交付文档
 aurakl pm render --source source/ --output requirement/
 ```
 

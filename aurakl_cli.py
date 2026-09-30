@@ -26,7 +26,7 @@ ARCH_SCRIPT = PLUGIN_ROOT / "skills" / "aurakl-software-architect" / "scripts" /
 
 def cmd_status() -> int:
     print("=" * 60)
-    print(" Aurakl Skills - Industrial-Grade Agent Skills Suite")
+    print(" Aurakl Skills - Enterprise Agent Skills Suite")
     print("=" * 60)
     print(f"Skills Root : {PLUGIN_ROOT}")
     print(f"Python Exec : {sys.executable} (v{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro})")

@@ -1,6 +1,6 @@
 # Aurakl Product Manager Skill (`aurakl-product-manager`)
 
-Industrial-grade Product Management & Requirements Engineering Agent Skill strictly adhering to **ISO/IEC/IEEE 29148** standards and the Aurakl dual-layer SOP framework.
+Enterprise Product Management & Requirements Engineering Agent Skill strictly adhering to **ISO/IEC/IEEE 29148** standards and the Aurakl dual-layer SOP framework.
 
 ## 🚀 Quick Install
 

@@ -1,4 +1,4 @@
-# Aurakl Skills: Industrial-Grade Agent Skills Suite
+# Aurakl Skills: Agent Skills Suite
 
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](./plugin.json)
 [![Python](https://img.shields.io/badge/python-3.9+-brightgreen.svg)](https://www.python.org/)
@@ -14,7 +14,7 @@
 
 - **Dual-Layer SOP & Formal Verification**: Moves beyond LLM text generation to strict engineering deliverables audited by deterministic Python oracles.
 - **Dynamic Language Matching**: Automatically detects and mirrors the user's natural language (100% pure Chinese or 100% pure English), forbidding mixed-language artifacts while preserving canonical technical identifiers.
-- **Zero Hallucination & Zero Placeholder**: Enforces strict anti-placeholder policies (`TODO`, `TBD`, `待定`, `占位符` are rejected at the validator gate).
+- **Zero Hallucination & Zero Placeholder**: Enforces strict anti-placeholder policies (`TODO`, `TBD`, placeholders, and empty stubs are rejected at the validator gate).
 - **Closed-World Data Closure**: Preconditions and input parameters must trace to explicit upstream sources (user input, DB entity, or third-party service).
 - **Zero External Dependencies**: All validation, rendering, and calculation engines run on Python 3.9+ standard library (`json`, `argparse`, `pathlib`, `re`, `unittest`). No `pip install` required.
 
@@ -32,7 +32,7 @@ aurakl-skills/
 │   └── aurakl-software-architect/ # Software Architecture Skill
 ```
 
-### 1. `aurakl-product-manager` (工业级产品需求工程规约)
+### 1. `aurakl-product-manager` (Product Requirements Engineering Specification)
 Adheres to **ISO/IEC/IEEE 29148** requirements engineering standards across a 7-stage pipeline:
 - **Stage 01**: 5W1H interactive elicitation, problem falsification (`painkiller` vs `vitamin`), and 4-archetype domain adaptation (Mobile, Desktop, Backend, IoT).
 - **Stage 02**: Market & competitive intelligence with structured multi-dimension barrier matrix.
@@ -42,7 +42,7 @@ Adheres to **ISO/IEC/IEEE 29148** requirements engineering standards across a 7-
 - **Stage 06**: Acceptance test matrix with 100% invariant coverage (10,000 bp) and $\ge 30\%$ negative defensive scenarios.
 - **Stage 07**: Deterministic Lineage Oracle gatekeeper audit and dynamic Markdown deliverable rendering.
 
-### 2. `aurakl-software-architect` (工业级软件架构设计规约)
+### 2. `aurakl-software-architect` (Software Architecture Design Specification)
 Adheres to the **Linus Torvalds Pragmatic Architecture Philosophy** across a 9-stage blueprint:
 - **Stage 01**: Architecture Decision Records (ADR) tech selection matrix with multi-candidate weighted scoring.
 - **Stage 02**: 3-layer modular monolith topological architecture with explicit boundaries.
